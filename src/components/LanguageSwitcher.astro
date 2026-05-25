@@ -11,7 +11,7 @@ const { currentLang, currentPath = Astro.url.pathname } = Astro.props;
 
 // 目前有翻譯檔案的語言（只顯示已翻譯的語言）
 // 當新增翻譯檔案時，請更新此列表
-const availableLangs: Language[] = ['zh-TW', 'en'];
+const availableLangs: Language[] = ['en', 'zh-TW', 'ja', 'de'];
 
 // 取得其他語言的 URL
 function getLocalizedUrl(locale: Language): string {

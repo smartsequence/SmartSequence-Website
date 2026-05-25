@@ -1,5 +1,11 @@
 import type { GetStaticPaths } from 'astro';
-import { defaultLang, type Language, languages, getAllLanguageCodes } from './languages';
+import { defaultLang, type Language, type SiteLocale, languages, getAllLanguageCodes, siteLocales } from './languages';
+
+export { siteLocales };
+
+export function isZhTW(lang: Language): boolean {
+  return lang === 'zh-TW';
+}
 
 // 重新匯出 getAllLanguageCodes 以便統一從 utils 匯入
 export { getAllLanguageCodes };
@@ -36,10 +42,11 @@ export function getLocalizedPath(path: string | undefined, lang: Language): stri
     return cleanPath || '/';
   }
   
-  // 其他語言加上前綴
-  // 確保路徑以 / 開頭
+  // 其他語言加上前綴，確保結尾有斜線（與 Astro 靜態輸出一致）
   const normalizedPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
-  return `/${lang}${normalizedPath === '/' ? '' : normalizedPath}`;
+  if (normalizedPath === '/') return `/${lang}/`;
+  const withSlash = normalizedPath.endsWith('/') ? normalizedPath : `${normalizedPath}/`;
+  return `/${lang}${withSlash}`;
 }
 
 // 取得所有語言的靜態路徑（用於 getStaticPaths）
@@ -51,21 +58,54 @@ export function getStaticPathsForAllLanguages(): GetStaticPaths {
   };
 }
 
-// 動態載入翻譯檔案
+export function deepMerge(target: Record<string, any>, source: Record<string, any>) {
+  for (const [key, value] of Object.entries(source)) {
+    if (value && typeof value === 'object' && !Array.isArray(value)) {
+      if (!target[key] || typeof target[key] !== 'object') {
+        target[key] = {};
+      }
+      deepMerge(target[key], value);
+    } else {
+      target[key] = value;
+    }
+  }
+  return target;
+}
+
+// 動態載入翻譯檔案（含 legal/ 法律頁覆蓋）
 export async function getTranslations(lang: Language) {
+  const merged: Record<string, any> = {};
+
   try {
-    const translations = await import(`./locales/${lang}.json`);
-    return translations.default;
-  } catch (error) {
+    deepMerge(merged, (await import(`./locales/${lang}.json`)).default);
+  } catch {
     console.warn(`Translation file for ${lang} not found, falling back to ${defaultLang}`);
-    // 如果翻譯不存在，回退到預設語言
     try {
-      const defaultTranslations = await import(`./locales/${defaultLang}.json`);
-      return defaultTranslations.default;
+      deepMerge(merged, (await import(`./locales/${defaultLang}.json`)).default);
     } catch {
       return {};
     }
   }
+
+  try {
+    deepMerge(merged, (await import(`./legal/${lang}.json`)).default);
+  } catch {
+    /* terms overlay optional per locale */
+  }
+
+  try {
+    deepMerge(merged, (await import(`./legal/privacy-${lang}.json`)).default);
+  } catch {
+    try {
+      if (lang !== 'en') {
+        deepMerge(merged, (await import(`./legal/privacy-en.json`)).default);
+      }
+    } catch {
+      /* privacy overlay optional */
+    }
+  }
+
+  return merged;
 }
 
 // 翻譯函式（用於頁面中）

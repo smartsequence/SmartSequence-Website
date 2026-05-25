@@ -6,23 +6,12 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-// 熱門 15 種語言（第一階段）
+// ForgeHelm 官網支援語系（計畫：zh-TW 預設 + en/ja/de）
 const locales = [
-  'zh-TW', // 繁體中文（預設）
-  'en',    // English
-  'ja',    // 日本語
-  'ko',    // 한국어
-  'zh-CN', // 简体中文
-  'es',    // Español
-  'fr',    // Français
-  'de',    // Deutsch
-  'it',    // Italiano
-  'pt',    // Português
-  'ru',    // Русский
-  'ar',    // العربية
-  'hi',    // हिन्दी
-  'th',    // ไทย
-  'vi',    // Tiếng Việt
+  'zh-TW',
+  'en',
+  'ja',
+  'de',
 ];
 
 // https://astro.build/config
@@ -44,7 +33,7 @@ export default defineConfig({
     sitemap({
       i18n: {
         defaultLocale: 'zh-TW',
-        locales: locales,
+        locales: Object.fromEntries(locales.map((l) => [l, l])),
       },
     }),
   ],

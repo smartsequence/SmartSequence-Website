@@ -1,0 +1,176 @@
+{
+  "pages": {
+    "legal": {
+      "privacy": {
+        "title": "Privacy Policy | ForgeHelm",
+        "description": "ForgeHelm Privacy Policy — GDPR, CCPA, and Taiwan PDPA aligned data governance for enterprise customers.",
+        "h1": "Privacy Policy",
+        "lastUpdated": "Last updated: 2026-05-25  |  Effective: 2026-06-01",
+        "blocks": [
+          {
+            "type": "intro",
+            "text": "Smart Sequence Tech ({studioNameEn}) operates ForgeHelm, an enterprise code governance and compliance platform. This Privacy Policy explains how we collect, use, and protect personal data when you use <strong>smartsequence.tech</strong> or the ForgeHelm SaaS service. It addresses <strong>GDPR</strong> (EU 2016/679), <strong>CCPA</strong> (California), and Taiwan <strong>PDPA</strong>."
+          },
+          {
+            "type": "table",
+            "h2": "1. Data Controller",
+            "headers": ["Field", "Details"],
+            "rows": [
+              ["Entity", "Smart Sequence Tech（{studioName}）"],
+              ["Tax ID", "{taxId}"],
+              ["Contact", "{email}"],
+              ["Data Protection Inquiries", "{email}"]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "2. What Data We Collect",
+            "subsections": [
+              {
+                "h3": "2.1 Website Visitors",
+                "bullets": [
+                  "<strong>Contact forms</strong>: Name, business email, company, job title, headcount, inquiry type",
+                  "<strong>Analytics</strong>: Anonymized page views and sessions (IP anonymized)",
+                  "<strong>Cookies</strong>: Session and language preference; optional analytics (opt-in)"
+                ]
+              },
+              {
+                "h3": "2.2 ForgeHelm SaaS Customers",
+                "bullets": [
+                  "<strong>Account data</strong>: Business email, name, company, role, subscription tier",
+                  "<strong>Usage data</strong>: Feature logs, login times, API records (no source code in SaaS)",
+                  "<strong>Billing data</strong>: Processed by payment provider; we do not store full card numbers",
+                  "<strong>Support data</strong>: Tickets and correspondence"
+                ]
+              },
+              {
+                "h3": "2.3 What We Do NOT Collect",
+                "bullets": [
+                  "Source code — Agent processes code locally; only desensitized metrics go to SaaS",
+                  "GDPR Art. 9 special categories of personal data"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "3. Legal Basis for Processing (GDPR)",
+            "headers": ["Purpose", "Legal Basis"],
+            "rows": [
+              ["Inquiries and demos", "Legitimate interest (Art. 6(1)(f))"],
+              ["Contracted SaaS services", "Contract (Art. 6(1)(b))"],
+              ["Billing and tax", "Legal obligation (Art. 6(1)(c))"],
+              ["Optional analytics cookies", "Consent (Art. 6(1)(a))"],
+              ["Service improvement comms", "Legitimate interest (Art. 6(1)(f))"]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "4. How We Use Your Data",
+            "bullets": [
+              "Respond to demo, PoC, and sales inquiries",
+              "Provision and operate ForgeHelm SaaS accounts",
+              "Issue invoices and process subscriptions",
+              "Provide support and maintain reliability",
+              "Send service-critical notifications (not marketing unless opted in)",
+              "Meet legal and tax obligations"
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "5. Data Retention",
+            "headers": ["Data Category", "Retention Period"],
+            "rows": [
+              ["Pre-sales inquiries", "2 years from last interaction"],
+              ["Active SaaS account data", "Subscription term + 90 days after termination"],
+              ["Billing records", "7 years (legal obligation)"],
+              ["Support tickets", "3 years after closure"],
+              ["Analytics (anonymized)", "13 months rolling"]
+            ],
+            "note": "You may request early deletion of non-billing data (see Section 7)."
+          },
+          {
+            "type": "section",
+            "h2": "6. Third-Party Services",
+            "bullets": [
+              "<strong>Vercel</strong>: Marketing site hosting (EU/US; DPA in place)",
+              "<strong>Stripe</strong>: Subscription billing (PCI-DSS Level 1; no raw card data to us)",
+              "<strong>Analytics</strong>: Aggregated anonymized traffic; no cross-site tracking",
+              "<strong>Email</strong>: Transactional email only"
+            ],
+            "paragraphs": [
+              "We execute DPAs with sub-processors handling personal data. Enterprise customers may request the sub-processor list."
+            ]
+          },
+          {
+            "type": "rights",
+            "h2": "7. Your Rights",
+            "intro": "Depending on your jurisdiction, you may have the following rights:",
+            "items": [
+              { "title": "Access", "desc": "Request a copy of data we hold about you" },
+              { "title": "Rectification", "desc": "Correct inaccurate or incomplete data" },
+              { "title": "Erasure", "desc": "Request deletion (subject to legal retention)" },
+              { "title": "Portability", "desc": "Receive data in a structured, machine-readable format" },
+              { "title": "Objection", "desc": "Object to processing based on legitimate interest" },
+              { "title": "Restriction", "desc": "Request limited processing while a dispute is resolved" }
+            ],
+            "paragraphs": [
+              "California residents may opt out of sale/sharing (CCPA). We do not sell personal data.",
+              "Taiwan PDPA provides access, correction, deletion, and portability rights.",
+              "Contact <strong>{email}</strong>. We respond within <strong>30 days</strong>."
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "8. Cookies",
+            "headers": ["Cookie Type", "Purpose", "Opt-out"],
+            "rows": [
+              ["Strictly necessary", "Session authentication, language preference", "Cannot be disabled"],
+              ["Analytics (optional)", "Aggregate page views; IP anonymized", "Cookie banner or browser settings"]
+            ],
+            "note": "We do not use advertising or cross-site tracking cookies."
+          },
+          {
+            "type": "section",
+            "h2": "9. International Data Transfers",
+            "paragraphs": [
+              "ForgeHelm is designed for data sovereignty. Source code and sensitive analysis stay on-premises; only desensitized compliance metrics go to SaaS.",
+              "Where account/billing data leaves the EEA or Taiwan, we rely on EU Standard Contractual Clauses, adequacy decisions, or Taiwan PDPA safeguards."
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "10. Security Measures",
+            "bullets": [
+              "<strong>Encryption in transit</strong>: TLS 1.2+",
+              "<strong>Encryption at rest</strong>: Sensitive database fields encrypted",
+              "<strong>Access control</strong>: RBAC for personnel",
+              "<strong>Audit logs</strong>: Immutable admin action logs",
+              "<strong>Vulnerability management</strong>: Regular scanning and dependency updates"
+            ],
+            "paragraphs": [
+              "We will notify you within <strong>72 hours</strong> of a breach affecting your rights (GDPR Art. 33)."
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "11. Policy Updates",
+            "bullets": [
+              "Published on this page with an updated effective date",
+              "Active SaaS customers notified by email at least 30 days before material changes"
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "12. Contact & Complaints",
+            "paragraphs": [
+              "Privacy inquiries: <strong>{email}</strong>",
+              "Business entity: {studioNameEn}（{studioName}, Tax ID {taxId}）",
+              "GDPR complaints may be lodged with your local supervisory authority."
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

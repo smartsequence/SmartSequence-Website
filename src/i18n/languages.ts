@@ -96,6 +96,10 @@ export const languages = {
 export type Language = keyof typeof languages;
 export const defaultLang: Language = 'zh-TW';
 
+/** 官網已建置路由的語系（與 astro.config.mjs locales 一致） */
+export const siteLocales = ['zh-TW', 'en', 'ja', 'de'] as const;
+export type SiteLocale = (typeof siteLocales)[number];
+
 // 取得語言名稱（用於顯示）
 export function getLanguageName(lang: Language): string {
   return languages[lang]?.name || lang;
@@ -106,7 +110,7 @@ export function getNativeLanguageName(lang: Language): string {
   return languages[lang]?.nativeName || lang;
 }
 
-// 取得所有語言代碼
-export function getAllLanguageCodes(): Language[] {
-  return Object.keys(languages) as Language[];
+// 取得官網已建置的語言代碼（hreflang / sitemap 用，不含未翻譯語系）
+export function getAllLanguageCodes(): SiteLocale[] {
+  return [...siteLocales];
 }

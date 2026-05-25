@@ -1,0 +1,78 @@
+{
+  "pages": {
+    "legal": {
+      "terms": {
+        "title": "Terms of Service | ForgeHelm",
+        "description": "ForgeHelm SaaS subscription terms for Core, Professional, and Enterprise plans.",
+        "h1": "Terms of Service",
+        "h1Secondary": "Terms of Service",
+        "lastUpdated": "Last updated: 2026-05-25",
+        "sections": [
+          {
+            "heading": "1. Service Description",
+            "paragraphs": [
+              "{studioNameEn} ({studioName}) provides the ForgeHelm enterprise code governance and compliance platform, including the SaaS management platform, Analysis Agent software, and related modules (compliance reports, SBOM, dashboard, risk questionnaire, AI ChatBot, tech stack migration, data quality)."
+            ]
+          },
+          {
+            "heading": "2. Accounts and Responsibilities",
+            "bullets": [
+              "You must provide accurate and complete registration information",
+              "You are responsible for account security; accounts must not be shared",
+              "Abuse of the service (attacks, spam, excessive automated requests) is prohibited",
+              "You are fully responsible for data you upload or submit"
+            ]
+          },
+          {
+            "heading": "3. Subscriptions, Billing, and Refunds",
+            "bullets": [
+              "ForgeHelm uses per-seat annual subscriptions (Core, Professional, Enterprise): annual fee = seat monthly rate × seats × 12 + platform annual fee (Professional / Enterprise)",
+              "Online payment is completed via Stripe Checkout on the ForgeHelm SaaS platform; enterprise procurement may use contracts, POs, or wire transfer",
+              "Trial Experience fees paid within 30 days before upgrading to Core or Professional annual subscription are fully credited toward the first annual fee",
+              "Seats may be adjusted during the contract term (proration); monthly billing, if offered, is typically ~20% higher than annual",
+              "Taiwan customers may receive tax invoices (Tax ID: {taxId})",
+              "Annual subscriptions are generally non-refundable once activated unless required by law or written agreement; service remains available through the subscription term"
+            ]
+          },
+          {
+            "heading": "4. Intellectual Property",
+            "bullets": [
+              "Compliance reports, SBOM, and dashboard data produced from your repositories belong to you for business use",
+              "ForgeHelm platform software, UI, and analysis algorithms are owned by {studioNameEn}",
+              "You may not copy, modify, or distribute any part of the service without authorization"
+            ]
+          },
+          {
+            "heading": "5. Changes and Termination",
+            "bullets": [
+              "We may modify, suspend, or terminate the service",
+              "Material changes will be notified by email at least 30 days in advance",
+              "If we discontinue the service, we will provide notice and assist with data export"
+            ]
+          },
+          {
+            "heading": "6. Limitation of Liability",
+            "bullets": [
+              "The service is provided \"as is\" without guarantee of error-free or uninterrupted operation",
+              "Reports are for reference only; decisions remain your responsibility",
+              "We are not liable for losses arising from use or inability to use the service",
+              "If liability applies, damages are capped at fees you paid for the service"
+            ]
+          },
+          {
+            "heading": "7. Governing Law",
+            "bullets": [
+              "These terms are governed by the laws of the Republic of China (Taiwan)",
+              "Disputes shall be subject to the exclusive jurisdiction of the Taipei District Court as the court of first instance"
+            ]
+          },
+          {
+            "heading": "8. Contact",
+            "paragraphs": ["Questions about these terms:"],
+            "bullets": ["Email: {email}", "Tax ID: {taxId}"]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "pages": {
+    "legal": {
+      "terms": {
+        "title": "Nutzungsbedingungen | ForgeHelm",
+        "description": "SaaS-Abonnementbedingungen für ForgeHelm Core, Professional und Enterprise.",
+        "h1": "Nutzungsbedingungen",
+        "h1Secondary": "Terms of Service",
+        "lastUpdated": "Zuletzt aktualisiert: 2026-05-25",
+        "sections": [
+          {
+            "heading": "1. Leistungsbeschreibung",
+            "paragraphs": [
+              "{studioNameEn} ({studioName}) bietet die Enterprise-Plattform ForgeHelm für Code-Governance und Compliance, einschließlich SaaS, Analyse-Agent sowie Module für Berichte, SBOM, Dashboard, Risiko-Fragebogen, AI ChatBot, Migration und Datenqualität."
+            ]
+          },
+          {
+            "heading": "2. Konten und Pflichten",
+            "bullets": [
+              "Vollständige und korrekte Registrierungsdaten erforderlich",
+              "Kontosicherheit liegt beim Nutzer; Kontoteilung untersagt",
+              "Missbrauch (Angriffe, Spam, übermäßige automatisierte Anfragen) verboten",
+              "Nutzer tragen volle Verantwortung für hochgeladene Daten"
+            ]
+          },
+          {
+            "heading": "3. Abonnements, Abrechnung, Erstattung",
+            "bullets": [
+              "Jahresabonnements pro Sitz (Core / Professional / Enterprise): Jahresgebühr = Monatspreis × Sitze × 12 + Plattformjahresgebühr (Pro / Ent)",
+              "Online-Zahlung über Stripe Checkout auf der ForgeHelm-SaaS-Plattform; Enterprise-Beschaffung auch per Vertrag/PO/Überweisung",
+              "Testgebühr innerhalb von 30 Tagen vor Upgrade auf Core/Professional-Jahresabo voll auf erste Jahresgebühr anrechenbar",
+              "Sitzerweiterung während der Laufzeit anteilig; Monatszahlung typischerweise ~20 % teurer als jährlich",
+              "Taiwan-Kunden: Rechnungen mit Steuernummer {taxId}",
+              "Jahresabos grundsätzlich nicht erstattungsfähig nach Aktivierung, sofern nicht gesetzlich oder vertraglich anders geregelt"
+            ]
+          },
+          {
+            "heading": "4. Geistiges Eigentum",
+            "bullets": [
+              "Berichte, SBOM und Dashboard-Daten aus Ihren Repositories gehören Ihnen zur geschäftlichen Nutzung",
+              "ForgeHelm-Software, UI und Algorithmen gehören {studioNameEn}",
+              "Kopieren, Ändern oder Verbreiten ohne Genehmigung untersagt"
+            ]
+          },
+          {
+            "heading": "5. Änderungen und Beendigung",
+            "bullets": [
+              "Wir können den Dienst ändern, aussetzen oder einstellen",
+              "Wesentliche Änderungen werden mindestens 30 Tage vorher per E-Mail mitgeteilt",
+              "Bei Einstellung: Benachrichtigung und Unterstützung beim Datenexport"
+            ]
+          },
+          {
+            "heading": "6. Haftungsbeschränkung",
+            "bullets": [
+              "Dienst „wie besehen“ ohne Garantie auf Fehlerfreiheit oder Unterbrechungsfreiheit",
+              "Berichte dienen nur als Referenz; Entscheidungen liegen beim Kunden",
+              "Keine Haftung für Schäden aus Nutzung oder Nichtnutzung",
+              "Haftungsobergrenze: gezahlte Gebühren"
+            ]
+          },
+          {
+            "heading": "7. Anwendbares Recht",
+            "bullets": [
+              "Es gilt das Recht der Republik China (Taiwan)",
+              "Ausschließlicher Gerichtsstand für erste Instanz: Bezirksgericht Taipeh"
+            ]
+          },
+          {
+            "heading": "8. Kontakt",
+            "paragraphs": ["Fragen zu diesen Bedingungen:"],
+            "bullets": ["E-Mail: {email}", "Steuernummer: {taxId}"]
+          }
+        ]
+      }
+    }
+  }
+}

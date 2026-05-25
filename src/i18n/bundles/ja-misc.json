@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "features": "製品"
+  },
+  "footer": {
+    "enterprisePoc": "Enterprise PoC 申請"
+  },
+  "pages": {
+    "useCases": {
+      "ctaTitle": "ご活用事例について相談しませんか？",
+      "ctaButton": "お問い合わせ",
+      "ctaSecondary": "料金を見る"
+    },
+    "contact": {
+      "subjectPlaceholder": "選択してください...",
+      "responseTime": "返信目安：1–2 営業日"
+    },
+    "compliance": {
+      "fwTwPdpa": "台湾個人情報保護法（TW-PDPA）"
+    }
+  }
+}

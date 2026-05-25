@@ -1,0 +1,25 @@
+{
+  "hero": {
+    "badge": "Unternehmensweite Code-Governance & Compliance"
+  },
+  "nav": {
+    "features": "Produkt"
+  },
+  "footer": {
+    "enterprisePoc": "Enterprise-PoC"
+  },
+  "pages": {
+    "useCases": {
+      "ctaTitle": "Bereit, Ihren Anwendungsfall zu besprechen?",
+      "ctaButton": "Kontakt",
+      "ctaSecondary": "Preise ansehen"
+    },
+    "contact": {
+      "subjectPlaceholder": "Bitte wählen...",
+      "responseTime": "Antwortzeit: 1–2 Werktage"
+    },
+    "compliance": {
+      "fwTwPdpa": "Taiwan PDPA (TW-PDPA)"
+    }
+  }
+}

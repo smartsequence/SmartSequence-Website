@@ -1,0 +1,172 @@
+{
+  "pages": {
+    "legal": {
+      "privacy": {
+        "title": "隱私政策 | ForgeHelm",
+        "description": "ForgeHelm 隱私政策——符合 GDPR、CCPA 與臺灣個人資料保護法之企業資料治理說明。",
+        "h1": "隱私政策",
+        "lastUpdated": "最後更新：2026-05-25 ｜ 生效日：2026-06-01",
+        "blocks": [
+          {
+            "type": "intro",
+            "text": "智序資訊工作室（{studioNameEn}，{studioName}）營運 ForgeHelm 企業級程式碼治理與合規平台。本政策說明您使用 <strong>smartsequence.tech</strong> 官網或 ForgeHelm SaaS 服務時，我們如何蒐集、使用與保護個人資料，並涵蓋 <strong>GDPR</strong>、<strong>CCPA</strong> 與臺灣 <strong>個人資料保護法</strong> 相關義務。"
+          },
+          {
+            "type": "table",
+            "h2": "1. 資料控制者",
+            "headers": ["項目", "內容"],
+            "rows": [
+              ["營業主體", "智序資訊工作室（Smart Sequence Tech）"],
+              ["統一編號", "{taxId}"],
+              ["聯絡方式", "{email}"],
+              ["個資詢問", "{email}"]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "2. 蒐集之資料",
+            "subsections": [
+              {
+                "h3": "2.1 官網訪客",
+                "bullets": [
+                  "<strong>聯絡表單</strong>：姓名、工作信箱、公司、職稱、人數、詢問類型",
+                  "<strong>分析資料</strong>：匿名化頁面瀏覽（IP 已匿名化）",
+                  "<strong>Cookie</strong>：工作階段與語言偏好；選用分析 Cookie（需同意）"
+                ]
+              },
+              {
+                "h3": "2.2 SaaS 客戶",
+                "bullets": [
+                  "<strong>帳號資料</strong>：工作信箱、姓名、公司、角色、訂閱方案",
+                  "<strong>使用資料</strong>：功能日誌、登入時間、API 紀錄（SaaS 不儲存原始碼）",
+                  "<strong>帳單資料</strong>：由金流服務商處理；我們不儲存完整卡號",
+                  "<strong>支援資料</strong>：工單與往來紀錄"
+                ]
+              },
+              {
+                "h3": "2.3 我們不蒐集",
+                "bullets": [
+                  "原始碼——Agent 於客戶環境分析，僅傳送脫敏指標至 SaaS",
+                  "GDPR 第 9 條特殊類別個人資料"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "3. 處理之法律依據（GDPR）",
+            "headers": ["目的", "法律依據"],
+            "rows": [
+              ["詢價與 Demo", "合法利益（第 6(1)(f) 條）"],
+              ["合約 SaaS 服務", "履行契約（第 6(1)(b) 條）"],
+              ["帳單與稅務", "法律義務（第 6(1)(c) 條）"],
+              ["選用分析 Cookie", "同意（第 6(1)(a) 條）"],
+              ["服務改善通知", "合法利益（第 6(1)(f) 條）"]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "4. 資料使用方式",
+            "bullets": [
+              "回覆 Demo、PoC 與業務詢價",
+              "提供與營運 ForgeHelm SaaS 帳號",
+              "開立發票與處理訂閱",
+              "技術支援與服務穩定",
+              "發送服務必要通知（非行銷，除非您同意）",
+              "履行法律與稅務義務"
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "5. 資料保留",
+            "headers": ["資料類別", "保留期間"],
+            "rows": [
+              ["售前詢價", "最後互動後 2 年"],
+              ["有效 SaaS 帳號", "訂閱期間 + 終止後 90 日"],
+              ["帳單紀錄", "7 年（法定義務）"],
+              ["支援工單", "結案後 3 年"],
+              ["分析（匿名）", "滾動 13 個月"]
+            ],
+            "note": "非帳單資料可申請提前刪除（見第 7 節）。"
+          },
+          {
+            "type": "section",
+            "h2": "6. 第三方服務",
+            "bullets": [
+              "<strong>Vercel</strong>：官網託管（EU/US，已簽 DPA）",
+              "<strong>Stripe</strong>：訂閱金流（PCI-DSS Level 1）",
+              "<strong>分析</strong>：彙總匿名流量，無跨站追蹤",
+              "<strong>郵件</strong>：僅交易型郵件"
+            ],
+            "paragraphs": ["與處理個資之子處理者簽署 DPA。Enterprise 客戶可索取子處理者清單。"]
+          },
+          {
+            "type": "rights",
+            "h2": "7. 您的權利",
+            "intro": "依適用法令，您可能享有下列權利：",
+            "items": [
+              { "title": "查閱", "desc": "索取我們持有之您的資料副本" },
+              { "title": "更正", "desc": "更正不正確或不完整資料" },
+              { "title": "刪除", "desc": "請求刪除（法定保留義務除外）" },
+              { "title": "可攜", "desc": "以結構化格式取得資料" },
+              { "title": "反對", "desc": "反對基於合法利益之處理" },
+              { "title": "限制", "desc": "爭議期間限制處理" }
+            ],
+            "paragraphs": [
+              "加州居民可依 CCPA 選擇退出出售/分享——我們不出售個人資料。",
+              "臺灣個資法亦保障查閱、更正、刪除與可攜權利。",
+              "請聯絡 <strong>{email}</strong>，我們於 <strong>30 日</strong> 內回覆。"
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "8. Cookie",
+            "headers": ["類型", "用途", "退出"],
+            "rows": [
+              ["必要", "登入工作階段、語言偏好", "無法關閉"],
+              ["分析（選用）", "彙總瀏覽；IP 匿名", "橫幅或瀏覽器設定"]
+            ],
+            "note": "不使用廣告或跨站追蹤 Cookie。"
+          },
+          {
+            "type": "section",
+            "h2": "9. 跨境傳輸",
+            "paragraphs": [
+              "ForgeHelm 以資料主權為設計：原始碼與敏感分析留在客戶環境，僅脫敏合規指標進入 SaaS。",
+              "帳號/帳單資料離開 EEA 或臺灣時，我們依賴歐盟 SCC、適足決定或個資法契約保障。"
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "10. 安全措施",
+            "bullets": [
+              "<strong>傳輸加密</strong>：TLS 1.2+",
+              "<strong>靜態加密</strong>：敏感欄位加密儲存",
+              "<strong>存取控制</strong>：人員 RBAC",
+              "<strong>稽核日誌</strong>：管理操作不可竄改紀錄",
+              "<strong>漏洞管理</strong>：定期掃描與相依更新"
+            ],
+            "paragraphs": ["若發生影響您權益之資料外洩，將依 GDPR 第 33 條於 <strong>72 小時</strong> 內通知。"]
+          },
+          {
+            "type": "section",
+            "h2": "11. 政策更新",
+            "bullets": [
+              "於本頁公布並更新生效日",
+              "重大變更至少提前 30 日以 Email 通知有效 SaaS 客戶"
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "12. 聯絡與申訴",
+            "paragraphs": [
+              "隱私詢問：<strong>{email}</strong>",
+              "營業主體：{studioName}（統一編號 {taxId}）",
+              "GDPR 可向當地監管機關提出申訴。"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "getStarted": "はじめる",
+    "home": "ホーム"
+  },
+  "sections": {
+    "coreValues": {
+      "title": "高セキュリティ環境向けに設計",
+      "v1": {
+        "title": "ハイブリッド展開",
+        "subtitle": "ソースコードは社内に留まる",
+        "description": "分析 Agent は社内ネットワークで完結。管理プラットフォームへ送るのは脱敏後のサマリ指標のみ——ソースコードは一切送信しません。"
+      },
+      "v2": {
+        "title": "20+ コンプライアンスフレームワーク",
+        "subtitle": "単一プラットフォームで広範なカバレッジ",
+        "description": "ISO 27001、SOC 2、GDPR、HIPAA、PCI-DSS、OWASP Top 10、DORA、APPI、ISMAP など——政策要件を測定可能な所見に変換します。"
+      },
+      "v3": {
+        "title": "AI 支援ガバナンス",
+        "subtitle": "完全オフライン対応",
+        "description": "RAG ベースの ChatBot がコンプライアンスギャップと是正経路を説明。AI は任意——外部モデルなしでオンプレ運用可能です。"
+      }
+    },
+    "modules": {
+      "title": "7 つのガバナンスモジュール",
+      "subtitle": "コンプライアンスレポートからレガシー近代化まで——単一プラットフォームでライフサイク全体をカバー。"
+    },
+    "deployment": {
+      "title": "あらゆるセキュリティポリシーに対応する柔軟な展開",
+      "d1": {
+        "title": "フルクラウド",
+        "badge": "最速導入",
+        "description": "管理プラットフォームと分析をクラウドでホスト。ポリシーが許し、スピードが最優先の場合に最適。"
+      },
+      "d2": {
+        "title": "ハイブリッド",
+        "badge": "推奨",
+        "description": "管理はクラウド、分析 Agent はオンプレ。スピードとデータ主権のバランス。"
+      },
+      "d3": {
+        "title": "プライベートクラウド / オンプレ",
+        "badge": "Enterprise",
+        "description": "全コンポーネントをデータセンターまたはプライベートクラウドに配置。厳格なデータレジデンシーに対応。"
+      },
+      "d4": {
+        "title": "エアギャップ",
+        "badge": "最高セキュリティ",
+        "description": "完全オフライン——外部接続なし。機密・軍事・政府ネットワーク向け。"
+      }
+    },
+    "industries": {
+      "title": "高度規制産業での実績",
+      "i1": {
+        "title": "金融サービス",
+        "description": "監査証跡、サプライチェーン、PCI-DSS、SOX、DORA レポートをすぐに利用可能。"
+      },
+      "i2": {
+        "title": "政府・公共部門",
+        "description": "ローカル展開、ISMAP / TW-PDPA / CMMC、調達向けドキュメント。"
+      },
+      "i3": {
+        "title": "ヘルスケア",
+        "description": "HIPAA、GDPR、テナント分離、第三者監査支援。"
+      },
+      "i4": {
+        "title": "ハイテク製造",
+        "description": "知的財産保護、エアギャップ展開、SBOM によるサプライチェーンセキュリティ。"
+      }
+    },
+    "trust": {
+      "title": "アーキテクチャに組み込まれたエンタープライズセキュリティ",
+      "item1": {
+        "title": "データ脱敏",
+        "description": "社外に出るのはファイル名・行番号・集計値のみ。ソース断片・パス・個人情報は送信前にマスク。"
+      },
+      "item2": {
+        "title": "RBAC とマルチテナント分離",
+        "description": "ロールベースアクセス制御とテナント間の論理分離。重要操作は改ざん不可の監査ログ。"
+      },
+      "item3": {
+        "title": "4 言語 UI + 5 言語レポート",
+        "description": "サイト UI は英語・繁体字中国語・日本語・ドイツ語。レポートは 5 言語で出力可能。"
+      }
+    },
+    "cta": {
+      "title": "ForgeHelm の実運用を見ませんか？",
+      "subtitle": "30 分デモ、または貴社環境向け PoC をご依頼ください。",
+      "primary": "デモを予約",
+      "secondary": "料金を見る",
+      "tertiary": "機能を見る",
+      "trial": "$29 から体験"
+    },
+    "competitor": {
+      "title": "エンタープライズ級の価値、エンタープライズ級の価格だけではない",
+      "summary": "同類ツールは年間 $50K–$120K。ForgeHelm は $39/席/月から、オンプレ展開と 20+ フレームワークに対応。",
+      "footnote": "GHAS、Snyk、SonarQube Enterprise、Vanta、Checkmarx の公開価格に基づく（2026 年基準）。"
+    },
+    "trial": {
+      "title": "実スキャンデータで評価を開始",
+      "subtitle": "Agent による体験——手動アンケートではありません。コンプライアンス簡易診断、SBOM、ダッシュボードプレビュー、8 軸リスク指紋。",
+      "cta": "$29 から体験",
+      "credit": "30 日以内に初年度年間契約へ移行すると体験料を全額充当。"
+    }
+  },
+  "footer": {
+    "description": "金融・政府・医療向けのエンタープライズコードガバナンス・コンプライアンスプラットフォーム。",
+    "tagline": "コンプライアンスを自動化。コードは社内に。\nForgeHelm——スケールするガバナンス。",
+    "taxId": "統一番号",
+    "supportEmail": "お問い合わせ",
+    "products": "製品",
+    "services": "サービス",
+    "company": "会社",
+    "followUs": "フォロー",
+    "copyright": "© 2026 Smart Sequence Tech（智序資訊工作室）。無断転載を禁じます。",
+    "markets": "市場",
+    "frameworks": "対応フレームワーク"
+  },
+  "common": {
+    "learnMore": "詳しく見る",
+    "getStarted": "はじめる",
+    "requestDemo": "デモ予約",
+    "contactUs": "お問い合わせ",
+    "viewPricing": "料金を見る",
+    "tryExperience": "体験プラン",
+    "contactSales": "営業に連絡"
+  }
+}

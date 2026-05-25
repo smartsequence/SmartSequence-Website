@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "getStarted": "Loslegen",
+    "home": "Start"
+  },
+  "sections": {
+    "coreValues": {
+      "title": "Für Hochsicherheitsumgebungen gebaut",
+      "v1": {
+        "title": "Hybrid-Bereitstellung",
+        "subtitle": "Quellcode bleibt On-Premises",
+        "description": "Der Analyse-Agent läuft vollständig in Ihrem Netzwerk. Nur desensibilisierte Kennzahlen gehen an die Managementplattform — nie Quellcode."
+      },
+      "v2": {
+        "title": "20+ Compliance-Frameworks",
+        "subtitle": "Eine Plattform, volle Abdeckung",
+        "description": "ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS, OWASP Top 10, DORA, APPI, ISMAP u. a. — Anforderungen werden zu messbaren Befunden."
+      },
+      "v3": {
+        "title": "KI-gestützte Governance",
+        "subtitle": "Vollständig offline-fähig",
+        "description": "RAG-Chatbot erklärt Compliance-Lücken und Maßnahmen. KI ist optional — Betrieb vollständig On-Premises ohne externe Modelle."
+      }
+    },
+    "modules": {
+      "title": "Sieben Governance-Module",
+      "subtitle": "Von Compliance-Berichten bis Legacy-Modernisierung — ein Lebenszyklus auf einer Plattform."
+    },
+    "deployment": {
+      "title": "Flexible Bereitstellung für jede Sicherheitsrichtlinie",
+      "d1": {
+        "title": "Vollständige Cloud",
+        "badge": "Schnellster Start",
+        "description": "Management und Analyse in der Cloud. Ideal, wenn Richtlinien es erlauben und Geschwindigkeit zählt."
+      },
+      "d2": {
+        "title": "Hybrid",
+        "badge": "Empfohlen",
+        "description": "Management in der Cloud, Analyse-Agent On-Premises. Balance aus Tempo und Datenhoheit."
+      },
+      "d3": {
+        "title": "Private Cloud / On-Premise (lokal)",
+        "badge": "Enterprise",
+        "description": "Alle Komponenten im Rechenzentrum oder in der Private Cloud. Strenge Datenresidenz."
+      },
+      "d4": {
+        "title": "Air-Gapped",
+        "badge": "Maximale Sicherheit",
+        "description": "Vollständig offline — keine externen Verbindungen. Für klassifizierte und Behördennetze."
+      }
+    },
+    "industries": {
+      "title": "Vertrauen in stark regulierten Branchen",
+      "i1": {
+        "title": "Finanzdienstleistungen",
+        "description": "Audit-Trails, Lieferkette, PCI-DSS, SOX, DORA — Berichte sofort verfügbar."
+      },
+      "i2": {
+        "title": "Behörden & öffentlicher Sektor",
+        "description": "Lokale Bereitstellung, ISMAP / TW-PDPA / CMMC, beschaffungsfertige Dokumentation."
+      },
+      "i3": {
+        "title": "Gesundheitswesen",
+        "description": "HIPAA, GDPR, Mandantenisolation, Unterstützung für Drittanbieter-Audits."
+      },
+      "i4": {
+        "title": "High-Tech-Fertigung",
+        "description": "Schutz geistigen Eigentums, Air-Gapped-Bereitstellung, Lieferkettensicherheit per SBOM."
+      }
+    },
+    "trust": {
+      "title": "Enterprise-Sicherheit in der Architektur",
+      "item1": {
+        "title": "Datendesensibilisierung",
+        "description": "Nur Dateinamen, Zeilennummern und Summen verlassen Ihr Netz. Codefragmente und Pfade werden maskiert."
+      },
+      "item2": {
+        "title": "RBAC & Mandantenisolation",
+        "description": "Rollenbasierter Zugriff und logische Mandantentrennung. Unveränderliche Audit-Logs."
+      },
+      "item3": {
+        "title": "4 Sprachen UI + 5 Sprachen Berichte",
+        "description": "Website-UI auf EN, Traditionellem Chinesisch, Japanisch und Deutsch. Berichte in fünf Sprachen."
+      }
+    },
+    "cta": {
+      "title": "ForgeHelm live erleben?",
+      "subtitle": "30-Minuten-Demo oder PoC für Ihre Umgebung anfragen.",
+      "primary": "Demo anfragen",
+      "secondary": "Preise ansehen",
+      "tertiary": "Funktionen entdecken",
+      "trial": "Ab $29 testen"
+    },
+    "competitor": {
+      "title": "Enterprise-Leistung ohne Enterprise-only-Preise",
+      "summary": "Vergleichbare Tools: $50K–$120K/Jahr. ForgeHelm ab $39/Sitz/Monat mit On-Premises und 20+ Frameworks.",
+      "footnote": "Basierend auf veröffentlichten Preisen von GHAS, Snyk, SonarQube Enterprise, Vanta, Checkmarx (2026)."
+    },
+    "trial": {
+      "title": "Mit echten Scan-Daten starten",
+      "subtitle": "Agent-gestützte Testversion — kein manueller Fragebogen. Quick-Scan, SBOM, Dashboard-Vorschau, 8-Achsen-Fingerabdruck.",
+      "cta": "Ab $29 testen",
+      "credit": "Testgebühr innerhalb von 30 Tagen voll auf das erste Jahresabonnement anrechenbar."
+    }
+  },
+  "footer": {
+    "description": "Enterprise-Plattform für Code-Governance und Compliance in Finanz, Behörden und Gesundheitswesen.",
+    "tagline": "Compliance automatisieren. Code On-Premises halten.\nForgeHelm — Governance, die skaliert.",
+    "taxId": "Steuernummer",
+    "supportEmail": "Kontakt",
+    "products": "Produkt",
+    "services": "Services",
+    "company": "Unternehmen",
+    "followUs": "Folgen",
+    "copyright": "© 2026 Smart Sequence Tech (智序資訊工作室). Alle Rechte vorbehalten.",
+    "markets": "Märkte",
+    "frameworks": "Frameworks"
+  },
+  "common": {
+    "learnMore": "Mehr erfahren",
+    "getStarted": "Loslegen",
+    "requestDemo": "Demo anfragen",
+    "contactUs": "Kontakt",
+    "viewPricing": "Preise ansehen",
+    "tryExperience": "Testversion",
+    "contactSales": "Vertrieb kontaktieren"
+  }
+}

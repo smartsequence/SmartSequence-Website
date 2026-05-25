@@ -1,0 +1,172 @@
+{
+  "pages": {
+    "legal": {
+      "privacy": {
+        "title": "Datenschutzerklärung | ForgeHelm",
+        "description": "ForgeHelm Datenschutzerklärung — DSGVO-, CCPA- und taiwanische PDPA-konforme Datenverarbeitung für Unternehmen.",
+        "h1": "Datenschutzerklärung",
+        "lastUpdated": "Zuletzt aktualisiert: 2026-05-25  |  Gültig ab: 2026-06-01",
+        "blocks": [
+          {
+            "type": "intro",
+            "text": "Smart Sequence Tech ({studioNameEn}, {studioName}) betreibt ForgeHelm, eine Enterprise-Plattform für Code-Governance und Compliance. Diese Erklärung beschreibt, wie wir personenbezogene Daten erheben, nutzen und schützen, wenn Sie <strong>smartsequence.tech</strong> oder den ForgeHelm-SaaS-Dienst nutzen. Sie umfasst die <strong>DSGVO</strong>, das <strong>CCPA</strong> und das taiwanische <strong>PDPA</strong>."
+          },
+          {
+            "type": "table",
+            "h2": "1. Verantwortlicher",
+            "headers": ["Feld", "Angaben"],
+            "rows": [
+              ["Unternehmen", "Smart Sequence Tech ({studioName})"],
+              ["Steuer-ID", "{taxId}"],
+              ["Kontakt", "{email}"],
+              ["Datenschutzanfragen", "{email}"]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "2. Erhobene Daten",
+            "subsections": [
+              {
+                "h3": "2.1 Website-Besucher",
+                "bullets": [
+                  "<strong>Kontaktformulare</strong>: Name, geschäftliche E-Mail, Unternehmen, Position, Mitarbeiterzahl, Anfragetyp",
+                  "<strong>Analytics</strong>: Anonymisierte Seitenaufrufe (IP anonymisiert)",
+                  "<strong>Cookies</strong>: Sitzung und Spracheinstellung; optionale Analytics (Opt-in)"
+                ]
+              },
+              {
+                "h3": "2.2 ForgeHelm-SaaS-Kunden",
+                "bullets": [
+                  "<strong>Kontodaten</strong>: Geschäftliche E-Mail, Name, Unternehmen, Rolle, Abonnementstufe",
+                  "<strong>Nutzungsdaten</strong>: Feature-Logs, Anmeldezeiten, API-Aufzeichnungen (kein Quellcode in SaaS)",
+                  "<strong>Abrechnungsdaten</strong>: Durch Zahlungsanbieter verarbeitet; wir speichern keine vollständigen Kartennummern",
+                  "<strong>Supportdaten</strong>: Tickets und Korrespondenz"
+                ]
+              },
+              {
+                "h3": "2.3 Was wir NICHT erheben",
+                "bullets": [
+                  "Quellcode — der Agent analysiert lokal; nur desensibilisierte Metriken gehen an SaaS",
+                  "Besondere Kategorien personenbezogener Daten nach DSGVO Art. 9"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "3. Rechtsgrundlagen (DSGVO)",
+            "headers": ["Zweck", "Rechtsgrundlage"],
+            "rows": [
+              ["Anfragen und Demos", "Berechtigtes Interesse (Art. 6 Abs. 1 lit. f)"],
+              ["Vertraglicher SaaS-Dienst", "Vertrag (Art. 6 Abs. 1 lit. b)"],
+              ["Abrechnung und Steuern", "Rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c)"],
+              ["Optionale Analytics-Cookies", "Einwilligung (Art. 6 Abs. 1 lit. a)"],
+              ["Mitteilungen zur Serviceverbesserung", "Berechtigtes Interesse (Art. 6 Abs. 1 lit. f)"]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "4. Verwendung Ihrer Daten",
+            "bullets": [
+              "Beantwortung von Demo-, PoC- und Vertriebsanfragen",
+              "Bereitstellung und Betrieb von ForgeHelm-SaaS-Konten",
+              "Rechnungsstellung und Abonnementabwicklung",
+              "Support und Aufrechterhaltung der Verfügbarkeit",
+              "Servicekritische Benachrichtigungen (kein Marketing ohne Opt-in)",
+              "Erfüllung rechtlicher und steuerlicher Pflichten"
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "5. Aufbewahrung",
+            "headers": ["Datenkategorie", "Aufbewahrungsfrist"],
+            "rows": [
+              ["Vertriebsanfragen", "2 Jahre ab letzter Interaktion"],
+              ["Aktive SaaS-Kontodaten", "Abonnementlaufzeit + 90 Tage nach Beendigung"],
+              ["Abrechnungsunterlagen", "7 Jahre (gesetzliche Pflicht)"],
+              ["Support-Tickets", "3 Jahre nach Abschluss"],
+              ["Analytics (anonymisiert)", "Rollierend 13 Monate"]
+            ],
+            "note": "Sie können die vorzeitige Löschung nicht abrechnungsrelevanter Daten beantragen (Abschnitt 7)."
+          },
+          {
+            "type": "section",
+            "h2": "6. Drittanbieter",
+            "bullets": [
+              "<strong>Vercel</strong>: Hosting der Marketing-Website (EU/US, AVV vorhanden)",
+              "<strong>Stripe</strong>: Abonnementabrechnung (PCI-DSS Level 1)",
+              "<strong>Analytics</strong>: Aggregierter anonymer Traffic; kein Cross-Site-Tracking",
+              "<strong>E-Mail</strong>: Nur transaktionale E-Mails"
+            ],
+            "paragraphs": ["Mit Auftragsverarbeitern, die personenbezogene Daten verarbeiten, schließen wir AVVs. Enterprise-Kunden können die Subprozessor-Liste anfordern."]
+          },
+          {
+            "type": "rights",
+            "h2": "7. Ihre Rechte",
+            "intro": "Je nach Rechtsordnung können Sie folgende Rechte haben:",
+            "items": [
+              { "title": "Auskunft", "desc": "Kopie der über Sie gespeicherten Daten anfordern" },
+              { "title": "Berichtigung", "desc": "Unrichtige oder unvollständige Daten korrigieren" },
+              { "title": "Löschung", "desc": "Löschung beantragen (vorbehaltlich gesetzlicher Aufbewahrung)" },
+              { "title": "Datenübertragbarkeit", "desc": "Daten in strukturiertem, maschinenlesbarem Format erhalten" },
+              { "title": "Widerspruch", "desc": "Widerspruch gegen Verarbeitung aufgrund berechtigten Interesses" },
+              { "title": "Einschränkung", "desc": "Eingeschränkte Verarbeitung während eines Streits beantragen" }
+            ],
+            "paragraphs": [
+              "Einwohner Kaliforniens können dem Verkauf/Teilen widersprechen (CCPA). Wir verkaufen keine personenbezogenen Daten.",
+              "Das taiwanische PDPA gewährt ebenfalls Auskunfts-, Berichtigungs-, Lösch- und Übertragbarkeitsrechte.",
+              "Kontakt: <strong>{email}</strong>. Wir antworten innerhalb von <strong>30 Tagen</strong>."
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "8. Cookies",
+            "headers": ["Cookie-Typ", "Zweck", "Opt-out"],
+            "rows": [
+              ["Unbedingt erforderlich", "Sitzungsauthentifizierung, Spracheinstellung", "Nicht deaktivierbar"],
+              ["Analytics (optional)", "Aggregierte Seitenaufrufe; IP anonymisiert", "Cookie-Banner oder Browsereinstellungen"]
+            ],
+            "note": "Wir verwenden keine Werbe- oder Cross-Site-Tracking-Cookies."
+          },
+          {
+            "type": "section",
+            "h2": "9. Internationale Datenübermittlung",
+            "paragraphs": [
+              "ForgeHelm ist für Datensouveränität konzipiert. Quellcode und sensible Analysen bleiben on-premises; nur desensibilisierte Compliance-Metriken gehen an SaaS.",
+              "Verlassen Konto-/Abrechnungsdaten den EWR oder Taiwan, stützen wir uns auf EU-Standardvertragsklauseln, Angemessenheitsbeschlüsse oder PDPA-Schutzmaßnahmen."
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "10. Sicherheitsmaßnahmen",
+            "bullets": [
+              "<strong>Verschlüsselung bei Übertragung</strong>: TLS 1.2+",
+              "<strong>Verschlüsselung bei Speicherung</strong>: Verschlüsselte sensible Datenbankfelder",
+              "<strong>Zugriffskontrolle</strong>: RBAC für Mitarbeiter",
+              "<strong>Audit-Logs</strong>: Unveränderliche Admin-Aktionsprotokolle",
+              "<strong>Schwachstellenmanagement</strong>: Regelmäßige Scans und Dependency-Updates"
+            ],
+            "paragraphs": ["Bei einer Verletzung Ihrer Rechte informieren wir Sie innerhalb von <strong>72 Stunden</strong> (DSGVO Art. 33)."]
+          },
+          {
+            "type": "section",
+            "h2": "11. Aktualisierungen",
+            "bullets": [
+              "Veröffentlichung auf dieser Seite mit aktualisiertem Gültigkeitsdatum",
+              "Aktive SaaS-Kunden werden mindestens 30 Tage vor wesentlichen Änderungen per E-Mail informiert"
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "12. Kontakt & Beschwerden",
+            "paragraphs": [
+              "Datenschutzanfragen: <strong>{email}</strong>",
+              "Unternehmen: {studioNameEn} ({studioName}, Steuer-ID {taxId})",
+              "DSGVO-Beschwerden können bei Ihrer lokalen Aufsichtsbehörde eingereicht werden."
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
