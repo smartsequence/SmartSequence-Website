@@ -8,7 +8,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "translate": "node scripts/translate-all.js",
-    "translate:single": "node scripts/translate-single.js"
+    "translate:single": "node scripts/translate-single.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "verify:i18n": "node scripts/verify-i18n-parity.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -19,5 +22,8 @@
     "openai": "^4.28.0",
     "sharp": "^0.34.3",
     "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.7"
   }
 }
