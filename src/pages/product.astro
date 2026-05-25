@@ -1,0 +1,656 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
+
+const modules = [
+	{ key: 'm1', icon: '📋', color: '#3b82f6' },
+	{ key: 'm2', icon: '📦', color: '#8b5cf6' },
+	{ key: 'm3', icon: '📊', color: '#06b6d4' },
+	{ key: 'm4', icon: '🎯', color: '#f59e0b' },
+	{ key: 'm5', icon: '🤖', color: '#10b981' },
+	{ key: 'm6', icon: '🔄', color: '#ef4444' },
+	{ key: 'm7', icon: '🗄️', color: '#6366f1' },
+];
+
+function moduleDetail(key: string, n: number): string {
+	return t(`sections.modules.${key}.detail${n}`);
+}
+
+const security = [
+	{ key: 'sec1', icon: '🔏' },
+	{ key: 'sec2', icon: '🛡️' },
+	{ key: 'sec3', icon: '🏢' },
+	{ key: 'sec4', icon: '📜' },
+];
+
+const audiences = [
+	{ key: 'audience1', icon: '👔' },
+	{ key: 'audience2', icon: '🔐' },
+	{ key: 'audience3', icon: '⚙️' },
+];
+---
+
+<Layout title={t('pages.product.title')} description={t('pages.product.description')}>
+	<!-- Hero -->
+	<section class="page-hero">
+		<div class="container">
+			<div class="hero-eyebrow">
+				<a href={getLocalizedPath('/', lang)}>ForgeHelm</a>
+				<span>›</span>
+				<span>{t('nav.product')}</span>
+			</div>
+			<h1>{t('pages.product.heroTitle')}</h1>
+			<p class="hero-sub">{t('pages.product.heroSubtitle')}</p>
+		</div>
+	</section>
+
+	<!-- Audience -->
+	<section class="section audience-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.product.audienceTitle')}</h2>
+			<div class="audience-grid">
+				{audiences.map(({ key, icon }) => (
+					<div class="audience-card">
+						<span class="audience-icon">{icon}</span>
+						<h3>{t(`pages.product.${key}`)}</h3>
+						<p>{t(`pages.product.${key}Desc`)}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Modules -->
+	<section class="section modules-section">
+		<div class="container">
+			<h2 class="section-title">{t('sections.modules.title')}</h2>
+			<p class="section-subtitle">{t('sections.modules.subtitle')}</p>
+			<div class="modules-list">
+				{modules.map(({ key, icon, color }, idx) => (
+					<div class="module-row">
+						<div class="module-header">
+							<div class="module-num">{String(idx + 1).padStart(2, '0')}</div>
+							<div class="module-icon-lg" style={`background: ${color}22; color: ${color};`}>{icon}</div>
+							<div>
+								<h3>{t(`sections.modules.${key}.title`)}</h3>
+								<p class="module-desc">{t(`sections.modules.${key}.description`)}</p>
+							</div>
+						</div>
+						<ul class="module-details">
+							{[1, 2, 3, 4].map((n) => (
+								<li>{moduleDetail(key, n)}</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- 8-Axis Fingerprint -->
+	<section class="section fingerprint-section">
+		<div class="container">
+			<div class="fingerprint-grid">
+				<div class="fingerprint-copy">
+					<span class="live-badge">{t('pages.product.fingerprintLive')}</span>
+					<h2>{t('pages.product.fingerprintTitle')}</h2>
+					<p class="fp-sub">{t('pages.product.fingerprintSubtitle')}</p>
+					<p>{t('pages.product.fingerprintDesc')}</p>
+					<ul class="fp-dims">
+						{['fingerprintDim1','fingerprintDim2','fingerprintDim3','fingerprintDim4','fingerprintDim5','fingerprintDim6','fingerprintDim7','fingerprintDim8'].map(d => (
+							<li>{t(`pages.product.${d}`)}</li>
+						))}
+					</ul>
+				</div>
+				<div class="radar-placeholder" aria-hidden="true">
+					<div class="radar-chart">
+						<svg viewBox="0 0 200 200" class="radar-svg">
+							<polygon points="100,28 168,52 176,108 124,168 76,168 24,108 32,52" fill="rgba(59,130,246,0.15)" stroke="#3b82f6" stroke-width="2"/>
+							<line x1="100" y1="100" x2="100" y2="28" stroke="rgba(255,255,255,0.1)"/>
+							<line x1="100" y1="100" x2="168" y2="52" stroke="rgba(255,255,255,0.1)"/>
+							<line x1="100" y1="100" x2="176" y2="108" stroke="rgba(255,255,255,0.1)"/>
+							<line x1="100" y1="100" x2="124" y2="168" stroke="rgba(255,255,255,0.1)"/>
+							<line x1="100" y1="100" x2="76" y2="168" stroke="rgba(255,255,255,0.1)"/>
+							<line x1="100" y1="100" x2="24" y2="108" stroke="rgba(255,255,255,0.1)"/>
+							<line x1="100" y1="100" x2="32" y2="52" stroke="rgba(255,255,255,0.1)"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FinOps -->
+	<section class="section finops-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.product.finopsTitle')}</h2>
+			<p class="section-subtitle">{t('pages.product.finopsSubtitle')}</p>
+			<div class="finops-grid">
+				{[
+					{ title: 'finopsUser', desc: 'finopsUserDesc' },
+					{ title: 'finopsLead', desc: 'finopsLeadDesc' },
+					{ title: 'finopsAdmin', desc: 'finopsAdminDesc' },
+					{ title: 'finopsEnterprise', desc: 'finopsEnterpriseDesc' },
+				].map(row => (
+					<div class="finops-card">
+						<h3>{t(`pages.product.${row.title}`)}</h3>
+						<p>{t(`pages.product.${row.desc}`)}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- BYOL AI Deployment -->
+	<section class="section byol-section">
+		<div class="container">
+			<div class="byol-box">
+				<div class="byol-text">
+					<span class="byol-badge">{t('pages.product.byolBadge')}</span>
+					<h2>{t('pages.product.byolTitle')}</h2>
+					<p>{t('pages.product.byolSubtitle')}</p>
+					<a href={getLocalizedPath('/architecture', lang)} class="btn btn-secondary byol-link">
+						{t('pages.product.byolCta')} →
+					</a>
+				</div>
+				<div class="byol-icons" aria-hidden="true">
+					<div class="byol-icon-row">
+						<div class="byol-chip">Ollama</div>
+						<div class="byol-chip">vLLM</div>
+						<div class="byol-chip">OpenAI API</div>
+					</div>
+					<div class="byol-icon-row">
+						<div class="byol-chip">GPU Cluster</div>
+						<div class="byol-chip">pgvector</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Security -->
+	<section class="section security-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.product.securityTitle')}</h2>
+			<div class="security-grid">
+				{security.map(({ key, icon }) => (
+					<div class="security-card">
+						<div class="security-icon">{icon}</div>
+						<h3>{t(`pages.product.${key}Title`)}</h3>
+						<p>{t(`pages.product.${key}Desc`)}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section cta-section">
+		<div class="container">
+			<div class="cta-box">
+				<h2>{t('pages.product.ctaTitle')}</h2>
+				<div class="cta-btns">
+					<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">{t('pages.product.ctaButton')}</a>
+					<a href={getLocalizedPath('/pricing', lang)} class="btn btn-secondary">{t('pages.product.ctaSecondary')}</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.page-hero {
+		padding: 8rem 0 4rem;
+		background: var(--bg-main);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.hero-eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.25rem;
+	}
+
+	.hero-eyebrow a {
+		color: #3b82f6;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 4vw, 3.25rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin-bottom: 1.25rem;
+		max-width: 700px;
+	}
+
+	.hero-sub {
+		font-size: 1.0625rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		max-width: 680px;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
+	.section {
+		padding: 5rem 0;
+	}
+
+	.section-title {
+		font-size: clamp(1.75rem, 3vw, 2.25rem);
+		font-weight: 700;
+		color: var(--text-primary);
+		text-align: center;
+		margin-bottom: 1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.section-subtitle {
+		text-align: center;
+		color: var(--text-secondary);
+		font-size: 1rem;
+		margin-bottom: 3rem;
+	}
+
+	/* Audience */
+	.audience-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.audience-section .section-title { margin-bottom: 3rem; }
+
+	.audience-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.audience-card {
+		padding: 2rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		text-align: center;
+	}
+
+	.audience-icon {
+		font-size: 2.5rem;
+		display: block;
+		margin-bottom: 1rem;
+	}
+
+	.audience-card h3 {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.625rem;
+	}
+
+	.audience-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+
+	/* Modules list */
+	.modules-section { border-bottom: 1px solid var(--border-light); }
+
+	.modules-list {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		margin-top: 3rem;
+	}
+
+	.module-row {
+		padding: 2rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 2rem;
+		align-items: start;
+		transition: all 0.25s;
+	}
+
+	.module-row:hover {
+		border-color: rgba(59,130,246,0.4);
+		box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+	}
+
+	.module-header {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.25rem;
+	}
+
+	.module-num {
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: rgba(59,130,246,0.3);
+		line-height: 1;
+		min-width: 2rem;
+		flex-shrink: 0;
+	}
+
+	.module-icon-lg {
+		font-size: 1.5rem;
+		width: 2.75rem;
+		height: 2.75rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.625rem;
+		flex-shrink: 0;
+	}
+
+	.module-row h3 {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.375rem;
+	}
+
+	.module-desc {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.module-details {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		min-width: 260px;
+	}
+
+	.module-details li {
+		font-size: 0.825rem;
+		color: var(--text-secondary);
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.module-details li::before {
+		content: '✓';
+		color: #10b981;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+
+	.fingerprint-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+	.fingerprint-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+	}
+	.live-badge {
+		display: inline-block;
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: #10b981;
+		background: rgba(16,185,129,0.12);
+		border: 1px solid rgba(16,185,129,0.3);
+		padding: 0.25rem 0.75rem;
+		border-radius: 9999px;
+		margin-bottom: 1rem;
+	}
+	.fingerprint-copy h2 {
+		font-size: 1.75rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+	.fp-sub { font-size: 1rem; color: #60a5fa; font-weight: 600; margin-bottom: 1rem; }
+	.fingerprint-copy p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.25rem; }
+	.fp-dims { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+	.fp-dims li { font-size: 0.875rem; color: var(--text-primary); padding-left: 1rem; position: relative; }
+	.fp-dims li::before { content: '•'; position: absolute; left: 0; color: #3b82f6; }
+	.radar-placeholder {
+		display: flex;
+		justify-content: center;
+		padding: 2rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+	}
+	.radar-svg { width: 220px; height: 220px; }
+
+	.finops-section { border-bottom: 1px solid var(--border-light); }
+	.finops-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+	.finops-card {
+		padding: 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		border-top: 3px solid #3b82f6;
+	}
+	.finops-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+	.finops-card p { font-size: 0.825rem; color: var(--text-secondary); line-height: 1.55; margin: 0; }
+
+	/* BYOL */
+	.byol-section {
+		background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+		border-top: 1px solid rgba(59,130,246,0.25);
+		border-bottom: 1px solid rgba(59,130,246,0.25);
+	}
+	.byol-box {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+	}
+	.byol-badge {
+		display: inline-block;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		background: rgba(59,130,246,0.25);
+		color: #60a5fa;
+		border: 1px solid rgba(59,130,246,0.4);
+		border-radius: 4px;
+		padding: 0.2rem 0.55rem;
+		margin-bottom: 1rem;
+	}
+	.byol-text h2 {
+		font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+		font-weight: 800;
+		color: #f1f5f9;
+		letter-spacing: -0.02em;
+		margin-bottom: 1rem;
+	}
+	.byol-text p {
+		font-size: 0.9rem;
+		color: #94a3b8;
+		line-height: 1.7;
+		margin-bottom: 1.5rem;
+	}
+	.byol-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
+		font-size: 0.875rem;
+	}
+	.byol-icons {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		align-items: center;
+	}
+	.byol-icon-row {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.byol-chip {
+		background: rgba(255,255,255,0.06);
+		border: 1px solid rgba(255,255,255,0.12);
+		color: #cbd5e1;
+		font-size: 0.8rem;
+		font-weight: 600;
+		padding: 0.35rem 0.85rem;
+		border-radius: 20px;
+		font-family: var(--font-mono, monospace);
+	}
+	@media (max-width: 768px) {
+		.byol-box { grid-template-columns: 1fr; gap: 2rem; }
+		.byol-icons { align-items: flex-start; }
+	}
+
+	/* Security */
+	.security-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.security-section .section-title { margin-bottom: 3rem; }
+
+	.security-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.25rem;
+	}
+
+	.security-card {
+		padding: 2rem 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid rgba(16,185,129,0.2);
+		border-radius: 1rem;
+		border-top: 3px solid #10b981;
+	}
+
+	.security-icon {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	.security-card h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.625rem;
+	}
+
+	.security-card p {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.65;
+	}
+
+	/* CTA */
+	.cta-section .cta-box {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(16,185,129,0.05));
+		border: 1px solid rgba(59,130,246,0.3);
+		border-radius: 1.5rem;
+	}
+
+	.cta-section h2 {
+		font-size: 2rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 2rem;
+		letter-spacing: -0.02em;
+	}
+
+	.cta-btns {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.875rem 2rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		transition: all 0.2s;
+		border: 2px solid transparent;
+	}
+
+	.btn-primary {
+		background: #3b82f6;
+		color: white;
+		box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+	}
+
+	.btn-primary:hover {
+		background: #2563eb;
+		transform: translateY(-2px);
+	}
+
+	.btn-secondary {
+		background: transparent;
+		color: var(--text-primary);
+		border-color: var(--border-color);
+	}
+
+	.btn-secondary:hover {
+		border-color: #3b82f6;
+		color: #3b82f6;
+	}
+
+	@media (max-width: 1024px) {
+		.security-grid { grid-template-columns: repeat(2, 1fr); }
+		.finops-grid { grid-template-columns: repeat(2, 1fr); }
+		.fingerprint-grid { grid-template-columns: 1fr; }
+	}
+
+	@media (max-width: 768px) {
+		.page-hero { padding: 6rem 0 3rem; }
+		.audience-grid { grid-template-columns: 1fr; }
+		.module-row { grid-template-columns: 1fr; }
+		.module-details { min-width: auto; }
+		.security-grid { grid-template-columns: 1fr; }
+		.finops-grid { grid-template-columns: 1fr; }
+	}
+</style>

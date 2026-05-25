@@ -1,317 +1,245 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { APP_URL } from '../consts';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
 
-// 獲取 source 參數（用於追蹤來源）
-const source = Astro.url.searchParams.get('source') || 'direct';
-const plan = Astro.url.searchParams.get('plan') || '';
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
+
+const trialTiers = [
+	{ key: 'trialLite', priceKey: 'trialLitePrice', featured: false },
+	{ key: 'trialStandard', priceKey: 'trialStandardPrice', featured: true },
+	{ key: 'trialFull', priceKey: 'trialFullPrice', featured: false },
+];
+
+const trialIncludes = ['trialInclude1', 'trialInclude2', 'trialInclude3', 'trialInclude4'];
+const trialFlow = ['trialFlow1', 'trialFlow2', 'trialFlow3', 'trialFlow4', 'trialFlow5'];
+
+const enterpriseOptions = [
+	{ titleKey: 'optionDemoTitle', descKey: 'optionDemoDesc', btnKey: 'optionDemoButton', href: getLocalizedPath('/contact', lang), icon: '📅' },
+	{ titleKey: 'optionPoCTitle', descKey: 'optionPoCDesc', btnKey: 'optionPoCButton', href: getLocalizedPath('/contact', lang), icon: '🔬' },
+	{ titleKey: 'optionPricingTitle', descKey: 'optionPricingDesc', btnKey: 'optionPricingButton', href: getLocalizedPath('/pricing', lang), icon: '💳' },
+];
 ---
 
-<Layout 
-	title="開始使用 ForgeHelm | 智序資訊工作室" 
-	description="選擇適合您的方案，立即開始系統風險評估服務。"
->
-	<!-- Hero 區塊 -->
-	<section class="hero">
+<Layout title={t('pages.getStarted.title')} description={t('pages.getStarted.description')}>
+	<section class="page-hero">
 		<div class="container">
-			<h1>開始使用 ForgeHelm</h1>
-			<p class="hero-subtitle">
-				選擇適合您的方案，立即體驗系統風險評估服務
-			</p>
+			<h1>{t('pages.getStarted.heroTitle')}</h1>
+			<p class="hero-sub">{t('pages.getStarted.heroSubtitle')}</p>
 		</div>
 	</section>
 
-	<!-- 選項卡片 -->
-	<section class="section options">
+	<!-- Path A: Trial -->
+	<section class="section trial-section" id="trial">
 		<div class="container">
-			<div class="options-grid">
-				<!-- 免費試用 -->
-				<div class="option-card">
-					<div class="card-badge free">免費</div>
-					<h2>免費試用</h2>
-					<p class="card-description">
-						填寫評估問卷，預覽報告內容，體驗完整流程（不包含 PDF 下載）
-					</p>
-					<ul class="card-features">
-						<li>✓ 體驗完整問卷流程</li>
-						<li>✓ 預覽風險雷達圖</li>
-						<li>✓ 查看成熟度評分</li>
-						<li>✓ 零風險嘗試</li>
+			<div class="path-header">
+				<span class="path-label">A</span>
+				<div>
+					<h2>{t('pages.getStarted.pathATitle')}</h2>
+					<p>{t('pages.getStarted.pathASubtitle')}</p>
+				</div>
+			</div>
+
+			<div class="trial-layout">
+				<div class="trial-includes">
+					<h3>{t('pages.getStarted.trialIncludesTitle')}</h3>
+					<ul>
+						{trialIncludes.map(k => (
+							<li>
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+								{t(`pages.getStarted.${k}`)}
+							</li>
+						))}
 					</ul>
-					<a href="https://app.forgehelm.com/trial?source={source}" class="card-btn">開始免費試用</a>
-					<p class="card-note">適合初次體驗的使用者</p>
+					<div class="trial-flow">
+						<h4>{t('pages.getStarted.trialFlowTitle')}</h4>
+						<ol>
+							{trialFlow.map(k => <li>{t(`pages.getStarted.${k}`)}</li>)}
+						</ol>
+					</div>
+					<p class="trial-credit">{t('pages.getStarted.trialCredit')}</p>
 				</div>
 
-				<!-- 直接購買 -->
-				<div class="option-card featured">
-					<div class="card-badge popular">最受歡迎</div>
-					<h2>查看定價方案</h2>
-					<p class="card-description">
-						瞭解完整的服務方案與計費方式，選擇最適合您的方案
-					</p>
-					<ul class="card-features">
-						<li>✓ 單次購買 NT$ 990</li>
-						<li>✓ 月度方案 NT$ 2,490</li>
-						<li>✓ 年度方案 NT$ 24,900</li>
-						<li>✓ 所有方案可開發票</li>
-					</ul>
-					<a href="/pricing?source={source}" class="card-btn primary">查看定價方案</a>
-					<p class="card-note">提供多種彈性方案</p>
-				</div>
-
-				<!-- 企業諮詢 -->
-				<div class="option-card">
-					<div class="card-badge enterprise">企業</div>
-					<h2>企業客製化</h2>
-					<p class="card-description">
-						需要大量報告、客製化分析或教育訓練？我們提供專屬企業方案
-					</p>
-					<ul class="card-features">
-						<li>✓ 客製化分析維度</li>
-						<li>✓ 專屬技術支援</li>
-						<li>✓ 教育訓練服務</li>
-						<li>✓ 彈性計費方式</li>
-					</ul>
-					<a href="/contact?type=enterprise&source={source}" class="card-btn">聯絡我們諮詢</a>
-					<p class="card-note">適合大型企業</p>
+				<div class="trial-pricing">
+					{trialTiers.map(tier => (
+						<div class={`tier-card ${tier.featured ? 'tier-featured' : ''}`}>
+							{tier.featured && <span class="tier-badge">{t('pages.getStarted.trialStandardBadge')}</span>}
+							<h3>{t(`pages.getStarted.${tier.key}`)}</h3>
+							<p class="tier-price">{t(`pages.getStarted.${tier.priceKey}`)}</p>
+						</div>
+					))}
+					<a href={`${APP_URL}/trial`} class="trial-cta btn-primary" target="_blank" rel="noopener noreferrer">
+						{t('pages.getStarted.trialCta')}
+					</a>
+					<p class="trial-note">{t('pages.getStarted.trialNote')}</p>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- 快速連結 -->
-	<section class="section quick-links">
+	<!-- Path B: Enterprise -->
+	<section class="section enterprise-section">
 		<div class="container">
-			<h2 class="section-title">還有問題？</h2>
-			
-			<div class="links-grid">
-				<a href="/features" class="link-card">
-					<div class="link-icon">⚙️</div>
-					<h3>瞭解功能特色</h3>
-					<p>查看 ForgeHelm 的六大核心功能</p>
-				</a>
-
-				<a href="/pricing#faq" class="link-card">
-					<div class="link-icon">❓</div>
-					<h3>常見問題</h3>
-					<p>發票、付款、資料安全等疑問</p>
-				</a>
-
-				<a href="/contact" class="link-card">
-					<div class="link-icon">📧</div>
-					<h3>聯絡我們</h3>
-					<p>有任何問題都歡迎詢問</p>
-				</a>
+			<div class="path-header">
+				<span class="path-label path-label-b">B</span>
+				<div>
+					<h2>{t('pages.getStarted.pathBTitle')}</h2>
+					<p>{t('pages.getStarted.pathBSubtitle')}</p>
+				</div>
+			</div>
+			<div class="enterprise-grid">
+				{enterpriseOptions.map(({ titleKey, descKey, btnKey, href, icon }) => (
+					<div class="enterprise-card">
+						<span class="ent-icon">{icon}</span>
+						<h3>{t(`pages.getStarted.${titleKey}`)}</h3>
+						<p>{t(`pages.getStarted.${descKey}`)}</p>
+						<a href={href} class="btn-secondary">{t(`pages.getStarted.${btnKey}`)}</a>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
 </Layout>
 
 <style>
-	/* Hero */
-	.hero {
+	.page-hero {
+		padding: 8rem 0 4rem;
 		background: var(--bg-main);
-		color: var(--text-primary);
-		padding: 0.25rem 0 3rem;
 		text-align: center;
 		border-bottom: 1px solid var(--border-light);
 	}
-
-	.hero h1 {
-		font-size: 2.5rem;
+	.page-hero h1 {
+		font-size: clamp(2rem, 4vw, 3.25rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
 		margin-bottom: 1rem;
 	}
+	.hero-sub { font-size: 1.0625rem; color: var(--text-secondary); line-height: 1.7; }
+	.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+	.section { padding: 5rem 0; }
 
-	.hero-subtitle {
-		font-size: 1.125rem;
-		opacity: 0.95;
+	.path-header {
+		display: flex;
+		align-items: flex-start;
+		gap: 1.25rem;
+		margin-bottom: 2.5rem;
 	}
+	.path-label {
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 50%;
+		background: #3b82f6;
+		color: white;
+		font-weight: 800;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+	.path-label-b { background: #10b981; }
+	.path-header h2 { font-size: 1.75rem; font-weight: 800; color: var(--text-primary); margin: 0 0 0.5rem; }
+	.path-header p { font-size: 1rem; color: var(--text-secondary); margin: 0; line-height: 1.6; }
 
-	/* 選項卡片 */
-	.options-grid {
+	.trial-section { background: var(--bg-section); border-bottom: 1px solid var(--border-light); }
+	.trial-layout {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		grid-template-columns: 1.2fr 1fr;
 		gap: 2rem;
-		margin-top: 2rem;
+		align-items: start;
+	}
+	.trial-includes h3 { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+	.trial-includes ul { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.625rem; }
+	.trial-includes li { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: var(--text-primary); line-height: 1.5; }
+	.trial-includes svg { color: #10b981; flex-shrink: 0; margin-top: 0.15rem; }
+	.trial-flow h4 { font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+	.trial-flow ol { margin: 0; padding-left: 1.25rem; color: var(--text-secondary); font-size: 0.875rem; line-height: 1.7; }
+	.trial-credit {
+		margin-top: 1.5rem;
+		font-size: 0.85rem;
+		color: #60a5fa;
+		background: rgba(59,130,246,0.08);
+		border: 1px solid rgba(59,130,246,0.2);
+		padding: 0.75rem 1rem;
+		border-radius: 0.5rem;
 	}
 
-	.option-card {
+	.trial-pricing {
+		padding: 2rem;
 		background: var(--bg-card);
-		border: 2px solid var(--border-color);
-		border-radius: 1rem;
-		padding: 2.5rem 2rem;
-		position: relative;
+		border: 1px solid var(--border-color);
+		border-radius: 1.25rem;
 		display: flex;
 		flex-direction: column;
-		transition: all 0.2s ease;
+		gap: 1rem;
 	}
-
-	.option-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
+	.tier-card {
+		position: relative;
+		padding: 1.25rem 1.5rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		background: var(--bg-main);
 	}
-
-	.option-card.featured {
-		border-color: var(--primary);
-		box-shadow: var(--shadow-md);
-	}
-
-	.card-badge {
+	.tier-featured { border-color: #3b82f6; background: rgba(59,130,246,0.06); }
+	.tier-badge {
 		position: absolute;
-		top: -12px;
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 0.375rem 1rem;
-		border-radius: 1rem;
-		font-size: 0.875rem;
-		font-weight: 600;
+		top: -0.5rem;
+		right: 1rem;
+		background: #3b82f6;
 		color: white;
+		font-size: 0.65rem;
+		font-weight: 700;
+		padding: 0.15rem 0.5rem;
+		border-radius: 4px;
+		text-transform: uppercase;
 	}
+	.tier-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.25rem; }
+	.tier-price { font-size: 1.25rem; font-weight: 800; color: #60a5fa; margin: 0; }
+	.trial-cta { display: block; text-align: center; padding: 1rem; border-radius: 0.625rem; font-weight: 700; text-decoration: none; margin-top: 0.5rem; }
+	.btn-primary { background: #3b82f6; color: white; }
+	.btn-primary:hover { background: #2563eb; }
+	.trial-note { font-size: 0.78rem; color: var(--text-secondary); text-align: center; margin: 0; font-style: italic; }
 
-	.card-badge.free {
-		background: var(--cta-success);
-	}
-
-	.card-badge.popular {
-		background: var(--cta-primary);
-	}
-
-	.card-badge.enterprise {
-		background: var(--bg-section);
-		color: var(--text-primary);
-		border: 1px solid var(--border-color);
-	}
-
-	.option-card h2 {
-		font-size: 1.5rem;
-		margin: 1rem 0;
-		color: var(--gray-dark);
-	}
-
-	.card-description {
-		color: var(--gray-medium);
-		margin-bottom: 1.5rem;
-		line-height: 1.75;
-	}
-
-	.card-features {
-		list-style: none;
-		padding: 0;
-		margin: 0 0 2rem 0;
-		flex: 1;
-	}
-
-	.card-features li {
-		padding: 0.5rem 0;
-		color: var(--gray-medium);
-	}
-
-	.card-btn {
-		display: block;
-		text-align: center;
-		padding: 0.875rem;
-		background: transparent;
-		border: 2px solid var(--border-color);
-		color: var(--text-primary);
-		text-decoration: none;
-		border-radius: 0.5rem;
-		font-weight: 600;
-		transition: all 0.2s ease;
-		margin-bottom: 1rem;
-	}
-
-	.card-btn:hover {
-		background: var(--cta-primary);
-		color: white;
-		border-color: var(--cta-primary);
-	}
-
-	.card-btn.primary {
-		background: var(--cta-primary);
-		border-color: transparent;
-		color: white;
-	}
-
-	.card-btn.primary:hover {
-		transform: translateY(-2px);
-		background: var(--cta-hover);
-		box-shadow: var(--shadow-md);
-	}
-
-	.card-note {
-		text-align: center;
-		font-size: 0.875rem;
-		color: var(--gray-medium);
-		margin: 0;
-	}
-
-	/* 快速連結 */
-	.quick-links {
-		background: var(--bg-section);
-	}
-
-	.links-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 1.5rem;
-	}
-
-	.link-card {
+	.enterprise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+	.enterprise-card {
+		padding: 2rem 1.5rem;
 		background: var(--bg-card);
-		padding: 2rem;
-		border-radius: 1rem;
 		border: 1px solid var(--border-color);
-		text-decoration: none;
-		transition: all 0.2s ease;
+		border-radius: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.ent-icon { font-size: 2rem; }
+	.enterprise-card h3 { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+	.enterprise-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; flex: 1; margin: 0; }
+	.btn-secondary {
 		display: block;
-	}
-
-	.link-card:hover {
-		border-color: var(--primary);
-		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
-	}
-
-	.link-icon {
-		font-size: 2.5rem;
-		margin-bottom: 1rem;
-	}
-
-	.link-card h3 {
-		font-size: 1.125rem;
-		margin-bottom: 0.5rem;
-		color: var(--gray-dark);
-	}
-
-	.link-card p {
-		color: var(--gray-medium);
-		margin: 0;
-	}
-
-	/* 通用 */
-	.section {
-		padding: 5rem 0;
-	}
-
-	.section-title {
 		text-align: center;
-		font-size: 2.25rem;
-		margin-bottom: 3rem;
-		color: var(--gray-dark);
+		padding: 0.75rem;
+		border-radius: 0.5rem;
+		border: 1px solid var(--border-color);
+		color: var(--text-primary);
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.875rem;
 	}
+	.btn-secondary:hover { border-color: #3b82f6; color: #3b82f6; }
 
-	/* 響應式 */
-	@media (max-width: 768px) {
-		.hero h1 {
-			font-size: 2rem;
-		}
-
-		.section {
-			padding: 3rem 0;
-		}
-
-		.options-grid,
-		.links-grid {
-			grid-template-columns: 1fr;
-		}
+	@media (max-width: 900px) {
+		.trial-layout { grid-template-columns: 1fr; }
+		.enterprise-grid { grid-template-columns: 1fr; }
 	}
+	@media (max-width: 768px) { .page-hero { padding: 6rem 0 3rem; } }
 </style>

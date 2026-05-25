@@ -1,0 +1,273 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { STUDIO_NAME, STUDIO_TAX_ID, CONTACT_EMAIL } from '../../consts';
+import { getLangFromUrl, getTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+const doc = translations.pages?.legal?.privacy;
+
+if (!doc?.blocks) {
+  throw new Error(`Missing pages.legal.privacy for locale: ${lang}`);
+}
+
+function fmt(text: string): string {
+	return text
+		.replaceAll('{studioName}', STUDIO_NAME)
+		.replaceAll('{studioNameEn}', 'Smart Sequence Tech')
+		.replaceAll('{taxId}', STUDIO_TAX_ID)
+		.replaceAll('{email}', CONTACT_EMAIL);
+}
+
+type PrivacyBlock =
+	| { type: 'intro'; text: string }
+	| { type: 'section'; h2: string; paragraphs?: string[]; bullets?: string[]; subsections?: { h3: string; bullets: string[] }[] }
+	| { type: 'table'; h2: string; headers: string[]; rows: string[][]; note?: string }
+	| { type: 'rights'; h2: string; intro?: string; items: { title: string; desc: string }[]; paragraphs?: string[] };
+
+const blocks = doc.blocks as PrivacyBlock[];
+---
+
+<Layout title={doc.title} description={doc.description}>
+	<div class="legal-page">
+		<div class="container">
+			<h1>{doc.h1}</h1>
+			<p class="last-updated">{doc.lastUpdated}</p>
+
+			<div class="content">
+				{blocks.map((block) => {
+					if (block.type === 'intro') {
+						return (
+							<section class="intro-section">
+								<p set:html={fmt(block.text)} />
+							</section>
+						);
+					}
+					if (block.type === 'section') {
+						return (
+							<section>
+								<h2>{block.h2}</h2>
+								{block.paragraphs?.map((p) => <p set:html={fmt(p)} />)}
+								{block.subsections?.map((sub) => (
+									<>
+										<h3>{sub.h3}</h3>
+										<ul>
+											{sub.bullets.map((b) => (
+												<li set:html={fmt(b)} />
+											))}
+										</ul>
+									</>
+								))}
+								{block.bullets && (
+									<ul>
+										{block.bullets.map((b) => (
+											<li set:html={fmt(b)} />
+										))}
+									</ul>
+								)}
+							</section>
+						);
+					}
+					if (block.type === 'table') {
+						return (
+							<section>
+								<h2>{block.h2}</h2>
+								<table class={block.headers.length === 2 && !block.headers[0].includes('Purpose') ? 'info-table' : 'basis-table'}>
+									{block.headers.length > 0 && (
+										<thead>
+											<tr>
+												{block.headers.map((h) => (
+													<th>{h}</th>
+												))}
+											</tr>
+										</thead>
+									)}
+									<tbody>
+										{block.rows.map((row) => (
+											<tr>
+												{row.map((cell) => (
+													<td set:html={fmt(cell)} />
+												))}
+											</tr>
+										))}
+									</tbody>
+								</table>
+								{block.note && <p set:html={fmt(block.note)} />}
+							</section>
+						);
+					}
+					if (block.type === 'rights') {
+						return (
+							<section>
+								<h2>{block.h2}</h2>
+								{block.intro && <p set:html={fmt(block.intro)} />}
+								<div class="rights-grid">
+									{block.items.map((item) => (
+										<div class="right-item">
+											<strong>{item.title}</strong>
+											<span set:html={fmt(item.desc)} />
+										</div>
+									))}
+								</div>
+								{block.paragraphs?.map((p) => <p set:html={fmt(p)} />)}
+							</section>
+						);
+					}
+					return null;
+				})}
+			</div>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.legal-page {
+		padding: 3rem 0;
+		background: var(--bg-main);
+	}
+
+	.container {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		color: var(--gray-dark);
+		margin-bottom: 0.5rem;
+	}
+
+	.last-updated {
+		color: var(--gray-medium);
+		font-size: 0.875rem;
+		margin-bottom: 3rem;
+	}
+
+	.content {
+		background: var(--bg-card);
+		padding: 3rem;
+		border-radius: 1rem;
+		border: 1px solid var(--border-color);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.intro-section {
+		background: var(--bg-highlight, #f0f7ff);
+		border-left: 4px solid var(--primary);
+		padding: 1.25rem 1.5rem;
+		border-radius: 0 0.5rem 0.5rem 0;
+		margin-bottom: 2rem;
+	}
+
+	section {
+		margin-bottom: 2.5rem;
+	}
+
+	section:last-child {
+		margin-bottom: 0;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+		color: var(--primary);
+		margin-bottom: 1rem;
+	}
+
+	h3 {
+		font-size: 1.1rem;
+		color: var(--gray-dark);
+		font-weight: 600;
+		margin: 1.25rem 0 0.75rem;
+	}
+
+	p {
+		color: var(--gray-medium);
+		line-height: 1.75;
+		margin-bottom: 1rem;
+	}
+
+	ul {
+		list-style: disc;
+		padding-left: 1.5rem;
+		margin: 0 0 1rem;
+	}
+
+	li {
+		color: var(--gray-medium);
+		line-height: 1.75;
+		margin-bottom: 0.5rem;
+	}
+
+	.info-table,
+	.basis-table {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1rem 0 1.5rem;
+		font-size: 0.9rem;
+	}
+
+	.info-table th,
+	.basis-table th {
+		background: var(--bg-highlight, #f5f5f5);
+		text-align: left;
+		padding: 0.75rem 1rem;
+		font-weight: 600;
+		color: var(--gray-dark);
+		border: 1px solid var(--border-color);
+	}
+
+	.info-table td,
+	.basis-table td {
+		padding: 0.75rem 1rem;
+		color: var(--gray-medium);
+		border: 1px solid var(--border-color);
+		vertical-align: top;
+	}
+
+	.basis-table tbody tr:nth-child(even) td {
+		background: var(--bg-main);
+	}
+
+	.rights-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		margin: 1rem 0 1.5rem;
+	}
+
+	.right-item {
+		background: var(--bg-main);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 1rem 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.right-item strong {
+		color: var(--primary);
+		font-size: 0.95rem;
+	}
+
+	.right-item span {
+		color: var(--gray-medium);
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 2rem;
+		}
+
+		.content {
+			padding: 2rem 1.5rem;
+		}
+
+		.rights-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

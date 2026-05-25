@@ -1,0 +1,625 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
+
+const deployDefs = [
+	{ key: 'deploy1', icon: '☁️', featured: false },
+	{ key: 'deploy2', icon: '⚡', featured: true },
+	{ key: 'deploy3', icon: '🏢', featured: false },
+	{ key: 'deploy4', icon: '🔒', featured: false },
+];
+
+const deployModes = deployDefs.map(({ key, icon, featured }) => ({
+	title: t(`pages.architecture.${key}Title`),
+	badge: t(`pages.architecture.${key}Badge`),
+	icon,
+	featured,
+	desc: t(`pages.architecture.${key}Desc`),
+	when: t('pages.architecture.deployWhenLabel'),
+	whenItems: [1, 2, 3].map((n) => t(`pages.architecture.${key}When${n}`)),
+}));
+
+const dataFlowSteps = [
+	t('pages.architecture.dataFlow1'),
+	t('pages.architecture.dataFlow2'),
+	t('pages.architecture.dataFlow3'),
+	t('pages.architecture.dataFlow4'),
+	t('pages.architecture.dataFlow5'),
+];
+
+const aiModes = [
+	{ key: 'ai1', icon: '🌐' },
+	{ key: 'ai2', icon: '💻' },
+	{ key: 'ai3', icon: '⚡' },
+];
+---
+
+<Layout title={t('pages.architecture.title')} description={t('pages.architecture.description')}>
+	<!-- Hero -->
+	<section class="page-hero">
+		<div class="container">
+			<div class="hero-eyebrow">
+				<a href={getLocalizedPath('/', lang)}>ForgeHelm</a>
+				<span>›</span>
+				<a href={getLocalizedPath('/product', lang)}>{t('nav.product')}</a>
+				<span>›</span>
+				<span>{t('common.learnArchitecture')}</span>
+			</div>
+			<h1>{t('pages.architecture.heroTitle')}</h1>
+			<p class="hero-sub">{t('pages.architecture.heroSubtitle')}</p>
+		</div>
+	</section>
+
+	<!-- Three Layers -->
+	<section class="section layers-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.architecture.layersTitle')}</h2>
+			<div class="layers-diagram">
+				<div class="layer layer-agent">
+					<div class="layer-inner">
+						<div class="layer-icon">🔍</div>
+						<div class="layer-content">
+							<h3>{t('pages.architecture.agentTitle')}</h3>
+							<p>{t('pages.architecture.agentDesc')}</p>
+							<div class="layer-tags">
+								<span>{t('pages.architecture.layerOnPrem')}</span>
+								<span>SQLite</span>
+								<span>SignalR</span>
+								<span>{t('pages.architecture.layerWebhook')}</span>
+							</div>
+						</div>
+					</div>
+					<div class="layer-label">{t('pages.architecture.layerCustomerNet')}</div>
+				</div>
+
+				<div class="data-arrow">
+					<div class="arrow-line">
+						<svg viewBox="0 0 200 60" fill="none">
+							<path d="M 10 30 L 190 30" stroke="#3b82f6" stroke-width="2" stroke-dasharray="8 4"/>
+							<polygon points="190,30 180,24 180,36" fill="#3b82f6"/>
+						</svg>
+					</div>
+					<p class="arrow-note">{t('pages.architecture.desensitizeLabel')}</p>
+				</div>
+
+				<div class="layer layer-saas">
+					<div class="layer-inner">
+						<div class="layer-icon">☁️</div>
+						<div class="layer-content">
+							<h3>{t('pages.architecture.saasTitle')}</h3>
+							<p>{t('pages.architecture.saasDesc')}</p>
+							<div class="layer-tags">
+								<span>PostgreSQL</span>
+								<span>SignalR</span>
+								<span>RBAC</span>
+							</div>
+						</div>
+					</div>
+					<div class="layer-label">{t('pages.architecture.layerCloudNet')}</div>
+				</div>
+
+				<div class="contracts-bar">
+					<span class="contracts-icon">⬡</span>
+					<div>
+						<strong>{t('pages.architecture.contractsTitle')}</strong>
+						<p>{t('pages.architecture.contractsDesc')}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Data Flow -->
+	<section class="section dataflow-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.architecture.dataFlowTitle')}</h2>
+			<ol class="dataflow-steps">
+				{dataFlowSteps.map((step, i) => (
+					<li>
+						<span class="step-num">{i + 1}</span>
+						<span>{step}</span>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<!-- Deployment Modes -->
+	<section class="section deploy-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.architecture.deployTitle')}</h2>
+			<div class="deploy-grid">
+				{deployModes.map(mode => (
+					<div class={`deploy-card ${mode.featured ? 'deploy-featured' : ''}`}>
+						{mode.featured && <div class="deploy-badge">{mode.badge}</div>}
+						<div class="deploy-header">
+							<span class="deploy-icon">{mode.icon}</span>
+							<div>
+								<h3>{mode.title}</h3>
+								{!mode.featured && <span class="deploy-badge-inline">{mode.badge}</span>}
+							</div>
+						</div>
+						<p class="deploy-desc">{mode.desc}</p>
+						<div class="deploy-when">
+							<p class="when-label">{mode.when}:</p>
+							<ul>
+								{mode.whenItems.map(item => <li>{item}</li>)}
+							</ul>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- AI Configuration -->
+	<section class="section ai-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.architecture.aiTitle')}</h2>
+			<div class="ai-grid">
+				{aiModes.map(({ key, icon }) => (
+					<div class="ai-card">
+						<span class="ai-icon">{icon}</span>
+						<h3>{t(`pages.architecture.${key}Title`)}</h3>
+						<p>{t(`pages.architecture.${key}Desc`)}</p>
+					</div>
+				))}
+			</div>
+			<p class="ai-note">{t('pages.architecture.aiNote')}</p>
+		</div>
+	</section>
+
+	<!-- BYOL / AI Deployment Kit -->
+	<section class="section byol-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.architecture.byolTitle')}</h2>
+			<p class="section-sub byol-sub">{t('pages.architecture.byolSubtitle')}</p>
+			<ul class="byol-list">
+				{['byolItem1', 'byolItem2', 'byolItem3'].map(item => (
+					<li>
+						<span class="byol-check">✓</span>
+						{t(`pages.architecture.${item}`)}
+					</li>
+				))}
+			</ul>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section cta-section">
+		<div class="container">
+			<div class="cta-box">
+				<h2>{t('pages.architecture.ctaArchTitle')}</h2>
+				<p>{t('pages.architecture.ctaArchDesc')}</p>
+				<div class="cta-btns">
+					<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">
+						{t('pages.architecture.ctaArchPoC')}
+					</a>
+					<a href={getLocalizedPath('/pricing', lang)} class="btn btn-secondary">
+						{t('pages.architecture.ctaArchPricing')}
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.page-hero {
+		padding: 8rem 0 4rem;
+		background: var(--bg-main);
+		border-bottom: 1px solid var(--border-light);
+	}
+	.hero-eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.25rem;
+	}
+	.hero-eyebrow a {
+		color: #3b82f6;
+		text-decoration: none;
+		font-weight: 600;
+	}
+	.page-hero h1 {
+		font-size: clamp(2rem, 4vw, 3.25rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+		max-width: 700px;
+	}
+	.hero-sub {
+		font-size: 1.0625rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		max-width: 680px;
+	}
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+	.section {
+		padding: 5rem 0;
+	}
+	.section-title {
+		font-size: clamp(1.75rem, 3vw, 2.25rem);
+		font-weight: 700;
+		color: var(--text-primary);
+		text-align: center;
+		margin-bottom: 3rem;
+		letter-spacing: -0.02em;
+	}
+	.layers-section {
+		border-bottom: 1px solid var(--border-light);
+	}
+	.layers-diagram {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.layer {
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		overflow: hidden;
+	}
+	.layer-agent {
+		background: rgba(16, 185, 129, 0.05);
+		border-color: rgba(16, 185, 129, 0.3);
+	}
+	.layer-saas {
+		background: rgba(59, 130, 246, 0.05);
+		border-color: rgba(59, 130, 246, 0.3);
+	}
+	.layer-inner {
+		display: flex;
+		gap: 1.25rem;
+		padding: 1.75rem;
+		align-items: flex-start;
+	}
+	.layer-icon {
+		font-size: 2rem;
+		flex-shrink: 0;
+	}
+	.layer-content h3 {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.5rem;
+	}
+	.layer-content p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.65;
+		margin-bottom: 0.75rem;
+	}
+	.layer-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+	.layer-tags span {
+		font-size: 0.75rem;
+		padding: 0.2rem 0.6rem;
+		background: rgba(255, 255, 255, 0.06);
+		border: 1px solid var(--border-color);
+		border-radius: 9999px;
+		color: var(--text-secondary);
+	}
+	.layer-label {
+		padding: 0.4rem 1.75rem;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		color: var(--text-secondary);
+		background: rgba(0, 0, 0, 0.2);
+	}
+	.data-arrow {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 1rem 0;
+		gap: 0.5rem;
+	}
+	.arrow-line {
+		width: 100%;
+		max-width: 400px;
+	}
+	.arrow-note {
+		font-size: 0.8rem;
+		color: #60a5fa;
+		font-weight: 600;
+	}
+	.contracts-bar {
+		display: flex;
+		gap: 1rem;
+		align-items: flex-start;
+		padding: 1.25rem 1.75rem;
+		background: var(--bg-card);
+		border: 1px dashed var(--border-color);
+		border-radius: 0.75rem;
+		margin-top: 1.5rem;
+	}
+	.contracts-icon {
+		font-size: 1.5rem;
+		color: #8b5cf6;
+	}
+	.contracts-bar strong {
+		display: block;
+		color: var(--text-primary);
+		margin-bottom: 0.25rem;
+	}
+	.contracts-bar p {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		margin: 0;
+		line-height: 1.6;
+	}
+	.dataflow-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+	.dataflow-steps {
+		list-style: none;
+		padding: 0;
+		margin: 0 auto;
+		max-width: 700px;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.dataflow-steps li {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		font-size: 0.9375rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+	.step-num {
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background: #3b82f6;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 700;
+		font-size: 0.875rem;
+		flex-shrink: 0;
+	}
+	.deploy-section {
+		border-bottom: 1px solid var(--border-light);
+	}
+	.deploy-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.25rem;
+	}
+	.deploy-card {
+		padding: 1.75rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		position: relative;
+	}
+	.deploy-featured {
+		border-color: #3b82f6;
+		box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.3);
+	}
+	.deploy-badge {
+		position: absolute;
+		top: -12px;
+		left: 1.5rem;
+		background: #3b82f6;
+		color: white;
+		padding: 0.25rem 0.75rem;
+		border-radius: 9999px;
+		font-size: 0.75rem;
+		font-weight: 600;
+	}
+	.deploy-header {
+		display: flex;
+		gap: 0.75rem;
+		align-items: flex-start;
+		margin-bottom: 0.75rem;
+	}
+	.deploy-icon {
+		font-size: 1.75rem;
+	}
+	.deploy-header h3 {
+		font-size: 1.0625rem;
+		font-weight: 700;
+		color: var(--text-primary);
+	}
+	.deploy-badge-inline {
+		font-size: 0.75rem;
+		color: var(--text-secondary);
+	}
+	.deploy-desc {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.65;
+		margin-bottom: 1rem;
+	}
+	.when-label {
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		margin-bottom: 0.5rem;
+	}
+	.deploy-when ul {
+		margin: 0;
+		padding-left: 1.25rem;
+	}
+	.deploy-when li {
+		font-size: 0.825rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+		margin-bottom: 0.25rem;
+	}
+	.ai-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+	.ai-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+		margin-bottom: 1.5rem;
+	}
+	.ai-card {
+		padding: 1.75rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		text-align: center;
+	}
+	.ai-icon {
+		font-size: 2rem;
+		display: block;
+		margin-bottom: 0.75rem;
+	}
+	.ai-card h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.5rem;
+	}
+	.ai-card p {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0;
+	}
+	.ai-note {
+		text-align: center;
+		font-size: 0.825rem;
+		color: var(--text-secondary);
+		max-width: 700px;
+		margin: 0 auto;
+		line-height: 1.6;
+	}
+	.byol-section {
+		border-bottom: 1px solid var(--border-light);
+	}
+	.byol-sub {
+		text-align: center;
+		max-width: 720px;
+		margin: -1.5rem auto 2rem;
+		font-size: 0.95rem;
+		color: var(--text-secondary);
+		line-height: 1.65;
+	}
+	.byol-list {
+		list-style: none;
+		padding: 0;
+		margin: 0 auto;
+		max-width: 720px;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+	.byol-list li {
+		display: flex;
+		gap: 0.75rem;
+		align-items: flex-start;
+		padding: 1rem 1.25rem;
+		background: var(--bg-card);
+		border: 1px solid rgba(59, 130, 246, 0.25);
+		border-radius: 0.75rem;
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+	.byol-check {
+		color: #10b981;
+		font-weight: 700;
+		flex-shrink: 0;
+	}
+	.cta-section .cta-box {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.05));
+		border: 1px solid rgba(59, 130, 246, 0.3);
+		border-radius: 1.5rem;
+	}
+	.cta-section h2 {
+		font-size: 2rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+	}
+	.cta-section p {
+		color: var(--text-secondary);
+		margin-bottom: 2rem;
+		max-width: 560px;
+		margin-left: auto;
+		margin-right: auto;
+		line-height: 1.65;
+	}
+	.cta-btns {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.875rem 2rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		transition: all 0.2s;
+		border: 2px solid transparent;
+	}
+	.btn-primary {
+		background: #3b82f6;
+		color: white;
+	}
+	.btn-primary:hover {
+		background: #2563eb;
+	}
+	.btn-secondary {
+		background: transparent;
+		color: var(--text-primary);
+		border-color: var(--border-color);
+	}
+	.btn-secondary:hover {
+		border-color: #3b82f6;
+		color: #3b82f6;
+	}
+	@media (max-width: 900px) {
+		.deploy-grid {
+			grid-template-columns: 1fr;
+		}
+		.ai-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

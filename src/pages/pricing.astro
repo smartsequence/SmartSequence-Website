@@ -1,597 +1,337 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
+
+// Per SUBSCRIPTION_PRICING_WHITEPAPER — PlanPricingTable aligned
+const plans = [
+	{
+		key: 'Core',
+		nameKey: 'planCore',
+		descKey: 'planCoreDesc',
+		tagKey: 'planCoreTag',
+		usd: 39,
+		twd: 1250,
+		jpy: 5850,
+		eur: 36,
+		cny: 280,
+		featured: false,
+		cta: 'tryNow',
+		ctaHref: getLocalizedPath('/get-started', lang),
+		platformFee: null,
+		featureKeys: ['planCoreF1', 'planCoreF2', 'planCoreF3', 'planCoreF4', 'planCoreF5', 'planCoreF6'],
+		notIncludedKeys: ['planCoreN1', 'planCoreN2', 'planCoreN3'],
+	},
+	{
+		key: 'Professional',
+		nameKey: 'planPro',
+		descKey: 'planProDesc',
+		tagKey: 'planProTag',
+		usd: 69,
+		twd: 2200,
+		jpy: 10350,
+		eur: 64,
+		cny: 500,
+		featured: true,
+		cta: 'requestDemo',
+		ctaHref: getLocalizedPath('/contact', lang),
+		platformFee: { usd: 6000, twd: 192000, jpy: 900000, eur: 5580, cny: 43500 },
+		featureKeys: ['planProF1', 'planProF2', 'planProF3', 'planProF4', 'planProF5', 'planProF6'],
+		notIncludedKeys: [],
+	},
+	{
+		key: 'Enterprise',
+		nameKey: 'planEnterprise',
+		descKey: 'planEnterpriseDesc',
+		tagKey: 'planEntTag',
+		usd: 119,
+		twd: 3800,
+		jpy: 17850,
+		eur: 110,
+		cny: 860,
+		featured: false,
+		cta: 'contactSales',
+		ctaHref: getLocalizedPath('/contact', lang),
+		platformFee: { usd: 15000, twd: null, jpy: null, eur: null, cny: null, custom: true },
+		featureKeys: ['planEntF1', 'planEntF2', 'planEntF3', 'planEntF4', 'planEntF5'],
+		notIncludedKeys: [],
+	},
+];
+
+const currencyRows = [
+	{ labelKey: 'currencyUSD', core: '$39', proSeat: '$69', proPlatform: '$6,000', entSeat: '$119+', entPlatform: '$15,000+' },
+	{ labelKey: 'currencyTWD', core: 'NT$1,250', proSeat: 'NT$2,200', proPlatform: 'NT$192,000', entSeat: 'NT$3,800+', entPlatform: t('pages.pricing.customQuote') },
+	{ labelKey: 'currencyCNY', core: '¥280', proSeat: '¥500', proPlatform: '¥43,500', entSeat: '¥860+', entPlatform: t('pages.pricing.customQuote') },
+	{ labelKey: 'currencyJPY', core: '¥5,850', proSeat: '¥10,350', proPlatform: '¥900,000', entSeat: '¥17,850+', entPlatform: t('pages.pricing.customQuote') },
+	{ labelKey: 'currencyEUR', core: '€36', proSeat: '€64', proPlatform: '€5,580', entSeat: '€110+', entPlatform: t('pages.pricing.customQuote') },
+];
+
+const competitors = [
+	{ product: 'compGHAS', price: 'compGHASPrice', adv: 'compGHASAdv' },
+	{ product: 'compSnyk', price: 'compSnykPrice', adv: 'compSnykAdv' },
+	{ product: 'compSonar', price: 'compSonarPrice', adv: 'compSonarAdv' },
+	{ product: 'compVanta', price: 'compVantaPrice', adv: 'compVantaAdv' },
+	{ product: 'compCheckmarx', price: 'compCheckmarxPrice', adv: 'compCheckmarxAdv' },
+];
+
+const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => ({
+	q: t(`pages.pricing.${q}`),
+	a: t(`pages.pricing.${q.replace('Q','A')}`),
+}));
+
 ---
 
-<Layout 
-	title="定價方案 | 智序資訊工作室" 
-	description="透明且彈性的服務方案，符合不同階段需求。所有方案均可開立合法發票，符合政府採購規範。"
->
-	<!-- Hero 區塊 - Enterprise Clean -->
-	<section class="hero">
+<Layout title={t('pages.pricing.title')} description={t('pages.pricing.description')}>
+	<!-- Hero -->
+	<section class="page-hero">
 		<div class="container">
-			<h1>服務方案與計費</h1>
-			<p class="hero-subtitle">
-				透明且彈性的服務方案，符合不同階段需求<br>
-				所有方案均可開立合法發票，符合政府採購規範
+			<div class="hero-eyebrow">
+				<a href={getLocalizedPath('/', lang)}>ForgeHelm</a>
+				<span>›</span>
+				<span>{t('nav.pricing')}</span>
+			</div>
+			<h1>{t('pages.pricing.heroTitle')}</h1>
+			<p class="hero-sub">{t('pages.pricing.heroSubtitle')}</p>
+			<p class="billing-note">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
+				{t('pages.pricing.billedAnnually')}
 			</p>
 		</div>
 	</section>
 
-	<!-- 定價方案卡片 -->
-	<section class="section pricing-cards">
+	<!-- Plans -->
+	<section class="section plans-section">
 		<div class="container">
 			<div class="plans-grid">
-				<!-- 試用方案 -->
-				<div class="plan-card">
-					<h3 class="plan-name">試用體驗方案</h3>
-					<div class="plan-price">
-						<span class="price">NT$0</span>
-					</div>
-					<ul class="plan-features">
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							填寫評估問卷
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							預覽部分報告內容
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							體驗完整流程
-						</li>
-						<li class="disabled">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon cross">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-							</svg>
-							無法下載 PDF
-						</li>
-						<li class="disabled">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon cross">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-							</svg>
-							資料保存 7 天
-						</li>
-					</ul>
-					<a href="/get-started?source=pricing&plan=trial" class="plan-btn">立即試用</a>
-					<p class="plan-note">適合初次瞭解服務的使用者</p>
-				</div>
+				{plans.map(plan => (
+					<div class={`plan-card ${plan.featured ? 'plan-featured' : ''}`}>
+						{plan.featured && (
+							<div class="plan-popular-badge">{t('pages.pricing.mostPopular')}</div>
+						)}
+						<div class="plan-header">
+							<span class="plan-tag">{t(`pages.pricing.${plan.tagKey}`)}</span>
+							<h2>{t(`pages.pricing.${plan.nameKey}`)}</h2>
+							<p class="plan-desc">{t(`pages.pricing.${plan.descKey}`)}</p>
+						</div>
 
-				<!-- 單次方案 -->
-				<div class="plan-card">
-					<h3 class="plan-name">單次報告服務</h3>
-					<div class="plan-price">
-						<span class="price">NT$990</span>
-						<span class="period">/ 次</span>
-					</div>
-					<ul class="plan-features">
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							完整風險評估報告一份
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							風險雷達圖
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							PDF 下載
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							可開立發票
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							資料永久保存
-						</li>
-					</ul>
-					<a href="/get-started?source=pricing&plan=once" class="plan-btn">立即購買</a>
-					<p class="plan-note">適合一次性評估需求</p>
-				</div>
+						<div class="plan-price">
+							<span class="price-main">USD ${plan.usd}{plan.key === 'Enterprise' ? '+' : ''}</span>
+							<span class="price-unit">{t('pages.pricing.perSeat')}</span>
+							<div class="price-alts">
+								<span>TWD {plan.twd?.toLocaleString()}</span>
+								<span>JPY {plan.jpy?.toLocaleString()}</span>
+								<span>EUR {plan.eur}</span>
+								<span>CNY {plan.cny}</span>
+							</div>
+							{plan.platformFee && (
+								<p class="platform-fee">
+									<strong>+ USD {plan.platformFee.usd?.toLocaleString()}{plan.platformFee.custom ? '+' : ''}</strong>
+									{t('pages.pricing.platformFeeYear')}
+									{plan.platformFee.twd && (
+										<span class="platform-fee-alt"> (TWD {plan.platformFee.twd.toLocaleString()})</span>
+									)}
+									{plan.platformFee.custom && !plan.platformFee.twd && (
+										<span class="platform-fee-alt"> — {t('pages.pricing.platformFeeContact')}</span>
+									)}
+								</p>
+							)}
+						</div>
 
-				<!-- 月度方案（推薦）-->
-				<div class="plan-card featured">
-					<div class="badge">最受歡迎</div>
-					<h3 class="plan-name">月度顧問方案</h3>
-					<div class="plan-price">
-						<span class="price">NT$2,490</span>
-						<span class="period">/ 月</span>
-					</div>
-					<ul class="plan-features">
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							每月可產出 3 份報告
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							技術諮詢支援
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							客製化樣板調整
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							可開立發票
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							資料永久保存
-						</li>
-					</ul>
-					<a href="/get-started?source=pricing&plan=monthly" class="plan-btn primary">立即購買</a>
-					<p class="plan-note">適合持續進行系統評估的團隊</p>
-				</div>
+						<a href={plan.ctaHref} class={`plan-btn ${plan.featured ? 'plan-btn-primary' : 'plan-btn-secondary'}`}>
+							{t(`pages.pricing.${plan.cta}`)}
+						</a>
 
-				<!-- 年度方案 -->
-				<div class="plan-card">
-					<h3 class="plan-name">年度企業方案</h3>
-					<div class="plan-price">
-						<span class="price">NT$24,900</span>
-						<span class="period">/ 年</span>
-						<span class="save">省 17%</span>
+						<ul class="plan-features">
+							{plan.featureKeys.map((fk) => (
+								<li class="feature-included">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+									{t(`pages.pricing.${fk}`)}
+								</li>
+							))}
+							{plan.notIncludedKeys.map((fk) => (
+								<li class="feature-excluded">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+									{t(`pages.pricing.${fk}`)}
+								</li>
+							))}
+						</ul>
 					</div>
-					<ul class="plan-features">
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							每月可產出 5 份報告
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							優先技術支援
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							客製化樣板與培訓
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							可開立發票
-						</li>
-						<li>
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon check">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-							</svg>
-							專屬客戶經理
-						</li>
-					</ul>
-					<a href="/get-started?source=pricing&plan=yearly" class="plan-btn">立即購買</a>
-					<p class="plan-note">適合大型企業或長期合作夥伴</p>
-				</div>
+				))}
 			</div>
 		</div>
 	</section>
 
-	<!-- 功能對照表 -->
-	<section class="section comparison">
+	<!-- Annual formula -->
+	<section class="section formula-section">
 		<div class="container">
-			<h2 class="section-title">完整功能對照</h2>
-			
-			<div class="comparison-table-wrapper">
-				<table class="comparison-table">
+			<div class="formula-box">
+				<h2>{t('pages.pricing.annualFormulaTitle')}</h2>
+				<p class="formula-expr">{t('pages.pricing.annualFormula')}</p>
+				<p class="formula-example"><strong>{t('pages.pricing.annualExampleTitle')}:</strong> {t('pages.pricing.annualExample')}</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Five-currency table -->
+	<section class="section currency-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.pricing.currencyTableTitle')}</h2>
+			<div class="table-wrap">
+				<table class="currency-table">
 					<thead>
 						<tr>
-							<th class="feature-col">功能特性</th>
-							<th>試用方案</th>
-							<th>單次服務</th>
-							<th class="featured-col">月度方案</th>
-							<th>年度方案</th>
+							<th>{t('pages.pricing.tableCurrency')}</th>
+							<th>Core</th>
+							<th>{t('pages.pricing.tableProSeat')}</th>
+							<th>{t('pages.pricing.tableProPlatform')}</th>
+							<th>{t('pages.pricing.tableEntSeat')}</th>
+							<th>{t('pages.pricing.tableEntPlatform')}</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td class="feature-name">風險評估問卷</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
-						<tr>
-							<td class="feature-name">風險雷達圖</td>
-							<td><span class="text-note">預覽</span></td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
-						<tr>
-							<td class="feature-name">PDF 下載</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
-						<tr>
-							<td class="feature-name">每月報告數量</td>
-							<td><span class="text-note">—</span></td>
-							<td><span class="text-strong">1</span></td>
-							<td><span class="text-strong">3</span></td>
-							<td><span class="text-strong">5</span></td>
-						</tr>
-						<tr>
-							<td class="feature-name">問卷記錄保存</td>
-							<td><span class="text-note">7 天</span></td>
-							<td><span class="text-strong">永久</span></td>
-							<td><span class="text-strong">永久</span></td>
-							<td><span class="text-strong">永久</span></td>
-						</tr>
-						<tr>
-							<td class="feature-name">技術諮詢支援</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
-						<tr>
-							<td class="feature-name">客製化樣板</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
-						<tr>
-							<td class="feature-name">開立發票</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
-						<tr>
-							<td class="feature-name">優先客服</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
-						<tr>
-							<td class="feature-name">教育訓練</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm cross">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-								</svg>
-							</td>
-							<td>
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-sm check">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-								</svg>
-							</td>
-						</tr>
+						{currencyRows.map(row => (
+							<tr>
+								<td class="feature-col">{t(`pages.pricing.${row.labelKey}`)}</td>
+								<td class="center-col">{row.core}</td>
+								<td class="center-col">{row.proSeat}</td>
+								<td class="center-col">{row.proPlatform}</td>
+								<td class="center-col">{row.entSeat}</td>
+								<td class="center-col">{row.entPlatform}</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</section>
 
-	<!-- 支援付款方式 -->
-	<section class="section payment">
+	<!-- Competitor benchmark -->
+	<section class="section competitor-section">
 		<div class="container">
-			<h2 class="section-title">支援付款方式</h2>
-			
-			<div class="payment-grid">
-				<div class="payment-method">
-					<div class="payment-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-						</svg>
-					</div>
-					<h3>台灣客戶</h3>
-					<p class="payment-name">綠界金流（ECPay）</p>
-					<ul>
-						<li>信用卡付款</li>
-						<li>ATM 虛擬帳號</li>
-						<li>超商代碼繳費</li>
-					</ul>
-				</div>
-
-				<div class="payment-method">
-					<div class="payment-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-						</svg>
-					</div>
-					<h3>國際客戶</h3>
-					<p class="payment-name">PayPal</p>
-					<ul>
-						<li>信用卡付款</li>
-						<li>PayPal 餘額</li>
-						<li>多幣別支援</li>
-					</ul>
-				</div>
-
-				<div class="payment-method">
-					<div class="payment-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-						</svg>
-					</div>
-					<h3>安全保障</h3>
-					<p class="payment-name">加密與合規</p>
-					<ul>
-						<li>SSL 加密傳輸</li>
-						<li>PCI DSS 合規</li>
-						<li>不儲存信用卡資訊</li>
-					</ul>
-				</div>
+			<h2 class="section-title">{t('pages.pricing.competitorTitle')}</h2>
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>{t('pages.pricing.competitorProduct')}</th>
+							<th>{t('pages.pricing.competitorPrice')}</th>
+							<th>{t('pages.pricing.competitorAdvantage')}</th>
+						</tr>
+					</thead>
+					<tbody>
+						{competitors.map(c => (
+							<tr>
+								<td class="feature-col">{t(`pages.pricing.${c.product}`)}</td>
+								<td>{t(`pages.pricing.${c.price}`)}</td>
+								<td>{t(`pages.pricing.${c.adv}`)}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
 
-	<!-- FAQ 專區 -->
-	<section class="section faq" id="faq">
+	<!-- Enterprise TCO -->
+	<section class="section tco-section">
 		<div class="container">
-			<h2 class="section-title">常見問題</h2>
-			
-			<div class="faq-list">
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q1：是否可以開立正式發票？
-					</summary>
-					<div class="faq-answer">
-						<p>是的，智序資訊工作室為正式登記之商號（統一編號：12345678），所有付費方案均可開立合法發票（電子發票 / 雲端發票），符合政府採購與企業報帳需求。</p>
-					</div>
-				</details>
+			<h2 class="section-title">{t('pages.pricing.tcoTitle')}</h2>
+			<div class="tco-grid">
+				<div class="tco-card tco-forgehelm">
+					<h3>{t('pages.pricing.tcoForgeHelm')}</h3>
+					<ul>
+						<li>{t('pages.pricing.tcoForgeHelmSub')}</li>
+						<li>{t('pages.pricing.tcoForgeHelmGpu')}</li>
+						<li>{t('pages.pricing.tcoForgeHelmModel')}</li>
+					</ul>
+					<p class="tco-total">{t('pages.pricing.tcoForgeHelmTotal')}</p>
+				</div>
+				<div class="tco-card tco-other">
+					<h3>{t('pages.pricing.tcoCheckmarx')}</h3>
+					<p class="tco-total">{t('pages.pricing.tcoCheckmarxPrice')}</p>
+				</div>
+			</div>
+			<p class="tco-conclusion">{t('pages.pricing.tcoConclusion')}</p>
+		</div>
+	</section>
 
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q2：付款後何時可以收到報告？
-					</summary>
-					<div class="faq-answer">
-						<p>完成問卷填寫後，系統將自動產生報告。一般情況下，報告會在當天內產出，您可以立即下載 PDF 檔案。</p>
-					</div>
-				</details>
-
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q3：我的資料會上傳到雲端嗎？資料安全如何保障？
-					</summary>
-					<div class="faq-answer">
-						<p>您填寫的問卷資料會安全儲存於我們的伺服器，採用加密傳輸與儲存。我們不會蒐集您的客戶系統原始程式碼或敏感資料，僅針對問卷答案進行分析。所有資料處理符合個人資料保護法規範。</p>
-					</div>
-				</details>
-
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q4：可否接受企業包月或客製化合作？
-					</summary>
-					<div class="faq-answer">
-						<p>可以。如果您有特殊需求（例如：大量報告、客製化分析維度、教育訓練等），歡迎透過<a href="/contact">聯絡表單</a>或 LINE 與我們洽詢，我們將提供專屬報價。</p>
-					</div>
-				</details>
-
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q5：試用方案與付費方案的差異？
-					</summary>
-					<div class="faq-answer">
-						<p>試用方案可以體驗完整的問卷流程，並預覽部分報告內容，但無法下載完整 PDF 檔案。付費方案則可以下載完整報告，且資料永久保存。</p>
-					</div>
-				</details>
-
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q6：如果不滿意可以退款嗎？
-					</summary>
-					<div class="faq-answer">
-						<p>依據消費者保護法，我們提供 7 天鑑賞期。如果您對報告品質不滿意，可在購買後 7 天內申請退款（需扣除已產生的報告成本）。</p>
-					</div>
-				</details>
-
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q7：月度方案的報告數量可以累積嗎？
-					</summary>
-					<div class="faq-answer">
-						<p>當月未使用完的報告數量不會累積至下個月。如果您預期某月會產生較多報告，建議選擇年度方案或聯絡我們討論彈性方案。</p>
-					</div>
-				</details>
-
-				<details class="faq-item">
-					<summary>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-chevron">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-						</svg>
-						Q8：可以升級或降級方案嗎？
-					</summary>
-					<div class="faq-answer">
-						<p>可以。您隨時可以升級至更高階方案。如需降級，請在當期結束前 7 天告知，將於下期生效。</p>
-					</div>
-				</details>
+	<!-- Comparison Table -->
+	<section class="section compare-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.pricing.comparisonTitle')}</h2>
+			<div class="table-wrap">
+				<table>
+					<thead>
+						<tr>
+							<th>{t('pages.pricing.tableFeature')}</th>
+							<th>Core</th>
+							<th class="col-featured">Professional</th>
+							<th>Enterprise</th>
+						</tr>
+					</thead>
+					<tbody>
+						{[
+							{ feature: 'compareDeploy', core: 'compareDeployCore', pro: 'compareDeployPro', ent: 'compareDeployEnt' },
+							{ feature: 'compareFrameworks', core: 'compareFrameworksCore', pro: 'compareFrameworksPro', ent: 'compareFrameworksEnt' },
+							{ feature: 'compareSbom', core: 'compareSbomCore', pro: 'compareSbomPro', ent: 'compareSbomEnt' },
+							{ feature: 'compareAi', core: 'compareAiCore', pro: 'compareAiPro', ent: 'compareAiEnt' },
+							{ feature: 'compareLangs', core: 'compareLangsCore', pro: 'compareLangsPro', ent: 'compareLangsEnt' },
+							{ feature: 'compareMigration', core: 'compareMigrationCore', pro: 'compareMigrationPro', ent: 'compareMigrationEnt' },
+							{ feature: 'compareSla', core: 'compareSlaCore', pro: 'compareSlaPro', ent: 'compareSlaEnt' },
+							{ feature: 'compareRules', core: 'compareRulesCore', pro: 'compareRulesPro', ent: 'compareRulesEnt' },
+							{ feature: 'compareSso', core: 'compareSsoCore', pro: 'compareSsoPro', ent: 'compareSsoEnt' },
+							{ feature: 'compareDataQuality', core: 'compareDataQualityCore', pro: 'compareDataQualityPro', ent: 'compareDataQualityEnt' },
+						].map(row => (
+							<tr>
+								<td class="feature-col">{t(`pages.pricing.${row.feature}`)}</td>
+								<td class="center-col">{t(`pages.pricing.${row.core}`)}</td>
+								<td class="center-col col-featured">{t(`pages.pricing.${row.pro}`)}</td>
+								<td class="center-col">{t(`pages.pricing.${row.ent}`)}</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</section>
 
-	<!-- CTA 區塊 -->
-	<section class="section cta-final">
+	<!-- FAQ -->
+	<section class="section faq-section" id="faq">
 		<div class="container">
-			<div class="cta-content">
-				<h2>準備開始使用 ForgeHelm？</h2>
-				<p>選擇適合您的方案，立即開始系統風險評估</p>
-				<div class="cta-buttons">
-					<a href="/get-started?source=pricing" class="btn btn-ecpay">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-						</svg>
-						立即購買方案
-					</a>
-					<a href="/get-started?source=pricing-demo" class="btn btn-secondary">
-						預覽範例報告
-					</a>
-					<a href="/contact?type=enterprise" class="btn btn-tertiary">
-						企業方案諮詢
-					</a>
+			<h2 class="section-title">{t('pages.pricing.faqTitle')}</h2>
+			<div class="faq-grid">
+				{faqs.map(({ q, a }) => (
+					<div class="faq-item">
+						<h3>{q}</h3>
+						<p set:html={a}></p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section cta-section">
+		<div class="container">
+			<div class="cta-box">
+				<h2>{t('pages.pricing.ctaTitle')}</h2>
+				<p>{t('pages.pricing.ctaSubtitle')}</p>
+				<div class="cta-btns">
+					<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">{t('pages.pricing.ctaButton1')}</a>
+					<a href={getLocalizedPath('/contact?type=poc', lang)} class="btn btn-secondary">{t('pages.pricing.ctaButton2')}</a>
+					<a href={getLocalizedPath('/get-started', lang)} class="btn btn-ghost">{t('pages.pricing.tryNow')}</a>
 				</div>
 			</div>
 		</div>
@@ -599,446 +339,419 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
-	/* Hero 區塊 - Enterprise Minimal */
-	.hero {
+	.page-hero {
+		padding: 8rem 0 4rem;
 		background: var(--bg-main);
-		color: var(--text-primary);
-		padding: 0.25rem 0 3rem;
-		text-align: center;
 		border-bottom: 1px solid var(--border-light);
 	}
 
-	.hero h1 {
-		font-size: 2.75rem;
-		margin-bottom: 1.5rem;
+	.hero-eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.25rem;
+	}
+
+	.hero-eyebrow a { color: #3b82f6; text-decoration: none; font-weight: 600; }
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+		max-width: 700px;
+	}
+
+	.hero-sub {
+		font-size: 1.0625rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		max-width: 660px;
+		margin-bottom: 1.25rem;
+	}
+
+	.billing-note {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		background: rgba(255,255,255,0.05);
+		border: 1px solid var(--border-color);
+		padding: 0.4rem 0.875rem;
+		border-radius: 9999px;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
+	.section { padding: 5rem 0; }
+
+	.section-title {
+		font-size: clamp(1.75rem, 3vw, 2.25rem);
 		font-weight: 700;
+		color: var(--text-primary);
+		text-align: center;
+		margin-bottom: 3rem;
 		letter-spacing: -0.02em;
 	}
 
-	.hero-subtitle {
-		font-size: 1.125rem;
-		opacity: 0.9;
-		line-height: 1.75;
-		font-weight: 400;
-	}
-
-	/* 定價卡片 - Flat Enterprise Design */
-	.pricing-cards {
-		background: var(--bg-light);
-	}
+	/* Plans */
+	.plans-section { background: var(--bg-section); border-bottom: 1px solid var(--border-light); }
 
 	.plans-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 2rem;
-		margin-top: 2rem;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		align-items: start;
 	}
 
 	.plan-card {
+		position: relative;
+		padding: 2.5rem 2rem;
 		background: var(--bg-card);
 		border: 1px solid var(--border-color);
-		border-radius: var(--radius-md);
-		padding: 2.5rem;
-		position: relative;
-		transition: all 0.3s ease;
+		border-radius: 1.25rem;
 		display: flex;
 		flex-direction: column;
+		gap: 1.5rem;
 	}
 
-	.plan-card:hover {
-		box-shadow: var(--shadow-md);
-		border-color: var(--primary);
+	.plan-featured {
+		border-color: #3b82f6;
+		background: linear-gradient(180deg, rgba(59,130,246,0.07) 0%, var(--bg-card) 30%);
+		box-shadow: 0 0 0 1px rgba(59,130,246,0.3), 0 16px 48px rgba(59,130,246,0.15);
 	}
 
-	.plan-card.featured {
-		border-color: var(--gold);
-		border-width: 2px;
-		box-shadow: var(--shadow-md);
-	}
-
-	.badge {
+	.plan-popular-badge {
 		position: absolute;
-		top: -14px;
-		right: 2rem;
-		background: var(--gold);
+		top: -0.75rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background: #3b82f6;
 		color: white;
-		padding: 0.375rem 1rem;
-		border-radius: var(--radius-sm);
-		font-size: 0.8125rem;
-		font-weight: 600;
-		letter-spacing: 0.02em;
-	}
-
-	.plan-name {
-		font-size: 1.375rem;
-		margin-bottom: 1.5rem;
-		color: var(--gray-dark);
-		font-weight: 600;
-	}
-
-	.plan-price {
-		margin-bottom: 2rem;
-		padding-bottom: 2rem;
-		border-bottom: 1px solid #F1F5F9;
-	}
-
-	.price {
-		font-size: 2.5rem;
+		font-size: 0.7rem;
 		font-weight: 700;
-		color: var(--primary);
-		letter-spacing: -0.02em;
+		padding: 0.2rem 1rem;
+		border-radius: 9999px;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		white-space: nowrap;
 	}
 
-	.period {
-		font-size: 1rem;
-		color: var(--gray-medium);
-		margin-left: 0.375rem;
-		font-weight: 400;
-	}
-
-	.save {
+	.plan-tag {
 		display: inline-block;
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: #60a5fa;
+		background: rgba(59,130,246,0.12);
+		border: 1px solid rgba(59,130,246,0.25);
+		padding: 0.2rem 0.6rem;
+		border-radius: 4px;
+		margin-bottom: 0.5rem;
+	}
+
+	.plan-header h2 {
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 0.375rem;
+	}
+
+	.platform-fee-alt { display: block; font-size: 0.75rem; margin-top: 0.25rem; opacity: 0.85; }
+
+	.formula-section { border-bottom: 1px solid var(--border-light); }
+	.formula-box {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: 2rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		text-align: center;
+	}
+	.formula-box h2 { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+	.formula-expr {
+		font-family: monospace;
+		font-size: 1rem;
+		color: #60a5fa;
+		background: rgba(59,130,246,0.08);
+		padding: 0.75rem 1rem;
+		border-radius: 0.5rem;
+		margin-bottom: 1rem;
+	}
+	.formula-example { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+
+	.currency-section, .competitor-section { border-bottom: 1px solid var(--border-light); }
+	.currency-table { font-size: 0.85rem; }
+
+	.tco-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+	.tco-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+	.tco-card {
+		padding: 2rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+	}
+	.tco-forgehelm { border-color: rgba(16,185,129,0.4); border-left: 4px solid #10b981; }
+	.tco-card h3 { font-size: 1.125rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem; }
+	.tco-card ul { list-style: none; padding: 0; margin: 0 0 1rem; }
+	.tco-card li { font-size: 0.875rem; color: var(--text-secondary); padding: 0.35rem 0; line-height: 1.5; }
+	.tco-total { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+	.tco-conclusion {
+		text-align: center;
+		font-size: 0.95rem;
+		color: var(--text-secondary);
+		max-width: 640px;
+		margin: 0 auto;
+		line-height: 1.65;
+	}
+
+	@media (max-width: 768px) {
+		.tco-grid { grid-template-columns: 1fr; }
+	}
+
+	.plan-desc {
 		font-size: 0.875rem;
-		color: var(--accent);
-		font-weight: 600;
-		margin-top: 0.5rem;
-	}
-
-	.plan-features {
-		list-style: none;
-		padding: 0;
-		margin: 0 0 2.5rem 0;
-		flex: 1;
-	}
-
-	.plan-features li {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.75rem;
-		padding: 0.75rem 0;
-		color: var(--gray-dark);
-		font-size: 0.9375rem;
-		font-weight: 400;
+		color: var(--text-secondary);
 		line-height: 1.5;
 	}
 
-	.plan-features li.disabled {
-		color: var(--gray-medium);
-		opacity: 0.6;
+	.plan-price {
+		padding: 1.5rem 0;
+		border-top: 1px solid var(--border-color);
+		border-bottom: 1px solid var(--border-color);
 	}
 
-	.plan-features .icon {
-		width: 1.25rem;
-		height: 1.25rem;
-		flex-shrink: 0;
-		margin-top: 0.125rem;
+	.price-main {
+		font-size: 2.25rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		letter-spacing: -0.03em;
+		display: block;
 	}
 
-	.plan-features .icon.check {
-		color: var(--accent);
+	.price-unit {
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		display: block;
+		margin-bottom: 0.75rem;
 	}
 
-	.plan-features .icon.cross {
-		color: var(--gray-medium);
+	.price-alts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem;
+	}
+
+	.price-alts span {
+		font-size: 0.75rem;
+		color: var(--text-secondary);
+		background: rgba(255,255,255,0.05);
+		border: 1px solid var(--border-color);
+		padding: 0.15rem 0.5rem;
+		border-radius: 4px;
+		font-family: monospace;
+	}
+
+	.platform-fee {
+		margin-top: 0.75rem;
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		background: rgba(59,130,246,0.08);
+		border: 1px solid rgba(59,130,246,0.2);
+		padding: 0.5rem 0.75rem;
+		border-radius: 0.5rem;
+	}
+
+	.platform-fee strong { color: #60a5fa; }
+
+	.price-custom {
+		font-size: 1.75rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		display: block;
+		padding: 0.5rem 0;
 	}
 
 	.plan-btn {
 		display: block;
 		text-align: center;
-		padding: 1rem;
-		background: var(--bg-card);
-		border: 2px solid var(--primary);
-		color: var(--primary);
+		padding: 0.875rem;
+		border-radius: 0.625rem;
+		font-weight: 700;
+		font-size: 0.9375rem;
 		text-decoration: none;
-		border-radius: var(--radius-md);
-		font-weight: 600;
-		font-size: 0.9375rem;
-		transition: all 0.2s ease;
-		margin-bottom: 1rem;
+		transition: all 0.2s;
+		border: 2px solid transparent;
 	}
 
-	.plan-btn:hover {
-		background: var(--primary);
+	.plan-btn-primary {
+		background: #3b82f6;
 		color: white;
+		box-shadow: 0 4px 16px rgba(59,130,246,0.3);
 	}
 
-	.plan-btn.primary {
-		background: var(--accent);
-		border-color: var(--accent);
-		color: white;
+	.plan-btn-primary:hover {
+		background: #2563eb;
+		transform: translateY(-1px);
 	}
 
-	.plan-btn.primary:hover {
-		background: #059669;
-		border-color: #059669;
-		box-shadow: var(--shadow-sm);
+	.plan-btn-secondary {
+		background: transparent;
+		color: var(--text-primary);
+		border-color: var(--border-color);
 	}
 
-	.plan-note {
-		text-align: center;
-		font-size: 0.875rem;
-		color: var(--gray-medium);
-		margin: 0;
-		font-weight: 400;
+	.plan-btn-secondary:hover {
+		border-color: #3b82f6;
+		color: #3b82f6;
 	}
 
-	/* 功能對照表 - Enterprise Table */
-	.comparison {
-		background: var(--bg-card);
-	}
-
-	.comparison-table-wrapper {
-		overflow-x: auto;
-		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-sm);
-	}
-
-	.comparison-table {
-		width: 100%;
-		border-collapse: separate;
-		border-spacing: 0;
-		background: var(--bg-card);
-		border: 1px solid var(--border-color);
-		border-radius: var(--radius-lg);
-		overflow: hidden;
-	}
-
-	.comparison-table th,
-	.comparison-table td {
-		padding: 1.25rem 1.5rem;
-		text-align: center;
-		border-bottom: 1px solid #F1F5F9;
-	}
-
-	.comparison-table thead th {
-		background: var(--primary);
-		color: white;
-		font-weight: 600;
-		font-size: 0.9375rem;
-		letter-spacing: 0.01em;
-	}
-
-	.comparison-table thead .featured-col {
-		background: var(--gold);
-	}
-
-	.comparison-table .feature-col,
-	.comparison-table .feature-name {
-		text-align: left;
-		font-weight: 500;
-		color: var(--gray-dark);
-		font-size: 0.9375rem;
-	}
-
-	.comparison-table tbody tr:last-child td {
-		border-bottom: none;
-	}
-
-	.comparison-table tbody tr:hover {
-		background: var(--bg-light);
-	}
-
-	.comparison-table .icon-sm {
-		width: 1.25rem;
-		height: 1.25rem;
-		display: inline-block;
-	}
-
-	.comparison-table .icon-sm.check {
-		color: var(--accent);
-	}
-
-	.comparison-table .icon-sm.cross {
-		color: var(--gray-medium);
-		opacity: 0.5;
-	}
-
-	.comparison-table .text-note {
-		color: var(--gray-medium);
-		font-size: 0.875rem;
-	}
-
-	.comparison-table .text-strong {
-		font-weight: 600;
-		color: var(--gray-dark);
-	}
-
-	/* 支援付款方式 - Enterprise Cards */
-	.payment {
-		background: var(--bg-light);
-	}
-
-	.payment-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-	}
-
-	.payment-method {
-		background: var(--bg-card);
-		padding: 2.5rem;
-		border-radius: var(--radius-lg);
-		border: 1px solid var(--border-color);
-		transition: all 0.3s ease;
-	}
-
-	.payment-method:hover {
-		box-shadow: var(--shadow-md);
-	}
-
-	.payment-icon {
-		width: 3rem;
-		height: 3rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--bg-light);
-		border-radius: var(--radius-md);
-		margin-bottom: 1.5rem;
-		color: var(--primary);
-	}
-
-	.payment-icon svg {
-		width: 1.75rem;
-		height: 1.75rem;
-	}
-
-	.payment-method h3 {
-		font-size: 1.25rem;
-		margin-bottom: 0.5rem;
-		font-weight: 600;
-		color: var(--gray-dark);
-	}
-
-	.payment-name {
-		font-weight: 600;
-		color: var(--primary);
-		margin-bottom: 1.5rem;
-		font-size: 1rem;
-	}
-
-	.payment-method ul {
+	.plan-features {
 		list-style: none;
 		padding: 0;
 		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.625rem;
 	}
 
-	.payment-method li {
-		padding: 0.625rem 0;
-		color: var(--gray-medium);
-		font-size: 0.9375rem;
+	.plan-features li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.625rem;
+		font-size: 0.875rem;
+		line-height: 1.5;
 	}
 
-	/* FAQ - Enterprise Accordion */
-	.faq {
-		background: var(--bg-card);
+	.feature-included { color: var(--text-primary); }
+	.feature-included svg { color: #10b981; flex-shrink: 0; margin-top: 0.125rem; }
+
+	.feature-excluded { color: var(--text-secondary); opacity: 0.6; }
+	.feature-excluded svg { color: #6b7280; flex-shrink: 0; margin-top: 0.125rem; }
+
+	/* Comparison */
+	.compare-section { border-bottom: 1px solid var(--border-light); }
+
+	.table-wrap {
+		overflow-x: auto;
 	}
 
-	.faq-list {
-		max-width: 900px;
-		margin: 0 auto;
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 0.9rem;
+	}
+
+	th {
+		padding: 1rem 1.5rem;
+		text-align: left;
+		font-weight: 700;
+		color: var(--text-primary);
+		background: var(--bg-section);
+		border-bottom: 2px solid var(--border-color);
+	}
+
+	td {
+		padding: 0.875rem 1.5rem;
+		border-bottom: 1px solid var(--border-light);
+		color: var(--text-secondary);
+	}
+
+	.feature-col { font-weight: 500; color: var(--text-primary); }
+
+	.center-col { text-align: center; }
+
+	.col-featured {
+		background: rgba(59,130,246,0.05);
+		color: #60a5fa;
+		font-weight: 600;
+	}
+
+	tr:hover td { background: rgba(255,255,255,0.02); }
+
+	/* FAQ */
+	.faq-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.faq-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1.5rem;
 	}
 
 	.faq-item {
-		background: var(--bg-light);
-		border: 1px solid var(--border-color);
-		border-radius: var(--radius-md);
-		margin-bottom: 1rem;
-		overflow: hidden;
-		transition: all 0.2s ease;
-	}
-
-	.faq-item:hover {
-		border-color: var(--primary);
-	}
-
-	.faq-item[open] {
+		padding: 1.75rem;
 		background: var(--bg-card);
-		box-shadow: var(--shadow-sm);
-		border-color: var(--cta-primary);
+		border: 1px solid var(--border-color);
+		border-radius: 0.875rem;
 	}
 
-	.faq-item summary {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 1.5rem 1.75rem;
-		font-weight: 600;
-		cursor: pointer;
-		user-select: none;
-		color: var(--gray-dark);
-		list-style: none;
+	.faq-item h3 {
 		font-size: 1rem;
-		transition: all 0.2s ease;
-	}
-
-	.faq-item summary::-webkit-details-marker {
-		display: none;
-	}
-
-	.faq-item summary:hover {
-		color: var(--primary);
-	}
-
-	.faq-item[open] summary {
-		color: var(--primary);
-	}
-
-	.icon-chevron {
-		width: 1.25rem;
-		height: 1.25rem;
-		flex-shrink: 0;
-		transition: transform 0.2s ease;
-		color: var(--gray-medium);
-	}
-
-	.faq-item[open] .icon-chevron {
-		transform: rotate(180deg);
-		color: var(--primary);
-	}
-
-	.faq-answer {
-		padding: 0 1.75rem 1.75rem 3.5rem;
-		color: var(--gray-medium);
-		line-height: 1.75;
-		font-size: 0.9375rem;
-	}
-
-	.faq-answer p {
-		margin: 0;
-	}
-
-	.faq-answer a {
-		color: var(--primary);
-		text-decoration: none;
-		font-weight: 500;
-	}
-
-	.faq-answer a:hover {
-		text-decoration: underline;
-	}
-
-	/* CTA - Enterprise Action Section */
-	.cta-final {
-		background: var(--primary);
-		color: white;
-		text-align: center;
-	}
-
-	.cta-content h2 {
-		color: white;
-		margin-bottom: 1rem;
 		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+		line-height: 1.4;
 	}
 
-	.cta-content p {
-		font-size: 1.125rem;
-		opacity: 0.9;
-		margin-bottom: 2.5rem;
-		font-weight: 400;
+	.faq-item p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
 	}
 
-	.cta-buttons {
+	.faq-item :global(a) {
+		color: #3b82f6;
+		text-decoration: none;
+	}
+
+	/* CTA */
+	.cta-section .cta-box {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(16,185,129,0.05));
+		border: 1px solid rgba(59,130,246,0.3);
+		border-radius: 1.5rem;
+	}
+
+	.cta-section h2 {
+		font-size: 2rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+		letter-spacing: -0.02em;
+	}
+
+	.cta-section p {
+		color: var(--text-secondary);
+		font-size: 1rem;
+		margin-bottom: 2rem;
+		max-width: 480px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.cta-btns {
 		display: flex;
 		gap: 1rem;
 		justify-content: center;
@@ -1049,113 +762,29 @@ import Layout from '../layouts/Layout.astro';
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 1rem 2rem;
-		border-radius: var(--radius-md);
+		padding: 0.875rem 2rem;
+		border-radius: 0.5rem;
 		text-decoration: none;
 		font-weight: 600;
 		font-size: 0.9375rem;
-		transition: all 0.2s ease;
+		transition: all 0.2s;
 		border: 2px solid transparent;
 	}
 
-	.btn-icon {
-		width: 1.25rem;
-		height: 1.25rem;
+	.btn-primary { background: #3b82f6; color: white; }
+	.btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+	.btn-secondary { background: transparent; color: var(--text-primary); border-color: var(--border-color); }
+	.btn-secondary:hover { border-color: #3b82f6; color: #3b82f6; }
+	.btn-ghost { background: transparent; color: var(--text-secondary); border-color: transparent; }
+	.btn-ghost:hover { color: var(--text-primary); background: rgba(255,255,255,0.05); }
+
+	@media (max-width: 1024px) {
+		.plans-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
+		.faq-grid { grid-template-columns: 1fr; }
 	}
 
-	.btn-ecpay {
-		background: var(--accent);
-		color: white;
-		border-color: var(--accent);
-	}
-
-	.btn-ecpay:hover {
-		background: #059669;
-		border-color: #059669;
-		box-shadow: var(--shadow-md);
-	}
-
-	.btn-secondary {
-		background: var(--bg-card);
-		color: var(--primary);
-		border-color: white;
-	}
-
-	.btn-secondary:hover {
-		background: var(--bg-light);
-		color: var(--primary);
-	}
-
-	.btn-tertiary {
-		background: transparent;
-		color: white;
-		border-color: rgba(255, 255, 255, 0.3);
-	}
-
-	.btn-tertiary:hover {
-		background: rgba(255, 255, 255, 0.1);
-		border-color: rgba(255, 255, 255, 0.5);
-	}
-
-	/* 通用樣式 */
-	.section {
-		padding: 6rem 0;
-	}
-
-	.section-title {
-		text-align: center;
-		font-size: 2.25rem;
-		margin-bottom: 4rem;
-		color: var(--gray-dark);
-		font-weight: 700;
-		letter-spacing: -0.02em;
-	}
-
-	/* 響應式設計 */
 	@media (max-width: 768px) {
-		.hero {
-			padding: 0.5rem 0 2.5rem;
-		}
-
-		.hero h1 {
-			font-size: 2rem;
-		}
-
-		.section {
-			padding: 4rem 0;
-		}
-
-		.section-title {
-			font-size: 1.75rem;
-			margin-bottom: 2.5rem;
-		}
-
-		.plans-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.price {
-			font-size: 2.5rem;
-		}
-
-		.cta-buttons {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		.btn {
-			width: 100%;
-			justify-content: center;
-		}
-
-		.comparison-table th,
-		.comparison-table td {
-			padding: 0.875rem 1rem;
-			font-size: 0.875rem;
-		}
-
-		.faq-answer {
-			padding-left: 1.75rem;
-		}
+		.page-hero { padding: 6rem 0 3rem; }
+		.section { padding: 3.5rem 0; }
 	}
 </style>

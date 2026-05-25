@@ -1,5 +1,6 @@
 ---
 import { 
+	BRAND_NAME,
 	STUDIO_NAME, 
 	STUDIO_NAME_EN, 
 	STUDIO_TAX_ID,
@@ -39,8 +40,8 @@ const today = new Date();
 			<!-- 左側：品牌資訊 -->
 			<div class="footer-brand">
 				<div class="brand-header">
-					<h3>{t('footer.studioName')}</h3>
-					<p class="brand-subtitle">{t('footer.studioNameEn')}</p>
+					<h3>{BRAND_NAME}</h3>
+					<p class="brand-subtitle">{t('footer.studioName')} · {t('footer.studioNameEn')}</p>
 				</div>
 				<p class="tagline" set:html={(t('footer.tagline') || t('footer.description')).replace(/\n/g, '<br>')}></p>
 				<div class="contact-info">
@@ -64,37 +65,51 @@ const today = new Date();
 				<div class="nav-column">
 					<h4>{t('footer.products')}</h4>
 					<ul>
-						<li><a href={getLocalizedPath('/features', lang)}>{lang === 'en' ? 'ForgeHelm Overview' : 'ForgeHelm 介紹'}</a></li>
-						<li><a href={getLocalizedPath('/features#modules', lang)}>{lang === 'en' ? 'Features' : '功能特色'}</a></li>
-						<li><a href={getLocalizedPath('/get-started?source=footer', lang)}>{lang === 'en' ? 'Sample Report' : '範例報告'}</a></li>
-						<li><a href={getLocalizedPath('/pricing#faq', lang)}>{lang === 'en' ? 'FAQ' : '常見問題'}</a></li>
+						<li><a href={getLocalizedPath('/product', lang)}>{t('footer.productOverview')}</a></li>
+						<li><a href={getLocalizedPath('/architecture', lang)}>{t('footer.linkArchitecture')}</a></li>
+						<li><a href={getLocalizedPath('/compliance', lang)}>{t('footer.linkCompliance')}</a></li>
+						<li><a href={getLocalizedPath('/use-cases', lang)}>{t('footer.linkUseCases')}</a></li>
 					</ul>
 				</div>
 
 				<div class="nav-column">
-					<h4>{t('footer.services')}</h4>
+					<h4>{t('footer.solutions')}</h4>
 					<ul>
-						<li><a href={getLocalizedPath('/pricing', lang)}>{lang === 'en' ? 'Pricing Plans' : '定價方案'}</a></li>
-						<li><a href={getLocalizedPath('/get-started', lang)}>{lang === 'en' ? 'Get Started' : '開始使用'}</a></li>
-						<li><a href={getLocalizedPath('/contact?type=enterprise', lang)}>{lang === 'en' ? 'Enterprise Plan' : '企業方案'}</a></li>
-						<li><a href={getLocalizedPath('/contact?type=support', lang)}>{lang === 'en' ? 'Technical Support' : '技術支援'}</a></li>
+						<li><a href={getLocalizedPath('/pricing', lang)}>{t('footer.pricingPlans')}</a></li>
+						<li><a href={getLocalizedPath('/get-started', lang)}>{t('footer.requestDemoLink')}</a></li>
+						<li><a href={getLocalizedPath('/contact', lang)}>{t('footer.enterprisePoc')}</a></li>
+						<li><a href={getLocalizedPath('/pricing#faq', lang)}>{t('footer.procurementFaq')}</a></li>
 					</ul>
 				</div>
 
 				<div class="nav-column">
-					<h4>{t('footer.about')}</h4>
+					<h4>{t('footer.company')}</h4>
 					<ul>
-						<li><a href={getLocalizedPath('/about', lang)}>{lang === 'en' ? 'About Us' : '關於我們'}</a></li>
-						<li><a href={getLocalizedPath('/contact', lang)}>{lang === 'en' ? 'Contact Us' : '聯絡我們'}</a></li>
-						<li><a href={getLocalizedPath('/terms', lang)}>{lang === 'en' ? 'Terms of Service' : '使用條款'}</a></li>
-						<li><a href={getLocalizedPath('/privacy', lang)}>{lang === 'en' ? 'Privacy Policy' : '隱私權政策'}</a></li>
+						<li><a href={getLocalizedPath('/about', lang)}>{t('footer.linkAbout')}</a></li>
+						<li><a href={getLocalizedPath('/contact', lang)}>{t('footer.linkContact')}</a></li>
+						<li><a href={getLocalizedPath('/terms', lang)}>{t('footer.termsOfService')}</a></li>
+						<li><a href={getLocalizedPath('/privacy', lang)}>{t('footer.privacyPolicy')}</a></li>
 					</ul>
 				</div>
 			</div>
 
-			<!-- 右側：社群連結 -->
+			<!-- 右側：合規徽章 + 市場 + 社群 -->
 			<div class="footer-social">
-				<h4>{t('footer.followUs')}</h4>
+				<h4>{t('footer.frameworks')}</h4>
+				<div class="framework-tags">
+					{['ISO 27001', 'SOC 2', 'GDPR', 'PCI-DSS', 'HIPAA', 'DORA', 'OWASP'].map((fw) => (
+						<span class="framework-tag">{fw}</span>
+					))}
+				</div>
+				<h4 style="margin-top: 1.25rem;">{t('footer.markets')}</h4>
+				<div class="market-tags">
+					<span class="market-tag">🇹🇼 Taiwan</span>
+					<span class="market-tag">🇯🇵 Japan</span>
+					<span class="market-tag">🇺🇸 US</span>
+					<span class="market-tag">🇩🇪 Germany</span>
+					<span class="market-tag">🌐 Global</span>
+				</div>
+				<h4 style="margin-top: 1.5rem;">{t('footer.followUs')}</h4>
 				<div class="social-links">
 					<a href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -253,6 +268,25 @@ const today = new Date();
 	.nav-column a:hover {
 		color: #3B82F6;
 		transform: translateX(4px);
+	}
+
+	/* 市場標籤 */
+	.framework-tags,
+	.market-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.framework-tag,
+	.market-tag {
+		font-size: 0.75rem;
+		color: #CBD5E1;
+		background: rgba(255,255,255,0.06);
+		border: 1px solid rgba(255,255,255,0.12);
+		border-radius: 9999px;
+		padding: 0.25rem 0.75rem;
+		font-weight: 500;
 	}
 
 	/* 社群連結 - 右側 */

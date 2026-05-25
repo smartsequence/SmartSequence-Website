@@ -1,5 +1,5 @@
 ---
-import { STUDIO_NAME } from '../consts';
+import { BRAND_NAME } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { getTranslations, getLocalizedPath } from '../i18n/utils';
@@ -29,13 +29,32 @@ function t(key: string): string {
 	<nav class="container">
 		<div class="logo">
 			<a href={getLocalizedPath('/', lang)}>
-				<span class="logo-text">{lang === 'en' ? t('footer.studioNameEn') : STUDIO_NAME}</span>
+				<span class="logo-text">{BRAND_NAME}</span>
 			</a>
 		</div>
 		
 		<div class="nav-links">
+			<div class="nav-item-dropdown">
+				<a href={getLocalizedPath('/product', lang)} class="nav-link">{t('nav.product')}</a>
+				<div class="dropdown-menu">
+					<a href={getLocalizedPath('/architecture', lang)}>
+						<span class="dropdown-icon">⬡</span>
+						<span>
+							<strong>{t('common.learnArchitecture')}</strong>
+							<small>{t('nav.architectureSub')}</small>
+						</span>
+					</a>
+					<a href={getLocalizedPath('/compliance', lang)}>
+						<span class="dropdown-icon">✓</span>
+						<span>
+							<strong>{t('common.learnCompliance')}</strong>
+							<small>{t('nav.complianceSub')}</small>
+						</span>
+					</a>
+				</div>
+			</div>
 			<HeaderLink href={getLocalizedPath('/pricing', lang)}>{t('nav.pricing')}</HeaderLink>
-			<HeaderLink href={getLocalizedPath('/features', lang)}>{t('nav.features')}</HeaderLink>
+			<HeaderLink href={getLocalizedPath('/use-cases', lang)}>{t('nav.useCases')}</HeaderLink>
 			<HeaderLink href={getLocalizedPath('/about', lang)}>{t('nav.about')}</HeaderLink>
 			<HeaderLink href={getLocalizedPath('/contact', lang)}>{t('nav.contact')}</HeaderLink>
 		</div>
@@ -50,7 +69,8 @@ function t(key: string): string {
 					<path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
 				</svg>
 			</button>
-			<a href={getLocalizedPath('/get-started', lang)} class="btn-primary">{t('nav.getStarted')}</a>
+			<a href={getLocalizedPath('/get-started', lang)} class="btn-try">{t('nav.tryNow')}</a>
+			<a href={getLocalizedPath('/contact', lang)} class="btn-primary">{t('nav.requestDemo')}</a>
 		</div>
 	</nav>
 </header>
@@ -148,6 +168,84 @@ function t(key: string): string {
 		color: white;
 	}
 
+	/* Product dropdown */
+	.nav-item-dropdown {
+		position: relative;
+	}
+
+	.nav-link {
+		color: rgba(255, 255, 255, 0.9);
+		font-weight: 500;
+		font-size: 0.9375rem;
+		text-decoration: none;
+		transition: color 0.2s ease;
+		cursor: pointer;
+	}
+
+	.nav-link:hover {
+		color: white;
+	}
+
+	.dropdown-menu {
+		display: none;
+		position: absolute;
+		top: calc(100% + 0.75rem);
+		left: 50%;
+		transform: translateX(-50%);
+		background: #1e293b;
+		border: 1px solid rgba(59, 130, 246, 0.3);
+		border-radius: 0.75rem;
+		padding: 0.75rem;
+		min-width: 280px;
+		box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+		z-index: 100;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.nav-item-dropdown:hover .dropdown-menu {
+		display: flex;
+	}
+
+	.dropdown-menu a {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 0.75rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		color: rgba(255, 255, 255, 0.85);
+		transition: background 0.2s ease;
+	}
+
+	.dropdown-menu a:hover {
+		background: rgba(59, 130, 246, 0.15);
+		color: white;
+	}
+
+	.dropdown-icon {
+		font-size: 1.125rem;
+		flex-shrink: 0;
+		margin-top: 0.125rem;
+		color: #3b82f6;
+	}
+
+	.dropdown-menu span {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+
+	.dropdown-menu strong {
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+
+	.dropdown-menu small {
+		font-size: 0.775rem;
+		color: #94a3b8;
+	}
+
 	.header-actions {
 		display: flex;
 		align-items: center;
@@ -199,6 +297,25 @@ function t(key: string): string {
 	.theme-toggle.light .moon-icon {
 		opacity: 0;
 		transform: rotate(-180deg) scale(0);
+	}
+
+	.btn-try {
+		display: inline-block;
+		padding: 0.75rem 1.25rem;
+		background: transparent;
+		color: var(--text-primary);
+		border: 1px solid var(--border-color);
+		border-radius: var(--radius-md);
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.875rem;
+		transition: all 0.2s ease;
+		white-space: nowrap;
+	}
+
+	.btn-try:hover {
+		border-color: #10b981;
+		color: #10b981;
 	}
 
 	.btn-primary {

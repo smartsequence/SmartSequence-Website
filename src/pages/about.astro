@@ -1,16 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { 
-	STUDIO_NAME, 
-	STUDIO_NAME_EN, 
-	STUDIO_TAX_ID,
-	SOCIAL_LINKEDIN,
-	SOCIAL_YOUTUBE
-} from '../consts';
-import { getTranslations, getLocalizedPath, getLangFromUrl } from '../i18n/utils';
-import { defaultLang, type Language } from '../i18n/languages';
+import { STUDIO_TAX_ID, CONTACT_EMAIL } from '../consts';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
 
-const lang = (getLangFromUrl(Astro.url) as Language) ?? defaultLang;
+const lang = getLangFromUrl(Astro.url);
 const translations = await getTranslations(lang);
 
 function t(key: string): string {
@@ -22,359 +15,339 @@ function t(key: string): string {
 	}
 	return value || key;
 }
+
+const markets = ['m1','m2','m3','m4','m5'];
+const marketFlags = ['🇹🇼','🇯🇵','🇺🇸','🇩🇪','🌐'];
+
+const philosophyItems = [
+	{ key: 'p1', icon: '📊' },
+	{ key: 'p2', icon: '🔒' },
+	{ key: 'p3', icon: '🌏' },
+];
 ---
 
-<Layout 
-	title={t('pages.about.title')}
-	description={t('pages.about.description')}
->
-	<!-- Hero 區塊 -->
-	<section class="hero">
+<Layout title={t('pages.about.title')} description={t('pages.about.description')}>
+	<!-- Hero -->
+	<section class="page-hero">
 		<div class="container">
+			<div class="hero-eyebrow">
+				<a href={getLocalizedPath('/', lang)}>ForgeHelm</a>
+				<span>›</span>
+				<span>{t('nav.about')}</span>
+			</div>
 			<h1>{t('pages.about.heroTitle')}</h1>
-			<p class="subtitle">{t('pages.about.heroSubtitle')}</p>
-			<p class="tagline">{t('pages.about.heroTagline')}</p>
+			<p class="hero-sub">{t('pages.about.heroSubtitle')}</p>
 		</div>
 	</section>
 
-	<!-- 工作室介紹 -->
-	<section class="section intro">
+	<!-- Mission -->
+	<section class="section mission-section">
 		<div class="container">
-			<div class="intro-content">
-				<h2>{t('pages.about.introTitle')}</h2>
-				<p>
-					{t('pages.about.introText1')}
-				</p>
-				<p>
-					{t('pages.about.introText2')}
-				</p>
+			<div class="mission-box">
+				<div class="mission-label">{t('pages.about.missionTitle')}</div>
+				<blockquote>"{t('pages.about.missionText')}"</blockquote>
 			</div>
 		</div>
 	</section>
 
-	<!-- 商業登記資訊 -->
-	<section class="section registration">
-		<div class="container">
-			<h2 class="section-title">{t('pages.about.registrationTitle')}</h2>
-			
-			<div class="info-card">
-				<div class="info-row">
-					<span class="info-label">{t('pages.about.studioName')}</span>
-					<span class="info-value">{STUDIO_NAME}</span>
-				</div>
-				<div class="info-row">
-					<span class="info-label">{t('pages.about.englishName')}</span>
-					<span class="info-value">{STUDIO_NAME_EN}</span>
-				</div>
-				<div class="info-row">
-					<span class="info-label">{t('pages.about.taxId')}</span>
-					<span class="info-value">{STUDIO_TAX_ID}</span>
-				</div>
-				<div class="info-row">
-					<span class="info-label">{t('pages.about.businessItems')}</span>
-					<span class="info-value">
-						{t('pages.about.businessItem1')}<br>
-						{t('pages.about.businessItem2')}<br>
-						{t('pages.about.businessItem3')}
-					</span>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 理念 -->
-	<section class="section philosophy">
+	<!-- Philosophy -->
+	<section class="section philosophy-section">
 		<div class="container">
 			<h2 class="section-title">{t('pages.about.philosophyTitle')}</h2>
-			
-			<div class="philosophy-content">
-				<div class="belief-card">
-					<h3>{t('pages.about.philosophyBelief')}</h3>
-					<ul>
-						<li>{t('pages.about.belief1')}</li>
-						<li>{t('pages.about.belief2')}</li>
-						<li>{t('pages.about.belief3')}</li>
-						<li>{t('pages.about.belief4')}</li>
-					</ul>
-				</div>
+			<div class="philosophy-grid">
+				{philosophyItems.map(({ key, icon }) => (
+					<div class="philosophy-card">
+						<div class="philosophy-icon">{icon}</div>
+						<h3>{t(`pages.about.${key}Title`)}</h3>
+						<p>{t(`pages.about.${key}Text`)}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
 
-	<!-- 社群連結（不含 GitHub） -->
-	<section class="section social">
+	<!-- Markets -->
+	<section class="section markets-section">
 		<div class="container">
-			<h2 class="section-title">{t('pages.about.socialTitle')}</h2>
-			
-			<div class="social-links">
-				<a href={SOCIAL_LINKEDIN} target="_blank" rel="noopener noreferrer" class="social-card">
-					<div class="social-icon">🔗</div>
-					<h3>LinkedIn</h3>
-					<p>{t('pages.about.socialLinkedIn')}</p>
-				</a>
+			<h2 class="section-title">{t('pages.about.marketsTitle')}</h2>
+			<div class="markets-grid">
+				{markets.map((m, i) => (
+					<div class="market-card">
+						<span class="market-flag">{marketFlags[i]}</span>
+						<span class="market-name">{t(`pages.about.${m}`)}</span>
+					</div>
+				))}
+			</div>
+			<p class="markets-note">{t('pages.about.marketsNote')}</p>
+		</div>
+	</section>
 
-				<a href={SOCIAL_YOUTUBE} target="_blank" rel="noopener noreferrer" class="social-card">
-					<div class="social-icon">🎥</div>
-					<h3>YouTube</h3>
-					<p>{t('pages.about.socialYouTube')}</p>
-				</a>
+	<!-- Company Info (low visual weight) -->
+	<section class="section company-section">
+		<div class="container">
+			<div class="company-box">
+				<h2>{t('pages.about.companyTitle')}</h2>
+				<dl class="company-dl">
+					<dt>{t('pages.about.entityLabel')}</dt>
+					<dd>{t('pages.about.companyName')}</dd>
+					<dt>{t('pages.about.taxIdLabel')}</dt>
+					<dd>{STUDIO_TAX_ID}</dd>
+					<dt>{t('pages.about.contactLabel')}</dt>
+					<dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
+				</dl>
 			</div>
 		</div>
 	</section>
 
 	<!-- CTA -->
-	<section class="section cta">
+	<section class="section cta-section">
 		<div class="container">
-			<div class="cta-content">
+			<div class="cta-box">
 				<h2>{t('pages.about.ctaTitle')}</h2>
-				<a href={getLocalizedPath('/get-started?source=about', lang)} class="btn-primary">{t('pages.about.ctaButton')}</a>
+				<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">
+					{t('pages.about.ctaButton')}
+				</a>
 			</div>
 		</div>
 	</section>
 </Layout>
 
 <style>
-	/* Hero */
-	.hero {
+	.page-hero {
+		padding: 8rem 0 4rem;
 		background: var(--bg-main);
-		color: var(--text-primary);
-		padding: 0.25rem 0 3rem;
-		text-align: center;
 		border-bottom: 1px solid var(--border-light);
 	}
 
-	.hero h1 {
-		font-size: 2.5rem;
-		margin-bottom: 0.5rem;
+	.hero-eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.25rem;
 	}
 
-	.subtitle {
-		font-size: 1.25rem;
-		opacity: 0.9;
+	.hero-eyebrow a { color: #3b82f6; text-decoration: none; font-weight: 600; }
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
 		margin-bottom: 1rem;
+		max-width: 700px;
 	}
 
-	.tagline {
-		font-size: 1.125rem;
-		opacity: 0.85;
-		font-style: italic;
+	.hero-sub {
+		font-size: 1.0625rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		max-width: 680px;
 	}
 
-	/* 工作室介紹 */
-	.intro-content {
+	.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+	.section { padding: 5rem 0; }
+
+	.section-title {
+		font-size: clamp(1.75rem, 3vw, 2.25rem);
+		font-weight: 700;
+		color: var(--text-primary);
+		text-align: center;
+		margin-bottom: 3rem;
+		letter-spacing: -0.02em;
+	}
+
+	/* Mission */
+	.mission-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.mission-box {
 		max-width: 800px;
 		margin: 0 auto;
 		text-align: center;
 	}
 
-	.intro-content h2 {
-		font-size: 2rem;
-		margin-bottom: 1.5rem;
-		color: var(--text-primary);
-	}
-
-	.intro-content p {
-		font-size: 1.125rem;
-		line-height: 1.875;
-		color: var(--text-secondary);
+	.mission-label {
+		font-size: 0.8rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: #3b82f6;
 		margin-bottom: 1.5rem;
 	}
 
-	/* 商業登記 */
-	.registration {
-		background: var(--bg-section);
-	}
-
-	.info-card {
-		max-width: 700px;
-		margin: 0 auto;
-		background: var(--bg-card);
-		padding: 2.5rem;
-		border-radius: 1rem;
-		box-shadow: var(--shadow-sm);
-	}
-
-	.info-row {
-		display: grid;
-		grid-template-columns: 150px 1fr;
-		gap: 2rem;
-		padding: 1.25rem 0;
-		border-bottom: 1px solid var(--border-color);
-	}
-
-	.info-row:last-child {
-		border-bottom: none;
-	}
-
-	.info-label {
+	blockquote {
+		font-size: clamp(1.375rem, 2.5vw, 1.875rem);
 		font-weight: 600;
 		color: var(--text-primary);
-	}
-
-	.info-value {
-		color: var(--text-secondary);
-		line-height: 1.75;
-	}
-
-	/* 理念 */
-	.philosophy-content {
-		max-width: 800px;
-		margin: 0 auto;
-	}
-
-	.belief-card {
-		background: var(--bg-card);
-		padding: 2.5rem;
-		border-radius: 1rem;
-		box-shadow: var(--shadow-sm);
-	}
-
-	.belief-card h3 {
-		font-size: 1.5rem;
-		margin-bottom: 1.5rem;
-		color: var(--text-primary);
-	}
-
-	.belief-card ul {
-		list-style: none;
+		line-height: 1.45;
+		letter-spacing: -0.01em;
+		font-style: italic;
+		border: none;
 		padding: 0;
 		margin: 0;
 	}
 
-	.belief-card li {
-		position: relative;
-		padding-left: 1.5rem;
-		margin-bottom: 0.75rem;
-		color: var(--text-secondary);
-		line-height: 1.6;
-	}
+	/* Philosophy */
+	.philosophy-section { border-bottom: 1px solid var(--border-light); }
 
-	.belief-card li::before {
-		content: '•';
-		position: absolute;
-		left: 0;
-		color: var(--cta-primary);
-	}
-
-	/* 社群連結 */
-	.social {
-		background: var(--bg-section);
-	}
-
-	.social-links {
+	.philosophy-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+		grid-template-columns: repeat(3, 1fr);
 		gap: 1.5rem;
 	}
 
-	.social-card {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-		padding: 1.75rem;
+	.philosophy-card {
+		padding: 2.5rem 2rem;
 		background: var(--bg-card);
+		border: 1px solid var(--border-color);
 		border-radius: 1rem;
-		text-decoration: none;
-		color: var(--text-primary);
-		box-shadow: var(--shadow-sm);
-		transition: all 0.2s ease;
 	}
 
-	.social-card:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-md);
-		border-color: var(--cta-primary);
+	.philosophy-icon {
+		font-size: 2.5rem;
+		margin-bottom: 1.25rem;
 	}
 
-	.social-icon {
-		font-size: 1.75rem;
-	}
-
-	.social-card h3 {
+	.philosophy-card h3 {
 		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+
+	.philosophy-card p {
+		font-size: 0.9375rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+	}
+
+	/* Markets */
+	.markets-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.markets-grid {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: 2rem;
+	}
+
+	.market-card {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		padding: 0.875rem 1.75rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		transition: all 0.2s;
+	}
+
+	.market-card:hover {
+		border-color: #3b82f6;
+		background: rgba(59,130,246,0.05);
+	}
+
+	.market-flag { font-size: 1.5rem; }
+	.market-name { font-size: 1rem; }
+
+	.markets-note {
+		text-align: center;
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		max-width: 600px;
+		margin: 0 auto;
+		line-height: 1.65;
+	}
+
+	/* Company (low visual weight) */
+	.company-section {
+		padding: 3rem 0;
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.company-box {
+		max-width: 480px;
+	}
+
+	.company-box h2 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin-bottom: 1.25rem;
+	}
+
+	.company-dl {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.5rem 1.5rem;
+		align-items: baseline;
+	}
+
+	dt {
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		white-space: nowrap;
+	}
+
+	dd {
+		font-size: 0.9rem;
+		color: var(--text-primary);
 		margin: 0;
 	}
 
-	.social-card p {
-		margin: 0;
-		color: var(--text-secondary);
-	}
+	dd a { color: #60a5fa; text-decoration: none; }
+	dd a:hover { text-decoration: underline; }
 
 	/* CTA */
-	.cta {
-		background: var(--bg-main);
-	}
-
-	.cta-content {
-		max-width: 640px;
-		margin: 0 auto;
+	.cta-section .cta-box {
 		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(16,185,129,0.05));
+		border: 1px solid rgba(59,130,246,0.3);
+		border-radius: 1.5rem;
 	}
 
-	.cta-content h2 {
+	.cta-section h2 {
 		font-size: 2rem;
-		margin-bottom: 1.5rem;
+		font-weight: 800;
 		color: var(--text-primary);
+		margin-bottom: 2rem;
+		letter-spacing: -0.02em;
 	}
 
-	.btn-primary {
-		display: inline-block;
-		padding: 0.9rem 2.2rem;
-		background: var(--cta-primary);
-		color: white;
-		border-radius: var(--radius-md);
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.875rem 2rem;
+		border-radius: 0.5rem;
 		text-decoration: none;
 		font-weight: 600;
-		transition: all 0.2s ease;
+		font-size: 0.9375rem;
+		transition: all 0.2s;
 	}
 
-	.btn-primary:hover {
-		background: var(--cta-hover);
-		transform: translateY(-1px);
-		box-shadow: var(--shadow-md);
-	}
-
-	.section {
-		padding: 4.5rem 0;
-	}
-
-	.section-title {
-		text-align: center;
-		font-size: 2rem;
-		margin-bottom: 2.5rem;
-		color: var(--text-primary);
-	}
+	.btn-primary { background: #3b82f6; color: white; }
+	.btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
 
 	@media (max-width: 768px) {
-		.hero {
-			padding: 0.75rem 0 2.5rem;
-		}
-
-		.hero h1 {
-			font-size: 2rem;
-		}
-
-		.section {
-			padding: 3.5rem 0;
-		}
-
-		.section-title {
-			font-size: 1.75rem;
-			margin-bottom: 2rem;
-		}
-
-		.info-card {
-			padding: 2rem 1.5rem;
-		}
-
-		.info-row {
-			grid-template-columns: 1fr;
-			gap: 0.5rem;
-		}
-
-		.belief-card {
-			padding: 2rem 1.5rem;
-		}
+		.page-hero { padding: 6rem 0 3rem; }
+		.philosophy-grid { grid-template-columns: 1fr; }
+		.markets-grid { justify-content: flex-start; }
 	}
 </style>
-

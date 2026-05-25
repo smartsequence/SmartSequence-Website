@@ -3,7 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getLangFromUrl, getAllLanguageCodes, getLocalizedPath } from '../i18n/utils';
-import { defaultLang, languages } from '../i18n/languages';
+import { defaultLang, languages, type Language } from '../i18n/languages';
 
 interface Props {
 	title: string;
@@ -28,18 +28,36 @@ const hreflangLinks = allLangs.map(l => ({
 	<head>
 		<BaseHead title={title} description={description} />
 		
-		<!-- Canonical URL -->
-		<link rel="canonical" href={new URL(currentPath, Astro.site)} />
-		
 		<!-- hreflang tags for SEO -->
 		{hreflangLinks.map(({ lang: l, url }) => (
 			<link rel="alternate" hreflang={l} href={url} />
 		))}
-		<link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLang), Astro.site)} />
+		<link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, 'en'), Astro.site)} />
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<script type="application/ld+json" set:html={JSON.stringify({
+			'@context': 'https://schema.org',
+			'@type': 'SoftwareApplication',
+			name: 'ForgeHelm',
+			applicationCategory: 'BusinessApplication',
+			operatingSystem: 'Web, Windows, Linux',
+			description: description || 'Enterprise code governance and compliance platform with on-premises Agent deployment.',
+			url: Astro.site?.toString() || 'https://smartsequence.tech',
+			offers: {
+				'@type': 'AggregateOffer',
+				priceCurrency: 'USD',
+				lowPrice: '39',
+				highPrice: '119',
+				offerCount: '3',
+			},
+			provider: {
+				'@type': 'Organization',
+				name: 'Smart Sequence Tech',
+				url: 'https://smartsequence.tech',
+			},
+		})} />
 		<script is:inline>
 			// 自動偵測使用者偏好並應用主題
 			(function() {

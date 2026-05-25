@@ -6,7 +6,6 @@ import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils
 const lang = getLangFromUrl(Astro.url);
 const translations = await getTranslations(lang);
 
-// 翻譯函式
 function t(key: string): string {
 	const keys = key.split('.');
 	let value: any = translations;
@@ -14,274 +13,208 @@ function t(key: string): string {
 		value = value?.[k];
 		if (value === undefined) return key;
 	}
-	// 處理佔位符
-	if (typeof value === 'string' && value.includes('{taxId}')) {
-		value = value.replace('{taxId}', STUDIO_TAX_ID);
-	}
 	return value || key;
 }
+
+const modules = [
+	{ icon: '📋', key: 'm1', color: '#3b82f6' },
+	{ icon: '📦', key: 'm2', color: '#8b5cf6' },
+	{ icon: '📊', key: 'm3', color: '#06b6d4' },
+	{ icon: '🎯', key: 'm4', color: '#f59e0b' },
+	{ icon: '🤖', key: 'm5', color: '#10b981' },
+	{ icon: '🔄', key: 'm6', color: '#ef4444' },
+	{ icon: '🗄️', key: 'm7', color: '#6366f1' },
+];
+
+const deployments = [
+	{ key: 'd1', icon: '☁️' },
+	{ key: 'd2', icon: '⚡', highlight: true },
+	{ key: 'd3', icon: '🏢' },
+	{ key: 'd4', icon: '🔒' },
+];
+
+const industries = [
+	{ key: 'i1', icon: '🏦' },
+	{ key: 'i2', icon: '🏛️' },
+	{ key: 'i3', icon: '🏥' },
+	{ key: 'i4', icon: '🏭' },
+];
 ---
 
 <Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-	<!-- Hero 區塊 -->
+	<!-- Hero Section -->
 	<section class="hero">
-		<div class="hero-overlay"></div>
+		<div class="hero-bg"></div>
 		<div class="container">
 			<div class="hero-content">
 				<div class="hero-badge">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-						<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-					</svg>
-					<span>{t('hero.badge')}</span>
+					<span class="badge-dot"></span>
+					{t('hero.badge')}
 				</div>
-				<h1>{t('hero.title')}</h1>
-				<p class="hero-tagline">
-					{t('hero.tagline')}
-				</p>
-				<p class="hero-subtitle">
-					{t('hero.subtitle')}
-				</p>
+				<h1>
+					{t('hero.title')}
+					<span class="hero-gradient">{t('hero.tagline')}</span>
+				</h1>
+				<p class="hero-subtitle">{t('hero.subtitle')}</p>
 				<div class="hero-cta">
-					<a href={getLocalizedPath('/get-started?source=hero-primary', lang)} class="btn btn-primary">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="btn-icon">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+					<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="18" height="18">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
 						</svg>
 						{t('hero.ctaPrimary')}
 					</a>
-					<a href={getLocalizedPath('/features', lang)} class="btn btn-secondary">{t('hero.ctaSecondary')}</a>
+					<a href={getLocalizedPath('/product', lang)} class="btn btn-secondary">{t('hero.ctaSecondary')}</a>
+				</div>
+				<!-- Framework trust bar -->
+				<div class="framework-bar">
+					<span class="framework-label">{t('sections.home.frameworkLabel')}</span>
+					{['ISO 27001', 'SOC 2', 'GDPR', 'PCI-DSS', 'HIPAA', 'NIST CSF', 'OWASP Top 10'].map(f => (
+						<span class="framework-badge">{f}</span>
+					))}
+					<a href={getLocalizedPath('/compliance', lang)} class="framework-more">+13 {t('sections.home.frameworkMore')} →</a>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- 四步驟流程 -->
-	<section class="section process">
+	<!-- Core Values -->
+	<section class="section core-values">
 		<div class="container">
-			<h2 class="section-title">{t('sections.process.title')}</h2>
-			
-			<div class="process-grid">
-				<div class="process-step">
-					<div class="step-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
-						</svg>
+			<h2 class="section-title">{t('sections.coreValues.title')}</h2>
+			<div class="values-grid">
+				{(['v1', 'v2', 'v3'] as const).map((v, i) => (
+					<div class={`value-card ${i === 1 ? 'value-featured' : ''}`}>
+						<div class="value-icon-wrap">
+							{i === 0 && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" /></svg>}
+							{i === 1 && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>}
+							{i === 2 && <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" /></svg>}
+						</div>
+						<h3>{t(`sections.coreValues.${v}.title`)}</h3>
+						<p class="value-subtitle">{t(`sections.coreValues.${v}.subtitle`)}</p>
+						<p class="value-desc">{t(`sections.coreValues.${v}.description`)}</p>
 					</div>
-					<div class="step-number">01</div>
-					<h3>{t('sections.process.step1.title')}</h3>
-					<p>{t('sections.process.step1.description')}</p>
-				</div>
-
-				<div class="process-step">
-					<div class="step-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
-						</svg>
-					</div>
-					<div class="step-number">02</div>
-					<h3>{t('sections.process.step2.title')}</h3>
-					<p>{t('sections.process.step2.description')}</p>
-				</div>
-
-				<div class="process-step">
-					<div class="step-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-						</svg>
-					</div>
-					<div class="step-number">03</div>
-					<h3>{t('sections.process.step3.title')}</h3>
-					<p>{t('sections.process.step3.description')}</p>
-				</div>
-
-				<div class="process-step">
-					<div class="step-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
-						</svg>
-					</div>
-					<div class="step-number">04</div>
-					<h3>{t('sections.process.step4.title')}</h3>
-					<p>{t('sections.process.step4.description')}</p>
-				</div>
+				))}
 			</div>
 		</div>
 	</section>
 
-	<!-- CTA 卡片區 -->
-	<section class="section cta-cards">
+	<!-- Product Modules -->
+	<section class="section modules-section">
 		<div class="container">
-			<h2 class="section-title">{t('sections.quickStart.title')}</h2>
-			
-			<div class="cards-grid">
-				<div class="card">
-					<div class="card-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-						</svg>
+			<h2 class="section-title">{t('sections.modules.title')}</h2>
+			<p class="section-subtitle">{t('sections.modules.subtitle')}</p>
+			<div class="modules-grid">
+				{modules.map(({ icon, key, color }) => (
+					<div class="module-card">
+						<div class="module-icon" style={`background: ${color}22; color: ${color};`}>{icon}</div>
+						<h3>{t(`sections.modules.${key}.title`)}</h3>
+						<p>{t(`sections.modules.${key}.description`)}</p>
 					</div>
-					<h3>{t('sections.quickStart.card1.title')}</h3>
-					<p>{t('sections.quickStart.card1.description')}</p>
-							  
-					<a href={getLocalizedPath('/get-started?source=card-preview', lang)} class="card-link">
-						{t('sections.quickStart.card1.button')}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
-				</div>
-		  
-
-				<div class="card">
-					<div class="card-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-						</svg>
-					</div>
-					<h3>{t('sections.quickStart.card2.title')}</h3>
-					<p>{t('sections.quickStart.card2.description')}</p>
-							  
-					<a href={getLocalizedPath('/pricing', lang)} class="card-link">
-						{t('sections.quickStart.card2.button')}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
-				</div>
-		  
-
-				<div class="card">
-					<div class="card-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
-							<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-						</svg>
-					</div>
-					<h3>{t('sections.quickStart.card3.title')}</h3>
-					<p>{t('sections.quickStart.card3.description')}</p>
-							  
-					<a href={getLocalizedPath('/features', lang)} class="card-link">
-						{t('sections.quickStart.card3.button')}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
-				</div>
-		  
-
-				<div class="card">
-					<div class="card-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-						</svg>
-					</div>
-					<h3>{t('sections.quickStart.card4.title')}</h3>
-					<p>{t('sections.quickStart.card4.description')}</p>
-							  
-					<a href={getLocalizedPath('/pricing#faq', lang)} class="card-link">
-						{t('sections.quickStart.card4.button')}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="arrow">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
-				</div>
-		  
+				))}
+			</div>
+			<div class="modules-cta">
+				<a href={getLocalizedPath('/product', lang)} class="btn btn-outline">
+					{t('sections.home.exploreAllModules')} →
+				</a>
 			</div>
 		</div>
 	</section>
 
-	<!-- 信任標示區 -->
-	<section class="section trust">
+	<!-- Deployment Flexibility -->
+	<section class="section deploy-section">
+		<div class="container">
+			<h2 class="section-title">{t('sections.deployment.title')}</h2>
+			<div class="deploy-grid">
+				{deployments.map(({ key, icon, highlight }) => (
+					<div class={`deploy-card ${highlight ? 'deploy-featured' : ''}`}>
+						{highlight && <div class="deploy-badge">{t(`sections.deployment.${key}.badge`)}</div>}
+						<div class="deploy-icon">{icon}</div>
+						<h3>{t(`sections.deployment.${key}.title`)}</h3>
+						<p class="deploy-badge-text">{t(`sections.deployment.${key}.badge`)}</p>
+						<p>{t(`sections.deployment.${key}.description`)}</p>
+					</div>
+				))}
+			</div>
+			<div class="deploy-link">
+				<a href={getLocalizedPath('/architecture', lang)}>
+					{t('sections.home.viewArchitectureDoc')} →
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Industries -->
+	<section class="section industries-section">
+		<div class="container">
+			<h2 class="section-title">{t('sections.industries.title')}</h2>
+			<div class="industry-grid">
+				{industries.map(({ key, icon }) => (
+					<div class="industry-card">
+						<div class="industry-icon">{icon}</div>
+						<h3>{t(`sections.industries.${key}.title`)}</h3>
+						<p>{t(`sections.industries.${key}.description`)}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Trust / Security -->
+	<section class="section trust-section">
 		<div class="container">
 			<h2 class="section-title">{t('sections.trust.title')}</h2>
-			
 			<div class="trust-grid">
-				<div class="trust-item">
-					<div class="trust-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-						</svg>
+				{(['item1', 'item2', 'item3'] as const).map(item => (
+					<div class="trust-card">
+						<h3>{t(`sections.trust.${item}.title`)}</h3>
+						<p>{t(`sections.trust.${item}.description`)}</p>
 					</div>
-					<h3>{t('sections.trust.item1.title')}</h3>
-					<p set:html={t('sections.trust.item1.description').replace(/\n/g, '<br>')}></p>
-				</div>
+				))}
+			</div>
+			<p class="trust-legal">
+				{t('sections.home.trustOperatedBy')}
+				· {t('sections.home.trustTaxIdLabel')} {STUDIO_TAX_ID}
+			</p>
+		</div>
+	</section>
 
-				<div class="trust-item">
-					<div class="trust-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-						</svg>
-					</div>
-					<h3>{t('sections.trust.item2.title')}</h3>
-					<p set:html={t('sections.trust.item2.description').replace(/\n/g, '<br>')}></p>
-				</div>
+	<!-- Competitor pricing anchor -->
+	<section class="section competitor-section">
+		<div class="container">
+			<h2 class="section-title">{t('sections.competitor.title')}</h2>
+			<p class="competitor-summary">{t('sections.competitor.summary')}</p>
+			<p class="competitor-footnote">{t('sections.competitor.footnote')}</p>
+			<a href={getLocalizedPath('/pricing', lang)} class="btn btn-outline">{t('common.viewPricing')}</a>
+		</div>
+	</section>
 
-				<div class="trust-item">
-					<div class="trust-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-						</svg>
-					</div>
-					<h3>{t('sections.trust.item3.title')}</h3>
-					<p set:html={t('sections.trust.item3.description').replace(/\n/g, '<br>')}></p>
+	<!-- Trial experience -->
+	<section class="section trial-banner">
+		<div class="container">
+			<div class="trial-box">
+				<div class="trial-content">
+					<h2>{t('sections.trial.title')}</h2>
+					<p>{t('sections.trial.subtitle')}</p>
+					<p class="trial-credit-line">{t('sections.trial.credit')}</p>
 				</div>
+				<a href={getLocalizedPath('/get-started', lang)} class="btn btn-primary btn-trial">
+					{t('sections.trial.cta')}
+				</a>
 			</div>
 		</div>
 	</section>
 
-	<!-- 進一步探索區 -->
-	<section class="section explore-section">
+	<!-- Final CTA -->
+	<section class="section final-cta">
 		<div class="container">
-			<h2 class="section-title">{t('sections.explore.title')}</h2>
-			<p class="section-subtitle">{t('sections.explore.subtitle')}</p>
-			
-			<div class="explore-grid">
-				<div class="explore-card">
-					<div class="explore-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z" />
-							<path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-						</svg>
-					</div>
-					<h3>{t('sections.explore.card1.title')}</h3>
-					<p>{t('sections.explore.card1.description')}</p>
-					<a href={getLocalizedPath('/features', lang)} class="explore-btn">
-						{t('sections.explore.card1.button')}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
-				</div>
-
-				<div class="explore-card">
-					<div class="explore-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
-						</svg>
-					</div>
-					<h3>{t('sections.explore.card2.title')}</h3>
-					<p>{t('sections.explore.card2.description')}</p>
-					<a href={getLocalizedPath('/pricing', lang)} class="explore-btn">
-						{t('sections.explore.card2.button')}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
-				</div>
-
-				<div class="explore-card">
-					<div class="explore-icon">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-						</svg>
-					</div>
-					<h3>{t('sections.explore.card3.title')}</h3>
-					<p>{t('sections.explore.card3.description')}</p>
-					<a href={getLocalizedPath('/get-started?source=explore-preview', lang)} class="explore-btn">
-						{t('sections.explore.card3.button')}
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
+			<div class="cta-box">
+				<h2>{t('sections.cta.title')}</h2>
+				<p>{t('sections.cta.subtitle')}</p>
+				<div class="cta-buttons">
+					<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">{t('sections.cta.primary')}</a>
+					<a href={getLocalizedPath('/pricing', lang)} class="btn btn-secondary">{t('sections.cta.secondary')}</a>
+					<a href={getLocalizedPath('/get-started', lang)} class="btn btn-ghost">{t('sections.cta.trial')}</a>
+					<a href={getLocalizedPath('/product', lang)} class="btn btn-ghost">{t('sections.cta.tertiary')}</a>
 				</div>
 			</div>
 		</div>
@@ -289,139 +222,71 @@ function t(key: string): string {
 </Layout>
 
 <style>
-	/* Hero 區塊 - Dark Professional */
+	/* ── Hero ── */
 	.hero {
 		position: relative;
-		background: var(--bg-main);
-		color: var(--text-primary);
-		padding: 0 0 3rem;
+		padding: 7rem 0 5rem;
 		text-align: center;
 		overflow: hidden;
-		border-bottom: 1px solid var(--border-light);
+		background: var(--bg-main);
 	}
 
-	.hero-overlay {
+	.hero-bg {
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: 
-			radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
-			radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+		inset: 0;
+		background:
+			radial-gradient(ellipse 60% 50% at 50% -20%, rgba(59,130,246,0.15) 0%, transparent 70%),
+			radial-gradient(circle at 80% 80%, rgba(16,185,129,0.08) 0%, transparent 50%);
 		pointer-events: none;
-		opacity: 0.6;
-	}
-
-	/* Light Theme - 淺色背景光暈 */
-	html[data-theme='light'] .hero-overlay {
-		background: 
-			radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.12) 0%, transparent 60%),
-			radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 60%);
-		opacity: 0.4;
-	}
-
-	/* 雷達掃描效果 - 更柔和的版本 */
-	.hero-overlay::before {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 1000px;
-		height: 1000px;
-		margin-left: -500px;
-		margin-top: -500px;
-		border: 1px solid rgba(59, 130, 246, 0.06);
-		border-radius: 50%;
-		animation: radar-pulse 6s ease-in-out infinite;
-	}
-
-	.hero-overlay::after {
-		content: '';
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		width: 700px;
-		height: 700px;
-		margin-left: -350px;
-		margin-top: -350px;
-		border: 1px solid rgba(16, 185, 129, 0.06);
-		border-radius: 50%;
-		animation: radar-pulse 6s ease-in-out infinite 3s;
-	}
-
-	/* Light Theme - 雷達光圈適配 */
-	html[data-theme='light'] .hero-overlay::before {
-		border-color: rgba(59, 130, 246, 0.15);
-	}
-
-	html[data-theme='light'] .hero-overlay::after {
-		border-color: rgba(16, 185, 129, 0.15);
-	}
-
-	@keyframes radar-pulse {
-		0%, 100% {
-			transform: scale(1);
-			opacity: 0.2;
-		}
-		50% {
-			transform: scale(1.15);
-			opacity: 0;
-		}
 	}
 
 	.hero-content {
 		position: relative;
-		max-width: 900px;
+		max-width: 860px;
 		margin: 0 auto;
-		z-index: 1;
 	}
 
 	.hero-badge {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: var(--glass-bg);
-		backdrop-filter: blur(10px);
-		border: 1px solid var(--glass-border);
-		border-radius: var(--radius-lg);
-		margin-top: -0.25rem;
-		margin-bottom: 1rem;
-		font-size: 0.875rem;
-		font-weight: 500;
-		color: var(--link-color);
+		padding: 0.4rem 1rem;
+		border: 1px solid rgba(59,130,246,0.4);
+		border-radius: 9999px;
+		font-size: 0.8rem;
+		font-weight: 600;
+		color: #60a5fa;
+		background: rgba(59,130,246,0.08);
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
 	}
 
-	.hero-badge .icon {
-		width: 1.25rem;
-		height: 1.25rem;
+	.badge-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #3b82f6;
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.4; }
 	}
 
 	.hero h1 {
-		font-size: 3.5rem;
-		margin-bottom: 0.5rem;
-		font-weight: 700;
+		font-size: clamp(2.25rem, 5vw, 3.75rem);
+		font-weight: 800;
 		line-height: 1.1;
-		letter-spacing: -0.02em;
+		letter-spacing: -0.03em;
+		margin-bottom: 1.25rem;
+		color: var(--text-primary);
 	}
 
-	.hero-tagline {
-		font-size: 1.25rem;
-		line-height: 1.4;
-		margin-bottom: 0.75rem;
-		color: var(--cta-success);
-		font-weight: 400;
-		background: linear-gradient(135deg, var(--cta-success), var(--cta-primary));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		letter-spacing: 0.01em;
-	}
-
-	/* Light Theme - 加強副標語對比度 */
-	html[data-theme='light'] .hero-tagline {
-		background: linear-gradient(135deg, #059669, #2563EB);
+	.hero-gradient {
+		display: block;
+		background: linear-gradient(135deg, #3b82f6, #10b981);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
@@ -429,474 +294,552 @@ function t(key: string): string {
 
 	.hero-subtitle {
 		font-size: 1.0625rem;
-		line-height: 1.6;
-		margin-bottom: 1.5rem;
-		opacity: 0.75;
-		color: rgba(255, 255, 255, 0.85);
-		font-weight: 400;
+		line-height: 1.7;
+		color: var(--text-secondary);
+		max-width: 660px;
+		margin: 0 auto 2.5rem;
 	}
 
 	.hero-cta {
 		display: flex;
-		gap: 1.25rem;
+		gap: 1rem;
 		justify-content: center;
 		flex-wrap: wrap;
+		margin-bottom: 3rem;
 	}
 
-	.hero .btn {
-		display: inline-flex;
+	.framework-bar {
+		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 1rem 2.5rem;
-		border-radius: var(--radius-md);
+		flex-wrap: wrap;
+		justify-content: center;
+		font-size: 0.8rem;
+	}
+
+	.framework-label {
+		color: var(--text-secondary);
+		white-space: nowrap;
+		font-weight: 500;
+	}
+
+	.framework-badge {
+		padding: 0.2rem 0.65rem;
+		background: rgba(255,255,255,0.05);
+		border: 1px solid rgba(255,255,255,0.12);
+		border-radius: 4px;
+		color: var(--text-secondary);
+		font-family: monospace;
+		font-size: 0.76rem;
+	}
+
+	.framework-more {
+		color: #3b82f6;
 		text-decoration: none;
 		font-weight: 600;
-		transition: all 0.2s ease;
-		font-size: 1rem;
-	}
-
-	.hero .btn-icon {
-		width: 1.25rem;
-		height: 1.25rem;
-	}
-
-	.hero .btn-primary {
-		background: var(--cta-primary);
-		color: white;
-		box-shadow: var(--shadow-lg);
-	}
-
-	.hero .btn-primary:hover {
-		background: var(--cta-hover);
-		transform: translateY(-2px);
-		box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
-	}
-
-	.hero .btn-secondary {
-		background: transparent;
-		color: var(--text-primary);
-		border: 2px solid var(--border-color);
-		backdrop-filter: blur(10px);
-	}
-
-	.hero .btn-secondary:hover {
-		background: var(--glass-bg);
-		border-color: var(--link-color);
-		color: var(--link-color);
-	}
-
-	/* 通用 Section 樣式 */
-	.section {
-		padding: 2rem 0;
-	}
-
-	.section-title {
-		text-align: center;
-		font-size: 2.25rem;
-		margin-bottom: 1.25rem;
-		color: var(--text-primary);
-	}
-
-	/* 四步驟流程 - Dark Glassmorphism */
-	.process {
-		background: var(--bg-section);
-		border-top: 1px solid var(--border-light);
-		border-bottom: 1px solid var(--border-light);
-	}
-
-	.process-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 1.5rem;
-		width: 100%;
-	}
-
-	.process-step {
-		position: relative;
-		background: var(--bg-card);
-		backdrop-filter: blur(10px);
-		padding: 2rem;
-		border-radius: var(--radius-lg);
-		border: 1px solid var(--border-color);
-		box-shadow: var(--shadow-md);
-		transition: all 0.3s ease;
-	}
-
-	.process-step:hover {
-		transform: translateY(-4px);
-		box-shadow: var(--shadow-lg);
-		border-color: var(--cta-primary);
-	}
-
-	.step-icon {
-		width: 3.5rem;
-		height: 3.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--cta-primary);
-		border-radius: var(--radius-md);
-		margin-bottom: 1rem;
-		color: white;
-		box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-	}
-
-	.step-icon svg {
-		width: 2rem;
-		height: 2rem;
-	}
-
-	.step-number {
-		position: absolute;
-		top: 1.5rem;
-		right: 1.5rem;
-		font-size: 2.5rem;
-		font-weight: 700;
-		color: var(--cta-primary);
-		opacity: 0.5;
-		line-height: 1;
-		text-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-	}
-
-	.process-step h3 {
-		font-size: 1.25rem;
-		margin-bottom: 0.75rem;
-		color: var(--text-primary);
-		font-weight: 600;
-	}
-
-	.process-step p {
-		color: var(--text-secondary);
-		line-height: 1.6;
-		font-size: 0.9375rem;
-	}
-
-	/* CTA 卡片區 - Dark Glassmorphism */
-	.cta-cards {
-		background: var(--bg-section);
-		border-top: 1px solid var(--border-light);
-		border-bottom: 1px solid var(--border-light);
-	}
-
-	.cards-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 1.5rem;
-		width: 100%;
-	}
-
-	.card {
-		background: var(--bg-card);
-		backdrop-filter: blur(10px);
-		padding: 2rem;
-		border-radius: var(--radius-lg);
-		border: 1px solid var(--border-color);
-		box-shadow: var(--shadow-sm);
-		transition: all 0.3s ease;
-		display: flex;
-		flex-direction: column;
-	}
-
-	.card:hover {
-		border-color: var(--link-color);
-		box-shadow: var(--shadow-lg);
-		transform: translateY(-4px);
-	}
-
-	.card-icon {
-		width: 3.5rem;
-		height: 3.5rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--cta-primary);
-		border-radius: var(--radius-md);
-		margin-bottom: 1rem;
-		color: white;
-		box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-	}
-
-	.card-icon svg {
-		width: 2rem;
-		height: 2rem;
-	}
-
-	.card h3 {
-		font-size: 1.25rem;
-		margin-bottom: 0.75rem;
-		color: var(--text-primary);
-		font-weight: 600;
-	}
-
-	.card p {
-		color: var(--text-secondary);
-		margin-bottom: 1.5rem;
-		flex: 1;
-		line-height: 1.6;
-		font-size: 0.9375rem;
-	}
-
-	.card-link {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.5rem;
-		max-width: 100%;
-		color: var(--text-primary);
-		text-decoration: none;
-		font-weight: 600;
-		font-size: 0.875rem;
-		transition: all 0.2s ease;
-		padding: 0.625rem 1.25rem;
-		border-radius: var(--radius-md);
-		border: 1px solid var(--border-color);
-		background: var(--bg-card);
-		box-sizing: border-box;
+		font-size: 0.8rem;
 		white-space: nowrap;
 	}
 
-	.card-link .arrow {
-		width: 1.25rem;
-		height: 1.25rem;
-		transition: transform 0.2s ease;
-	}
-
-	.card-link:hover {
-		color: white;
-		background: var(--cta-primary);
-		border-color: var(--cta-primary);
-	}
-
-	.card-link:hover .arrow {
-		transform: translateX(4px);
-	}
-
-
-	/* 信任標示區 - Dark Professional */
-	.trust {
-		background: var(--bg-section);
-		border-top: 1px solid var(--border-light);
-		border-bottom: 1px solid var(--border-light);
-	}
-
-	.trust-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 1.5rem;
-		width: 100%;
-	}
-
-	.trust-item {
-		text-align: center;
-		padding: 2rem;
-		background: var(--bg-card);
-		border-radius: var(--radius-lg);
-		border: 1px solid var(--border-color);
-		box-shadow: var(--shadow-md);
-		transition: all 0.3s ease;
-	}
-
-	.trust-item:hover {
-		box-shadow: var(--shadow-lg);
-		transform: translateY(-4px);
-		border-color: var(--cta-success);
-	}
-
-	.trust-icon {
-		width: 4rem;
-		height: 4rem;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		background: var(--cta-success);
-		border-radius: var(--radius-md);
-		margin-bottom: 1rem;
-		color: white;
-		box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-	}
-
-	.trust-icon svg {
-		width: 2.5rem;
-		height: 2.5rem;
-	}
-
-	.trust-item h3 {
-		font-size: 1.25rem;
-		margin-bottom: 1rem;
-		color: var(--text-primary);
-		font-weight: 600;
-	}
-
-	.trust-item p {
-		color: var(--text-secondary);
-		line-height: 1.75;
-		font-size: 0.9375rem;
-	}
-
-	/* 進一步探索區 - 融合型設計 */
-	.explore-section {
-		background: var(--bg-section);
-		position: relative;
-		border-top: 1px solid var(--border-light);
-	}
-
-	.explore-section .section-title {
-		text-align: center;
-		margin-bottom: 0.75rem;
-		font-size: 2rem;
-		font-weight: 700;
-	}
-
-	.section-subtitle {
-		text-align: center;
-		font-size: 1.125rem;
-		color: var(--text-secondary);
-		margin-bottom: 3rem;
-		font-weight: 400;
-		opacity: 0.85;
-	}
-
-	.explore-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 1.5rem;
-		width: 100%;
-	}
-
-	.explore-card {
-		position: relative;
-		background: var(--bg-card);
-		backdrop-filter: blur(10px);
-		padding: 2rem;
-		border-radius: var(--radius-lg);
-		border: 1px solid var(--border-color);
-		box-shadow: var(--shadow-md);
-		transition: all 0.3s ease;
-	}
-
-	.explore-card:hover {
-		transform: translateY(-6px);
-		box-shadow: var(--shadow-lg);
-		border-color: var(--cta-primary);
-	}
-
-	.explore-icon {
-		width: 4rem;
-		height: 4rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		background: linear-gradient(135deg, var(--cta-primary), var(--cta-hover));
-		border-radius: var(--radius-lg);
-		margin-bottom: 1.5rem;
-		color: white;
-		box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
-	}
-
-	.explore-icon svg {
-		width: 2rem;
-		height: 2rem;
-	}
-
-	.explore-card h3 {
-		font-size: 1.375rem;
-		font-weight: 600;
-		color: var(--text-primary);
-		margin-bottom: 1rem;
-	}
-
-	.explore-card p {
-		color: var(--text-secondary);
-		line-height: 1.6;
-		margin-bottom: 2rem;
-		flex: 1;
-		font-size: 0.9375rem;
-	}
-
-	.explore-btn {
+	/* ── Buttons ── */
+	.btn {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
 		padding: 0.875rem 2rem;
-		background: transparent;
-		border: 2px solid var(--cta-primary);
-		color: var(--cta-primary);
-		border-radius: var(--radius-md);
+		border-radius: 0.5rem;
 		text-decoration: none;
 		font-weight: 600;
-		font-size: 1rem;
+		font-size: 0.9375rem;
 		transition: all 0.2s ease;
+		border: 2px solid transparent;
 	}
 
-	.explore-btn:hover {
-		background: var(--cta-primary);
+	.btn-primary {
+		background: #3b82f6;
 		color: white;
+		box-shadow: 0 4px 20px rgba(59,130,246,0.35);
+	}
+
+	.btn-primary:hover {
+		background: #2563eb;
 		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+		box-shadow: 0 8px 28px rgba(59,130,246,0.45);
 	}
 
-	.explore-btn svg {
-		width: 1.125rem;
-		height: 1.125rem;
-		transition: transform 0.2s ease;
+	.btn-secondary {
+		background: transparent;
+		color: var(--text-primary);
+		border-color: var(--border-color);
 	}
 
-	.explore-btn:hover svg {
-		transform: translateX(4px);
+	.btn-secondary:hover {
+		border-color: #3b82f6;
+		color: #3b82f6;
 	}
 
-	/* 響應式設計 */
+	.btn-ghost {
+		background: transparent;
+		color: var(--text-secondary);
+		border-color: transparent;
+	}
+
+	.btn-ghost:hover {
+		color: var(--text-primary);
+		background: rgba(255,255,255,0.05);
+	}
+
+	.btn-outline {
+		display: inline-block;
+		padding: 0.75rem 1.75rem;
+		border: 1.5px solid rgba(59,130,246,0.5);
+		color: #60a5fa;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.9rem;
+		transition: all 0.2s;
+	}
+
+	.btn-outline:hover {
+		background: rgba(59,130,246,0.1);
+	}
+
+	/* ── Section shared ── */
+	.section {
+		padding: 5rem 0;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
+	}
+
+	.section-title {
+		text-align: center;
+		font-size: clamp(1.75rem, 3vw, 2.5rem);
+		font-weight: 700;
+		letter-spacing: -0.02em;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+	}
+
+	.section-subtitle {
+		text-align: center;
+		color: var(--text-secondary);
+		font-size: 1.0625rem;
+		line-height: 1.65;
+		max-width: 640px;
+		margin: 0 auto 3rem;
+	}
+
+	/* ── Core Values ── */
+	.core-values {
+		background: var(--bg-section);
+		border-top: 1px solid var(--border-light);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.core-values .section-title {
+		margin-bottom: 3rem;
+	}
+
+	.values-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.value-card {
+		padding: 2.5rem 2rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		transition: all 0.3s;
+	}
+
+	.value-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+		border-color: rgba(59,130,246,0.4);
+	}
+
+	.value-featured {
+		border-color: rgba(59,130,246,0.5);
+		background: linear-gradient(135deg, var(--bg-card), rgba(59,130,246,0.05));
+	}
+
+	.value-icon-wrap {
+		width: 3.5rem;
+		height: 3.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, #3b82f6, #2563eb);
+		border-radius: 0.75rem;
+		margin-bottom: 1.25rem;
+		color: white;
+	}
+
+	.value-icon-wrap svg {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+
+	.value-card h3 {
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.375rem;
+	}
+
+	.value-subtitle {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: #3b82f6;
+		margin-bottom: 0.75rem;
+	}
+
+	.value-desc {
+		color: var(--text-secondary);
+		line-height: 1.65;
+		font-size: 0.9375rem;
+	}
+
+	/* ── Modules ── */
+	.modules-section .section-title {
+		margin-bottom: 0.75rem;
+	}
+
+	.modules-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.25rem;
+		margin-top: 3rem;
+	}
+
+	.module-card {
+		padding: 1.75rem 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.875rem;
+		transition: all 0.25s;
+	}
+
+	.module-card:hover {
+		border-color: rgba(59,130,246,0.4);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+	}
+
+	.module-icon {
+		font-size: 1.75rem;
+		width: 3rem;
+		height: 3rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0.625rem;
+		margin-bottom: 1rem;
+	}
+
+	.module-card h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.5rem;
+	}
+
+	.module-card p {
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+
+	.modules-cta {
+		text-align: center;
+		margin-top: 2.5rem;
+	}
+
+	/* ── Deployment ── */
+	.deploy-section {
+		background: var(--bg-section);
+		border-top: 1px solid var(--border-light);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.deploy-section .section-title {
+		margin-bottom: 3rem;
+	}
+
+	.deploy-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.25rem;
+	}
+
+	.deploy-card {
+		position: relative;
+		padding: 2rem 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.875rem;
+		transition: all 0.25s;
+	}
+
+	.deploy-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+	}
+
+	.deploy-featured {
+		border-color: #3b82f6;
+		background: linear-gradient(135deg, var(--bg-card), rgba(59,130,246,0.07));
+	}
+
+	.deploy-badge {
+		position: absolute;
+		top: -0.75rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background: #3b82f6;
+		color: white;
+		font-size: 0.7rem;
+		font-weight: 700;
+		padding: 0.2rem 0.75rem;
+		border-radius: 9999px;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		white-space: nowrap;
+	}
+
+	.deploy-icon {
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	.deploy-card h3 {
+		font-size: 1.0625rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.375rem;
+	}
+
+	.deploy-badge-text {
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: #3b82f6;
+		margin-bottom: 0.625rem;
+	}
+
+	.deploy-card p:last-child {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.deploy-link {
+		text-align: center;
+		margin-top: 2.5rem;
+	}
+
+	.deploy-link a {
+		color: #60a5fa;
+		text-decoration: none;
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+
+	.deploy-link a:hover {
+		text-decoration: underline;
+	}
+
+	/* ── Industries ── */
+	.industries-section .section-title {
+		margin-bottom: 3rem;
+	}
+
+	.industry-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.25rem;
+	}
+
+	.industry-card {
+		padding: 2rem 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.875rem;
+		transition: all 0.25s;
+		text-align: center;
+	}
+
+	.industry-card:hover {
+		border-color: rgba(16,185,129,0.4);
+		transform: translateY(-3px);
+		box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+	}
+
+	.industry-icon {
+		font-size: 2.25rem;
+		margin-bottom: 1rem;
+	}
+
+	.industry-card h3 {
+		font-size: 1.0625rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.625rem;
+	}
+
+	.industry-card p {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+	}
+
+	/* ── Trust ── */
+	.trust-section {
+		background: var(--bg-section);
+		border-top: 1px solid var(--border-light);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.trust-section .section-title {
+		margin-bottom: 3rem;
+	}
+
+	.trust-legal {
+		text-align: center;
+		margin-top: 2rem;
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+	}
+
+	.trust-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.trust-card {
+		padding: 2rem;
+		background: var(--bg-card);
+		border: 1px solid rgba(16,185,129,0.25);
+		border-radius: 1rem;
+		border-left: 3px solid #10b981;
+	}
+
+	.trust-card h3 {
+		font-size: 1.125rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+
+	.trust-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.65;
+	}
+
+	/* ── Competitor ── */
+	.competitor-section {
+		background: var(--bg-section);
+		border-top: 1px solid var(--border-light);
+		border-bottom: 1px solid var(--border-light);
+		text-align: center;
+	}
+	.competitor-summary {
+		font-size: 1.125rem;
+		color: var(--text-primary);
+		max-width: 640px;
+		margin: 0 auto 1rem;
+		line-height: 1.65;
+		font-weight: 500;
+	}
+	.competitor-footnote {
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		margin-bottom: 2rem;
+		font-style: italic;
+	}
+
+	/* ── Trial banner ── */
+	.trial-banner { border-bottom: 1px solid var(--border-light); }
+	.trial-box {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+		padding: 3rem;
+		background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(59,130,246,0.08));
+		border: 1px solid rgba(16,185,129,0.3);
+		border-radius: 1.25rem;
+		flex-wrap: wrap;
+	}
+	.trial-content h2 {
+		font-size: 1.5rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+	.trial-content p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 0.5rem; max-width: 520px; }
+	.trial-credit-line { font-size: 0.85rem !important; color: #60a5fa !important; font-weight: 600; }
+	.btn-trial { white-space: nowrap; flex-shrink: 0; }
+
+	/* ── Final CTA ── */
+	.final-cta .cta-box {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(16,185,129,0.05));
+		border: 1px solid rgba(59,130,246,0.3);
+		border-radius: 1.5rem;
+	}
+
+	.final-cta h2 {
+		font-size: clamp(1.75rem, 3vw, 2.5rem);
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+		letter-spacing: -0.02em;
+	}
+
+	.final-cta p {
+		color: var(--text-secondary);
+		font-size: 1.0625rem;
+		margin-bottom: 2.5rem;
+		max-width: 560px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.cta-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	/* ── Responsive ── */
+	@media (max-width: 1024px) {
+		.modules-grid { grid-template-columns: repeat(2, 1fr); }
+		.deploy-grid { grid-template-columns: repeat(2, 1fr); }
+		.industry-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+
 	@media (max-width: 768px) {
-		.hero {
-			padding: 0.5rem 0 2.5rem;
-		}
-
-		.hero h1 {
-			font-size: 2rem;
-		}
-
-		.hero-subtitle {
-			font-size: 1rem;
-		}
-
-		.section {
-			padding: 3rem 0;
-		}
-
-		.section-title {
-			font-size: 1.75rem;
-			margin-bottom: 2rem;
-		}
-
-		.section-subtitle {
-			font-size: 1rem;
-			margin-bottom: 2rem;
-		}
-
-		.process-grid,
-		.cards-grid,
-		.trust-grid,
-		.explore-grid {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
-		}
-
-		.hero-cta {
-			flex-direction: column;
-			align-items: stretch;
-		}
-
-		.btn {
-			width: 100%;
-			text-align: center;
-		}
-
-		.explore-card {
-			padding: 2rem 1.5rem;
-		}
-
-		.explore-card h3 {
-			font-size: 1.25rem;
-		}
+		.hero { padding: 5rem 0 3.5rem; }
+		.values-grid { grid-template-columns: 1fr; }
+		.modules-grid { grid-template-columns: 1fr; }
+		.deploy-grid { grid-template-columns: 1fr; }
+		.industry-grid { grid-template-columns: 1fr; }
+		.trust-grid { grid-template-columns: 1fr; }
+		.hero-cta, .cta-buttons { flex-direction: column; align-items: center; }
+		.trial-box { flex-direction: column; text-align: center; }
+		.trial-content p { max-width: none; }
+		.section { padding: 3.5rem 0; }
 	}
 </style>

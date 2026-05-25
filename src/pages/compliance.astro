@@ -1,0 +1,349 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
+
+const categories = [
+	{
+		catKey: 'cat1',
+		color: '#3b82f6',
+		frameworks: ['ISO 27001', 'NIST CSF', 'SOC 2 Type II', 'FIPS 140-2'],
+	},
+	{
+		catKey: 'cat2',
+		color: '#f59e0b',
+		frameworks: ['PCI-DSS v4', 'SOX', 'DORA', 'Basel III (tech risk)'],
+	},
+	{
+		catKey: 'cat3',
+		color: '#10b981',
+		frameworks: ['GDPR', 'HIPAA', 'CCPA / CPRA', t('pages.compliance.fwTwPdpa')],
+	},
+	{
+		catKey: 'cat4',
+		color: '#ef4444',
+		frameworks: ['OWASP Top 10', 'CMMC 2.0', 'SLSA', 'CIS Controls'],
+	},
+	{
+		catKey: 'cat5',
+		color: '#8b5cf6',
+		frameworks: ['APPI (Japan)', 'ISMAP (Japan)', 'K-ISMS (Korea)', 'PIPA (Korea)'],
+	},
+	{
+		catKey: 'cat6',
+		color: '#06b6d4',
+		frameworks: ['COBIT 2019', 'ITIL v4', 'TOGAF', 'ISO 38500'],
+	},
+];
+
+const reportContents = [
+	{ key: 'r1', icon: '📊' },
+	{ key: 'r2', icon: '🔍' },
+	{ key: 'r3', icon: '📋' },
+	{ key: 'r4', icon: '⚖️' },
+	{ key: 'r5', icon: '📤' },
+];
+---
+
+<Layout title={t('pages.compliance.title')} description={t('pages.compliance.description')}>
+	<!-- Hero -->
+	<section class="page-hero">
+		<div class="container">
+			<div class="hero-eyebrow">
+				<a href={getLocalizedPath('/', lang)}>ForgeHelm</a>
+				<span>›</span>
+				<a href={getLocalizedPath('/product', lang)}>{t('nav.product')}</a>
+				<span>›</span>
+				<span>{t('common.learnCompliance')}</span>
+			</div>
+			<h1>{t('pages.compliance.heroTitle')}</h1>
+			<p class="hero-sub">{t('pages.compliance.heroSubtitle')}</p>
+		</div>
+	</section>
+
+	<!-- Frameworks Grid -->
+	<section class="section frameworks-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.compliance.frameworksTitle')}</h2>
+			<div class="categories-grid">
+				{categories.map(({ catKey, color, frameworks }) => (
+					<div class="category-card" style={`--cat-color: ${color};`}>
+						<h3>{t(`pages.compliance.${catKey}`)}</h3>
+						<ul>
+							{frameworks.map(fw => (
+								<li>
+									<span class="fw-dot" style={`background: ${color};`}></span>
+									{fw}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+			<p class="frameworks-note">{t('pages.compliance.frameworksNote')}</p>
+		</div>
+	</section>
+
+	<!-- What's In a Report -->
+	<section class="section report-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.compliance.reportTitle')}</h2>
+			<div class="report-grid">
+				{reportContents.map(({ key, icon }) => (
+					<div class="report-card">
+						<span class="report-icon">{icon}</span>
+						<p>{t(`pages.compliance.${key}`)}</p>
+					</div>
+				))}
+			</div>
+			<div class="report-export">
+				<h3>{t('pages.compliance.exportFormatsTitle')}</h3>
+				<div class="format-tags">
+					{['PDF', 'Excel', 'CSV', 'Word'].map(f => (
+						<span class="format-tag">{f}</span>
+					))}
+					<span class="format-tag lang-tag">🌐 {t('pages.compliance.exportLangs')}</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="section cta-section">
+		<div class="container">
+			<div class="cta-box">
+				<h2>{t('pages.compliance.ctaTitle')}</h2>
+				<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">{t('pages.compliance.ctaButton')}</a>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.page-hero {
+		padding: 8rem 0 4rem;
+		background: var(--bg-main);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.hero-eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.25rem;
+	}
+
+	.hero-eyebrow a { color: #3b82f6; text-decoration: none; font-weight: 600; }
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+		max-width: 700px;
+	}
+
+	.hero-sub {
+		font-size: 1.0625rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		max-width: 660px;
+	}
+
+	.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+	.section { padding: 5rem 0; }
+
+	.section-title {
+		font-size: clamp(1.75rem, 3vw, 2.25rem);
+		font-weight: 700;
+		color: var(--text-primary);
+		text-align: center;
+		margin-bottom: 3rem;
+		letter-spacing: -0.02em;
+	}
+
+	/* Frameworks */
+	.frameworks-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.categories-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.25rem;
+	}
+
+	.category-card {
+		padding: 1.75rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-top: 3px solid var(--cat-color, #3b82f6);
+		border-radius: 0.875rem;
+	}
+
+	.category-card h3 {
+		font-size: 0.85rem;
+		font-weight: 700;
+		color: var(--cat-color, #3b82f6);
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin-bottom: 1rem;
+	}
+
+	.category-card ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.category-card li {
+		display: flex;
+		align-items: center;
+		gap: 0.625rem;
+		font-size: 0.9rem;
+		color: var(--text-primary);
+		font-weight: 500;
+	}
+
+	.fw-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+
+	.frameworks-note {
+		text-align: center;
+		font-size: 0.825rem;
+		color: var(--text-secondary);
+		font-style: italic;
+		margin-top: 2rem;
+	}
+
+	/* Report */
+	.report-section { border-bottom: 1px solid var(--border-light); }
+
+	.report-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		max-width: 760px;
+		margin: 0 auto 3rem;
+	}
+
+	.report-card {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1.25rem 1.5rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+	}
+
+	.report-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+	.report-card p {
+		font-size: 0.9375rem;
+		color: var(--text-primary);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.report-export {
+		text-align: center;
+	}
+
+	.report-export h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+	}
+
+	.format-tags {
+		display: flex;
+		gap: 0.625rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.format-tag {
+		padding: 0.375rem 1rem;
+		background: rgba(255,255,255,0.05);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		font-family: monospace;
+	}
+
+	.lang-tag {
+		font-family: inherit;
+		font-size: 0.8rem;
+		font-weight: 500;
+		color: var(--text-secondary);
+		border-color: rgba(59,130,246,0.3);
+		background: rgba(59,130,246,0.05);
+	}
+
+	/* CTA */
+	.cta-section .cta-box {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(16,185,129,0.05));
+		border: 1px solid rgba(59,130,246,0.3);
+		border-radius: 1.5rem;
+	}
+
+	.cta-section h2 {
+		font-size: 2rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		margin-bottom: 2rem;
+		letter-spacing: -0.02em;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 0.875rem 2rem;
+		border-radius: 0.5rem;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		transition: all 0.2s;
+	}
+
+	.btn-primary { background: #3b82f6; color: white; }
+	.btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+
+	@media (max-width: 1024px) {
+		.categories-grid { grid-template-columns: repeat(2, 1fr); }
+	}
+
+	@media (max-width: 768px) {
+		.page-hero { padding: 6rem 0 3rem; }
+		.categories-grid { grid-template-columns: 1fr; }
+	}
+</style>
