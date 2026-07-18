@@ -153,8 +153,8 @@
         "description": "角色型存取控制，租戶間完全邏輯隔離。每項關鍵操作均留有不可竄改的稽核日誌。"
       },
       "item3": {
-        "title": "五語系支援",
-        "description": "介面與合規報告支援繁體中文、英文、日文及德文。"
+        "title": "介面四語系＋報告五語系",
+        "description": "官網介面支援繁體中文、英文、日文與德文；合規報告可輸出五語系，含簡體中文。"
       }
     },
     "cta": {
@@ -397,7 +397,7 @@
       "ctaButton": "預約 Demo",
       "frameworksNote": "* ForgeHelm 在單次掃描中將您的程式碼庫對應至 20+ 框架。Enterprise 方案支援客製框架規則。",
       "exportFormatsTitle": "匯出格式",
-      "exportLangs": "EN / 繁中 / 日本語 / Deutsch（報告輸出支援五語系）",
+      "exportLangs": "EN / 繁中 / 日本語 / Deutsch / 簡體中文（報告輸出五語系）",
       "fwTwPdpa": "臺灣個資法"
     },
     "useCases": {
@@ -473,6 +473,7 @@
       "planProDesc": "混合部署含內網分析代理（Agent）。完整框架覆蓋與 AI 助理（ChatBot）。",
       "planEnterprise": "企業版（Enterprise）",
       "planEnterpriseDesc": "完整內網或實體隔離（Air-gapped）部署。客製規則、私有 AI 模型、專屬服務等級協議（SLA）。",
+      "tierBasisNote": "各方案主要依部署模式（SaaS／混合／實體隔離）、席位數與支援等級（SLA 及回應時間）分級，而非以功能鎖區隔。模組如何對應您的環境，歡迎洽詢。",
       "mostPopular": "最受歡迎",
       "platformFee": "平台費",
       "platformFeeNote": "內網分析代理（Agent）部署需支付年度平台費",
@@ -582,7 +583,7 @@
       "compareRulesCore": "✗",
       "compareRulesPro": "✗",
       "compareRulesEnt": "✓",
-      "compareSso": "單一登入（SSO）／稽核匯出",
+      "compareSso": "稽核匯出＋單一登入（SSO，規劃中）",
       "compareSsoCore": "✗",
       "compareSsoPro": "✓",
       "compareSsoEnt": "✓",
@@ -593,7 +594,7 @@
       "customQuote": "議價",
       "planCoreF1": "純軟體即服務（SaaS）雲端部署",
       "planCoreF2": "OWASP Top 10 + 基礎合規模組",
-      "planCoreF3": "合規摘要、SBOM、8 軸風險指紋",
+      "planCoreF3": "合規摘要 + 8 軸風險指紋",
       "planCoreF4": "治理儀表板",
       "planCoreF5": "有限 FAQ + 基礎 RAG",
       "planCoreF6": "無平台費",
@@ -608,7 +609,7 @@
       "planProF6": "99.5% 服務等級（SLA）、4 小時回應",
       "planEntF1": "全內網／實體隔離（Air-gapped）",
       "planEntF2": "自備授權與 AI 部署套件（BYOL + AI Deployment Kit，支援 Ollama／vLLM）",
-      "planEntF3": "客製規則＋單一登入（SSO／SAML）＋資安事件管理（SIEM）",
+      "planEntF3": "客製規則＋SSO／SAML（規劃中）＋資安事件管理（SIEM）",
       "planEntF4": "私有 AI＋專屬服務等級（SLA）",
       "planEntF5": "財務維運（FinOps）用量匯出（CSV／API）"
     },

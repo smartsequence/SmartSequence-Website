@@ -153,8 +153,8 @@
         "description": "Role-based access control with full logical isolation between tenants. Immutable audit logs for every critical operation."
       },
       "item3": {
-        "title": "5-Language Support",
-        "description": "UI and compliance reports in English, Traditional Chinese, Japanese, and German."
+        "title": "4-Language UI + 5-Language Reports",
+        "description": "Website UI in English, Traditional Chinese, Japanese, and German. Compliance reports export in five languages, including Simplified Chinese."
       }
     },
     "cta": {
@@ -397,7 +397,7 @@
       "ctaButton": "Schedule Demo",
       "frameworksNote": "* ForgeHelm maps your codebase against 20+ frameworks in a single scan. Custom framework rules available on Enterprise plan.",
       "exportFormatsTitle": "Export Formats",
-      "exportLangs": "EN / Traditional Chinese / Japanese / German (report output supports five languages)",
+      "exportLangs": "EN / Traditional Chinese / Japanese / German / Simplified Chinese (five report output languages)",
       "fwTwPdpa": "TW-PDPA"
     },
     "useCases": {
@@ -473,6 +473,7 @@
       "planProDesc": "Hybrid deployment with on-premises Agent. Full framework coverage and AI ChatBot.",
       "planEnterprise": "Enterprise",
       "planEnterpriseDesc": "Full on-premises or air-gapped. Custom rules, private AI model, dedicated SLA.",
+      "tierBasisNote": "Plans are tiered primarily by deployment mode (SaaS / hybrid / air-gapped), seat count, and support level (SLA and response time) — not by feature locks. Talk to us to match modules to your environment.",
       "mostPopular": "Most Popular",
       "platformFee": "Platform fee",
       "platformFeeNote": "Annual platform fee applies for on-premises Agent deployment",
@@ -582,7 +583,7 @@
       "compareRulesCore": "✗",
       "compareRulesPro": "✗",
       "compareRulesEnt": "✓",
-      "compareSso": "SSO & audit export",
+      "compareSso": "Audit export + SSO (roadmap)",
       "compareSsoCore": "✗",
       "compareSsoPro": "✓",
       "compareSsoEnt": "✓",
@@ -593,7 +594,7 @@
       "customQuote": "Custom",
       "planCoreF1": "Pure SaaS cloud deployment",
       "planCoreF2": "OWASP Top 10 + core compliance modules",
-      "planCoreF3": "Compliance summary, SBOM, 8-axis fingerprint",
+      "planCoreF3": "Compliance summary + 8-axis fingerprint",
       "planCoreF4": "Governance dashboard",
       "planCoreF5": "Limited FAQ + basic RAG",
       "planCoreF6": "No platform fee",
@@ -608,7 +609,7 @@
       "planProF6": "99.5% SLA, 4-hour response",
       "planEntF1": "Full on-premises / air-gapped",
       "planEntF2": "BYOL + AI Deployment Kit (Ollama/vLLM)",
-      "planEntF3": "Custom rules + SSO/SAML + SIEM",
+      "planEntF3": "Custom rules + SSO/SAML (roadmap) + SIEM",
       "planEntF4": "Private AI + dedicated SLA",
       "planEntF5": "FinOps export (CSV/API)"
     },

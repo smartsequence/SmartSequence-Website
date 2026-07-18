@@ -214,6 +214,7 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 					</tbody>
 				</table>
 			</div>
+			<p class="tier-note">{t('pages.pricing.tierBasisNote')}</p>
 		</div>
 	</section>
 
@@ -383,6 +384,15 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 		border: 1px solid var(--border-color);
 		padding: 0.4rem 0.875rem;
 		border-radius: 9999px;
+	}
+
+	.tier-note {
+		margin: 1rem auto 0;
+		max-width: 760px;
+		font-size: 0.875rem;
+		line-height: 1.6;
+		color: var(--text-secondary);
+		text-align: center;
 	}
 
 	.container {

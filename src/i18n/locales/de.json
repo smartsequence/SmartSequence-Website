@@ -154,7 +154,7 @@
       },
       "item3": {
         "title": "4 Sprachen UI + 5 Sprachen Berichte",
-        "description": "Website-UI auf EN, Traditionellem Chinesisch, Japanisch und Deutsch. Berichte in fünf Sprachen."
+        "description": "Website-UI auf EN, Traditionellem Chinesisch, Japanisch und Deutsch. Berichte in fünf Sprachen, inklusive Vereinfachtem Chinesisch."
       }
     },
     "cta": {
@@ -397,7 +397,7 @@
       "ctaButton": "Demo anfragen",
       "frameworksNote": "* ForgeHelm mappt Ihre Codebasis in einem Scan auf 20+ Frameworks. Individuelle Regeln im Enterprise-Plan.",
       "exportFormatsTitle": "Exportformate",
-      "exportLangs": "EN / Traditionelles Chinesisch / Japanisch / Deutsch (Berichte in fünf Sprachen)",
+      "exportLangs": "EN / Traditionelles Chinesisch / Japanisch / Deutsch / Vereinfachtes Chinesisch (fünf Berichtssprachen)",
       "fwTwPdpa": "Taiwan PDPA (TW-PDPA)"
     },
     "useCases": {
@@ -473,6 +473,7 @@
       "planProDesc": "Hybrid mit On-Premises-Agent. Volle Frameworks und AI ChatBot.",
       "planEnterprise": "Enterprise",
       "planEnterpriseDesc": "Vollständig On-Prem oder Air-Gapped. Individuelle Regeln, private KI, dediziertes SLA.",
+      "tierBasisNote": "Die Pläne unterscheiden sich vor allem nach Bereitstellungsmodell (SaaS / Hybrid / Air-Gapped), Sitzplatzanzahl und Support-Level (SLA und Reaktionszeit) — nicht durch Funktionssperren. Sprechen Sie uns an, um die Module auf Ihre Umgebung abzustimmen.",
       "mostPopular": "Am beliebtesten",
       "platformFee": "Plattformgebühr",
       "platformFeeNote": "Jährliche Plattformgebühr für On-Premises-Agent",
@@ -582,7 +583,7 @@
       "compareRulesCore": "✗",
       "compareRulesPro": "✗",
       "compareRulesEnt": "✓",
-      "compareSso": "SSO & Audit-Export",
+      "compareSso": "Audit-Export + SSO (geplant)",
       "compareSsoCore": "✗",
       "compareSsoPro": "✓",
       "compareSsoEnt": "✓",
@@ -593,7 +594,7 @@
       "customQuote": "Individuell",
       "planCoreF1": "Reines Cloud-SaaS",
       "planCoreF2": "OWASP Top 10 + Kern-Compliance",
-      "planCoreF3": "Compliance-Zusammenfassung, SBOM, 8-Achsen-Fingerabdruck",
+      "planCoreF3": "Compliance-Zusammenfassung + 8-Achsen-Fingerabdruck",
       "planCoreF4": "Governance-Dashboard",
       "planCoreF5": "Begrenztes FAQ + Basis-RAG",
       "planCoreF6": "Keine Plattformgebühr",
@@ -608,7 +609,7 @@
       "planProF6": "SLA 99,5 %, Antwort innerhalb von 4 Stunden",
       "planEntF1": "Vollständig On-Prem / Air-Gapped",
       "planEntF2": "BYOL + KI-Deployment-Kit (Ollama/vLLM)",
-      "planEntF3": "Individuelle Regeln + SSO/SAML + SIEM",
+      "planEntF3": "Individuelle Regeln + SSO/SAML (geplant) + SIEM",
       "planEntF4": "Private KI + dediziertes SLA",
       "planEntF5": "FinOps-Export (CSV/API)"
     },

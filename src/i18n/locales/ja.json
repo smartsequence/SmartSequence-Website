@@ -154,7 +154,7 @@
       },
       "item3": {
         "title": "4 言語 UI + 5 言語レポート",
-        "description": "サイト UI は英語・繁体字中国語・日本語・ドイツ語。レポートは 5 言語で出力可能。"
+        "description": "サイト UI は英語・繁体字中国語・日本語・ドイツ語。レポートは簡体字中国語を含む 5 言語で出力可能。"
       }
     },
     "cta": {
@@ -397,7 +397,7 @@
       "ctaButton": "デモを予約",
       "frameworksNote": "※ ForgeHelm は 1 回のスキャンで 20+ フレームワークにマッピング。Enterprise でカスタムルール対応。",
       "exportFormatsTitle": "エクスポート形式",
-      "exportLangs": "EN / 繁体字中国語 / 日本語 / Deutsch（レポートは 5 言語出力）",
+      "exportLangs": "EN / 繁体字中国語 / 日本語 / Deutsch / 簡体字中国語（レポートは 5 言語出力）",
       "fwTwPdpa": "台湾個人情報保護法（TW-PDPA）"
     },
     "useCases": {
@@ -473,6 +473,7 @@
       "planProDesc": "オンプレ Agent 付きハイブリッド。フルフレームワークと AI ChatBot。",
       "planEnterprise": "Enterprise",
       "planEnterpriseDesc": "フルオンプレまたはエアギャップ。カスタムルール、プライベート AI、専用 SLA。",
+      "tierBasisNote": "プランは主に導入形態（SaaS／ハイブリッド／エアギャップ）、シート数、サポート水準（SLA・応答時間）で区分され、機能ロックによる区別ではありません。環境に応じたモジュール構成はお問い合わせください。",
       "mostPopular": "人気 No.1",
       "platformFee": "プラットフォーム料",
       "platformFeeNote": "オンプレ Agent 展開には年間プラットフォーム料が適用",
@@ -582,7 +583,7 @@
       "compareRulesCore": "✗",
       "compareRulesPro": "✗",
       "compareRulesEnt": "✓",
-      "compareSso": "SSO / 監査エクスポート",
+      "compareSso": "監査エクスポート + SSO（ロードマップ）",
       "compareSsoCore": "✗",
       "compareSsoPro": "✓",
       "compareSsoEnt": "✓",
@@ -593,7 +594,7 @@
       "customQuote": "要見積",
       "planCoreF1": "純粋なクラウド SaaS",
       "planCoreF2": "OWASP Top 10 + 基本コンプライアンス",
-      "planCoreF3": "コンプライアンス要約、SBOM、8 軸フィンガープリント",
+      "planCoreF3": "コンプライアンス要約 + 8 軸フィンガープリント",
       "planCoreF4": "ガバナンスダッシュボード",
       "planCoreF5": "限定 FAQ + 基本 RAG",
       "planCoreF6": "プラットフォーム料なし",
@@ -608,7 +609,7 @@
       "planProF6": "SLA 99.5%、4 時間以内応答",
       "planEntF1": "フルオンプレ / エアギャップ",
       "planEntF2": "BYOL + AI Deployment Kit（Ollama/vLLM）",
-      "planEntF3": "カスタムルール + SSO/SAML + SIEM",
+      "planEntF3": "カスタムルール + SSO/SAML（ロードマップ）+ SIEM",
       "planEntF4": "プライベート AI + 専用 SLA",
       "planEntF5": "FinOps エクスポート（CSV/API）"
     },
