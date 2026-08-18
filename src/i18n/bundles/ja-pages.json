@@ -70,7 +70,7 @@
       "finopsAdmin": "管理者",
       "finopsAdminDesc": "シート利用率、利用サマリー、トレンド",
       "finopsEnterprise": "Enterprise",
-      "finopsEnterpriseDesc": "CSV/API エクスポート、部門別チャージバック"
+      "finopsEnterpriseDesc": "会計レビュー向け監査ログエクスポート（CSV/API）"
     },
     "architecture": {
       "title": "アーキテクチャ | ForgeHelm — ハイブリッド展開",
@@ -109,7 +109,7 @@
       "r2": "不適合所見とファイル・行番号の紐付け",
       "r3": "リスクスコア付き改善提案の優先順位",
       "r4": "ISO 31000、NIST RMF、ISO 27005 に基づくリスク要約",
-      "r5": "PDF、Excel、CSV、Word を 5 言語でエクスポート",
+      "r5": "PDF、Excel、CSV、Word を 6 言語でエクスポート",
       "ctaTitle": "フレームワークカバレッジのデモを依頼",
       "ctaButton": "デモを予約"
     },
@@ -126,9 +126,9 @@
       "heroSubtitle": "3 プラン、5 通貨、年払いとボリューム割引。Enterprise はオンプレ Agent 向けプラットフォーム年額あり。",
       "billedAnnually": "年払い（月額換算表示）",
       "perSeat": "/ シート / 月",
-      "planCoreDesc": "クラウドのみの SaaS。基礎コンプライアンスモジュール。",
-      "planProDesc": "オンプレ Agent 付きハイブリッド。フルフレームワークと AI ChatBot。",
-      "planEnterpriseDesc": "フルオンプレまたはエアギャップ。カスタムルール、プライベート AI、専用 SLA。",
+      "planCoreDesc": "クラウドのみの SaaS。全 24 コンプライアンスフレームワーク、月次クォータ制。",
+      "planProDesc": "オンプレ Agent 付きハイブリッド。分析と AI ChatBot は無制限。",
+      "planEnterpriseDesc": "フルオンプレまたはエアギャップ。プライベート AI オプション、専用 SLA。",
       "mostPopular": "人気 No.1",
       "platformFee": "プラットフォーム料",
       "platformFeeNote": "オンプレ Agent 展開には年間プラットフォーム料が適用",

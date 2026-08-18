@@ -70,7 +70,7 @@
       "finopsAdmin": "Administratoren",
       "finopsAdminDesc": "Sitznutzung, Nutzungsübersicht, Trends",
       "finopsEnterprise": "Enterprise",
-      "finopsEnterpriseDesc": "CSV/API-Export, Abteilungs-Chargeback"
+      "finopsEnterpriseDesc": "Audit-Log-Export (CSV/API) für die Buchprüfung"
     },
     "architecture": {
       "title": "Architektur | ForgeHelm — Hybrid-Bereitstellung",
@@ -111,7 +111,7 @@
       "r2": "Abweichungen mit Datei- und Zeilenbezug",
       "r3": "Priorisierte Empfehlungen mit Risikobewertung",
       "r4": "Risikozusammenfassung nach ISO 31000, NIST RMF oder ISO 27005",
-      "r5": "Export als PDF, Excel, CSV oder Word in 5 Sprachen",
+      "r5": "Export als PDF, Excel, CSV oder Word in 6 Sprachen",
       "ctaTitle": "Framework-Abdeckungs-Demo anfragen",
       "ctaButton": "Demo anfragen"
     },
@@ -128,9 +128,9 @@
       "heroSubtitle": "Drei Pläne, fünf Währungen, Jahresabrechnung mit Mengenrabatt. Enterprise inkl. Plattformgebühr für On-Premises-Agent.",
       "billedAnnually": "Jährliche Abrechnung (Monatspreise angezeigt)",
       "perSeat": "/ Sitz / Monat",
-      "planCoreDesc": "Reines Cloud-SaaS. Grundlegende Compliance-Module.",
-      "planProDesc": "Hybrid mit On-Premises-Agent. Volle Frameworks und AI ChatBot.",
-      "planEnterpriseDesc": "Vollständig On-Prem oder Air-Gapped. Individuelle Regeln, private KI, dediziertes SLA.",
+      "planCoreDesc": "Reines Cloud-SaaS. Alle 24 Compliance-Frameworks mit monatlichen Kontingenten.",
+      "planProDesc": "Hybrid mit On-Premises-Agent. Unbegrenzte Analysen und AI ChatBot.",
+      "planEnterpriseDesc": "Vollständig On-Prem oder Air-Gapped. Private KI als Option, dediziertes SLA.",
       "mostPopular": "Am beliebtesten",
       "platformFee": "Plattformgebühr",
       "platformFeeNote": "Jährliche Plattformgebühr für On-Premises-Agent",
