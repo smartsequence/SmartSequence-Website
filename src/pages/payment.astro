@@ -1,0 +1,583 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { STUDIO_NAME, STUDIO_TAX_ID } from '../consts';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
+---
+
+<Layout title={t('pages.payment.title')} description={t('pages.payment.description')}>
+	<!-- Hero -->
+	<section class="page-hero">
+		<div class="container">
+			<div class="hero-eyebrow">
+				<a href={getLocalizedPath('/', lang)}>ForgeHelm</a>
+				<span>›</span>
+				<span>{t('pages.payment.heroTitle')}</span>
+			</div>
+			<h1>{t('pages.payment.heroTitle')}</h1>
+			<p class="hero-sub">{t('pages.payment.heroSubtitle')}</p>
+		</div>
+	</section>
+
+	<section class="section checkout-section">
+		<div class="container checkout-layout">
+
+			<!-- 結帳表單 -->
+			<div class="form-wrap">
+				<form class="checkout-form">
+
+					<!-- 付款方式 -->
+					<fieldset class="block">
+						<legend>{t('pages.payment.payTitle')}</legend>
+
+						<div class="choice-row">
+							<label class="choice">
+								<input type="radio" name="payMethod" value="card" checked />
+								<span>{t('pages.payment.payCard')}</span>
+							</label>
+							<label class="choice">
+								<input type="radio" name="payMethod" value="atm" />
+								<span>{t('pages.payment.payAtm')}</span>
+							</label>
+							<label class="choice">
+								<input type="radio" name="payMethod" value="transfer" />
+								<span>{t('pages.payment.payTransfer')}</span>
+							</label>
+						</div>
+
+						<div class="form-group full-width">
+							<label for="cardNumber">{t('pages.payment.cardNumberLabel')}</label>
+							<input type="text" id="cardNumber" name="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" />
+						</div>
+
+						<div class="form-row">
+							<div class="form-group">
+								<label for="cardName">{t('pages.payment.cardNameLabel')}</label>
+								<input type="text" id="cardName" name="cardName" autocomplete="cc-name" placeholder="WANG DA MING" />
+							</div>
+							<div class="form-group">
+								<label for="cardExpiry">{t('pages.payment.cardExpiryLabel')}</label>
+								<input type="text" id="cardExpiry" name="cardExpiry" autocomplete="cc-exp" placeholder="MM / YY" />
+							</div>
+							<div class="form-group">
+								<label for="cardCvc">{t('pages.payment.cardCvcLabel')}</label>
+								<input type="text" id="cardCvc" name="cardCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" />
+							</div>
+						</div>
+					</fieldset>
+
+					<!-- 電子發票 -->
+					<fieldset class="block invoice-block">
+						<legend>{t('pages.payment.invoiceTitle')}</legend>
+						<p class="block-desc">{t('pages.payment.invoiceDesc')}</p>
+
+						<div class="form-group full-width">
+							<span class="label-text">{t('pages.payment.invoiceTypeLabel')}</span>
+							<div class="choice-row">
+								<label class="choice">
+									<input type="radio" name="invoiceType" value="personal" checked />
+									<span>{t('pages.payment.invoiceTypePersonal')}</span>
+								</label>
+								<label class="choice">
+									<input type="radio" name="invoiceType" value="donate" />
+									<span>{t('pages.payment.invoiceTypeDonate')}</span>
+								</label>
+								<label class="choice">
+									<input type="radio" name="invoiceType" value="company" />
+									<span>{t('pages.payment.invoiceTypeCompany')}</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="form-group full-width">
+							<label for="invoiceEmail">{t('pages.payment.buyerEmailLabel')}</label>
+							<input type="email" id="invoiceEmail" name="invoiceEmail" placeholder="you@example.com" />
+						</div>
+
+						<!-- 關鍵欄位 1：手機條碼載具 -->
+						<div class="form-group full-width key-field" id="carrier-field">
+							<div class="key-head">
+								<label for="carrierId">{t('pages.payment.carrierLabel')}</label>
+								<span class="key-badge">{t('pages.payment.carrierBadge')}</span>
+							</div>
+							<input
+								type="text"
+								id="carrierId"
+								name="carrierId"
+								placeholder={t('pages.payment.carrierPlaceholder')}
+								maxlength="8"
+								pattern="/[A-Z0-9.\-+]{7}"
+							/>
+							<p class="field-hint">{t('pages.payment.carrierHint')}</p>
+						</div>
+
+						<!-- 關鍵欄位 2：捐贈愛心碼 -->
+						<div class="form-group full-width key-field" id="donation-field">
+							<div class="key-head">
+								<label for="donationCode">{t('pages.payment.donateLabel')}</label>
+								<span class="key-badge">{t('pages.payment.donateBadge')}</span>
+							</div>
+							<input
+								type="text"
+								id="donationCode"
+								name="donationCode"
+								inputmode="numeric"
+								placeholder={t('pages.payment.donatePlaceholder')}
+								maxlength="7"
+								pattern="[0-9]{3,7}"
+							/>
+							<p class="field-hint">{t('pages.payment.donateHint')}</p>
+						</div>
+
+						<!-- 其餘載具／統編 -->
+						<div class="form-group full-width">
+							<label for="naturalId">{t('pages.payment.naturalIdLabel')}</label>
+							<input type="text" id="naturalId" name="naturalId" placeholder={t('pages.payment.naturalIdPlaceholder')} maxlength="16" />
+							<p class="field-hint">{t('pages.payment.naturalIdHint')}</p>
+						</div>
+
+						<div class="form-row two">
+							<div class="form-group">
+								<label for="buyerTaxId">{t('pages.payment.taxIdLabel')}</label>
+								<input type="text" id="buyerTaxId" name="buyerTaxId" inputmode="numeric" placeholder={t('pages.payment.taxIdPlaceholder')} maxlength="8" pattern="[0-9]{8}" />
+								<p class="field-hint">{t('pages.payment.taxIdHint')}</p>
+							</div>
+							<div class="form-group">
+								<label for="buyerTitle">{t('pages.payment.companyTitleLabel')}</label>
+								<input type="text" id="buyerTitle" name="buyerTitle" placeholder={t('pages.payment.companyTitlePlaceholder')} />
+							</div>
+						</div>
+
+						<div class="notice">
+							<h3>{t('pages.payment.noticeTitle')}</h3>
+							<ul>
+								<li>{t('pages.payment.notice1')}</li>
+								<li>{t('pages.payment.notice2')}</li>
+								<li>{t('pages.payment.notice3')}</li>
+								<li>{t('pages.payment.notice4')}</li>
+							</ul>
+						</div>
+					</fieldset>
+
+					<button type="button" class="submit-btn">{t('pages.payment.submitButton')}</button>
+					<p class="security-note">{t('pages.payment.securityNote')}</p>
+				</form>
+			</div>
+
+			<!-- 訂單摘要 -->
+			<div class="summary-wrap">
+				<div class="summary-card">
+					<h2>{t('pages.payment.summaryTitle')}</h2>
+
+					<div class="summary-row">
+						<span class="summary-label">{t('pages.payment.planLabel')}</span>
+						<span class="summary-value">{t('pages.payment.planValue')}</span>
+					</div>
+					<div class="summary-row">
+						<span class="summary-label">{t('pages.payment.seatsLabel')}</span>
+						<span class="summary-value">{t('pages.payment.seatsValue')}</span>
+					</div>
+					<div class="summary-row">
+						<span class="summary-label">{t('pages.payment.unitPriceLabel')}</span>
+						<span class="summary-value">{t('pages.payment.unitPriceValue')}</span>
+					</div>
+
+					<div class="summary-divider"></div>
+
+					<div class="summary-row total">
+						<span class="summary-label">{t('pages.payment.totalLabel')}</span>
+						<span class="summary-value">{t('pages.payment.totalValue')}</span>
+					</div>
+					<p class="tax-note">{t('pages.payment.taxIncludedNote')}</p>
+
+					<div class="summary-divider"></div>
+
+					<div class="seller">
+						<p class="seller-label">{t('pages.payment.sellerLabel')}</p>
+						<p class="seller-value">{STUDIO_NAME}</p>
+						<p class="seller-value">{t('footer.taxId')}：{STUDIO_TAX_ID}</p>
+					</div>
+
+					<div class="summary-divider"></div>
+
+					<div class="quick-links">
+						<p class="quick-label">{t('pages.payment.helpTitle')}</p>
+						<a href={getLocalizedPath('/pricing', lang)}>→ {t('pages.payment.linkPricing')}</a>
+						<a href={getLocalizedPath('/terms', lang)}>→ {t('pages.payment.linkTerms')}</a>
+						<a href={getLocalizedPath('/privacy', lang)}>→ {t('pages.payment.linkPrivacy')}</a>
+						<a href={getLocalizedPath('/contact', lang)}>→ {t('pages.payment.linkContact')}</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.page-hero {
+		padding: 8rem 0 4rem;
+		background: var(--bg-main);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.hero-eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.25rem;
+	}
+
+	.hero-eyebrow a { color: #3b82f6; text-decoration: none; font-weight: 600; }
+
+	.page-hero h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+		max-width: 600px;
+	}
+
+	.hero-sub {
+		font-size: 1.0625rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		max-width: 620px;
+	}
+
+	.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+	.section { padding: 5rem 0; }
+
+	.checkout-layout {
+		display: grid;
+		grid-template-columns: 1fr 360px;
+		gap: 3rem;
+		align-items: start;
+	}
+
+	.checkout-form {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	.block {
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		padding: 2rem;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		background: var(--bg-card);
+	}
+
+	legend {
+		font-size: 1.125rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		letter-spacing: -0.02em;
+		padding: 0 0.5rem;
+	}
+
+	.block-desc {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		margin: 0;
+	}
+
+	.form-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 1.25rem;
+	}
+
+	.form-row.two { grid-template-columns: 1fr 1fr; }
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.form-group.full-width { grid-column: 1 / -1; }
+
+	label, .label-text {
+		font-size: 0.825rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	input {
+		background: var(--bg-main);
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		padding: 0.75rem 1rem;
+		font-size: 0.9375rem;
+		color: var(--text-primary);
+		transition: border-color 0.2s;
+		font-family: inherit;
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	input::placeholder { color: var(--text-secondary); opacity: 0.6; }
+
+	input:focus {
+		outline: none;
+		border-color: #3b82f6;
+		box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+	}
+
+	.choice-row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+	}
+
+	.choice {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.625rem 1rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.5rem;
+		cursor: pointer;
+		text-transform: none;
+		letter-spacing: 0;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		background: var(--bg-main);
+	}
+
+	.choice input { width: auto; padding: 0; }
+
+	.choice:has(input:checked) {
+		border-color: #3b82f6;
+		box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+	}
+
+	/* 關鍵欄位：手機條碼載具 / 捐贈愛心碼 */
+	.key-field {
+		border: 1px solid rgba(59,130,246,0.55);
+		border-left: 3px solid #3b82f6;
+		border-radius: 0.75rem;
+		padding: 1.25rem;
+		background: rgba(59,130,246,0.06);
+	}
+
+	.key-head {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.key-head label {
+		font-size: 0.95rem;
+		font-weight: 800;
+		color: var(--text-primary);
+		text-transform: none;
+		letter-spacing: -0.01em;
+	}
+
+	.key-badge {
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+		padding: 0.2rem 0.6rem;
+		border-radius: 999px;
+		background: rgba(59,130,246,0.18);
+		color: #93c5fd;
+		border: 1px solid rgba(59,130,246,0.45);
+	}
+
+	.field-hint {
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		line-height: 1.65;
+		margin: 0;
+	}
+
+	.notice {
+		border-top: 1px solid var(--border-light);
+		padding-top: 1.25rem;
+	}
+
+	.notice h3 {
+		font-size: 0.8rem;
+		font-weight: 700;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		margin: 0 0 0.75rem;
+	}
+
+	.notice ul {
+		margin: 0;
+		padding-left: 1.1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.notice li {
+		font-size: 0.825rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+	}
+
+	.submit-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.625rem;
+		padding: 0.875rem 2rem;
+		background: #3b82f6;
+		color: white;
+		border: none;
+		border-radius: 0.5rem;
+		font-size: 0.9375rem;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.2s;
+		align-self: flex-start;
+		font-family: inherit;
+	}
+
+	.submit-btn:hover {
+		background: #2563eb;
+		transform: translateY(-1px);
+		box-shadow: 0 4px 16px rgba(59,130,246,0.3);
+	}
+
+	.security-note {
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		margin: 0;
+	}
+
+	/* 訂單摘要 */
+	.summary-wrap { position: sticky; top: 6rem; }
+
+	.summary-card {
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+		padding: 2rem;
+	}
+
+	.summary-card h2 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin: 0 0 1.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+
+	.summary-row {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 0.875rem;
+	}
+
+	.summary-label {
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		text-transform: none;
+		letter-spacing: 0;
+		font-weight: 500;
+		flex-shrink: 0;
+	}
+
+	.summary-value {
+		font-size: 0.875rem;
+		color: var(--text-primary);
+		font-weight: 600;
+		text-align: right;
+	}
+
+	.summary-row.total .summary-label { font-size: 0.9rem; color: var(--text-primary); font-weight: 700; }
+	.summary-row.total .summary-value { font-size: 1.25rem; font-weight: 800; color: #60a5fa; }
+
+	.tax-note {
+		font-size: 0.75rem;
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.summary-divider {
+		height: 1px;
+		background: var(--border-light);
+		margin: 1.25rem 0;
+	}
+
+	.seller-label {
+		font-size: 0.72rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin: 0 0 0.375rem;
+	}
+
+	.seller-value {
+		font-size: 0.85rem;
+		color: var(--text-primary);
+		margin: 0 0 0.2rem;
+	}
+
+	.quick-links { display: flex; flex-direction: column; gap: 0.5rem; }
+
+	.quick-label {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--text-secondary);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		margin: 0 0 0.375rem;
+	}
+
+	.quick-links a {
+		color: #60a5fa;
+		text-decoration: none;
+		font-size: 0.875rem;
+		transition: color 0.2s;
+	}
+
+	.quick-links a:hover { color: white; }
+
+	@media (max-width: 1024px) {
+		.checkout-layout { grid-template-columns: 1fr; }
+		.summary-wrap { position: static; }
+	}
+
+	@media (max-width: 768px) {
+		.page-hero { padding: 6rem 0 3rem; }
+		.form-row, .form-row.two { grid-template-columns: 1fr; }
+		.section { padding: 3.5rem 0; }
+		.block { padding: 1.5rem; }
+	}
+</style>
