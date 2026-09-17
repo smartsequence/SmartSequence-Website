@@ -215,6 +215,12 @@ const hreflangLinks = allLangs.map(l => ({
 
 	main {
 		flex: 1;
+		/* 覆寫 global.css 內 Astro 起始樣板遺留的 main { width: 720px }，
+		   否則全站每一頁都會被壓成 720px 寬，頁內 .container 的 1200px 完全失效 */
+		width: 100%;
+		max-width: none;
+		margin: 0;
+		padding: 0;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
