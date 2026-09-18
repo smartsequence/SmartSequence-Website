@@ -4,7 +4,7 @@
 // 網站基本資訊（英文主標題，國際市場優先）
 export const SITE_TITLE = 'ForgeHelm | Enterprise Code Governance & Compliance Platform';
 export const SITE_DESCRIPTION = 'ForgeHelm gives financial, government, and healthcare organizations automated compliance across 20+ frameworks — with source code staying on-premises. Hybrid deployment, AI-assisted governance, air-gapped ready.';
-export const SITE_URL = 'https://smartsequence.tech';
+export const SITE_URL = 'https://www.smartsequence.tech';
 export const BRAND_NAME = 'ForgeHelm';
 
 // 工作室資訊

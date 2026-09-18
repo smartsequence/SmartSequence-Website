@@ -16,7 +16,7 @@ const locales = [
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://smartsequence.tech',
+  site: 'https://www.smartsequence.tech',
   
   // 多語言配置
   i18n: {
