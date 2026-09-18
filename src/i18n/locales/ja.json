@@ -163,9 +163,7 @@
       "title": "ForgeHelm の実運用を見ませんか？",
       "subtitle": "30 分デモ、または貴社環境向け PoC をご依頼ください。",
       "primary": "デモを予約",
-      "secondary": "料金を見る",
-      "tertiary": "機能を見る",
-      "trial": "$29 から体験"
+      "secondary": "料金を見る"
     },
     "competitor": {
       "title": "エンタープライズ級の価値、エンタープライズ級の価格だけではない",
@@ -199,7 +197,6 @@
     "company": "会社",
     "followUs": "フォロー",
     "copyright": "© 2026 Smart Sequence Tech（智序資訊工作室）。無断転載を禁じます。",
-    "poweredBy": "ForgeHelm で構築",
     "markets": "市場",
     "frameworks": "対応フレームワーク",
     "solutions": "ソリューション",

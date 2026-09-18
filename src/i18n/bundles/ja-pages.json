@@ -1,7 +1,7 @@
 {
   "pages": {
     "about": {
-      "title": "会社情報 | ForgeHelm — エンタープライズコードガバナンス",
+      "title": "会社情報 | Smart Sequence Tech",
       "description": "ForgeHelm は智序資訊工作室（Smart Sequence Tech）が開発。ソフトウェアコンプライアンスを継続的・測定可能・データ主権を守る日常業務にします。",
       "heroTitle": "コードを統治し、セキュリティを守るために。",
       "heroSubtitle": "ForgeHelm は構造的課題への解答です。規制産業ではソースコードを外部スキャナに送れない一方、コンプライアンス要求は年々増えています。",
@@ -165,7 +165,7 @@
       "tcoCheckmarx": "Checkmarx（スキャンのみ、オンプレ AI なし）"
     },
     "contact": {
-      "title": "お問い合わせ | ForgeHelm — デモ・PoC",
+      "title": "お問い合わせ | Smart Sequence Tech — デモ・PoC",
       "description": "製品デモ、PoC、料金・アーキテクチャのご相談。",
       "heroTitle": "お話ししましょう",
       "heroSubtitle": "デモ予約、環境向け PoC、料金・アーキテクチャのご質問をどうぞ。",

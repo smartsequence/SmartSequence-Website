@@ -163,9 +163,7 @@
       "title": "ForgeHelm live erleben?",
       "subtitle": "30-Minuten-Demo oder PoC für Ihre Umgebung anfragen.",
       "primary": "Demo anfragen",
-      "secondary": "Preise ansehen",
-      "tertiary": "Funktionen entdecken",
-      "trial": "Ab $29 testen"
+      "secondary": "Preise ansehen"
     },
     "competitor": {
       "title": "Enterprise-Leistung ohne Enterprise-only-Preise",
@@ -199,7 +197,6 @@
     "company": "Unternehmen",
     "followUs": "Folgen",
     "copyright": "© 2026 Smart Sequence Tech (智序資訊工作室). Alle Rechte vorbehalten.",
-    "poweredBy": "Betrieben mit ForgeHelm",
     "markets": "Märkte",
     "frameworks": "Frameworks",
     "solutions": "Lösungen",

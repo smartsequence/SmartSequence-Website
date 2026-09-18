@@ -163,9 +163,7 @@
       "title": "ForgeHelm이 실제로 어떻게 동작하는지 보시겠습니까?",
       "subtitle": "30분 제품 데모를 예약하거나, 고객 환경에 맞춘 개념 검증(PoC)을 신청하세요.",
       "primary": "데모 신청",
-      "secondary": "요금제 보기",
-      "tertiary": "기능 자세히 보기",
-      "trial": "$29부터 체험"
+      "secondary": "요금제 보기"
     },
     "competitor": {
       "title": "엔터프라이즈급 역량, 엔터프라이즈급 예산은 필요 없습니다",
@@ -199,7 +197,6 @@
     "company": "회사",
     "followUs": "팔로우하기",
     "copyright": "© 2026 Smart Sequence Tech（智序資訊工作室）. All rights reserved.",
-    "poweredBy": "Powered by ForgeHelm",
     "markets": "서비스 지역",
     "frameworks": "지원 프레임워크",
     "solutions": "솔루션",

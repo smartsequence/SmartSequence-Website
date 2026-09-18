@@ -163,9 +163,7 @@
       "title": "想看 ForgeHelm 在您的程式碼上跑起來是什麼樣子？",
       "subtitle": "預約 30 分鐘 Demo，我們示範給您看。原始碼不能出內網的組織，可以申請兩週的概念驗證（PoC），在您的環境跑出報告。",
       "primary": "預約 30 分鐘 Demo",
-      "secondary": "申請兩週 PoC",
-      "tertiary": "深入了解功能",
-      "trial": "NT$990 起體驗"
+      "secondary": "申請兩週 PoC"
     },
     "competitor": {
       "title": "同類工具年費五萬到十二萬美元，我們把價格攤開給您看",
@@ -199,7 +197,6 @@
     "company": "公司",
     "followUs": "關注我們",
     "copyright": "© 2026 智序資訊工作室（Smart Sequence Tech）。保留一切權利。",
-    "poweredBy": "由 ForgeHelm 技術驅動",
     "markets": "服務市場",
     "frameworks": "支援框架",
     "solutions": "解決方案",

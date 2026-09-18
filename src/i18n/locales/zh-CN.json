@@ -163,9 +163,7 @@
       "title": "准备好见识 ForgeHelm 的实际运作了吗？",
       "subtitle": "预约 30 分钟产品演示（Demo），或申请针对您的环境量身规划的概念验证（PoC）。",
       "primary": "预约 Demo",
-      "secondary": "查看定价方案",
-      "tertiary": "深入了解功能",
-      "trial": "$29 起体验"
+      "secondary": "查看定价方案"
     },
     "competitor": {
       "title": "企业级能力，不必企业级预算",
@@ -199,7 +197,6 @@
     "company": "公司",
     "followUs": "关注我们",
     "copyright": "© 2026 智序资讯工作室（Smart Sequence Tech）。保留一切权利。",
-    "poweredBy": "由 ForgeHelm 技术驱动",
     "markets": "服务市场",
     "frameworks": "支持框架",
     "solutions": "解决方案",

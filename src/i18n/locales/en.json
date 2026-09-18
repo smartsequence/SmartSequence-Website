@@ -163,9 +163,7 @@
       "title": "Ready to See ForgeHelm in Action?",
       "subtitle": "Schedule a 30-minute demo or request a proof-of-concept scoped to your environment.",
       "primary": "Request a Demo",
-      "secondary": "View Pricing",
-      "tertiary": "Explore Features",
-      "trial": "Try from $29"
+      "secondary": "View Pricing"
     },
     "competitor": {
       "title": "Enterprise-Grade Value, Not Enterprise-Only Pricing",
@@ -199,7 +197,6 @@
     "company": "Company",
     "followUs": "Follow Us",
     "copyright": "© 2026 Smart Sequence Tech (智序資訊工作室). All rights reserved.",
-    "poweredBy": "Powered by ForgeHelm",
     "markets": "Markets",
     "frameworks": "Supported Frameworks",
     "solutions": "Solutions",

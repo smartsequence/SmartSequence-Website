@@ -1,7 +1,7 @@
 {
   "pages": {
     "about": {
-      "title": "Über uns | ForgeHelm — Enterprise Code Governance",
+      "title": "Über uns | Smart Sequence Tech",
       "description": "ForgeHelm von Smart Sequence Tech — Compliance als kontinuierliche, messbare Praxis mit Datenhoheit.",
       "heroTitle": "Für Code-Governance. Für Sicherheit.",
       "heroSubtitle": "ForgeHelm löst ein Strukturproblem: Regulierte Branchen können Quellcode nicht an externe Scanner senden — Compliance-Anforderungen steigen dennoch jährlich.",
@@ -168,7 +168,7 @@
       "tcoCheckmarx": "Checkmarx (nur Scan, ohne On-Prem-KI)"
     },
     "contact": {
-      "title": "Kontakt | ForgeHelm — Demo oder PoC",
+      "title": "Kontakt | Smart Sequence Tech — Demo oder PoC",
       "description": "Produktdemo, PoC oder Fragen zu Preisen und Architektur.",
       "heroTitle": "Sprechen wir",
       "heroSubtitle": "Demo, PoC oder Fragen zu Preisen und Architektur — wir helfen gern.",
