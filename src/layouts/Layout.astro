@@ -101,9 +101,11 @@ const hreflangLinks = allLangs.map(l => ({
 	:root {
 		color-scheme: dark;
 		/* Dark Professional Theme - 與風險報告一致 */
-		--bg-main: #0D1A2D;        /* 深色背景主色 */
-		--bg-section: #1E293B;     /* 鉛灰藍區塊 */
-		--bg-card: #374151;        /* 深灰卡片 */
+		/* 深色三階：頁面 → 區塊 → 卡片，逐階變亮但都保持深navy；
+		   原本卡片是 #374151（偏亮的灰），白字在上面只有 8.9:1，長段文字讀起來吃力 */
+		--bg-main: #0D1A2D;        /* 頁面底色 */
+		--bg-section: #16233A;     /* 區塊底色 */
+		--bg-card: #22314C;        /* 卡片（白字約 13:1）*/
 		--bg-footer: #0F172A;      /* 深藍灰 Footer */
 		
 		/* Text Colors */
@@ -145,7 +147,7 @@ const hreflangLinks = allLangs.map(l => ({
 		--radius-lg: 8px;
 		
 		/* Glassmorphism */
-		--glass-bg: rgba(55, 65, 81, 0.5);
+		--glass-bg: rgba(34, 49, 76, 0.5);
 		--glass-border: rgba(148, 163, 184, 0.2);
 
 		/* 強調字色（連結／數值／徽章）——深色底用亮藍，淺色主題另行覆寫 */
