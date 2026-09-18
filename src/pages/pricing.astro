@@ -443,7 +443,7 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 		top: -0.75rem;
 		left: 50%;
 		transform: translateX(-50%);
-		background: #3b82f6;
+		background: var(--cta-primary);
 		color: white;
 		font-size: 0.7rem;
 		font-weight: 700;
@@ -612,13 +612,13 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 	}
 
 	.plan-btn-primary {
-		background: #3b82f6;
+		background: var(--cta-primary);
 		color: white;
 		box-shadow: 0 4px 16px rgba(59,130,246,0.3);
 	}
 
 	.plan-btn-primary:hover {
-		background: #2563eb;
+		background: var(--cta-hover);
 		transform: translateY(-1px);
 	}
 
@@ -780,8 +780,8 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 		border: 2px solid transparent;
 	}
 
-	.btn-primary { background: #3b82f6; color: white; }
-	.btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+	.btn-primary { background: var(--cta-primary); color: white; }
+	.btn-primary:hover { background: var(--cta-hover); transform: translateY(-2px); }
 	.btn-secondary { background: transparent; color: var(--text-primary); border-color: var(--border-color); }
 	.btn-secondary:hover { border-color: #3b82f6; color: var(--accent); }
 	.btn-ghost { background: transparent; color: var(--text-secondary); border-color: transparent; }
