@@ -263,10 +263,10 @@
       "d1Title": "Sie betreiben das Produkt selbst",
       "d1Text": "Der ForgeHelm-Agent läuft in Ihrem Netzwerk. Quellcode und Analyseergebnisse bleiben in Ihrer Umgebung – wir benötigen und erhalten Ihren Quellcode nicht.",
       "d2Title": "Support per E-Mail",
-      "d2Text": "Wir sind ein kleines, fokussiertes Studio. Wir sagen keine Verfügbarkeits-SLA und keinen Rund-um-die-Uhr-Betrieb zu. Support läuft per E-Mail mit Antwort an Werktagen; garantierte Reaktionszeiten oder dediziertes Personal regeln wir in einem separaten Beratungsvertrag.",
+      "d2Text": "Support läuft per E-Mail mit Antwort an Werktagen. Garantierte Reaktionszeiten oder dediziertes Personal regeln wir bei Bedarf in einem Beratungsvertrag.",
       "d3Title": "Beratung nach Stunden",
       "d3Text": "Einführung, Architekturbewertung und Workflow-Aufbau rechnen wir nach Stunden ab. Umfang, Stunden und Ergebnisse vereinbaren wir vorab; sie sind nicht in der Lizenzgebühr enthalten.",
-      "deliveryNote": "Das Studio übernimmt außerdem KI-Einführungsberatung und mehrsprachige Content-Projekte. Für Anfragen außerhalb von ForgeHelm schreiben Sie uns direkt."
+      "deliveryNote": "Das Studio übernimmt außerdem KI-Einführungsberatung und mehrsprachige Content-Projekte – schreiben Sie uns gern eine E-Mail."
     },
     "product": {
       "title": "Produkt | ForgeHelm — 7 Governance-Module",
@@ -504,7 +504,7 @@
       "faqQ5": "Sitze während des Vertrags erweitern?",
       "faqA5": "Ja, anteilig. Reduktionen bei Verlängerung.",
       "faqQ6": "Wie läuft der Support?",
-      "faqA6": "Support läuft per E-Mail mit Antwort an Werktagen; Anfragen aus Professional und Enterprise werden bevorzugt bearbeitet. Wir sind ein kleines Studio und sagen keine Verfügbarkeits-SLA und keinen Rund-um-die-Uhr-Betrieb zu — garantierte Reaktionszeiten oder dediziertes Personal regeln wir in einem separaten Beratungsvertrag.",
+      "faqA6": "Support läuft per E-Mail mit Antwort an Werktagen; Anfragen aus Professional und Enterprise werden bevorzugt bearbeitet. Garantierte Reaktionszeiten oder dediziertes Personal regeln wir bei Bedarf in einem Beratungsvertrag.",
       "ctaTitle": "Bereit zu starten?",
       "ctaSubtitle": "Demo buchen oder PoC für Ihre Umgebung anfragen.",
       "ctaButton1": "Demo anfragen",

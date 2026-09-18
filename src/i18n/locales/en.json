@@ -263,10 +263,10 @@
       "d1Title": "You deploy the product yourself",
       "d1Text": "The ForgeHelm Agent runs inside your network. Source code and analysis results stay in your environment — we neither need nor receive your source code.",
       "d2Title": "Support is by email",
-      "d2Text": "We are a small, focused studio. We do not promise an availability SLA or around-the-clock staffing. Support runs over email with replies on business days; if you need guaranteed response times or dedicated staffing, that belongs in a separate consulting agreement.",
+      "d2Text": "Support runs over email with replies on business days. If you need guaranteed response times or dedicated staffing, we can set that out in a consulting agreement.",
       "d3Title": "Consulting is billed by the hour",
       "d3Text": "Onboarding, architecture review and workflow build-out are billed by the hour. Scope, hours and deliverables are agreed before we start and are not included in the licence fee.",
-      "deliveryNote": "The studio also takes on AI adoption consulting and multilingual content projects. For work unrelated to ForgeHelm, email us directly."
+      "deliveryNote": "The studio also takes on AI adoption consulting and multilingual content projects — enquiries are welcome by email."
     },
     "product": {
       "title": "Product | ForgeHelm — 7 Governance Modules",
@@ -504,7 +504,7 @@
       "faqQ5": "Can we expand seats mid-contract?",
       "faqA5": "Yes. Mid-contract seat additions are prorated. Seat reductions take effect at renewal.",
       "faqQ6": "How is support provided?",
-      "faqA6": "Support runs over email, answered on business days, with Professional and Enterprise enquiries handled first. We are a small studio and do not promise an availability SLA or around-the-clock staffing — guaranteed response times or dedicated staffing belong in a separate consulting agreement.",
+      "faqA6": "Support runs over email, answered on business days, with Professional and Enterprise enquiries handled first. If you need guaranteed response times or dedicated staffing, we can set that out in a consulting agreement.",
       "ctaTitle": "Ready to Start?",
       "ctaSubtitle": "Schedule a demo or request a scoped PoC for your environment.",
       "ctaButton1": "Request a Demo",
