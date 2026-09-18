@@ -1,5 +1,5 @@
 ---
-import { BRAND_NAME } from '../consts';
+import { BRAND_NAME, STUDIO_BRAND } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { getTranslations, getLocalizedPath } from '../i18n/utils';
@@ -11,6 +11,12 @@ interface Props {
 }
 
 const { lang, currentPath } = Astro.props;
+
+// 這幾頁是以工作室身分接待客戶，頁首標誌改用工作室名；其餘頁面談的是產品，維持 ForgeHelm。
+const STUDIO_ROUTES = ['/about', '/contact', '/services', '/payment'];
+const pathWithoutLocale = currentPath.replace(/^\/(en|ja|de)(?=\/|$)/, '') || '/';
+const normalisedPath = pathWithoutLocale.replace(/\/+$/, '') || '/';
+const brandName = STUDIO_ROUTES.includes(normalisedPath) ? STUDIO_BRAND : BRAND_NAME;
 const translations = await getTranslations(lang);
 
 // 翻譯函式
@@ -29,7 +35,7 @@ function t(key: string): string {
 	<nav class="container">
 		<div class="logo">
 			<a href={getLocalizedPath('/', lang)}>
-				<span class="logo-text">{BRAND_NAME}</span>
+				<span class="logo-text">{brandName}</span>
 			</a>
 		</div>
 		

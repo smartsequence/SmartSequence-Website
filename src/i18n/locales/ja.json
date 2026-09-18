@@ -232,7 +232,7 @@
   },
   "pages": {
     "about": {
-      "title": "会社情報 | ForgeHelm — エンタープライズコードガバナンス",
+      "title": "会社情報 | Smart Sequence Tech",
       "description": "ForgeHelm は智序資訊工作室（Smart Sequence Tech）が開発。ソフトウェアコンプライアンスを継続的・測定可能・データ主権を守る日常業務にします。",
       "heroTitle": "コードを統治し、セキュリティを守るために。",
       "heroSubtitle": "ForgeHelm は構造的課題への解答です。規制産業ではソースコードを外部スキャナに送れない一方、コンプライアンス要求は年々増えています。",
@@ -624,7 +624,7 @@
       "compareSupportEnt": "メール"
     },
     "contact": {
-      "title": "お問い合わせ | ForgeHelm — デモ・PoC",
+      "title": "お問い合わせ | Smart Sequence Tech — デモ・PoC",
       "description": "製品デモ、PoC、料金・アーキテクチャのご相談。",
       "heroTitle": "お話ししましょう",
       "heroSubtitle": "デモ予約、環境向け PoC、料金・アーキテクチャのご質問をどうぞ。",
@@ -713,7 +713,7 @@
       "trialNote": "お支払いとスキャンは ForgeHelm SaaS 上で実施——本ページはガイドです。"
     },
     "payment": {
-      "title": "お支払いと電子インボイス | ForgeHelm",
+      "title": "お支払いと電子インボイス | Smart Sequence Tech",
       "description": "ForgeHelm サブスクリプションの決済ページ。注文内容の確認、支払方法の選択、携帯バーコードキャリアまたは寄付用ラブコードの指定ができます。",
       "heroTitle": "お支払いと電子インボイス",
       "heroSubtitle": "注文内容と支払方法をご確認のうえ、インボイスの発行方法をご指定ください。台湾財政部の規定に基づきクラウド電子インボイスを発行します。",
@@ -778,7 +778,7 @@
       "cta": "ホームへ戻る"
     },
     "services": {
-      "title": "導入・コンサルティング | ForgeHelm",
+      "title": "導入・コンサルティング | Smart Sequence Tech",
       "description": "ForgeHelm の導入、AI アーキテクチャ評価とワークフロー構築、多言語コンテンツのガバナンス。非同期で進め、技術より先に課題を定義します。",
       "heroTitle": "導入・コンサルティング",
       "heroSubtitle": "品質は、納品直前に見つかる問題ではなく、毎日自動で走る検査にします。自社製品もそのやり方でつくり、お客様の案件も同じやり方で進めます。",

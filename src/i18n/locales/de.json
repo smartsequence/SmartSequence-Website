@@ -232,7 +232,7 @@
   },
   "pages": {
     "about": {
-      "title": "Über uns | ForgeHelm — Enterprise Code Governance",
+      "title": "Über uns | Smart Sequence Tech",
       "description": "ForgeHelm von Smart Sequence Tech — Compliance als kontinuierliche, messbare Praxis mit Datenhoheit.",
       "heroTitle": "Für Code-Governance. Für Sicherheit.",
       "heroSubtitle": "ForgeHelm löst ein Strukturproblem: Regulierte Branchen können Quellcode nicht an externe Scanner senden — Compliance-Anforderungen steigen dennoch jährlich.",
@@ -624,7 +624,7 @@
       "compareSupportEnt": "E-Mail"
     },
     "contact": {
-      "title": "Kontakt | ForgeHelm — Demo oder PoC",
+      "title": "Kontakt | Smart Sequence Tech — Demo oder PoC",
       "description": "Produktdemo, PoC oder Fragen zu Preisen und Architektur.",
       "heroTitle": "Sprechen wir",
       "heroSubtitle": "Demo, PoC oder Fragen zu Preisen und Architektur — wir helfen gern.",
@@ -713,7 +713,7 @@
       "trialNote": "Zahlung und Scan auf der ForgeHelm-SaaS-Plattform — diese Seite ist Ihr Leitfaden."
     },
     "payment": {
-      "title": "Zahlung & E-Rechnung | ForgeHelm",
+      "title": "Zahlung & E-Rechnung | Smart Sequence Tech",
       "description": "ForgeHelm Abo-Kasse: Bestellung prüfen, Zahlungsart wählen und einen Mobile-Barcode-Träger oder einen Spenden-Code für die Rechnung angeben.",
       "heroTitle": "Zahlung & E-Rechnung",
       "heroSubtitle": "Prüfen Sie Ihre Bestellung, wählen Sie eine Zahlungsart und legen Sie fest, wie die Rechnung ausgestellt wird. Cloud-E-Rechnungen werden nach den Vorgaben des taiwanischen Finanzministeriums ausgestellt.",
@@ -778,7 +778,7 @@
       "cta": "Zur Startseite"
     },
     "services": {
-      "title": "Beratung & Umsetzung | ForgeHelm",
+      "title": "Beratung & Umsetzung | Smart Sequence Tech",
       "description": "ForgeHelm-Einführung, KI-Architekturbewertung und Workflow-Aufbau, mehrsprachige Content-Governance. Asynchron geliefert, Problemdefinition vor Technologie.",
       "heroTitle": "Beratung & Umsetzung",
       "heroSubtitle": "Wir machen Qualität zu Prüfungen, die täglich laufen – statt zu Problemen, die eine Woche vor der Abgabe auffallen. So bauen wir unser eigenes Produkt, und so arbeiten wir an Ihrem Projekt.",

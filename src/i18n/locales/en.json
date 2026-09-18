@@ -232,7 +232,7 @@
   },
   "pages": {
     "about": {
-      "title": "About | ForgeHelm — Enterprise Code Governance",
+      "title": "About | Smart Sequence Tech",
       "description": "ForgeHelm is built by Smart Sequence Tech with a mission to make software compliance continuous, measurable, and data-sovereign.",
       "heroTitle": "Built to Govern Code. Built to Stay Secure.",
       "heroSubtitle": "ForgeHelm was created to solve a structural problem: organizations in regulated industries cannot send source code to external scanners, yet compliance requirements grow every year.",
@@ -624,7 +624,7 @@
       "compareSupportEnt": "Email"
     },
     "contact": {
-      "title": "Contact | ForgeHelm — Request Demo or PoC",
+      "title": "Contact | Smart Sequence Tech — Request Demo or PoC",
       "description": "Schedule a product demo, request a proof-of-concept, or ask about pricing and architecture for ForgeHelm.",
       "heroTitle": "Let's Talk",
       "heroSubtitle": "Schedule a demo, request a PoC scoped to your environment, or ask about pricing and architecture.",
@@ -713,7 +713,7 @@
       "trialNote": "Payment and scanning run on the ForgeHelm SaaS platform — this page is your guide."
     },
     "payment": {
-      "title": "Payment & e-Invoice | ForgeHelm",
+      "title": "Payment & e-Invoice | Smart Sequence Tech",
       "description": "ForgeHelm subscription checkout: confirm your order, choose a payment method, and specify a mobile barcode carrier or an invoice donation code.",
       "heroTitle": "Payment & e-Invoice",
       "heroSubtitle": "Review your order, choose a payment method, and tell us how to issue your invoice. Cloud e-invoices are issued under Taiwan Ministry of Finance rules.",
@@ -778,7 +778,7 @@
       "cta": "Back to home"
     },
     "services": {
-      "title": "Consulting & Delivery | ForgeHelm",
+      "title": "Consulting & Delivery | Smart Sequence Tech",
       "description": "ForgeHelm onboarding, AI architecture review and workflow build-out, multilingual content governance. Delivered asynchronously, problem definition before technology.",
       "heroTitle": "Consulting & delivery",
       "heroSubtitle": "We turn quality into checks that run every day, instead of problems you discover the week before delivery. That is how we build our own product, and how we work on yours.",

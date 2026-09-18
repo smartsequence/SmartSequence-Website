@@ -232,7 +232,7 @@
   },
   "pages": {
     "about": {
-      "title": "關於我們 | ForgeHelm — 企業級程式碼治理",
+      "title": "關於我們 | Smart Sequence Tech 智序資訊工作室",
       "description": "ForgeHelm 由智序資訊工作室開發，使命是讓軟體合規成為持續、可量測且資料主權完整的日常工作。",
       "heroTitle": "為治理程式碼而生，為安全而建。",
       "heroSubtitle": "ForgeHelm 的誕生，是為了解決一個結構性問題：受監管產業的組織無法將原始碼送至外部掃描器，但合規要求卻年年增加。",
@@ -624,7 +624,7 @@
       "compareSupportEnt": "電子郵件"
     },
     "contact": {
-      "title": "聯絡我們 | ForgeHelm — 預約簡報或概念驗證",
+      "title": "聯絡我們 | Smart Sequence Tech — 預約簡報或概念驗證",
       "description": "預約產品簡報（Demo）、申請概念驗證（PoC），或詢問 ForgeHelm 的定價與架構資訊。",
       "heroTitle": "讓我們來談談",
       "heroSubtitle": "預約產品簡報（Demo）、申請概念驗證（PoC），或詢問定價與架構資訊。",
@@ -713,7 +713,7 @@
       "trialNote": "付款與掃描於 ForgeHelm SaaS 平台完成——本頁為導覽說明。"
     },
     "payment": {
-      "title": "付款與電子發票 | ForgeHelm",
+      "title": "付款與電子發票 | Smart Sequence Tech",
       "description": "ForgeHelm 訂閱結帳頁面：確認訂單金額、選擇付款方式，並指定手機條碼載具或捐贈發票愛心碼。",
       "heroTitle": "付款與電子發票",
       "heroSubtitle": "確認訂單內容、選擇付款方式，並指定發票開立方式。本站依財政部規定開立雲端電子發票。",
@@ -778,7 +778,7 @@
       "cta": "返回首頁"
     },
     "services": {
-      "title": "導入與顧問服務 | ForgeHelm",
+      "title": "導入與顧問服務 | Smart Sequence Tech",
       "description": "ForgeHelm 導入、AI 架構評估與工作流建置、多語內容治理。以非同步方式交付，先定義問題再談技術。",
       "heroTitle": "導入與顧問服務",
       "heroSubtitle": "把品質變成每天自動跑的檢查，而不是交件前才發現的問題。我們做自己的產品是這樣，接您的案子也是這樣。",
