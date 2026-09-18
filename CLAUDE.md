@@ -18,7 +18,7 @@ ForgeHelm 產品官網（`https://www.smartsequence.tech`——apex 會 308 轉�
 - 四 repo 收尾（`ForgeHelm-Agent`／`ForgeHelm-SaaS`／`ForgeHelm-Contracts`／`ForgeHelm`）
 - `LAST_EXECUTION_SUMMARY.md`、`docs/file-indexes/`、`Compare-PlanRepos.ps1`、SaveBaseline
 - RAG 知識庫（`Sync-ChatbotKnowledgeBase.ps1`）、白皮書 `INV-Q` 錨點、`Test-GuideLabels.ps1`
-- UI i18n **六**語系（本站是**四**語系，見下節）
+- UI i18n 六語系的**驗證方式**（本站自 2026-09-18 起同為六語系，但閘門與檔案佈局不同，見下節）
 - `ai-workflow` 鏡像備份（那是 `Tools\` 與工作區設定用的；本 repo 自己就是 git repo，直接 commit+push）
 
 **仍然適用**的根規則：回覆繁體中文、說人話、PowerShell 不用 `&&`、
@@ -36,7 +36,7 @@ ForgeHelm 產品官網（`https://www.smartsequence.tech`——apex 會 308 轉�
 | `src/i18n/locales/*.json` | **無** | 加 BOM 會讓 `JSON.parse` / import 出問題 |
 | `package.json` | **無** | ⛔ 加 BOM 會讓 `vite build` 紅，而 tsc／eslint／vitest 三關都抓不到 |
 | 根目錄 `src/pages/*.astro`、`src/layouts/Layout.astro`、`src/components/*.astro` | **無** | |
-| `src/pages/{en,ja,de}/*.astro` | **有** | 4 行 re-export stub，沿用既有寫法即可 |
+| `src/pages/{en,ja,de,ko,zh-CN}/*.astro` | **有** | 4 行 re-export stub，沿用既有寫法即可 |
 | 所有 `*.md`（含本檔） | **無** | |
 
 **規則**：改既有檔就保留該檔原本的狀態；新增檔依上表對應類別辦理。
@@ -71,9 +71,10 @@ ForgeHelm 產品官網（`https://www.smartsequence.tech`——apex 會 308 轉�
 
 ---
 
-## i18n：四語系，兩道閘門的基準不同
+## i18n：六語系，兩道閘門的基準不同
 
-語系＝`zh-TW`（預設，**無路徑前綴**）／`en`／`ja`／`de`，定義於 `src/i18n/languages.ts` 的 `siteLocales`
+語系＝`zh-TW`（預設，**無路徑前綴**）／`en`／`ja`／`de`／`ko`／`zh-CN`（2026-09-18 由四語系擴為六，
+與 ForgeHelm 產品一致），定義於 `src/i18n/languages.ts` 的 `siteLocales`
 與 `astro.config.mjs` 的 `locales`（兩處必須一致）。
 
 `languages.ts` 裡另有 15 種語言的 `languages` 常數——那是語言選單的清單，**不代表已建置路由**，
@@ -83,10 +84,51 @@ ForgeHelm 產品官網（`https://www.smartsequence.tech`——apex 會 308 轉�
 
 | 閘門 | 基準 | 擋什麼 |
 |------|------|--------|
-| `tests/i18n-keys.test.ts`（`npm test`） | **zh-TW** | en／ja／de 缺鍵（extra 只警告） |
-| `scripts/verify-i18n-parity.mjs`（`npm run verify:i18n`） | **en** | 其餘三語系 missing **與** extra |
+| `tests/i18n-keys.test.ts`（`npm test`） | **zh-TW** | 其餘五語系缺鍵（extra 只警告） |
+| `scripts/verify-i18n-parity.mjs`（`npm run verify:i18n`） | **en** | 其餘五語系 missing **與** extra |
 
-⇒ 新增文案時四個 locale 檔必須同時加、鍵名完全一致，少一個或多一個都會紅。
+⇒ 新增文案時六個 locale 檔必須同時加、鍵名完全一致，少一個或多一個都會紅。
+
+**兩支閘門與 `scripts/audit-t-keys.mjs` 都已改為掃 `src/i18n/locales/` 目錄**，不再是手維護清單
+（2026-09-18；原本寫死 `['en','zh-TW','ja','de']`，新增語系時漏改會讓新 locale 完全不受檢而靜默通過）。
+同輪一併修掉另外兩處同型的寫死清單，**日後新增語系時這五處都不必改**：
+`Header.astro` 判斷工作室品牌用的語系前綴 regex（原 `/^\/(en|ja|de)/`，不改會讓
+`/ko/about` 的頁首錯掛成 ForgeHelm）、`LanguageSwitcher.astro` 的 `availableLangs`
+（不改會讓新語系建得出頁面卻無從切換）。
+
+### 簡體中文不是字形轉換（2026-09-18 使用者明示）
+
+「繁中翻簡中要小心，許多用語兩岸不同。請比照 ForgeHelm 的處理方式。」
+
+`zh-CN.json` 以 OpenCC `tw2sp` 打底，再套一層詞表——詞表基準是
+`ForgeHelm-SaaS/Client/src/locales/zh-CN.json` 對 zh-TW 的 **1808 鍵實際對照**，不是憑印象。
+實測 OpenCC 單獨使用只有 63.5% 與產品譯法相符，且會製造**語意錯誤**：
+
+<!-- scan-simplified:ignore-start -->
+<!-- 以下整段的主題就是簡體用語本身：對照表的「直轉（錯）」「正解」兩欄、
+     以及慣用語差異清單，依定義必須寫出簡體字。這是合法引述，不是洩漏。 -->
+
+| 繁中原文 | OpenCC 直轉（錯） | 正解 |
+|---------|-----------------|------|
+| 智慧財產 | 智能财产 | 知识产权 |
+| 核心模組 | 内核模块 | 核心模块 |
+| 治理架構指標 | 指针（pointer） | 指标 |
+| 向量資料庫 | 矢量数据库 | 向量数据库 |
+| 階層式下鑽 | 阶层式（社會階級） | 层级式 |
+| 掃描批次 | 扫描批量 | 扫描批次 |
+
+另有 40 餘條兩岸慣用語差異：導入→实施（簡中「导入」是匯入資料）、維運→运维、
+客製化→定制化、支援管道→支持渠道、信箱→邮箱（簡中「信箱」是實體信箱）、
+儲存庫→仓库、閘門→门禁、後設資料→元数据、量測→度量、營運→运营。
+
+**刻意不改寫的**：台灣法規與官方機構名。`個資法` 須寫成「个人资料保护法」，
+**不可**寫成大陸的「个人信息保护法」（PIPL，是另一部法）；
+「財政部電子發票整合服務平台」不可把「整合」改成「集成」。
+語言名以其自身文字書寫（`日本語` 不轉成「日本语」）。
+<!-- scan-simplified:ignore-end -->
+
+新增文案後若要重產 zh-CN，作法與完整詞表見 commit `e12ce9c`；
+產完務必**逐句看過**，機器轉換是起點不是終點。
 
 locale JSON 為**巢狀**結構（`{"pages":{"contact":{"title":…}}}`），
 驗證請用 `ConvertFrom-Json`／`json.load` 走結構路徑，**不要**用扁平字串 grep
@@ -98,14 +140,14 @@ locale JSON 為**巢狀**結構（`{"pages":{"contact":{"title":…}}}`），
 
 1. `src/pages/<name>.astro` — 主體（無 BOM）。頁面骨架照 `src/pages/contact.astro`：
    `getLangFromUrl(Astro.url)` → `getTranslations(lang)` → 檔內自帶的同步 `t()` 函式。
-2. `src/pages/{en,ja,de}/<name>.astro` — 各一份 4 行 re-export（**帶 BOM**）：
+2. `src/pages/{en,ja,de,ko,zh-CN}/<name>.astro` — 各一份 4 行 re-export（**帶 BOM**）：
    ```
    ---
    import Page from '../<name>.astro';
    ---
    <Page />
    ```
-3. 四個 `src/i18n/locales/*.json` 各補一組 `pages.<name>` 鍵（indent 2、LF、無 BOM、檔尾換行）。
+3. 六個 `src/i18n/locales/*.json` 各補一組 `pages.<name>` 鍵（indent 2、LF、無 BOM、檔尾換行）。
 4. 站內連結一律 `getLocalizedPath('/path', lang)`，**不要**手寫 `/en/xxx`。
 5. 版面用 `src/layouts/Layout.astro`（自帶 hreflang、BaseHead、Header/Footer）。
    ⚠ `Layout` 目前**只收 `title` 與 `description` 兩個 prop**，沒有 `noindex`；
@@ -123,14 +165,14 @@ npm run verify:i18n      # 對 en 的鍵集合做 parity
 npm run build            # astro build
 ```
 
-**2026-09-18 收工時的現場基準**（已含 `/payment`、`/services`，且範例部落格已停用）：
-- `npm test` → Test Files 3 passed／Tests **40 passed**／0 failed
+**2026-09-18 收工時的現場基準**（已含 `/payment`、`/services`、六語系，且範例部落格已停用）：
+- `npm test` → Test Files 3 passed／Tests **44 passed**／0 failed
 - `npm run verify:i18n` → `All locales have identical key structure to en.json`，exit 0
-- `npm run build` → **57** page(s) built，0 error（四語系 15 條路由）
+- `npm run build` → **85** page(s) built，0 error（六語系 15 條路由）
 - `npx tsc --noEmit` → 0 error（不在 CI 內，但改 `.astro` 的 frontmatter 後值得跑）
 
 基準會隨頁面數變動，**動手前現場重量一次**，不要沿用本檔寫死的數字當通過標準。
-（頁數變化史：59 → 53（停用 `/blog` 與 `rss.xml`）→ 57（新增四語系 `/services`）。）
+（頁數變化史：59 → 53（停用 `/blog` 與 `rss.xml`）→ 57（新增四語系 `/services`）→ 85（擴為六語系）。）
 
 `scripts/` 下另有十餘支 `audit-*.mjs`（`audit-t-keys`／`audit-orphan-keys`／`audit-zhtw-style`／
 `audit-falsy-values` 等），**不在 CI 內**，是人工稽核輔助。其中 `audit-t-keys` 最有用：
@@ -236,15 +278,41 @@ Footer 每頁都渲染，所以首頁即可點達（zh-TW 為 `href="/payment"`�
 隱私政策、服務條款——頁首標誌、麵包屑第一層、`<title>` 一律用工作室名：
 
 - 頁首標誌：`Header.astro` 依路徑切換（`STUDIO_ROUTES` ＋ `consts.ts` 的 `STUDIO_BRAND`
-  = `Smart Sequence Tech`）。比對前會去掉語系前綴與尾斜線，四語系一致。
+  = `Smart Sequence Tech`）。比對前會去掉語系前綴與尾斜線，六語系一致；前綴清單由 `siteLocales` 推導。
 - 麵包屑第一層：`common.studioCrumb`（zh-TW「智序資訊」，其餘語系為 `Smart Sequence Tech`）。
 - `<title>`：一般頁在 `pages.<name>.title`；法律頁在 `src/i18n/legal/`（terms 在
-  `<locale>.json`、privacy 在 `privacy-<locale>.json`，共 8 檔）。
+  `<locale>.json`、privacy 在 `privacy-<locale>.json`，共 12 檔）。缺檔會讓 `LegalPrivacyPage.astro` 直接 throw。
 
 **產品面五頁**（產品介紹、定價方案、應用場景、技術架構、合規框架）與首頁維持 `ForgeHelm`。
 
 ⚠ 改 `src/i18n/legal/*.json` 時**只做字串取代**，不要用 `json.dumps` 重新序列化——那會把
 原本寫成單行的陣列展開成多行，一個 title 改動會產生 480 行無意義 diff（本輪踩過並還原重做）。
+
+---
+
+## 幣別與金額：以產品的 `PlanPricingTable.cs` 為唯一真相（2026-09-18）
+
+定價頁的數字**不是官網自己訂的**，必須逐格對齊
+`C:\charleen\ForgeHelm-Contracts\Models\Subscription\PlanPricingTable.cs`。
+`src/pages/pricing.astro` 的 `plans[]` 與 `currencyRows[]` 現已與該表完全一致，
+包含 Enterprise 平台年費五格（USD 15,000／TWD 480,000／CNY 108,000／JPY 2,250,000／EUR 13,950）——
+那四格原本寫「議價」，但產品其實有明確數字，2026-09-18 補上。
+
+⛔ **不要加韓元（KRW）**。看到官網有韓文卻沒有韓元報價，直覺會想補上——**那是錯的**：
+產品後端 `PlanPricingTable` 只支援 USD/TWD/CNY/JPY/EUR，且
+`ForgeHelm-SaaS/Client/src/lib/localeCurrency.ts` 對 `ko-KR` **顯式**回傳 `USD`，
+註解寫明「使『未支援』是刻意而非遺漏」。官網若自行換算韓元，就會變成
+**顯示韓元報價、實際扣美元**——那正是該檔另一段註解在防的事。
+要支援韓元，得先改產品定價表，不是先改官網。
+
+各語系的金額慣例（新增語系時照辦）：
+
+- **試算範例與 TCO 括號換算**用該語系實際計價幣別：zh-TW→TWD、zh-CN→CNY、ja→JPY、
+  de→EUR、**ko→USD**（見上）、en→TWD（沿用既有）。
+- **體驗方案價格**：zh-TW 寫「NT$990 / USD $29」，**其餘語系一律 USD 在前**
+  （`USD $29 / NT$990`）——en/ja/de 既有慣例，ko/zh-CN 沿用。
+- **競品比較與 TCO 主數字**全語系維持美元，不換算。
+- `/payment` 頁金額全語系維持 NT$（那頁談的是台灣電子發票，en/ja 也沒換算）。
 
 ---
 
