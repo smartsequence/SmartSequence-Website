@@ -9,14 +9,14 @@
         "blocks": [
           {
             "type": "intro",
-            "text": "Smart Sequence Tech ({studioNameEn}) operates ForgeHelm, an enterprise code governance and compliance platform. This Privacy Policy explains how we collect, use, and protect personal data when you use <strong>smartsequence.tech</strong> or the ForgeHelm SaaS service. It addresses <strong>GDPR</strong> (EU 2016/679), <strong>CCPA</strong> (California), and Taiwan <strong>PDPA</strong>."
+            "text": "{studioNameEn} ({studioName}) operates ForgeHelm, a code governance and compliance platform. This Privacy Policy explains how we collect, use, and protect personal data when you use <strong>smartsequence.tech</strong> or the ForgeHelm SaaS service. It addresses <strong>GDPR</strong> (EU 2016/679), <strong>CCPA</strong> (California), and Taiwan's <strong>Personal Data Protection Act (PDPA)</strong>. For website visitors and billing data, we are the data controller; for data uploaded by SaaS customers or transmitted by the analysis engine, we are the processor and the customer is the controller."
           },
           {
             "type": "table",
-            "h2": "1. Data Controller",
+            "h2": "1. Data Controller / Processor",
             "headers": ["Field", "Details"],
             "rows": [
-              ["Entity", "Smart Sequence Tech（{studioName}）"],
+              ["Entity", "Smart Sequence Tech ({studioName})"],
               ["Tax ID", "{taxId}"],
               ["Contact", "{email}"],
               ["Data Protection Inquiries", "{email}"]
@@ -29,25 +29,26 @@
               {
                 "h3": "2.1 Website Visitors",
                 "bullets": [
-                  "<strong>Contact forms</strong>: Name, business email, company, job title, headcount, inquiry type",
-                  "<strong>Analytics</strong>: Anonymized page views and sessions (IP anonymized)",
-                  "<strong>Cookies</strong>: Session and language preference; optional analytics (opt-in)"
+                  "<strong>Contact form</strong>: Name, business email, company, job title, headcount, plan of interest, inquiry type, and message content (received by the form service Web3Forms and forwarded to us)",
+                  "<strong>Analytics</strong>: The website currently uses no analytics or tracking scripts",
+                  "<strong>Cookies</strong>: The website sets no cookies; language and light/dark theme preferences are stored only in your browser's local storage"
                 ]
               },
               {
                 "h3": "2.2 ForgeHelm SaaS Customers",
                 "bullets": [
-                  "<strong>Account data</strong>: Business email, name, company, role, subscription tier",
-                  "<strong>Usage data</strong>: Feature logs, login times, API records (no source code in SaaS)",
+                  "<strong>Account data</strong>: Business email, name, company, role, subscription plan",
+                  "<strong>Usage data</strong>: Feature logs, login times, API records",
                   "<strong>Billing data</strong>: Processed by payment provider; we do not store full card numbers",
                   "<strong>Support data</strong>: Tickets and correspondence"
                 ]
               },
               {
-                "h3": "2.3 What We Do NOT Collect",
+                "h3": "2.3 How Source Code Is Handled",
                 "bullets": [
-                  "Source code — Agent processes code locally; only desensitized metrics go to SaaS",
-                  "GDPR Art. 9 special categories of personal data"
+                  "Hybrid, on-premises, and air-gapped deployments: the analysis engine (Agent) analyzes code in your environment, and only masked file names, line numbers, and summary counts are sent to the SaaS platform; we do not receive source code",
+                  "Cloud-only Core and trial plans: repositories you upload or specify are accessed by our hosted analysis engine for the duration of the analysis; the retention period follows your written agreement with us, and absent one, you may request deletion by email",
+                  "We do not collect GDPR Art. 9 special categories of personal data"
                 ]
               }
             ]
@@ -60,7 +61,6 @@
               ["Inquiries and demos", "Legitimate interest (Art. 6(1)(f))"],
               ["Contracted SaaS services", "Contract (Art. 6(1)(b))"],
               ["Billing and tax", "Legal obligation (Art. 6(1)(c))"],
-              ["Optional analytics cookies", "Consent (Art. 6(1)(a))"],
               ["Service improvement comms", "Legitimate interest (Art. 6(1)(f))"]
             ]
           },
@@ -85,7 +85,7 @@
               ["Active SaaS account data", "Subscription term + 90 days after termination"],
               ["Billing records", "7 years (legal obligation)"],
               ["Support tickets", "3 years after closure"],
-              ["Analytics (anonymized)", "13 months rolling"]
+              ["Source code uploaded on Core / trial plans", "Duration of the analysis; retention period per written agreement, deletion available on request by email"]
             ],
             "note": "You may request early deletion of non-billing data (see Section 7)."
           },
@@ -94,12 +94,12 @@
             "h2": "6. Third-Party Services",
             "bullets": [
               "<strong>Vercel</strong>: Marketing site hosting (EU/US; DPA in place)",
-              "<strong>Stripe</strong>: Subscription billing (PCI-DSS Level 1; no raw card data to us)",
-              "<strong>Analytics</strong>: Aggregated anonymized traffic; no cross-site tracking",
-              "<strong>Email</strong>: Transactional email only"
+              "<strong>Stripe</strong>: Subscription billing (PCI-DSS Level 1)",
+              "<strong>Web3Forms</strong>: Contact form delivery (United States)",
+              "<strong>Google Gemini API</strong>: Vector indexing and inference for cloud AI mode (Core, and Professional without a customer-provided model)"
             ],
             "paragraphs": [
-              "We execute DPAs with sub-processors handling personal data. Enterprise customers may request the sub-processor list."
+              "We sign data processing agreements with sub-processors that handle personal data. Any prospective or current customer may request the sub-processor list by email; hosting location details for the ForgeHelm SaaS management platform are also available on request."
             ]
           },
           {
@@ -115,9 +115,9 @@
               { "title": "Restriction", "desc": "Request limited processing while a dispute is resolved" }
             ],
             "paragraphs": [
-              "California residents may opt out of sale/sharing (CCPA). We do not sell personal data.",
-              "Taiwan PDPA provides access, correction, deletion, and portability rights.",
-              "Contact <strong>{email}</strong>. We respond within <strong>30 days</strong>."
+              "California residents may opt out of sale/sharing under the CCPA. We do not sell personal data.",
+              "Under Taiwan's PDPA, you may request to access or review your data, obtain copies, supplement or correct it, and have collection, processing, or use stopped and the data deleted; data portability is a right we provide under the GDPR, and Taiwan customers may exercise it as well.",
+              "Contact <strong>{email}</strong>. We handle access and copy requests within 15 days and correction, deletion, and cessation-of-processing requests within 30 days; where the GDPR applies, its one-month deadline governs."
             ]
           },
           {
@@ -125,17 +125,17 @@
             "h2": "8. Cookies",
             "headers": ["Cookie Type", "Purpose", "Opt-out"],
             "rows": [
-              ["Strictly necessary", "Session authentication, language preference", "Cannot be disabled"],
-              ["Analytics (optional)", "Aggregate page views; IP anonymized", "Cookie banner or browser settings"]
+              ["Strictly necessary (SaaS platform)", "Login session", "Cannot be disabled"],
+              ["Website", "No cookies set; language and theme preferences stored in your browser's local storage", "Clear your browser data"]
             ],
-            "note": "We do not use advertising or cross-site tracking cookies."
+            "note": "We do not use analytics, advertising, or cross-site tracking cookies."
           },
           {
             "type": "section",
             "h2": "9. International Data Transfers",
             "paragraphs": [
-              "ForgeHelm is designed for data sovereignty. Source code and sensitive analysis stay on-premises; only desensitized compliance metrics go to SaaS.",
-              "Where account/billing data leaves the EEA or Taiwan, we rely on EU Standard Contractual Clauses, adequacy decisions, or Taiwan PDPA safeguards."
+              "With hybrid, on-premises, or air-gapped deployment, source code and analysis stay in the customer's environment and only masked compliance metrics reach the SaaS platform; on cloud-only Core and trial plans, source code is analyzed in our hosted environment.",
+              "Where account/billing data leaves the EEA or Taiwan, we rely on EU Standard Contractual Clauses, adequacy decisions, or Taiwan PDPA contractual safeguards."
             ]
           },
           {
@@ -143,13 +143,13 @@
             "h2": "10. Security Measures",
             "bullets": [
               "<strong>Encryption in transit</strong>: TLS 1.2+",
-              "<strong>Encryption at rest</strong>: Sensitive database fields encrypted",
+              "<strong>Encryption at rest</strong>: Cloud databases use the hosting provider's storage-layer encryption; secret fields such as authentication tokens are additionally encrypted at the field level",
               "<strong>Access control</strong>: RBAC for personnel",
-              "<strong>Audit logs</strong>: Immutable admin action logs",
+              "<strong>Audit logs</strong>: Administrative actions are written to a hash-chained audit log whose integrity can be verified",
               "<strong>Vulnerability management</strong>: Regular scanning and dependency updates"
             ],
             "paragraphs": [
-              "We will notify you within <strong>72 hours</strong> of a breach affecting your rights (GDPR Art. 33)."
+              "In the event of a personal data breach, as controller we notify the supervisory authority within <strong>72 hours</strong> under GDPR Art. 33 and promptly notify affected individuals under Art. 34 and Article 12 of Taiwan's PDPA; as processor, we promptly notify the customer under Art. 33(2). Enterprise and government customers may agree to different notification deadlines by contract."
             ]
           },
           {
@@ -165,8 +165,8 @@
             "h2": "12. Contact & Complaints",
             "paragraphs": [
               "Privacy inquiries: <strong>{email}</strong>",
-              "Business entity: {studioNameEn}（{studioName}, Tax ID {taxId}）",
-              "GDPR complaints may be lodged with your local supervisory authority."
+              "Business entity: {studioNameEn} ({studioName}, Tax ID {taxId})",
+              "Under the GDPR, you may lodge a complaint with the supervisory authority where you live."
             ]
           }
         ]

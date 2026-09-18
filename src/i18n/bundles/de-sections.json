@@ -5,105 +5,105 @@
   },
   "sections": {
     "coreValues": {
-      "title": "Für Hochsicherheitsumgebungen gebaut",
+      "title": "Für Organisationen, deren Quellcode das Haus nicht verlassen darf",
       "v1": {
         "title": "Hybrid-Bereitstellung",
-        "subtitle": "Quellcode bleibt On-Premises",
-        "description": "Der Analyse-Agent läuft vollständig in Ihrem Netzwerk. Nur desensibilisierte Kennzahlen gehen an die Managementplattform — nie Quellcode."
+        "subtitle": "Quellcode bleibt im eigenen Netz",
+        "description": "Ab Professional läuft der Agent in Ihrem Netz. Nach außen gehen nur Dateinamen, Zeilennummern und Kennzahlen – Code-Inhalte werden vor der Übertragung maskiert."
       },
       "v2": {
-        "title": "20+ Compliance-Frameworks",
-        "subtitle": "Eine Plattform, volle Abdeckung",
-        "description": "ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS, OWASP Top 10, DORA, APPI, ISMAP u. a. — Anforderungen werden zu messbaren Befunden."
+        "title": "24 Compliance-Frameworks",
+        "subtitle": "Ein Scan, alle Frameworks",
+        "description": "ISO 27001, SOC 2, GDPR, HIPAA, PCI-DSS, OWASP Top 10, DORA, APPI, ISMAP … Jeder Scan gleicht gleichzeitig mit allen 24 Frameworks ab – ohne Vorauswahl, ohne Zusatzmodule, in allen drei Plänen gleich. Aus Vorschriften wird eine zählbare Liste von Befunden."
       },
       "v3": {
-        "title": "KI-gestützte Governance",
-        "subtitle": "Vollständig offline-fähig",
-        "description": "RAG-Chatbot erklärt Compliance-Lücken und Maßnahmen. KI ist optional — Betrieb vollständig On-Premises ohne externe Modelle."
+        "title": "KI-Assistent",
+        "subtitle": "Optional, auch komplett offline",
+        "description": "Der KI-Assistent arbeitet mit Ihren eigenen Governance-Daten und sagt Ihnen, wo Sie nicht konform sind und wie Sie nachbessern. KI ist optional: Ohne Anbindung eines externen Modells funktionieren Berichte, SBOM und Dashboards vollständig; für den Offline-Betrieb nutzen Sie Ihr eigenes Modell."
       }
     },
     "modules": {
-      "title": "Sieben Governance-Module",
-      "subtitle": "Von Compliance-Berichten bis Legacy-Modernisierung — ein Lebenszyklus auf einer Plattform."
+      "title": "Sieben Module, eine Plattform",
+      "subtitle": "Vom Compliance-Bericht bis zur Modernisierung von Altsystemen – alles an einem Ort, und der Quellcode bleibt in Ihrem Netz."
     },
     "deployment": {
-      "title": "Flexible Bereitstellung für jede Sicherheitsrichtlinie",
+      "title": "Vier Bereitstellungsarten, von reiner Cloud bis komplett offline",
       "d1": {
         "title": "Vollständige Cloud",
         "badge": "Schnellster Start",
-        "description": "Management und Analyse in der Cloud. Ideal, wenn Richtlinien es erlauben und Geschwindigkeit zählt."
+        "description": "Managementplattform und Analyse in der Cloud – der schnellste Start. Für Teams, deren Richtlinien das erlauben und die erst einmal ausprobieren wollen."
       },
       "d2": {
         "title": "Hybrid",
         "badge": "Empfohlen",
-        "description": "Management in der Cloud, Analyse-Agent On-Premises. Balance aus Tempo und Datenhoheit."
+        "description": "Managementplattform in der Cloud, Agent in Ihrem Netz. Der Quellcode bleibt im Haus, ohne dass Sie die ganze Plattform selbst betreiben müssen."
       },
       "d3": {
         "title": "Private Cloud / On-Premise (lokal)",
-        "badge": "Enterprise",
-        "description": "Alle Komponenten im Rechenzentrum oder in der Private Cloud. Strenge Datenresidenz."
+        "badge": "Eigenbetrieb",
+        "description": "Alle Komponenten in Ihrem Rechenzentrum oder Ihrer Private Cloud. Die Wahl bei strengen Anforderungen an die Datenresidenz."
       },
       "d4": {
         "title": "Air-Gapped",
         "badge": "Maximale Sicherheit",
-        "description": "Vollständig offline — keine externen Verbindungen. Für klassifizierte und Behördennetze."
+        "description": "Komplett offline, ohne jede Verbindung nach außen; Updates kommen per Datenträger. Für klassifizierte, militärische und Behördennetze."
       }
     },
     "industries": {
-      "title": "Vertrauen in stark regulierten Branchen",
+      "title": "Die Vorgaben dieser Branchen haben wir bereits abgebildet",
       "i1": {
         "title": "Finanzdienstleistungen",
-        "description": "Audit-Trails, Lieferkette, PCI-DSS, SOX, DORA — Berichte sofort verfügbar."
+        "description": "Audit-Trails, Lieferkettenrisiken und Nachweise auf Code-Ebene für PCI-DSS, SOX, DORA und Basel III."
       },
       "i2": {
         "title": "Behörden & öffentlicher Sektor",
-        "description": "Lokale Bereitstellung, ISMAP / TW-PDPA / CMMC, beschaffungsfertige Dokumentation."
+        "description": "On-Premises- oder Air-Gap-Betrieb, Berichte auf Traditionellem Chinesisch, Abgleich mit dem taiwanischen Datenschutzgesetz – als Nachweis der Quellcodeprüfung bei der Abnahme extern entwickelter Systeme."
       },
       "i3": {
         "title": "Gesundheitswesen",
-        "description": "HIPAA, GDPR, Mandantenisolation, Unterstützung für Drittanbieter-Audits."
+        "description": "Datenschutz nach HIPAA und GDPR, Mandantenisolation, Nachweise für externe Auditoren ohne Systemzugang."
       },
       "i4": {
         "title": "High-Tech-Fertigung",
-        "description": "Schutz geistigen Eigentums, Air-Gapped-Bereitstellung, Lieferkettensicherheit per SBOM."
+        "description": "Schutz des eigenen geistigen Eigentums: Air-Gap-Bereitstellung (air-gapped), SBOM für die Lieferkette."
       }
     },
     "trust": {
-      "title": "Enterprise-Sicherheit in der Architektur",
+      "title": "Sicherheit ist Teil der Architektur, kein Zusatz",
       "item1": {
-        "title": "Datendesensibilisierung",
-        "description": "Nur Dateinamen, Zeilennummern und Summen verlassen Ihr Netz. Codefragmente und Pfade werden maskiert."
+        "title": "Datenmaskierung",
+        "description": "Nur Dateinamen, Zeilennummern und Kennzahlen verlassen Ihr Netz. Codefragmente, Pfade und personenbezogene Daten werden vor der Übertragung maskiert."
       },
       "item2": {
-        "title": "RBAC & Mandantenisolation",
-        "description": "Rollenbasierter Zugriff und logische Mandantentrennung. Unveränderliche Audit-Logs."
+        "title": "Berechtigungen und Mandantenisolation",
+        "description": "Rollenbasierte Zugriffskontrolle, vollständige logische Trennung der Mandanten. Jede kritische Aktion landet im hash-verketteten Audit-Log – eine Manipulation ist nachweisbar."
       },
       "item3": {
-        "title": "6 Sprachen UI + 6 Sprachen Berichte",
-        "description": "Website-UI auf Traditionellem Chinesisch, Englisch, Japanisch, Deutsch, Koreanisch und Vereinfachtem Chinesisch. Berichte in denselben sechs Sprachen."
+        "title": "Produktoberfläche und Berichte in sechs Sprachen",
+        "description": "Produktoberfläche und Compliance-Berichte gibt es auf Traditionellem Chinesisch, Englisch, Japanisch, Deutsch, Koreanisch und Vereinfachtem Chinesisch."
       }
     },
     "cta": {
-      "title": "ForgeHelm live erleben?",
-      "subtitle": "30-Minuten-Demo oder PoC für Ihre Umgebung anfragen.",
-      "primary": "Demo anfragen",
-      "secondary": "Preise ansehen"
+      "title": "Wollen Sie sehen, wie ForgeHelm auf Ihrem Code läuft?",
+      "subtitle": "Buchen Sie eine 30-Minuten-Demo – wir zeigen es Ihnen. Organisationen, deren Quellcode das Netz nicht verlassen darf, können einen zweiwöchigen Proof of Concept (PoC) beantragen und den Bericht in ihrer eigenen Umgebung erzeugen lassen.",
+      "primary": "30-Minuten-Demo buchen",
+      "secondary": "Zweiwöchigen PoC beantragen"
     },
     "competitor": {
-      "title": "Enterprise-Leistung ohne Enterprise-only-Preise",
-      "summary": "Vergleichbare Tools: $50K–$120K/Jahr. ForgeHelm ab $39/Sitz/Monat mit On-Premises und 20+ Frameworks.",
-      "footnote": "Basierend auf veröffentlichten Preisen von GHAS, Snyk, SonarQube Enterprise, Vanta, Checkmarx (2026)."
+      "title": "Vergleichbare Tools kosten 50.000 bis 120.000 US-Dollar im Jahr – wir legen unsere Preise offen",
+      "summary": "Vergleichbare Tools liegen bei etwa US$ 50.000–120.000 pro Jahr. ForgeHelm beginnt in der reinen Cloud-Variante bei US$ 39 pro Sitz und Monat; die Hybrid-Bereitstellung, bei der der Quellcode im eigenen Netz bleibt, kostet für 10 Sitze rund 13.260 € pro Jahr (inkl. Plattformgebühr).",
+      "footnote": "Zusammengestellt aus veröffentlichten Preisen von GitHub Advanced Security, Snyk, SonarQube Enterprise, Vanta und Checkmarx (2026)."
     },
     "trial": {
-      "title": "Mit echten Scan-Daten starten",
-      "subtitle": "Agent-gestützte Testversion — kein manueller Fragebogen. Quick-Scan, SBOM, Dashboard-Vorschau, 8-Achsen-Fingerabdruck.",
-      "cta": "Ab $29 testen",
-      "credit": "Testgebühr innerhalb von 30 Tagen voll auf das erste Jahresabonnement anrechenbar."
+      "title": "Erst kostenlos ansehen, dann entscheiden",
+      "subtitle": "Die Selbstregistrierung ist dauerhaft kostenlos: 1 Sitz, 3 Analysen pro Monat, vollständige Berichte und Scores online – ohne Kreditkarte. Ein Upgrade brauchen Sie erst für Berichtsexporte, mehr Volumen oder die Analyse-Engine in Ihrem eigenen Netz.",
+      "cta": "Kostenloser Plan und Testpaket",
+      "credit": "Die Gebühr für das Testpaket wird innerhalb von 30 Tagen voll auf das erste Jahr eines Core- oder Professional-Abos angerechnet."
     }
   },
   "footer": {
-    "description": "Enterprise-Plattform für Code-Governance und Compliance in Finanz, Behörden und Gesundheitswesen.",
-    "tagline": "Compliance automatisieren. Code On-Premises halten.\nForgeHelm — Governance, die skaliert.",
+    "description": "Code-Governance- und Compliance-Plattform für Organisationen, deren Quellcode das Haus nicht verlassen darf.",
+    "tagline": "Compliance automatisieren, Quellcode im eigenen Netz behalten.",
     "taxId": "Steuernummer",
     "supportEmail": "Kontakt",
     "products": "Produkt",

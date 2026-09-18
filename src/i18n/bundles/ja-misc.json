@@ -7,13 +7,13 @@
   },
   "pages": {
     "useCases": {
-      "ctaTitle": "ご活用事例について相談しませんか？",
+      "ctaTitle": "お客様の状況をお聞かせください",
       "ctaButton": "お問い合わせ",
       "ctaSecondary": "料金を見る"
     },
     "contact": {
       "subjectPlaceholder": "選択してください...",
-      "responseTime": "返信目安：1–2 営業日"
+      "responseTime": "通常 1〜2 営業日"
     },
     "compliance": {
       "fwTwPdpa": "台湾個人情報保護法（TW-PDPA）"

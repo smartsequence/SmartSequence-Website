@@ -11,7 +11,7 @@
           {
             "heading": "1. Service Description",
             "paragraphs": [
-              "{studioNameEn} ({studioName}) provides the ForgeHelm enterprise code governance and compliance platform, including the SaaS management platform, Analysis Agent software, and related modules (compliance reports, SBOM, dashboard, risk questionnaire, AI ChatBot, tech stack migration, data quality)."
+              "{studioNameEn} ({studioName}, \"we\") provides the ForgeHelm code governance and compliance platform, including the SaaS management platform, the analysis engine (Agent) software, and related modules (compliance reports, SBOM, dashboard, risk questionnaire, AI assistant, tech stack migration, data quality)."
             ]
           },
           {
@@ -26,18 +26,18 @@
           {
             "heading": "3. Subscriptions, Billing, and Refunds",
             "bullets": [
-              "ForgeHelm uses per-seat annual subscriptions (Core, Professional, Enterprise): annual fee = seat monthly rate × seats × 12 + platform annual fee (Professional / Enterprise)",
-              "Online payment is completed via Stripe Checkout on the ForgeHelm SaaS platform; enterprise procurement may use contracts, POs, or wire transfer",
-              "Trial Experience fees paid within 30 days before upgrading to Core or Professional annual subscription are fully credited toward the first annual fee",
-              "Seats may be adjusted during the contract term (proration); monthly billing, if offered, is typically ~20% higher than annual",
-              "Taiwan customers may receive tax invoices (Tax ID: {taxId})",
-              "Annual subscriptions are generally non-refundable once activated unless required by law or written agreement; service remains available through the subscription term"
+              "ForgeHelm is sold as a per-seat annual subscription (Core, Professional, Enterprise): annual fee = monthly seat rate × number of seats × 12 + annual platform fee (Professional / Enterprise)",
+              "Online payment is completed via Stripe Checkout on the ForgeHelm SaaS platform; enterprise procurement may use contracts, purchase orders, or wire transfer",
+              "Trial fees are fully credited toward the first year's fee if you upgrade to a Core or Professional annual subscription within 30 days of payment",
+              "Seats may be added during the contract term and are prorated for the remaining period; seat reductions take effect at the next renewal. Where monthly billing is offered, seat fees are typically about 20% higher than annual billing",
+              "Listed prices exclude tax; Taiwan customers are charged 5% VAT in addition and receive a government uniform invoice (seller's tax ID: {taxId})",
+              "Annual subscriptions are generally non-refundable once activated unless required by law or agreed in writing; service remains available through the end of the subscription term"
             ]
           },
           {
             "heading": "4. Intellectual Property",
             "bullets": [
-              "Compliance reports, SBOM, and dashboard data produced from your repositories belong to you for business use",
+              "Compliance reports, SBOMs, and dashboard data generated from your repositories by the analysis engine are owned by you, and you may freely use, distribute, and provide them to third parties",
               "ForgeHelm platform software, UI, and analysis algorithms are owned by {studioNameEn}",
               "You may not copy, modify, or distribute any part of the service without authorization"
             ]
@@ -47,7 +47,7 @@
             "bullets": [
               "We may modify, suspend, or terminate the service",
               "Material changes will be notified by email at least 30 days in advance",
-              "If we discontinue the service, we will provide notice and assist with data export"
+              "If we discontinue the service, we will give advance notice and help you export your data; your own data (including reports and analysis results) can be exported from the platform as JSON/ZIP on any plan"
             ]
           },
           {
@@ -55,8 +55,8 @@
             "bullets": [
               "The service is provided \"as is\" without guarantee of error-free or uninterrupted operation",
               "Reports are for reference only; decisions remain your responsibility",
-              "We are not liable for losses arising from use or inability to use the service",
-              "If liability applies, damages are capped at fees you paid for the service"
+              "Except in cases of willful misconduct or gross negligence, we are not liable for indirect losses, lost profits, or business interruption arising from use of or inability to use the service",
+              "For all other damages, our total liability is capped at the service fees you paid in the 12 months preceding the event giving rise to the claim; for enterprise or government customers purchasing under a written contract, that contract's warranty, liability, and termination terms take precedence over these terms"
             ]
           },
           {

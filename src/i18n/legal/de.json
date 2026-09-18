@@ -3,7 +3,7 @@
     "legal": {
       "terms": {
         "title": "Nutzungsbedingungen | Smart Sequence Tech",
-        "description": "SaaS-Abonnementbedingungen für ForgeHelm Core, Professional und Enterprise.",
+        "description": "Abonnementbedingungen für den ForgeHelm-SaaS-Dienst in den Plänen Core, Professional und Enterprise.",
         "h1": "Nutzungsbedingungen",
         "h1Secondary": "Terms of Service",
         "lastUpdated": "Zuletzt aktualisiert: 2026-05-25",
@@ -11,64 +11,64 @@
           {
             "heading": "1. Leistungsbeschreibung",
             "paragraphs": [
-              "{studioNameEn} ({studioName}) bietet die Enterprise-Plattform ForgeHelm für Code-Governance und Compliance, einschließlich SaaS, Analyse-Agent sowie Module für Berichte, SBOM, Dashboard, Risiko-Fragebogen, AI ChatBot, Migration und Datenqualität."
+              "{studioNameEn} ({studioName}; nachfolgend „das Studio“) stellt über ForgeHelm eine Plattform für Code-Governance und Compliance bereit. Sie umfasst die SaaS-Managementplattform, die Software der Analyse-Engine (Agent) sowie die zugehörigen Module (Compliance-Berichte, SBOM, Dashboard, Risiko-Fragebogen, KI-Assistent, Tech-Stack-Migration, Datenqualität)."
             ]
           },
           {
-            "heading": "2. Konten und Pflichten",
+            "heading": "2. Nutzerkonten und Pflichten",
             "bullets": [
-              "Vollständige und korrekte Registrierungsdaten erforderlich",
-              "Kontosicherheit liegt beim Nutzer; Kontoteilung untersagt",
-              "Missbrauch (Angriffe, Spam, übermäßige automatisierte Anfragen) verboten",
-              "Nutzer tragen volle Verantwortung für hochgeladene Daten"
+              "Nutzer müssen bei der Registrierung richtige und vollständige Angaben machen",
+              "Für die Sicherheit des Kontos ist der Nutzer selbst verantwortlich; die gemeinsame Nutzung eines Kontos mit Dritten ist untersagt",
+              "Missbrauch des Dienstes ist verboten, insbesondere Angriffe und massenhafte automatisierte Anfragen",
+              "Nutzer tragen die volle Verantwortung für die Inhalte, die sie hochladen oder eingeben"
             ]
           },
           {
-            "heading": "3. Abonnements, Abrechnung, Erstattung",
+            "heading": "3. Abonnement, Abrechnung und Rückerstattung",
             "bullets": [
-              "Jahresabonnements pro Sitz (Core / Professional / Enterprise): Jahresgebühr = Monatspreis × Sitze × 12 + Plattformjahresgebühr (Pro / Ent)",
-              "Online-Zahlung über Stripe Checkout auf der ForgeHelm-SaaS-Plattform; Enterprise-Beschaffung auch per Vertrag/PO/Überweisung",
-              "Testgebühr innerhalb von 30 Tagen vor Upgrade auf Core/Professional-Jahresabo voll auf erste Jahresgebühr anrechenbar",
-              "Sitzerweiterung während der Laufzeit anteilig; Monatszahlung typischerweise ~20 % teurer als jährlich",
-              "Taiwan-Kunden: Rechnungen mit Steuernummer {taxId}",
-              "Jahresabos grundsätzlich nicht erstattungsfähig nach Aktivierung, sofern nicht gesetzlich oder vertraglich anders geregelt"
+              "ForgeHelm wird als Jahresabonnement pro Sitz angeboten (Core, Professional, Enterprise). Jahresgebühr = Monatspreis pro Sitz × Anzahl Sitze × 12 + jährliche Plattformgebühr (gilt für Professional und Enterprise)",
+              "Die Online-Zahlung erfolgt über Stripe Checkout auf der ForgeHelm-SaaS-Plattform; Unternehmen können alternativ per Vertrag, Bestellung (PO) oder Überweisung beschaffen",
+              "Die Gebühr für das Testpaket wird voll auf die erste Jahresgebühr angerechnet, wenn innerhalb von 30 Tagen nach Zahlung ein Core- oder Professional-Jahresabonnement abgeschlossen wird",
+              "Während der Vertragslaufzeit können Sitze hinzugefügt werden; sie werden anteilig für die Restlaufzeit berechnet. Eine Reduzierung der Sitze wird zur nächsten Verlängerung wirksam. Wird Monatszahlung angeboten, liegt die Sitzgebühr in der Regel rund 20 % über dem Jahrespreis",
+              "Die ausgewiesenen Preise verstehen sich zzgl. Steuern; für Kunden in Taiwan kommen 5 % Umsatzsteuer hinzu, ausgewiesen auf einer amtlichen taiwanischen Rechnung (Uniform Invoice; Steuernummer des Verkäufers: {taxId})",
+              "Ein aktiviertes Jahresabonnement wird grundsätzlich nicht vorzeitig erstattet, sofern Gesetz oder schriftlicher Vertrag nichts anderes vorsehen; der Dienst kann bis zum Ende der Laufzeit genutzt werden"
             ]
           },
           {
             "heading": "4. Geistiges Eigentum",
             "bullets": [
-              "Berichte, SBOM und Dashboard-Daten aus Ihren Repositories gehören Ihnen zur geschäftlichen Nutzung",
-              "ForgeHelm-Software, UI und Algorithmen gehören {studioNameEn}",
-              "Kopieren, Ändern oder Verbreiten ohne Genehmigung untersagt"
+              "Compliance-Berichte, SBOMs und Dashboard-Daten, die die Analyse-Engine aus den Repositories des Kunden erzeugt, gehören dem Kunden; er darf sie frei nutzen, verbreiten und an Dritte weitergeben",
+              "Die ForgeHelm-Plattformsoftware, das Design der Oberfläche und die Analysealgorithmen sind Eigentum von {studioNameEn} ({studioName})",
+              "Ohne Genehmigung darf kein Teil des Dienstes kopiert, verändert oder verbreitet werden"
             ]
           },
           {
-            "heading": "5. Änderungen und Beendigung",
+            "heading": "5. Änderungen und Beendigung des Dienstes",
             "bullets": [
-              "Wir können den Dienst ändern, aussetzen oder einstellen",
-              "Wesentliche Änderungen werden mindestens 30 Tage vorher per E-Mail mitgeteilt",
-              "Bei Einstellung: Benachrichtigung und Unterstützung beim Datenexport"
+              "Das Studio behält sich vor, den Dienst zu ändern, auszusetzen oder einzustellen",
+              "Wesentliche Änderungen werden den Nutzern mindestens 30 Tage im Voraus per E-Mail mitgeteilt",
+              "Bei einer Einstellung des Dienstes informieren wir vorab und unterstützen beim Export der Daten; die eigenen Daten des Kunden (einschließlich Berichte und Analyseergebnisse) lassen sich auf der Plattform als JSON/ZIP exportieren, unabhängig vom Plan"
             ]
           },
           {
             "heading": "6. Haftungsbeschränkung",
             "bullets": [
-              "Dienst „wie besehen“ ohne Garantie auf Fehlerfreiheit oder Unterbrechungsfreiheit",
-              "Berichte dienen nur als Referenz; Entscheidungen liegen beim Kunden",
-              "Keine Haftung für Schäden aus Nutzung oder Nichtnutzung",
-              "Haftungsobergrenze: gezahlte Gebühren"
+              "Der Dienst wird „wie besehen“ bereitgestellt; Fehlerfreiheit oder unterbrechungsfreier Betrieb werden nicht zugesichert",
+              "Berichte dienen nur als Referenz; die tatsächlichen Entscheidungen trifft der Nutzer in eigener Verantwortung",
+              "Außer bei Vorsatz oder grober Fahrlässigkeit haftet das Studio nicht für mittelbare Schäden, entgangenen Gewinn oder Betriebsunterbrechungen, die aus der Nutzung oder der Unmöglichkeit der Nutzung des Dienstes entstehen",
+              "Für sonstige Schäden ist die Haftung insgesamt auf die Entgelte begrenzt, die der Kunde in den 12 Monaten vor Eintritt des anspruchsbegründenden Ereignisses gezahlt hat. Beschaffen Unternehmen oder Behörden über einen schriftlichen Vertrag, gehen dessen Regelungen zu Gewährleistung, Haftung und Kündigung diesen Bedingungen vor"
             ]
           },
           {
-            "heading": "7. Anwendbares Recht",
+            "heading": "7. Anwendbares Recht und Gerichtsstand",
             "bullets": [
               "Es gilt das Recht der Republik China (Taiwan)",
-              "Ausschließlicher Gerichtsstand für erste Instanz: Bezirksgericht Taipeh"
+              "Für Streitigkeiten aus diesen Bedingungen vereinbaren die Parteien das Bezirksgericht Taipeh (Taiwan Taipei District Court) als Gericht erster Instanz"
             ]
           },
           {
             "heading": "8. Kontakt",
-            "paragraphs": ["Fragen zu diesen Bedingungen:"],
+            "paragraphs": ["Bei Fragen zu diesen Bedingungen erreichen Sie uns unter:"],
             "bullets": ["E-Mail: {email}", "Steuernummer: {taxId}"]
           }
         ]
