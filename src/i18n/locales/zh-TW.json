@@ -658,7 +658,9 @@
       "linkArchitecture": "技術架構說明",
       "linkCompliance": "支援的合規框架",
       "linkPricing": "定價方案",
-      "linkFaq": "採購常見問題"
+      "linkFaq": "採購常見問題",
+      "sentTitle": "已收到您的訊息",
+      "sentText": "感謝您的來信，我們會在 1–2 個工作天內回覆。若事情緊急，也可以直接寄到 service@smartsequence.tech。"
     },
     "getStarted": {
       "title": "開始使用 | ForgeHelm",

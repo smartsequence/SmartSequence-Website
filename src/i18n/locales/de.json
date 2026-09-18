@@ -658,7 +658,9 @@
       "linkArchitecture": "Architekturübersicht",
       "linkCompliance": "Unterstützte Frameworks",
       "linkPricing": "Preise & Pläne",
-      "linkFaq": "Beschaffungs-FAQ"
+      "linkFaq": "Beschaffungs-FAQ",
+      "sentTitle": "Ihre Nachricht ist eingegangen",
+      "sentText": "Vielen Dank für Ihre Anfrage — wir antworten innerhalb von 1–2 Werktagen. Bei dringenden Anliegen schreiben Sie uns gern direkt an service@smartsequence.tech."
     },
     "getStarted": {
       "title": "Loslegen | ForgeHelm",

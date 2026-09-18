@@ -658,7 +658,9 @@
       "linkArchitecture": "アーキテクチャ概要",
       "linkCompliance": "対応フレームワーク",
       "linkPricing": "料金プラン",
-      "linkFaq": "調達 FAQ"
+      "linkFaq": "調達 FAQ",
+      "sentTitle": "メッセージを受け付けました",
+      "sentText": "お問い合わせありがとうございます。1〜2 営業日以内に返信いたします。お急ぎの場合は service@smartsequence.tech へ直接ご連絡ください。"
     },
     "getStarted": {
       "title": "はじめる | ForgeHelm",

@@ -15,6 +15,9 @@ function t(key: string): string {
 	}
 	return value || key;
 }
+// 送出後由 Web3Forms 導回本頁（依語系），帶 ?sent=1 以顯示成功訊息
+// getLocalizedPath 對預設語系不帶尾斜線、對其他語系帶，故先正規化再補 '/?sent=1'
+const successUrl = new URL(getLocalizedPath('/contact', lang).replace(/\/+$/, '') + '/?sent=1', Astro.site).toString();
 ---
 
 <Layout title={t('pages.contact.title')} description={t('pages.contact.description')}>
@@ -40,6 +43,11 @@ function t(key: string): string {
 				<h2>{t('pages.contact.formTitle')}</h2>
 				<p class="form-desc">{t('pages.contact.formDesc')}</p>
 
+				<div class="form-success" id="form-success" role="status" hidden>
+					<strong>{t('pages.contact.sentTitle')}</strong>
+					<p>{t('pages.contact.sentText')}</p>
+				</div>
+
 				<form
 					action="https://api.web3forms.com/submit"
 					method="POST"
@@ -48,6 +56,7 @@ function t(key: string): string {
 					<input type="hidden" name="access_key" value="ff66a317-834b-4254-97ac-5aa7d1491025" />
 					<input type="hidden" name="subject" value="ForgeHelm Enterprise Inquiry" />
 					<input type="hidden" name="from_name" value="ForgeHelm Website" />
+					<input type="hidden" name="redirect" value={successUrl} />
 					<input type="checkbox" name="botcheck" style="display:none" />
 
 					<div class="form-row">
@@ -281,6 +290,31 @@ function t(key: string): string {
 
 	textarea { resize: vertical; min-height: 120px; }
 
+	.form-success {
+		margin-bottom: 2rem;
+		padding: 1rem 1.25rem;
+		border: 1px solid rgba(16, 185, 129, 0.45);
+		border-left: 4px solid var(--cta-success);
+		border-radius: 0.5rem;
+		background: rgba(16, 185, 129, 0.08);
+	}
+
+	.form-success strong {
+		display: block;
+		color: var(--text-primary);
+		font-size: 0.95rem;
+		margin-bottom: 0.35rem;
+	}
+
+	.form-success p {
+		margin: 0;
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+	}
+
+	.form-success[hidden] { display: none; }
+
 	.submit-btn {
 		display: inline-flex;
 		align-items: center;
@@ -412,3 +446,16 @@ function t(key: string): string {
 		.section { padding: 3.5rem 0; }
 	}
 </style>
+
+<script>
+	// 送出成功後 Web3Forms 會導回 ?sent=1；顯示成功訊息並把參數從網址移除，
+	// 以免使用者重新整理時又看到一次。
+	if (new URLSearchParams(location.search).has('sent')) {
+		const box = document.getElementById('form-success');
+		if (box) {
+			box.hidden = false;
+			box.scrollIntoView({ block: 'center', behavior: 'smooth' });
+		}
+		history.replaceState(null, '', location.pathname);
+	}
+</script>
