@@ -784,7 +784,7 @@
       "heroSubtitle": "We turn quality into checks that run every day, instead of problems you discover the week before delivery. That is how we build our own product, and how we work on yours.",
       "s1Title": "ForgeHelm onboarding and governance consulting",
       "s1Text": "We install ForgeHelm in your environment and turn your audit obligations into checks that run every day: which requirement maps to which check, what should be blocked, how exceptions get approved — all configured and documented for your team. Next audit, the report is already there.",
-      "s2Title": "AI architecture review and workflow build-out",
+      "s2Title": "Bespoke AI architecture review and workflow build-out",
       "s2Text": "Most AI projects stall not because the model is not smart enough, but because nobody agreed on the problem first. We start by settling what needs solving and how success will be measured, then compare the workable options (cost, risk, and what we would advise against), and finally build a prototype that actually runs — not a deck that leaves you no wiser.",
       "s3Title": "Multilingual content governance",
       "s3Text": "Multilingual delivery for high-stakes material: consistent terminology, machine transcription corrected sentence by sentence, natural line breaks, and a record you can trace. See the case above for how it works.",
@@ -837,7 +837,7 @@
       "byolStep5Title": "Handover, re-runnable",
       "byolStep5Text": "Deployment scripts and configuration stay in your repository. Changing models, adding machines or rebuilding the environment is another run, not another project.",
       "byolNote": "What matters on this track is not how new the model is, but settling boundaries, cost and auditability up front — those three decide whether the system survives inside your company.",
-      "caseBridge": "Same method, different material. The project below deals with speech and text."
+      "caseBridge": "We can also build an AI workflow made for you. The project below is a subtitle-processing pipeline we planned and built for a client running online courses."
     }
   }
 }
