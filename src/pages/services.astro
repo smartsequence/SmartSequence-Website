@@ -17,6 +17,8 @@ function t(key: string): string {
 }
 
 const serviceKeys = ['s1', 's2', 's3'];
+const statKeys = ['stat1', 'stat2', 'stat3', 'stat4'];
+const stepKeys = ['step1', 'step2', 'step3', 'step4', 'step5'];
 const howKeys = ['h1', 'h2', 'h3'];
 ---
 
@@ -34,13 +36,46 @@ const howKeys = ['h1', 'h2', 'h3'];
 		</div>
 	</section>
 
+	<!-- Case study -->
+	<section class="section case-section">
+		<div class="container">
+			<div class="case-head">
+				<span class="case-label">{t('pages.services.caseLabel')}</span>
+				<h2>{t('pages.services.caseTitle')}</h2>
+			</div>
+			<p class="case-intro">{t('pages.services.caseIntro')}</p>
+			<div class="stat-row">
+				{statKeys.map((key) => (
+					<div class="stat">
+						<span class="stat-value">{t(`pages.services.${key}Value`)}</span>
+						<span class="stat-label">{t(`pages.services.${key}Label`)}</span>
+					</div>
+				))}
+			</div>
+			<h3 class="pipeline-title">{t('pages.services.pipelineTitle')}</h3>
+			<ol class="pipeline">
+				{stepKeys.map((key, i) => (
+					<li class="step">
+						<span class="step-num">{i + 1}</span>
+						<span class="step-body">
+							<strong>{t(`pages.services.${key}Title`)}</strong>
+							<span>{t(`pages.services.${key}Text`)}</span>
+						</span>
+					</li>
+				))}
+			</ol>
+			<p class="case-note">{t('pages.services.caseNote')}</p>
+		</div>
+	</section>
+
 	<!-- Services -->
 	<section class="section services-section">
 		<div class="container">
+			<h2 class="section-title">{t('pages.services.servicesTitle')}</h2>
 			<div class="service-grid">
 				{serviceKeys.map((key) => (
 					<div class="service-card">
-						<h2>{t(`pages.services.${key}Title`)}</h2>
+						<h3>{t(`pages.services.${key}Title`)}</h3>
 						<p>{t(`pages.services.${key}Text`)}</p>
 					</div>
 				))}
@@ -122,6 +157,126 @@ const howKeys = ['h1', 'h2', 'h3'];
 		letter-spacing: -0.02em;
 	}
 
+	/* 案例 */
+	.case-section { border-bottom: 1px solid var(--border-light); }
+
+	.case-head { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
+
+	.case-label {
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent);
+		background: var(--bg-highlight);
+		border: 1px solid var(--border-color);
+		border-radius: 999px;
+		padding: 0.2rem 0.7rem;
+	}
+
+	.case-head h2 {
+		font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+		font-weight: 700;
+		color: var(--text-primary);
+		letter-spacing: -0.02em;
+		margin: 0;
+	}
+
+	.case-intro {
+		font-size: 0.9375rem;
+		color: var(--text-secondary);
+		line-height: 1.85;
+		max-width: 820px;
+		margin-bottom: 2.5rem;
+	}
+
+	.stat-row {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		margin-bottom: 3rem;
+	}
+
+	.stat {
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-radius: 0.75rem;
+		padding: 1.25rem;
+		text-align: center;
+	}
+
+	.stat-value {
+		display: block;
+		font-size: clamp(1.125rem, 2vw, 1.5rem);
+		font-weight: 800;
+		color: var(--accent);
+		letter-spacing: -0.02em;
+		margin-bottom: 0.35rem;
+	}
+
+	.stat-label { display: block; font-size: 0.8rem; color: var(--text-secondary); }
+
+	.pipeline-title {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 1.25rem;
+	}
+
+	.pipeline {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1.75rem;
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		gap: 0.75rem;
+	}
+
+	.step {
+		position: relative;
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-top: 3px solid var(--cta-primary);
+		border-radius: 0.75rem;
+		padding: 1.25rem 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	/* 步驟之間的箭頭；最後一格不畫 */
+	.step:not(:last-child)::after {
+		content: '›';
+		position: absolute;
+		right: -0.65rem;
+		top: 50%;
+		transform: translateY(-50%);
+		font-size: 1.25rem;
+		line-height: 1;
+		color: var(--accent);
+	}
+
+	.step-num {
+		font-size: 0.75rem;
+		font-weight: 800;
+		color: var(--accent);
+		letter-spacing: 0.08em;
+	}
+
+	.step-body { display: flex; flex-direction: column; gap: 0.4rem; }
+
+	.step-body strong { font-size: 0.9rem; color: var(--text-primary); }
+
+	.step-body span { font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.7; }
+
+	.case-note {
+		font-size: 0.875rem;
+		color: var(--text-muted);
+		line-height: 1.8;
+		max-width: 820px;
+		margin: 0;
+	}
+
 	.services-section { background: var(--bg-section); border-bottom: 1px solid var(--border-light); }
 
 	.service-grid {
@@ -138,7 +293,7 @@ const howKeys = ['h1', 'h2', 'h3'];
 		padding: 2rem;
 	}
 
-	.service-card h2 {
+	.service-card h3 {
 		font-size: 1.0625rem;
 		font-weight: 700;
 		color: var(--text-primary);
@@ -229,8 +384,15 @@ const howKeys = ['h1', 'h2', 'h3'];
 	.btn-primary { background: var(--cta-primary); color: white; }
 	.btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
 
+	@media (max-width: 1100px) {
+		.pipeline { grid-template-columns: 1fr; }
+		.step:not(:last-child)::after { content: none; }
+		.step { flex-direction: row; align-items: flex-start; gap: 0.75rem; }
+	}
+
 	@media (max-width: 900px) {
 		.service-grid, .how-grid { grid-template-columns: 1fr; }
+		.stat-row { grid-template-columns: repeat(2, 1fr); }
 	}
 
 	@media (max-width: 768px) {
