@@ -797,7 +797,8 @@
       "billingTitle": "計費方式",
       "billingText": "以時數或專案計價，範圍、時數與交付物於開始前議定，與 ForgeHelm 的授權費分開計算。",
       "ctaTitle": "談談您的案子",
-      "ctaButton": "來信洽詢"
+      "ctaButton": "來信洽詢",
+      "crumbStudio": "智序資訊"
     }
   }
 }

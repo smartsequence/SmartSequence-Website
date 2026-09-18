@@ -797,7 +797,8 @@
       "billingTitle": "Abrechnung",
       "billingText": "Nach Stunden oder pro Projekt. Umfang, Stunden und Ergebnisse vereinbaren wir vorab; die Abrechnung erfolgt getrennt von den ForgeHelm-Lizenzgebühren.",
       "ctaTitle": "Erzählen Sie uns von Ihrem Projekt",
-      "ctaButton": "Schreiben Sie uns"
+      "ctaButton": "Schreiben Sie uns",
+      "crumbStudio": "Smart Sequence Tech"
     }
   }
 }

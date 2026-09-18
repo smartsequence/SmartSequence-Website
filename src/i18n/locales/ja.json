@@ -797,7 +797,8 @@
       "billingTitle": "料金",
       "billingText": "時間単位またはプロジェクト単位。範囲・工数・成果物は着手前に合意し、ForgeHelm のライセンス料とは別に請求します。",
       "ctaTitle": "案件についてお聞かせください",
-      "ctaButton": "メールで相談する"
+      "ctaButton": "メールで相談する",
+      "crumbStudio": "Smart Sequence Tech"
     }
   }
 }
