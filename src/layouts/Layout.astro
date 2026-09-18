@@ -109,7 +109,7 @@ const hreflangLinks = allLangs.map(l => ({
 		/* Text Colors */
 		--text-primary: #FFFFFF;   /* 白色主標題 */
 		--text-secondary: #D1D5DB; /* 亮灰說明文字 */
-		--text-muted: #9CA3AF;     /* 次要文字 */
+		--text-muted: #B6BEC9;     /* 次要文字；卡片底上 5.4:1（原 #9CA3AF 僅 4.06:1）*/
 		
 		/* Interactive Colors */
 		--link-color: #3B82F6;     /* Primary Blue */
@@ -149,7 +149,7 @@ const hreflangLinks = allLangs.map(l => ({
 		--glass-border: rgba(148, 163, 184, 0.2);
 
 		/* 強調字色（連結／數值／徽章）——深色底用亮藍，淺色主題另行覆寫 */
-		--accent: #60a5fa;
+		--accent: #93c5fd;
 		--success-text: #10b981;
 		/* 淺底強調區塊（法遵頁的引言框與表頭）*/
 		--bg-highlight: rgba(59, 130, 246, 0.12);
@@ -162,15 +162,16 @@ const hreflangLinks = allLangs.map(l => ({
 	/* Light Theme */
 	html[data-theme='light'] {
 		color-scheme: light;
-		--bg-main: #F8FAFC;        /* 淺灰白背景 */
-		--bg-section: #FFFFFF;     /* 白色區塊 */
-		--bg-card: #FFFFFF;        /* 白色卡片 */
+		/* 柔和的冷調米白，避免整片純白刺眼；卡片維持純白以浮出層次 */
+		--bg-main: #EEF2F8;        /* 頁面底色（最深的一階）*/
+		--bg-section: #F7F9FC;     /* 區塊底色 */
+		--bg-card: #FFFFFF;        /* 卡片：純白，與區塊底色形成層次 */
 		--bg-footer: #1E293B;      /* Footer 保持深色 */
 		
 		/* Text Colors */
 		--text-primary: #0F172A;   /* 深藍黑標題 */
 		--text-secondary: #475569; /* 深灰文字 */
-		--text-muted: #64748B;     /* 次要文字 */
+		--text-muted: #5B6779;     /* 次要文字；柔和底色上 5.1:1（原 #64748B 為 4.24:1）*/
 		
 		/* Interactive Colors */
 		--link-color: #3B82F6;     /* 藍色連結 */
@@ -192,8 +193,8 @@ const hreflangLinks = allLangs.map(l => ({
 		--gray-light: var(--text-muted);
 		
 		/* Border & Divider */
-		--border-color: rgba(148, 163, 184, 0.25);
-		--border-light: rgba(148, 163, 184, 0.15);
+		--border-color: rgba(100, 116, 139, 0.28);
+		--border-light: rgba(100, 116, 139, 0.16);
 		
 		/* Shadows - Light Mode */
 		--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
