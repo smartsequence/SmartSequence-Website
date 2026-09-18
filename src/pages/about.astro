@@ -82,6 +82,22 @@ const philosophyItems = [
 		</div>
 	</section>
 
+	<!-- Delivery model -->
+	<section class="section delivery-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.about.deliveryTitle')}</h2>
+			<div class="delivery-grid">
+				{['d1', 'd2', 'd3'].map((key) => (
+					<div class="delivery-card">
+						<h3>{t(`pages.about.${key}Title`)}</h3>
+						<p>{t(`pages.about.${key}Text`)}</p>
+					</div>
+				))}
+			</div>
+			<p class="delivery-note">{t('pages.about.deliveryNote')}</p>
+		</div>
+	</section>
+
 	<!-- Company Info (low visual weight) -->
 	<section class="section company-section">
 		<div class="container">
@@ -189,6 +205,53 @@ const philosophyItems = [
 		border: none;
 		padding: 0;
 		margin: 0;
+	}
+
+	/* Delivery model */
+	.delivery-section {
+		background: var(--bg-section);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.delivery-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.delivery-card {
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-left: 3px solid var(--cta-primary);
+		border-radius: 0.75rem;
+		padding: 1.75rem;
+	}
+
+	.delivery-card h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+
+	.delivery-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.75;
+		margin: 0;
+	}
+
+	.delivery-note {
+		margin: 2rem auto 0;
+		max-width: 760px;
+		text-align: center;
+		font-size: 0.875rem;
+		color: var(--text-muted);
+		line-height: 1.8;
+	}
+
+	@media (max-width: 900px) {
+		.delivery-grid { grid-template-columns: 1fr; }
 	}
 
 	/* Philosophy */
