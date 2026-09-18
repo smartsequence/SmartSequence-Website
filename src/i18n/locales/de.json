@@ -754,7 +754,15 @@
       "linkPricing": "Preise ansehen",
       "linkTerms": "Nutzungsbedingungen",
       "linkPrivacy": "Datenschutz",
-      "linkContact": "Kontakt"
+      "linkContact": "Kontakt",
+      "payNoteAtm": "Nach der Bestellung erzeugen wir für diesen Auftrag eine virtuelle Kontonummer samt Zahlungsfrist. Überweisen Sie bis zum Fristende per Online-Banking oder Geldautomat – die Nummer stellt unser Zahlungsdienstleister aus, Sie müssen also keine angeben.",
+      "payNoteTransfer": "Nach der Bestellung senden wir Ihnen unsere Bankverbindung und einen Verwendungszweck per E-Mail. Geben Sie diesen bei der Überweisung an, damit wir die Zahlung zuordnen können."
+    },
+    "notFound": {
+      "title": "Seite nicht gefunden",
+      "heading": "Seite nicht gefunden",
+      "message": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+      "cta": "Zur Startseite"
     }
   }
 }

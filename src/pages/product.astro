@@ -228,7 +228,7 @@ const audiences = [
 	}
 
 	.hero-eyebrow a {
-		color: #3b82f6;
+		color: var(--accent);
 		text-decoration: none;
 		font-weight: 600;
 	}
@@ -352,7 +352,8 @@ const audiences = [
 	.module-num {
 		font-size: 1.5rem;
 		font-weight: 800;
-		color: rgba(59,130,246,0.3);
+		color: var(--accent);
+		opacity: 0.6;
 		line-height: 1;
 		min-width: 2rem;
 		flex-shrink: 0;
@@ -403,7 +404,7 @@ const audiences = [
 
 	.module-details li::before {
 		content: '✓';
-		color: #10b981;
+		color: var(--success-text);
 		font-weight: 700;
 		flex-shrink: 0;
 	}
@@ -424,7 +425,7 @@ const audiences = [
 		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.06em;
-		color: #10b981;
+		color: var(--success-text);
 		background: rgba(16,185,129,0.12);
 		border: 1px solid rgba(16,185,129,0.3);
 		padding: 0.25rem 0.75rem;
@@ -437,11 +438,11 @@ const audiences = [
 		color: var(--text-primary);
 		margin-bottom: 0.75rem;
 	}
-	.fp-sub { font-size: 1rem; color: #60a5fa; font-weight: 600; margin-bottom: 1rem; }
+	.fp-sub { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 1rem; }
 	.fingerprint-copy p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.25rem; }
 	.fp-dims { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
 	.fp-dims li { font-size: 0.875rem; color: var(--text-primary); padding-left: 1rem; position: relative; }
-	.fp-dims li::before { content: '•'; position: absolute; left: 0; color: #3b82f6; }
+	.fp-dims li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
 	.radar-placeholder {
 		display: flex;
 		justify-content: center;
@@ -512,6 +513,17 @@ const audiences = [
 		align-items: center;
 		gap: 0.25rem;
 		font-size: 0.875rem;
+	}
+	/* 本區塊底色是寫死的深色漸層、不隨主題變動；.btn-secondary 的 var(--text-primary)
+	   在淺色主題會變成深色字，貼在深底上等於看不見，故於此固定為淺色 */
+	.byol-section .btn-secondary {
+		color: #f1f5f9;
+		border-color: rgba(255, 255, 255, 0.35);
+	}
+	.byol-section .btn-secondary:hover {
+		color: #ffffff;
+		border-color: rgba(255, 255, 255, 0.6);
+		background: rgba(255, 255, 255, 0.08);
 	}
 	.byol-icons {
 		display: flex;
@@ -636,7 +648,7 @@ const audiences = [
 
 	.btn-secondary:hover {
 		border-color: #3b82f6;
-		color: #3b82f6;
+		color: var(--accent);
 	}
 
 	@media (max-width: 1024px) {

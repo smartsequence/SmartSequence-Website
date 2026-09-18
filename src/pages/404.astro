@@ -1,31 +1,61 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getLangFromUrl } from '../i18n/utils';
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const currentPath = Astro.url.pathname;
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
 ---
 
-<!doctype html>
-<html lang="zh-TW">
-	<head>
-		<BaseHead title={`404 - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header lang={lang} currentPath={currentPath} />
-		<main>
-			<div class="flex flex-col items-center justify-center min-h-[60vh] text-center">
-				<h1 class="text-6xl font-bold mb-4">404</h1>
-				<h2 class="text-2xl mb-6">找不到頁面</h2>
-				<p class="text-gray-600 mb-8">抱歉，您訪問的頁面不存在。</p>
-				<a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-					返回首頁
-				</a>
-			</div>
-		</main>
-		<Footer lang={lang} />
-	</body>
-</html>
+<Layout title={t('pages.notFound.title')} description={t('pages.notFound.message')}>
+	<section class="section notfound">
+		<div class="container">
+			<p class="code">404</p>
+			<h1>{t('pages.notFound.heading')}</h1>
+			<p class="message">{t('pages.notFound.message')}</p>
+			<a href={getLocalizedPath('/', lang)} class="btn btn-primary">{t('pages.notFound.cta')}</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+	.section { padding: 5rem 0; }
+
+	.notfound {
+		min-height: 60vh;
+		display: flex;
+		align-items: center;
+		text-align: center;
+	}
+
+	.code {
+		font-size: clamp(3.5rem, 12vw, 6rem);
+		font-weight: 800;
+		line-height: 1;
+		color: var(--accent);
+		margin: 0 0 0.5rem;
+		letter-spacing: -0.04em;
+	}
+
+	h1 {
+		font-size: clamp(1.5rem, 4vw, 2rem);
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+
+	.message {
+		color: var(--text-secondary);
+		font-size: 1rem;
+		margin-bottom: 2rem;
+	}
+</style>

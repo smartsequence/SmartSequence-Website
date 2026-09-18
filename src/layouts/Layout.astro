@@ -147,6 +147,16 @@ const hreflangLinks = allLangs.map(l => ({
 		/* Glassmorphism */
 		--glass-bg: rgba(55, 65, 81, 0.5);
 		--glass-border: rgba(148, 163, 184, 0.2);
+
+		/* 強調字色（連結／數值／徽章）——深色底用亮藍，淺色主題另行覆寫 */
+		--accent: #60a5fa;
+		--success-text: #10b981;
+		/* 淺底強調區塊（法遵頁的引言框與表頭）*/
+		--bg-highlight: rgba(59, 130, 246, 0.12);
+		/* 頁面曾直接使用但從未定義的別名，補上以免 var() 失效 */
+		--border: var(--border-color);
+		--card-bg: var(--bg-card);
+		--font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Noto Sans TC', monospace;
 	}
 
 	/* Light Theme */
@@ -193,6 +203,14 @@ const hreflangLinks = allLangs.map(l => ({
 		/* Glassmorphism */
 		--glass-bg: rgba(255, 255, 255, 0.8);
 		--glass-border: rgba(148, 163, 184, 0.2);
+
+		/* 淺色主題：亮藍在白底只有 2.4:1，改用深藍（白底約 6.4:1）*/
+		--accent: #1d4ed8;
+		/* 淺色主題：emerald-500 在白底僅 2.3:1，改用 emerald-700（約 4.8:1）*/
+		--success-text: #047857;
+		--bg-highlight: #f0f7ff;
+		--border: var(--border-color);
+		--card-bg: var(--bg-card);
 	}
 
 	* {

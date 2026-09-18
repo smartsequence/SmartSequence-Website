@@ -276,7 +276,7 @@ function t(key: string): string {
 		font-size: 1.125rem;
 		flex-shrink: 0;
 		margin-top: 0.125rem;
-		color: #3b82f6;
+		color: #60a5fa;
 	}
 
 	.dropdown-menu span {
@@ -390,8 +390,9 @@ function t(key: string): string {
 		display: inline-block;
 		padding: 0.75rem 1.25rem;
 		background: transparent;
-		color: var(--text-primary);
-		border: 1px solid var(--border-color);
+		/* header 恆為深底；var(--text-primary) 在淺色主題會變深色，按鈕會整個看不見 */
+		color: #f1f5f9;
+		border: 1px solid rgba(255, 255, 255, 0.25);
 		border-radius: var(--radius-md);
 		text-decoration: none;
 		font-weight: 600;

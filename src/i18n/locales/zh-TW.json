@@ -754,7 +754,15 @@
       "linkPricing": "查看定價方案",
       "linkTerms": "服務條款",
       "linkPrivacy": "隱私權政策",
-      "linkContact": "聯絡我們"
+      "linkContact": "聯絡我們",
+      "payNoteAtm": "送出訂單後，系統會為這筆訂單產生一組專屬的 ATM 虛擬帳號與繳費期限；請於期限內以網路銀行或實體 ATM 轉帳。虛擬帳號由本站的收款金流產生，您不需要自行提供帳號。",
+      "payNoteTransfer": "送出訂單後，我們會以 Email 提供匯款帳號與對帳代碼；匯款時請於備註欄填入該代碼，以便核對款項。"
+    },
+    "notFound": {
+      "title": "找不到頁面",
+      "heading": "找不到頁面",
+      "message": "抱歉，您要找的頁面不存在或已移除。",
+      "cta": "返回首頁"
     }
   }
 }

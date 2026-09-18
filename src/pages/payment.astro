@@ -57,12 +57,12 @@ function t(key: string): string {
 							</label>
 						</div>
 
-						<div class="form-group full-width">
+						<div class="form-group full-width" data-pay-group="card">
 							<label for="cardNumber">{t('pages.payment.cardNumberLabel')}</label>
 							<input type="text" id="cardNumber" name="cardNumber" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" />
 						</div>
 
-						<div class="form-row">
+						<div class="form-row" data-pay-group="card">
 							<div class="form-group">
 								<label for="cardName">{t('pages.payment.cardNameLabel')}</label>
 								<input type="text" id="cardName" name="cardName" autocomplete="cc-name" placeholder="WANG DA MING" />
@@ -76,6 +76,9 @@ function t(key: string): string {
 								<input type="text" id="cardCvc" name="cardCvc" inputmode="numeric" autocomplete="cc-csc" placeholder="123" />
 							</div>
 						</div>
+
+						<p class="pay-note" data-pay-group="atm">{t('pages.payment.payNoteAtm')}</p>
+						<p class="pay-note" data-pay-group="transfer">{t('pages.payment.payNoteTransfer')}</p>
 					</fieldset>
 
 					<!-- 電子發票 -->
@@ -236,6 +239,23 @@ function t(key: string): string {
 
 		invoiceRadios.forEach((radio) => radio.addEventListener('change', applyInvoiceType));
 		applyInvoiceType();
+
+		// 依「付款方式」切換：信用卡才需要卡號欄位，ATM／匯款改顯示取號與對帳說明
+		const payGroups = document.querySelectorAll<HTMLElement>('[data-pay-group]');
+		const payRadios = document.querySelectorAll<HTMLInputElement>('input[name="payMethod"]');
+
+		function applyPayMethod() {
+			const checked = document.querySelector<HTMLInputElement>('input[name="payMethod"]:checked');
+			const value = checked ? checked.value : 'card';
+			payGroups.forEach((group) => {
+				const show = (group.dataset.payGroup || '').split(' ').includes(value);
+				group.hidden = !show;
+				group.querySelectorAll('input').forEach((input) => { input.disabled = !show; });
+			});
+		}
+
+		payRadios.forEach((radio) => radio.addEventListener('change', applyPayMethod));
+		applyPayMethod();
 	</script>
 </Layout>
 
@@ -255,7 +275,7 @@ function t(key: string): string {
 		margin-bottom: 1.25rem;
 	}
 
-	.hero-eyebrow a { color: #3b82f6; text-decoration: none; font-weight: 600; }
+	.hero-eyebrow a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
 	.page-hero h1 {
 		font-size: clamp(2rem, 4vw, 3rem);
@@ -332,7 +352,15 @@ function t(key: string): string {
 	.form-group.full-width { grid-column: 1 / -1; }
 
 	/* .form-group／.form-row 有 display 設定，特異度高於 UA 的 [hidden]，故明寫 */
-	[data-invoice-group][hidden] { display: none; }
+	[data-invoice-group][hidden],
+	[data-pay-group][hidden] { display: none; }
+
+	.pay-note {
+		font-size: 0.85rem;
+		color: var(--text-secondary);
+		line-height: 1.7;
+		margin: 0;
+	}
 
 	label, .label-text {
 		font-size: 0.825rem;
@@ -423,7 +451,7 @@ function t(key: string): string {
 		padding: 0.2rem 0.6rem;
 		border-radius: 999px;
 		background: rgba(59,130,246,0.18);
-		color: #93c5fd;
+		color: var(--accent);
 		border: 1px solid rgba(59,130,246,0.45);
 	}
 
@@ -535,7 +563,7 @@ function t(key: string): string {
 	}
 
 	.summary-row.total .summary-label { font-size: 0.9rem; color: var(--text-primary); font-weight: 700; }
-	.summary-row.total .summary-value { font-size: 1.25rem; font-weight: 800; color: #60a5fa; }
+	.summary-row.total .summary-value { font-size: 1.25rem; font-weight: 800; color: var(--accent); }
 
 	.tax-note {
 		font-size: 0.75rem;
@@ -577,7 +605,7 @@ function t(key: string): string {
 	}
 
 	.quick-links a {
-		color: #60a5fa;
+		color: var(--accent);
 		text-decoration: none;
 		font-size: 0.875rem;
 		transition: color 0.2s;
