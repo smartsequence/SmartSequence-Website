@@ -13,7 +13,7 @@ interface Props {
 const { lang, currentPath } = Astro.props;
 
 // 這幾頁是以工作室身分接待客戶，頁首標誌改用工作室名；其餘頁面談的是產品，維持 ForgeHelm。
-const STUDIO_ROUTES = ['/about', '/contact', '/services', '/payment'];
+const STUDIO_ROUTES = ['/about', '/contact', '/services', '/payment', '/privacy', '/terms'];
 const pathWithoutLocale = currentPath.replace(/^\/(en|ja|de)(?=\/|$)/, '') || '/';
 const normalisedPath = pathWithoutLocale.replace(/\/+$/, '') || '/';
 const brandName = STUDIO_ROUTES.includes(normalisedPath) ? STUDIO_BRAND : BRAND_NAME;
