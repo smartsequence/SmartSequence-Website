@@ -801,7 +801,7 @@
       "ctaButton": "Kontakt aufnehmen",
       "caseLabel": "Referenz",
       "caseTitle": "Untertitel für einen 30-Stunden-Kurs einer Bildungseinrichtung",
-      "caseIntro": "Sieben Einheiten, 22 Videosegmente. Eine maschinelle Transkription steckt voller falsch gehörter Begriffe, falscher Zeichensetzung und Füllwörter. Für dieses Projekt haben wir eine wiederholbare KI-Pipeline gebaut: Sie korrigiert Satz für Satz anhand der Fachbegriffe des Gebiets und der Sprechweise der sprechenden Person und teilt lange Passagen in Zeilen, die sich natürlich lesen – aus einer Aufnahme wird ein Text, den man wirklich lesen kann.",
+      "caseIntro": "Sieben Einheiten, 22 Videosegmente. Eine maschinelle Transkription steckt voller falsch gehörter Begriffe, falscher Zeichensetzung und Füllwörter. Für dieses Projekt haben wir eine wiederholbare KI-Pipeline gebaut: Sie korrigiert Satz für Satz anhand der Fachbegriffe des Gebiets und der Sprechweise der sprechenden Person und teilt lange Passagen in Zeilen, die sich natürlich lesen – aus einer Aufnahme werden ein lesbarer Text und Untertitel, die korrekt und flüssig laufen.",
       "stat1Value": "22",
       "stat1Label": "Videosegmente",
       "stat2Value": "30 Std. 44 Min.",
