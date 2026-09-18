@@ -107,7 +107,7 @@ function t(key: string): string {
 						</div>
 
 						<!-- 關鍵欄位 1：手機條碼載具 -->
-						<div class="form-group full-width key-field" id="carrier-field">
+						<div class="form-group full-width key-field" id="carrier-field" data-invoice-group="personal">
 							<div class="key-head">
 								<label for="carrierId">{t('pages.payment.carrierLabel')}</label>
 								<span class="key-badge">{t('pages.payment.carrierBadge')}</span>
@@ -124,7 +124,7 @@ function t(key: string): string {
 						</div>
 
 						<!-- 關鍵欄位 2：捐贈愛心碼 -->
-						<div class="form-group full-width key-field" id="donation-field">
+						<div class="form-group full-width key-field" id="donation-field" data-invoice-group="donate">
 							<div class="key-head">
 								<label for="donationCode">{t('pages.payment.donateLabel')}</label>
 								<span class="key-badge">{t('pages.payment.donateBadge')}</span>
@@ -141,14 +141,14 @@ function t(key: string): string {
 							<p class="field-hint">{t('pages.payment.donateHint')}</p>
 						</div>
 
-						<!-- 其餘載具／統編 -->
-						<div class="form-group full-width">
+						<!-- 自然人憑證載具（個人發票專用） -->
+						<div class="form-group full-width" data-invoice-group="personal">
 							<label for="naturalId">{t('pages.payment.naturalIdLabel')}</label>
 							<input type="text" id="naturalId" name="naturalId" placeholder={t('pages.payment.naturalIdPlaceholder')} maxlength="16" />
 							<p class="field-hint">{t('pages.payment.naturalIdHint')}</p>
 						</div>
 
-						<div class="form-row two">
+						<div class="form-row two" data-invoice-group="company">
 							<div class="form-group">
 								<label for="buyerTaxId">{t('pages.payment.taxIdLabel')}</label>
 								<input type="text" id="buyerTaxId" name="buyerTaxId" inputmode="numeric" placeholder={t('pages.payment.taxIdPlaceholder')} maxlength="8" pattern="[0-9]{8}" />
@@ -224,6 +224,26 @@ function t(key: string): string {
 
 		</div>
 	</section>
+
+	<script>
+		// 依「發票類型」切換下方待填欄位：個人＝載具類、捐贈＝愛心碼、公司＝統編與抬頭
+		const invoiceGroups = document.querySelectorAll<HTMLElement>('[data-invoice-group]');
+		const invoiceRadios = document.querySelectorAll<HTMLInputElement>('input[name="invoiceType"]');
+
+		function applyInvoiceType() {
+			const checked = document.querySelector<HTMLInputElement>('input[name="invoiceType"]:checked');
+			const value = checked ? checked.value : 'personal';
+			invoiceGroups.forEach((group) => {
+				const show = (group.dataset.invoiceGroup || '').split(' ').includes(value);
+				group.hidden = !show;
+				// 隱藏欄位一併停用，避免送出未顯示的值、或被 pattern 擋下
+				group.querySelectorAll('input').forEach((input) => { input.disabled = !show; });
+			});
+		}
+
+		invoiceRadios.forEach((radio) => radio.addEventListener('change', applyInvoiceType));
+		applyInvoiceType();
+	</script>
 </Layout>
 
 <style>
@@ -317,6 +337,9 @@ function t(key: string): string {
 	}
 
 	.form-group.full-width { grid-column: 1 / -1; }
+
+	/* .form-group／.form-row 有 display 設定，特異度高於 UA 的 [hidden]，故明寫 */
+	[data-invoice-group][hidden] { display: none; }
 
 	label, .label-text {
 		font-size: 0.825rem;
