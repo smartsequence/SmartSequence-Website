@@ -609,7 +609,7 @@
       "planProF3": "AI 助理含合規閘門——無限量",
       "planProF4": "平台費含導入協助",
       "planProF5": "AI 助理（ChatBot，可離線）",
-      "planProF6": "電子郵件支援（工作日優先處理）",
+      "planProF6": "電子郵件支援（工作日處理）",
       "planEntF1": "全內網／實體隔離（Air-gapped）",
       "planEntF2": "自備授權與 AI 部署套件（BYOL + AI Deployment Kit，支援 Ollama／vLLM）",
       "planEntF3": "SSO／SAML（規劃中）",
