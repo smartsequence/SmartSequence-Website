@@ -11,7 +11,12 @@ function flatten(obj, prefix = '') {
   return out;
 }
 
-const locales = ['en', 'zh-TW', 'ja', 'de'];
+// 掃目錄而非手維護清單（原寫死 en/zh-TW/ja/de，新增語系時會靜默漏查）。
+const locales = fs
+  .readdirSync('src/i18n/locales')
+  .filter((f) => f.endsWith('.json'))
+  .map((f) => f.replace(/\.json$/, ''))
+  .sort();
 const flat = {};
 for (const l of locales) {
   flat[l] = flatten(JSON.parse(fs.readFileSync(`src/i18n/locales/${l}.json`, 'utf8')));

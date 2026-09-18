@@ -1,0 +1,83 @@
+{
+  "pages": {
+    "legal": {
+      "terms": {
+        "title": "服务条款 | Smart Sequence Tech 智序资讯工作室",
+        "description": "ForgeHelm SaaS 订阅制服务条款，适用于 Core、Professional 及 Enterprise 方案用户。",
+        "h1": "服务条款",
+        "h1Secondary": "Terms of Service",
+        "lastUpdated": "最后更新日期：2026-05-25",
+        "sections": [
+          {
+            "heading": "1. 服务说明",
+            "paragraphs": [
+              "{studioName}（以下简称「本公司」）通过 ForgeHelm 提供企业级代码治理与合规平台服务，包含 SaaS 管理平台、分析 Agent 软件及相关功能模块（合规报告、SBOM、仪表板、风险问卷、AI ChatBot、技术栈迁移、数据质量）。"
+            ]
+          },
+          {
+            "heading": "2. 用户账号与责任",
+            "bullets": [
+              "用户应提供正确且完整的注册信息",
+              "账号安全由用户自行负责，不得与他人共用账号",
+              "禁止滥用服务，包括但不限于恶意攻击、大量垃圾请求等行为",
+              "用户对其上传或输入的数据内容负完全责任"
+            ]
+          },
+          {
+            "heading": "3. 订阅、计费与退款",
+            "bullets": [
+              "ForgeHelm 采 Per-Seat 年订阅制（Core、Professional、Enterprise），计费公式为：年费 = 席位月费 × 席位数 × 12 + 平台年费（Professional / Enterprise 适用）",
+              "在线付款通过 Stripe Checkout 于 ForgeHelm SaaS 平台完成；企业采购可另以合约、采购单或汇款方式处理",
+              "体验方案费用（Trial Experience）于付款后 30 日内升级 Core 或 Professional 年订阅时，可全额折抵首年年费",
+              "席位于合约期间内可依实际人数调整（Proration）；月缴若提供，通常较年缴加价约 20%",
+              "台湾客户可开立合法发票（统一编号：{taxId}）",
+              "年订阅一经启用，除法令或书面合约另有约定外，原则不予中途退费；服务可使用至订阅期满"
+            ]
+          },
+          {
+            "heading": "4. 知识产权",
+            "bullets": [
+              "客户仓库经 Agent 分析后产生的合规报告、SBOM 与仪表板数据，其商业使用权归客户所有",
+              "ForgeHelm 平台软件、界面设计、分析算法属{studioName}所有",
+              "未经授权，不得复制、修改或分发本服务的任何部分"
+            ]
+          },
+          {
+            "heading": "5. 服务变更与终止",
+            "bullets": [
+              "我们保留修改、暂停或终止服务的权利",
+              "重大变更将提前 30 天以 Email 通知用户",
+              "如需终止服务，将提前通知并协助用户导出数据"
+            ]
+          },
+          {
+            "heading": "6. 责任限制",
+            "bullets": [
+              "本服务以「现状」提供，不保证绝对无错误或不中断",
+              "报告内容仅供参考，实际决策应由用户自行判断",
+              "对于因使用或无法使用本服务所造成的损失，我们不负赔偿责任",
+              "如有损害赔偿责任，赔偿金额以用户已支付的服务费用为上限"
+            ]
+          },
+          {
+            "heading": "7. 准据法与管辖",
+            "bullets": [
+              "本条款适用中华民国法律",
+              "因本条款所生争议，双方同意以台湾台北地方法院为第一审管辖法院"
+            ]
+          },
+          {
+            "heading": "8. 联系信息",
+            "paragraphs": [
+              "如对本条款有任何疑问，请联系我们："
+            ],
+            "bullets": [
+              "Email: {email}",
+              "统一编号: {taxId}"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

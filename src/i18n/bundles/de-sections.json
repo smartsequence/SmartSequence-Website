@@ -79,8 +79,8 @@
         "description": "Rollenbasierter Zugriff und logische Mandantentrennung. Unveränderliche Audit-Logs."
       },
       "item3": {
-        "title": "4 Sprachen UI + 5 Sprachen Berichte",
-        "description": "Website-UI auf EN, Traditionellem Chinesisch, Japanisch und Deutsch. Berichte in fünf Sprachen."
+        "title": "6 Sprachen UI + 6 Sprachen Berichte",
+        "description": "Website-UI auf Traditionellem Chinesisch, Englisch, Japanisch, Deutsch, Koreanisch und Vereinfachtem Chinesisch. Berichte in denselben sechs Sprachen."
       }
     },
     "cta": {

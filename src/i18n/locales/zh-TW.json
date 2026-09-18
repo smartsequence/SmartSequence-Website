@@ -155,8 +155,8 @@
         "description": "角色型存取控制，租戶間完全邏輯隔離。每項關鍵操作均留有不可竄改的稽核日誌。"
       },
       "item3": {
-        "title": "介面四語系＋報告六語系",
-        "description": "官網介面支援繁體中文、英文、日文與德文；合規報告可輸出六語系，含韓文與簡體中文。"
+        "title": "介面與報告皆六語系",
+        "description": "官網介面支援繁體中文、英文、日文、德文、韓文與簡體中文；合規報告可輸出相同六種語言。"
       }
     },
     "cta": {
@@ -228,7 +228,9 @@
     "learnCompliance": "合規框架",
     "tryExperience": "體驗方案",
     "contactSales": "聯絡業務",
-    "studioCrumb": "智序資訊"
+    "studioCrumb": "智序資訊",
+    "selectLanguage": "選擇語言",
+    "switchTo": "切換到 {lang}"
   },
   "pages": {
     "about": {
@@ -246,7 +248,7 @@
       "p3Title": "全球視野，在地落地",
       "p3Text": "六語系、在地合規框架（APPI、ISMAP、TW-PDPA、DORA），以及市場調整後的定價。",
       "marketsTitle": "服務市場",
-      "marketsNote": "官網介面提供英文、繁體中文、日文與德文；合規報告可輸出六語系文件。",
+      "marketsNote": "官網介面提供繁體中文、英文、日文、德文、韓文與簡體中文；合規報告可輸出相同六語系文件。",
       "m1": "台灣",
       "m2": "日本",
       "m3": "美國",
@@ -520,7 +522,6 @@
       "tableEntPlatform": "Ent 平台/年",
       "tableFeature": "功能",
       "platformFeeYear": "/ 年平台費",
-      "platformFeeContact": "其他幣別請洽業務",
       "annualFormulaTitle": "年訂閱費用公式",
       "annualFormula": "年費 = 席位月費 × 席位數 × 12 + 平台年費",
       "annualExampleTitle": "試算範例：Professional 10 席（TWD）",
@@ -597,7 +598,6 @@
       "compareDataQualityCore": "✓",
       "compareDataQualityPro": "✓",
       "compareDataQualityEnt": "✓",
-      "customQuote": "議價",
       "planCoreF1": "純軟體即服務（SaaS）雲端部署",
       "planCoreF2": "全部 24 個合規框架（含 OWASP Top 10）",
       "planCoreF3": "合規摘要 + 8 軸風險指紋",

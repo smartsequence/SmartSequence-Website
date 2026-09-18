@@ -3,7 +3,7 @@ import { BRAND_NAME, STUDIO_BRAND } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { getTranslations, getLocalizedPath } from '../i18n/utils';
-import type { Language } from '../i18n/languages';
+import { siteLocales, defaultLang, type Language } from '../i18n/languages';
 
 interface Props {
 	lang: Language;
@@ -14,7 +14,11 @@ const { lang, currentPath } = Astro.props;
 
 // 這幾頁是以工作室身分接待客戶，頁首標誌改用工作室名；其餘頁面談的是產品，維持 ForgeHelm。
 const STUDIO_ROUTES = ['/about', '/contact', '/services', '/payment', '/privacy', '/terms'];
-const pathWithoutLocale = currentPath.replace(/^\/(en|ja|de)(?=\/|$)/, '') || '/';
+// 由 siteLocales 推導語系前綴（原為寫死的 en|ja|de，新增語系時漏改會讓該語系的
+// 工作室頁面錯掛成產品品牌）。預設語系無前綴，故排除。
+// 語系代碼為 BCP-47 形式（字母與連字號），不含 regex 特殊字元，故直接串接即可。
+const localePrefixPattern = siteLocales.filter((l) => l !== defaultLang).join('|');
+const pathWithoutLocale = currentPath.replace(new RegExp(`^/(${localePrefixPattern})(?=/|$)`), '') || '/';
 const normalisedPath = pathWithoutLocale.replace(/\/+$/, '') || '/';
 const brandName = STUDIO_ROUTES.includes(normalisedPath) ? STUDIO_BRAND : BRAND_NAME;
 const translations = await getTranslations(lang);

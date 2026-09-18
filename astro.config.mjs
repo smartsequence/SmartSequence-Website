@@ -6,12 +6,15 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-// ForgeHelm 官網支援語系（計畫：zh-TW 預設 + en/ja/de）
+// ForgeHelm 官網支援語系（zh-TW 預設 + en/ja/de/ko/zh-CN，與產品六語系一致）
+// ⚠ 須與 src/i18n/languages.ts 的 siteLocales 完全一致。
 const locales = [
   'zh-TW',
   'en',
   'ja',
   'de',
+  'ko',
+  'zh-CN',
 ];
 
 // https://astro.build/config

@@ -64,18 +64,23 @@ const plans = [
 		featured: false,
 		cta: 'contactSales',
 		ctaHref: getLocalizedPath('/contact', lang),
-		platformFee: { usd: 15000, twd: null, jpy: null, eur: null, cny: null, custom: true },
+		platformFee: { usd: 15000, twd: 480000, jpy: 2250000, eur: 13950, cny: 108000, custom: true },
 		featureKeys: ['planEntF1', 'planEntF2', 'planEntF3', 'planEntF4', 'planEntF5'],
 		notIncludedKeys: [],
 	},
 ];
 
+// 五幣別金額與產品端 ForgeHelm-Contracts/Models/Subscription/PlanPricingTable.cs 逐格一致。
+// Enterprise 平台年費原本四格寫「議價」，但產品表對五幣別皆有明確數字，故照實列出。
+// ⚠ 韓元刻意不列：產品 PlanPricingTable 僅支援 USD/TWD/CNY/JPY/EUR，韓文使用者以 USD
+//   報價與扣款（見 ForgeHelm-SaaS/Client/src/lib/localeCurrency.ts）。此處若擅自加 KRW，
+//   會造成「看到韓元報價、被扣美元」。要支援韓元須先改產品定價表。
 const currencyRows = [
 	{ labelKey: 'currencyUSD', core: '$39', proSeat: '$69', proPlatform: '$6,000', entSeat: '$119+', entPlatform: '$15,000+' },
-	{ labelKey: 'currencyTWD', core: 'NT$1,250', proSeat: 'NT$2,200', proPlatform: 'NT$192,000', entSeat: 'NT$3,800+', entPlatform: t('pages.pricing.customQuote') },
-	{ labelKey: 'currencyCNY', core: '¥280', proSeat: '¥500', proPlatform: '¥43,500', entSeat: '¥860+', entPlatform: t('pages.pricing.customQuote') },
-	{ labelKey: 'currencyJPY', core: '¥5,850', proSeat: '¥10,350', proPlatform: '¥900,000', entSeat: '¥17,850+', entPlatform: t('pages.pricing.customQuote') },
-	{ labelKey: 'currencyEUR', core: '€36', proSeat: '€64', proPlatform: '€5,580', entSeat: '€110+', entPlatform: t('pages.pricing.customQuote') },
+	{ labelKey: 'currencyTWD', core: 'NT$1,250', proSeat: 'NT$2,200', proPlatform: 'NT$192,000', entSeat: 'NT$3,800+', entPlatform: 'NT$480,000+' },
+	{ labelKey: 'currencyCNY', core: '¥280', proSeat: '¥500', proPlatform: '¥43,500', entSeat: '¥860+', entPlatform: '¥108,000+' },
+	{ labelKey: 'currencyJPY', core: '¥5,850', proSeat: '¥10,350', proPlatform: '¥900,000', entSeat: '¥17,850+', entPlatform: '¥2,250,000+' },
+	{ labelKey: 'currencyEUR', core: '€36', proSeat: '€64', proPlatform: '€5,580', entSeat: '€110+', entPlatform: '€13,950+' },
 ];
 
 const competitors = [
@@ -141,9 +146,6 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 									{t('pages.pricing.platformFeeYear')}
 									{plan.platformFee.twd && (
 										<span class="platform-fee-alt"> (TWD {plan.platformFee.twd.toLocaleString()})</span>
-									)}
-									{plan.platformFee.custom && !plan.platformFee.twd && (
-										<span class="platform-fee-alt"> — {t('pages.pricing.platformFeeContact')}</span>
 									)}
 								</p>
 							)}

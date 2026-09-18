@@ -155,8 +155,8 @@
         "description": "Role-based access control with full logical isolation between tenants. Immutable audit logs for every critical operation."
       },
       "item3": {
-        "title": "4-Language UI + 6-Language Reports",
-        "description": "Website UI in English, Traditional Chinese, Japanese, and German. Compliance reports export in six languages, including Korean and Simplified Chinese."
+        "title": "6-Language UI + 6-Language Reports",
+        "description": "Website UI in Traditional Chinese, English, Japanese, German, Korean, and Simplified Chinese. Compliance reports export in the same six languages."
       }
     },
     "cta": {
@@ -228,7 +228,9 @@
     "learnCompliance": "Compliance Frameworks",
     "tryExperience": "Try Experience",
     "contactSales": "Contact Sales",
-    "studioCrumb": "Smart Sequence Tech"
+    "studioCrumb": "Smart Sequence Tech",
+    "selectLanguage": "Select language",
+    "switchTo": "Switch to {lang}"
   },
   "pages": {
     "about": {
@@ -246,7 +248,7 @@
       "p3Title": "Global Standards, Local Context",
       "p3Text": "Six languages, region-specific frameworks (APPI, ISMAP, TW-PDPA, DORA), and market-adjusted pricing.",
       "marketsTitle": "Markets We Serve",
-      "marketsNote": "Website UI in English, Traditional Chinese, Japanese, and German. Compliance report exports support six output languages.",
+      "marketsNote": "Website UI in Traditional Chinese, English, Japanese, German, Korean, and Simplified Chinese. Compliance report exports support the same six output languages.",
       "m1": "Taiwan",
       "m2": "Japan",
       "m3": "United States",
@@ -520,7 +522,6 @@
       "tableEntPlatform": "Ent platform/yr",
       "tableFeature": "Feature",
       "platformFeeYear": "/ year platform fee",
-      "platformFeeContact": "contact for local currency",
       "annualFormulaTitle": "Annual Subscription Formula",
       "annualFormula": "Annual fee = seat monthly rate × seats × 12 + platform annual fee",
       "annualExampleTitle": "Example: Professional, 10 seats (TWD)",
@@ -597,7 +598,6 @@
       "compareDataQualityCore": "✓",
       "compareDataQualityPro": "✓",
       "compareDataQualityEnt": "✓",
-      "customQuote": "Custom",
       "planCoreF1": "Pure SaaS cloud deployment",
       "planCoreF2": "All 24 compliance frameworks (OWASP Top 10 included)",
       "planCoreF3": "Compliance summary + 8-axis fingerprint",

@@ -1,6 +1,6 @@
 ---
-import { languages, type Language, defaultLang } from '../i18n/languages';
-import { getLocalizedPath } from '../i18n/utils';
+import { languages, type Language, siteLocales } from '../i18n/languages';
+import { getLocalizedPath, getTranslations } from '../i18n/utils';
 
 interface Props {
   currentLang: Language;
@@ -9,9 +9,20 @@ interface Props {
 
 const { currentLang, currentPath = Astro.url.pathname } = Astro.props;
 
-// 目前有翻譯檔案的語言（只顯示已翻譯的語言）
-// 當新增翻譯檔案時，請更新此列表
-const availableLangs: Language[] = ['en', 'zh-TW', 'ja', 'de'];
+// 已建置路由的語言。直接取 siteLocales——這裡曾是手維護清單，新增語系時漏改會讓
+// 新語言建得出頁面卻無從切換（使用者只能手打網址）。
+const availableLangs: Language[] = [...siteLocales];
+
+const translations = await getTranslations(currentLang);
+function t(key: string): string {
+  const keys = key.split('.');
+  let value: any = translations;
+  for (const k of keys) {
+    value = value?.[k];
+    if (value === undefined) return key;
+  }
+  return value || key;
+}
 
 // 取得其他語言的 URL
 function getLocalizedUrl(locale: Language): string {
@@ -22,7 +33,7 @@ function getLocalizedUrl(locale: Language): string {
 <div class="language-switcher">
   <button 
     class="language-switcher-trigger"
-    aria-label="選擇語言"
+    aria-label={t('common.selectLanguage')}
     aria-expanded="false"
     id="lang-switcher-btn"
   >
@@ -44,7 +55,7 @@ function getLocalizedUrl(locale: Language): string {
             'lang-option',
             { active: currentLang === code }
           ]}
-          aria-label={`切換到 ${lang.name}`}
+          aria-label={t('common.switchTo').replace('{lang}', lang.nativeName)}
         >
           <span class="flag">{lang.flag}</span>
           <span class="lang-name">{lang.nativeName}</span>

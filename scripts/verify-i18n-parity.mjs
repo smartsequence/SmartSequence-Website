@@ -10,7 +10,12 @@ function flatten(obj, prefix = '') {
   return out;
 }
 
-const locales = ['en', 'zh-TW', 'ja', 'de'];
+// 掃目錄而非手維護清單（原寫死 en/zh-TW/ja/de，新增語系時漏改會讓新 locale 完全不受檢）。
+const locales = fs
+  .readdirSync('src/i18n/locales')
+  .filter((f) => f.endsWith('.json'))
+  .map((f) => f.replace(/\.json$/, ''))
+  .sort();
 const flat = Object.fromEntries(
   locales.map((l) => [l, flatten(JSON.parse(fs.readFileSync(`src/i18n/locales/${l}.json`, 'utf8')))])
 );
@@ -29,8 +34,8 @@ for (const l of locales.filter((x) => x !== 'en')) {
   }
 }
 
-// Spot-check: no empty string values in ja/de for pages.useCases
-for (const l of ['ja', 'de']) {
+// Spot-check: no empty string values in non-en locales for pages.useCases
+for (const l of locales.filter((x) => x !== 'en')) {
   const bad = enKeys
     .filter((k) => k.startsWith('pages.useCases.') && flat.en[k] && !flat[l][k])
     .slice(0, 10);

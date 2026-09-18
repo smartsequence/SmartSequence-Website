@@ -1,0 +1,257 @@
+{
+  "pages": {
+    "legal": {
+      "privacy": {
+        "title": "隐私政策 | Smart Sequence Tech 智序资讯工作室",
+        "description": "ForgeHelm 隐私政策——符合 GDPR、CCPA 与台湾个人资料保护法之企业数据治理说明。",
+        "h1": "隐私政策",
+        "lastUpdated": "最后更新：2026-05-25 ｜ 生效日：2026-06-01",
+        "blocks": [
+          {
+            "type": "intro",
+            "text": "智序资讯工作室（{studioNameEn}，{studioName}）运营 ForgeHelm 企业级代码治理与合规平台。本政策说明您使用 <strong>smartsequence.tech</strong> 官网或 ForgeHelm SaaS 服务时，我们如何收集、使用与保护个人数据，并覆盖 <strong>GDPR</strong>、<strong>CCPA</strong> 与台湾 <strong>个人资料保护法</strong> 相关义务。"
+          },
+          {
+            "type": "table",
+            "h2": "1. 数据控制者",
+            "headers": [
+              "项目",
+              "内容"
+            ],
+            "rows": [
+              [
+                "营业主体",
+                "智序资讯工作室（Smart Sequence Tech）"
+              ],
+              [
+                "统一编号",
+                "{taxId}"
+              ],
+              [
+                "联系方式",
+                "{email}"
+              ],
+              [
+                "个人资料询问",
+                "{email}"
+              ]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "2. 收集之数据",
+            "subsections": [
+              {
+                "h3": "2.1 官网访客",
+                "bullets": [
+                  "<strong>联系表单</strong>：姓名、工作邮箱、公司、职称、人数、询问类型",
+                  "<strong>分析数据</strong>：匿名化页面浏览（IP 已匿名化）",
+                  "<strong>Cookie</strong>：会话与语言偏好；选用分析 Cookie（需同意）"
+                ]
+              },
+              {
+                "h3": "2.2 SaaS 客户",
+                "bullets": [
+                  "<strong>账号数据</strong>：工作邮箱、姓名、公司、角色、订阅方案",
+                  "<strong>使用数据</strong>：功能日志、登录时间、API 记录（SaaS 不保存源代码）",
+                  "<strong>账单数据</strong>：由金流服务商处理；我们不保存完整卡号",
+                  "<strong>支持数据</strong>：工单与往来记录"
+                ]
+              },
+              {
+                "h3": "2.3 我们不收集",
+                "bullets": [
+                  "源代码——Agent 于客户环境分析，仅发送脱敏指标至 SaaS",
+                  "GDPR 第 9 条特殊类别个人数据"
+                ]
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "3. 处理之法律依据（GDPR）",
+            "headers": [
+              "目的",
+              "法律依据"
+            ],
+            "rows": [
+              [
+                "询价与 Demo",
+                "合法利益（第 6(1)(f) 条）"
+              ],
+              [
+                "合约 SaaS 服务",
+                "履行契约（第 6(1)(b) 条）"
+              ],
+              [
+                "账单与税务",
+                "法律义务（第 6(1)(c) 条）"
+              ],
+              [
+                "选用分析 Cookie",
+                "同意（第 6(1)(a) 条）"
+              ],
+              [
+                "服务改善通知",
+                "合法利益（第 6(1)(f) 条）"
+              ]
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "4. 数据使用方式",
+            "bullets": [
+              "回复 Demo、PoC 与业务询价",
+              "提供与运营 ForgeHelm SaaS 账号",
+              "开立发票与处理订阅",
+              "技术支持与服务稳定",
+              "发送服务必要通知（非行销，除非您同意）",
+              "履行法律与税务义务"
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "5. 数据保留",
+            "headers": [
+              "数据类别",
+              "保留期间"
+            ],
+            "rows": [
+              [
+                "售前询价",
+                "最后互动后 2 年"
+              ],
+              [
+                "有效 SaaS 账号",
+                "订阅期间 + 终止后 90 日"
+              ],
+              [
+                "账单记录",
+                "7 年（法定义务）"
+              ],
+              [
+                "支持工单",
+                "结案后 3 年"
+              ],
+              [
+                "分析（匿名）",
+                "滚动 13 个月"
+              ]
+            ],
+            "note": "非账单数据可申请提前删除（见第 7 节）。"
+          },
+          {
+            "type": "section",
+            "h2": "6. 第三方服务",
+            "bullets": [
+              "<strong>Vercel</strong>：官网托管（EU/US，已签 DPA）",
+              "<strong>Stripe</strong>：订阅金流（PCI-DSS Level 1）",
+              "<strong>分析</strong>：汇总匿名流量，无跨站追踪",
+              "<strong>邮件</strong>：仅交易型邮件"
+            ],
+            "paragraphs": [
+              "与处理个人资料之子处理者签署 DPA。Enterprise 客户可索取子处理者清单。"
+            ]
+          },
+          {
+            "type": "rights",
+            "h2": "7. 您的权利",
+            "intro": "依适用法令，您可能享有下列权利：",
+            "items": [
+              {
+                "title": "查阅",
+                "desc": "索取我们持有之您的数据副本"
+              },
+              {
+                "title": "更正",
+                "desc": "更正不正确或不完整数据"
+              },
+              {
+                "title": "删除",
+                "desc": "请求删除（法定保留义务除外）"
+              },
+              {
+                "title": "可携",
+                "desc": "以结构化格式取得数据"
+              },
+              {
+                "title": "反对",
+                "desc": "反对基于合法利益之处理"
+              },
+              {
+                "title": "限制",
+                "desc": "争议期间限制处理"
+              }
+            ],
+            "paragraphs": [
+              "加州居民可依 CCPA 选择退出出售/分享——我们不出售个人数据。",
+              "台湾个人资料保护法亦保障查阅、更正、删除与可携权利。",
+              "请联系 <strong>{email}</strong>，我们于 <strong>30 日</strong> 内回复。"
+            ]
+          },
+          {
+            "type": "table",
+            "h2": "8. Cookie",
+            "headers": [
+              "类型",
+              "用途",
+              "退出"
+            ],
+            "rows": [
+              [
+                "必要",
+                "登录会话、语言偏好",
+                "无法关闭"
+              ],
+              [
+                "分析（选用）",
+                "汇总浏览；IP 匿名",
+                "横幅或浏览器设置"
+              ]
+            ],
+            "note": "不使用广告或跨站追踪 Cookie。"
+          },
+          {
+            "type": "section",
+            "h2": "9. 跨境传输",
+            "paragraphs": [
+              "ForgeHelm 以数据主权为设计：源代码与敏感分析留在客户环境，仅脱敏合规指标进入 SaaS。",
+              "账号/账单数据离开 EEA 或台湾时，我们依赖欧盟 SCC、适足决定或个人资料保护法契约保障。"
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "10. 安全措施",
+            "bullets": [
+              "<strong>传输加密</strong>：TLS 1.2+",
+              "<strong>静态加密</strong>：敏感字段加密保存",
+              "<strong>访问控制</strong>：人员 RBAC",
+              "<strong>审计日志</strong>：管理操作不可窜改记录",
+              "<strong>漏洞管理</strong>：定期扫描与依赖更新"
+            ],
+            "paragraphs": [
+              "若发生影响您权益之数据外泄，将依 GDPR 第 33 条于 <strong>72 小时</strong> 内通知。"
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "11. 政策更新",
+            "bullets": [
+              "于本页公布并更新生效日",
+              "重大变更至少提前 30 日以 Email 通知有效 SaaS 客户"
+            ]
+          },
+          {
+            "type": "section",
+            "h2": "12. 联系与申诉",
+            "paragraphs": [
+              "隐私询问：<strong>{email}</strong>",
+              "营业主体：{studioName}（统一编号 {taxId}）",
+              "GDPR 可向当地监管机关提出申诉。"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
