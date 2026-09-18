@@ -215,7 +215,8 @@
     "linkAbout": "About",
     "linkContact": "Contact",
     "termsOfService": "Terms of Service",
-    "privacyPolicy": "Privacy Policy"
+    "privacyPolicy": "Privacy Policy",
+    "servicesLink": "Consulting & delivery"
   },
   "common": {
     "learnMore": "Learn More",
@@ -266,7 +267,8 @@
       "d2Text": "Support runs over email with replies on business days. If you need guaranteed response times or dedicated staffing, we can set that out in a consulting agreement.",
       "d3Title": "Consulting is billed by the hour",
       "d3Text": "Onboarding, architecture review and workflow build-out are billed by the hour. Scope, hours and deliverables are agreed before we start and are not included in the licence fee.",
-      "deliveryNote": "The studio also takes on AI adoption consulting and multilingual content projects — enquiries are welcome by email."
+      "deliveryNote": "The studio also takes on AI adoption consulting and multilingual content projects — enquiries are welcome by email.",
+      "deliveryLink": "See consulting & delivery →"
     },
     "product": {
       "title": "Product | ForgeHelm — 7 Governance Modules",
@@ -504,7 +506,7 @@
       "faqQ5": "Can we expand seats mid-contract?",
       "faqA5": "Yes. Mid-contract seat additions are prorated. Seat reductions take effect at renewal.",
       "faqQ6": "How is support provided?",
-      "faqA6": "Support runs over email, answered on business days, with Professional and Enterprise enquiries handled first. If you need guaranteed response times or dedicated staffing, we can set that out in a consulting agreement.",
+      "faqA6": "Support runs over email, answered on business days. If you need guaranteed response times or dedicated staffing, we can set that out in a consulting agreement.",
       "ctaTitle": "Ready to Start?",
       "ctaSubtitle": "Schedule a demo or request a scoped PoC for your environment.",
       "ctaButton1": "Request a Demo",
@@ -617,8 +619,8 @@
       "planEntF5": "Offline update delivery for air-gapped sites",
       "compareSupport": "Support",
       "compareSupportCore": "Email",
-      "compareSupportPro": "Email (prioritised)",
-      "compareSupportEnt": "Email + consulting hours (billed)"
+      "compareSupportPro": "Email",
+      "compareSupportEnt": "Email"
     },
     "contact": {
       "title": "Contact | ForgeHelm — Request Demo or PoC",
@@ -773,6 +775,29 @@
       "heading": "Page not found",
       "message": "Sorry, the page you are looking for does not exist or has been moved.",
       "cta": "Back to home"
+    },
+    "services": {
+      "title": "Consulting & Delivery | ForgeHelm",
+      "description": "ForgeHelm onboarding, AI architecture review and workflow build-out, multilingual content governance. Delivered asynchronously, problem definition before technology.",
+      "heroTitle": "Consulting & delivery",
+      "heroSubtitle": "We work the way we build: write down what \"correct\" means as conditions a machine can check, then prove those checks still work.",
+      "s1Title": "ForgeHelm onboarding and governance consulting",
+      "s1Text": "We deploy ForgeHelm into your environment and translate your compliance obligations into rules a machine can verify — framework mapping, gate configuration, exception handling, and handover documentation you can maintain yourselves.",
+      "s2Title": "AI architecture review and workflow build-out",
+      "s2Text": "Define the business problem first, pick models second. You get an architecture decision matrix (including the reasons for not doing things), data-boundary and risk controls, and a POC that actually runs.",
+      "s3Title": "Multilingual content governance",
+      "s3Text": "Localization pre-processing for high-stakes material: terminology consistency, placeholder integrity and subtitle reading speed are checked mechanically, with evidence left behind. This is the workflow we run ourselves, not a methodology on paper.",
+      "howTitle": "How we work",
+      "h1Title": "Asynchronous by default, no meetings required",
+      "h1Text": "Requirements come in by form or email; proposals and progress go out as documents and screen recordings. No time zone has to bend, and every decision stays in writing.",
+      "h2Title": "Define the problem before the technology",
+      "h2Text": "Most AI projects fail because nobody pinned down what was being solved, not because the model was too old. We write the problem and its measure down first — and if the answer is that you do not need AI here, we will say so.",
+      "h3Title": "Deliverables you can maintain",
+      "h3Text": "Scripts, decision matrices and documentation stay in your environment and your repository. Nothing is locked to us, and nothing stops working when the engagement ends.",
+      "billingTitle": "How it is billed",
+      "billingText": "Billed by the hour or by project. Scope, hours and deliverables are agreed before we start, and are billed separately from ForgeHelm licence fees.",
+      "ctaTitle": "Tell us about your project",
+      "ctaButton": "Email us"
     }
   }
 }

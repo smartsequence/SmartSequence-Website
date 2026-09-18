@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTACT_EMAIL } from '../consts';
+import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const translations = await getTranslations(lang);
+
+function t(key: string): string {
+	const keys = key.split('.');
+	let value: any = translations;
+	for (const k of keys) {
+		value = value?.[k];
+		if (value === undefined) return key;
+	}
+	return value || key;
+}
+
+const serviceKeys = ['s1', 's2', 's3'];
+const howKeys = ['h1', 'h2', 'h3'];
+---
+
+<Layout title={t('pages.services.title')} description={t('pages.services.description')}>
+	<!-- Hero -->
+	<section class="page-hero">
+		<div class="container">
+			<div class="hero-eyebrow">
+				<a href={getLocalizedPath('/', lang)}>ForgeHelm</a>
+				<span>›</span>
+				<span>{t('pages.services.heroTitle')}</span>
+			</div>
+			<h1>{t('pages.services.heroTitle')}</h1>
+			<p class="hero-sub">{t('pages.services.heroSubtitle')}</p>
+		</div>
+	</section>
+
+	<!-- Services -->
+	<section class="section services-section">
+		<div class="container">
+			<div class="service-grid">
+				{serviceKeys.map((key) => (
+					<div class="service-card">
+						<h2>{t(`pages.services.${key}Title`)}</h2>
+						<p>{t(`pages.services.${key}Text`)}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- How we work -->
+	<section class="section how-section">
+		<div class="container">
+			<h2 class="section-title">{t('pages.services.howTitle')}</h2>
+			<div class="how-grid">
+				{howKeys.map((key) => (
+					<div class="how-card">
+						<h3>{t(`pages.services.${key}Title`)}</h3>
+						<p>{t(`pages.services.${key}Text`)}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Billing + CTA -->
+	<section class="section cta-section">
+		<div class="container">
+			<div class="cta-box">
+				<h2>{t('pages.services.billingTitle')}</h2>
+				<p class="billing-text">{t('pages.services.billingText')}</p>
+				<p class="cta-lead">{t('pages.services.ctaTitle')}</p>
+				<a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary">{t('pages.services.ctaButton')}</a>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+	.section { padding: 5rem 0; }
+
+	.page-hero {
+		padding: 8rem 0 4rem;
+		background: var(--bg-main);
+		border-bottom: 1px solid var(--border-light);
+	}
+
+	.hero-eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 0.8125rem;
+		color: var(--text-secondary);
+		margin-bottom: 1.5rem;
+	}
+
+	.hero-eyebrow a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+	h1 {
+		font-size: clamp(2rem, 5vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+		max-width: 700px;
+	}
+
+	.hero-sub {
+		font-size: 1.0625rem;
+		color: var(--text-secondary);
+		line-height: 1.75;
+		max-width: 720px;
+	}
+
+	.section-title {
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 700;
+		color: var(--text-primary);
+		text-align: center;
+		margin-bottom: 3rem;
+		letter-spacing: -0.02em;
+	}
+
+	.services-section { background: var(--bg-section); border-bottom: 1px solid var(--border-light); }
+
+	.service-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.service-card {
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-top: 3px solid var(--cta-primary);
+		border-radius: 0.875rem;
+		padding: 2rem;
+	}
+
+	.service-card h2 {
+		font-size: 1.0625rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.875rem;
+		letter-spacing: -0.01em;
+	}
+
+	.service-card p {
+		font-size: 0.9rem;
+		color: var(--text-secondary);
+		line-height: 1.8;
+		margin: 0;
+	}
+
+	.how-section { border-bottom: 1px solid var(--border-light); }
+
+	.how-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+	}
+
+	.how-card {
+		background: var(--bg-card);
+		border: 1px solid var(--border-color);
+		border-left: 3px solid var(--cta-primary);
+		border-radius: 0.75rem;
+		padding: 1.75rem;
+	}
+
+	.how-card h3 {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+
+	.how-card p {
+		font-size: 0.875rem;
+		color: var(--text-secondary);
+		line-height: 1.75;
+		margin: 0;
+	}
+
+	.cta-box {
+		max-width: 760px;
+		margin: 0 auto;
+		text-align: center;
+		padding: 3rem 2rem;
+		background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(16,185,129,0.05));
+		border: 1px solid var(--border-color);
+		border-radius: 1rem;
+	}
+
+	.cta-box h2 {
+		font-size: 1.375rem;
+		font-weight: 700;
+		color: var(--text-primary);
+		margin-bottom: 1rem;
+	}
+
+	.billing-text {
+		font-size: 0.9375rem;
+		color: var(--text-secondary);
+		line-height: 1.8;
+		margin-bottom: 2rem;
+	}
+
+	.cta-lead {
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		margin-bottom: 1.25rem;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 2rem;
+		border-radius: 0.5rem;
+		font-weight: 600;
+		font-size: 0.9375rem;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.btn-primary { background: var(--cta-primary); color: white; }
+	.btn-primary:hover { background: var(--cta-hover); transform: translateY(-1px); }
+
+	@media (max-width: 900px) {
+		.service-grid, .how-grid { grid-template-columns: 1fr; }
+	}
+
+	@media (max-width: 768px) {
+		.page-hero { padding: 6rem 0 3rem; }
+		.section { padding: 3.5rem 0; }
+	}
+</style>
