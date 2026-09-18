@@ -227,7 +227,8 @@
     "learnArchitecture": "Architecture",
     "learnCompliance": "Compliance Frameworks",
     "tryExperience": "Try Experience",
-    "contactSales": "Contact Sales"
+    "contactSales": "Contact Sales",
+    "studioCrumb": "Smart Sequence Tech"
   },
   "pages": {
     "about": {
@@ -797,8 +798,7 @@
       "billingTitle": "How it is billed",
       "billingText": "Billed by the hour or by project. Scope, hours and deliverables are agreed before we start, and are billed separately from ForgeHelm licence fees.",
       "ctaTitle": "Tell us about your project",
-      "ctaButton": "Email us",
-      "crumbStudio": "Smart Sequence Tech"
+      "ctaButton": "Email us"
     }
   }
 }

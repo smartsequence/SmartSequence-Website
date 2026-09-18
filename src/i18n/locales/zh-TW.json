@@ -227,7 +227,8 @@
     "learnArchitecture": "技術架構",
     "learnCompliance": "合規框架",
     "tryExperience": "體驗方案",
-    "contactSales": "聯絡業務"
+    "contactSales": "聯絡業務",
+    "studioCrumb": "智序資訊"
   },
   "pages": {
     "about": {
@@ -797,8 +798,7 @@
       "billingTitle": "計費方式",
       "billingText": "以時數或專案計價，範圍、時數與交付物於開始前議定，與 ForgeHelm 的授權費分開計算。",
       "ctaTitle": "談談您的案子",
-      "ctaButton": "來信洽詢",
-      "crumbStudio": "智序資訊"
+      "ctaButton": "來信洽詢"
     }
   }
 }
