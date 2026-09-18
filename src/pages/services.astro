@@ -18,6 +18,7 @@ function t(key: string): string {
 const serviceKeys = ['s1', 's2', 's3'];
 const statKeys = ['stat1', 'stat2', 'stat3', 'stat4'];
 const stepKeys = ['step1', 'step2', 'step3', 'step4', 'step5'];
+const byolStepKeys = ['byolStep1', 'byolStep2', 'byolStep3', 'byolStep4', 'byolStep5'];
 const howKeys = ['h1', 'h2', 'h3'];
 ---
 
@@ -35,9 +36,33 @@ const howKeys = ['h1', 'h2', 'h3'];
 		</div>
 	</section>
 
+	<!-- BYOL deployment -->
+	<section class="section case-section">
+		<div class="container">
+			<div class="case-head">
+				<span class="case-label">{t('pages.services.byolLabel')}</span>
+				<h2>{t('pages.services.byolTitle')}</h2>
+			</div>
+			<p class="case-intro">{t('pages.services.byolIntro')}</p>
+			<ol class="pipeline">
+				{byolStepKeys.map((key, i) => (
+					<li class="step">
+						<span class="step-num">{i + 1}</span>
+						<span class="step-body">
+							<strong>{t(`pages.services.${key}Title`)}</strong>
+							<span>{t(`pages.services.${key}Text`)}</span>
+						</span>
+					</li>
+				))}
+			</ol>
+			<p class="case-note">{t('pages.services.byolNote')}</p>
+		</div>
+	</section>
+
 	<!-- Case study -->
 	<section class="section case-section">
 		<div class="container">
+			<p class="case-bridge">{t('pages.services.caseBridge')}</p>
 			<div class="case-head">
 				<span class="case-label">{t('pages.services.caseLabel')}</span>
 				<h2>{t('pages.services.caseTitle')}</h2>
@@ -158,6 +183,12 @@ const howKeys = ['h1', 'h2', 'h3'];
 
 	/* 案例 */
 	.case-section { border-bottom: 1px solid var(--border-light); }
+
+	.case-bridge {
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		margin: 0 0 1.25rem;
+	}
 
 	.case-head { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; }
 

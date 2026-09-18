@@ -822,7 +822,22 @@
       "step5Title": "Timing und Übergabe",
       "step5Text": "Die Zeilen werden auf die Videozeitachse gelegt. Wo die Aufnahme wirklich unklar ist, raten wir nicht: Solche Stellen kommen mit Zeitstempel auf eine Liste, über die entscheidet, wer den Inhalt am besten kennt.",
       "caseNote": "Die Pipeline blieb beim Kunden: Jede Überarbeitung des Skripts spart eine komplette Korrekturrunde. Dasselbe Vorgehen eignet sich für Handbücher, Schulungen und Produktdokumentation in mehreren Sprachen.",
-      "servicesTitle": "Womit Sie uns beauftragen können"
+      "servicesTitle": "Womit Sie uns beauftragen können",
+      "byolLabel": "Einführung",
+      "byolTitle": "LLM-Betrieb in Ihrer eigenen Umgebung (BYOL)",
+      "byolIntro": "Ein großes Sprachmodell läuft in Ihrem eigenen Serverraum oder Cloud-Konto, sodass weder Ihre Daten noch Ihre Eingaben die Grenze verlassen. Das passt zu Teams unter strengen Compliance-Vorgaben oder zu Teams, die Quellcode und Kundendaten nicht an einen externen Dienst geben dürfen. Wir übernehmen die Arbeit von der Grenzziehung bis zur Übergabe; danach pflegen Sie das System selbst.",
+      "byolStep1Title": "Zuerst die Grenzen",
+      "byolStep1Text": "Wir klären, was Ihr Netz verlassen darf und was nicht, dazu die Compliance-Pflichten und die vorhandene Hardware und Netzstruktur.",
+      "byolStep2Title": "Auswahl und Vergleich",
+      "byolStep2Text": "Offene Modelle und Hardware-Optionen werden für Ihre Last verglichen – mit Kosten, Risiken und dem, wovon wir abraten.",
+      "byolStep3Title": "Betrieb bei Ihnen",
+      "byolStep3Text": "Der Dienst läuft auf Ihren eigenen GPU-Servern oder im internen Netz, hinter einer branchenüblichen Schnittstelle. Ein späterer Modellwechsel bedeutet dann keine Umbauten in den Anwendungen.",
+      "byolStep4Title": "Governance und Audit",
+      "byolStep4Text": "Wer was genutzt hat, was es gekostet hat und worauf eine Antwort beruht – aufgezeichnet in einer Form, die Sie einem Prüfer vorlegen können.",
+      "byolStep5Title": "Übergabe, wiederholbar",
+      "byolStep5Text": "Skripte und Konfiguration bleiben in Ihrem Repository. Modellwechsel, zusätzliche Maschinen oder ein Neuaufbau sind ein weiterer Durchlauf, kein neues Projekt.",
+      "byolNote": "Entscheidend ist hier nicht, wie neu das Modell ist, sondern dass Grenzen, Kosten und Prüfbarkeit vorab geklärt sind – daran hängt, ob das System im Unternehmen dauerhaft bestehen bleibt.",
+      "caseBridge": "Dieselbe Arbeitsweise, anderes Material: Im Projekt unten geht es um Sprache und Text."
     }
   }
 }

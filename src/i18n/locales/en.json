@@ -822,7 +822,22 @@
       "step5Title": "Timing and handover",
       "step5Text": "Lines are aligned to the video timeline. Where the audio genuinely is not clear we do not guess: those spots go on a list with timestamps, for whoever knows the material best to decide.",
       "caseNote": "The pipeline stayed with the client: every revision of the script saves another full proofread. The same approach works for manuals, courses and product documentation in several languages.",
-      "servicesTitle": "What you can commission us for"
+      "servicesTitle": "What you can commission us for",
+      "byolLabel": "Deployment",
+      "byolTitle": "Bring-your-own-LLM deployment",
+      "byolIntro": "Put a large language model inside your own server room or cloud account, so neither your data nor your prompts leave your boundary. It suits teams under strict compliance rules, or teams that cannot send source code and customer data to an outside service. We handle the work from boundary mapping to handover, and you can maintain it afterwards.",
+      "byolStep1Title": "Boundaries first",
+      "byolStep1Text": "We establish what may leave your network and what may not, alongside compliance obligations and the hardware and network you already have.",
+      "byolStep2Title": "Selection and comparison",
+      "byolStep2Text": "Open models and hardware options are compared for your workload and traffic, with cost, risk and what we would advise against.",
+      "byolStep3Title": "Deployed in your environment",
+      "byolStep3Text": "The service runs on your own GPU hosts or internal network, behind an industry-standard interface, so swapping models later does not mean rewriting applications.",
+      "byolStep4Title": "Governance and audit",
+      "byolStep4Text": "Who used what, how much it cost, and which sources an answer drew on — all recorded in a form you can hand to an auditor.",
+      "byolStep5Title": "Handover, re-runnable",
+      "byolStep5Text": "Deployment scripts and configuration stay in your repository. Changing models, adding machines or rebuilding the environment is another run, not another project.",
+      "byolNote": "What matters on this track is not how new the model is, but settling boundaries, cost and auditability up front — those three decide whether the system survives inside your company.",
+      "caseBridge": "Same method, different material. The project below deals with speech and text."
     }
   }
 }
