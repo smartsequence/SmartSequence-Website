@@ -53,6 +53,10 @@ const enterpriseOptions = [
 
 			<div class="trial-layout">
 				<div class="trial-includes">
+					<div class="free-tier-box">
+						<h3>{t('pages.getStarted.freeTierTitle')}</h3>
+						<p>{t('pages.getStarted.freeTierText')}</p>
+					</div>
 					<h3>{t('pages.getStarted.trialIncludesTitle')}</h3>
 					<ul>
 						{trialIncludes.map(k => (
@@ -62,6 +66,7 @@ const enterpriseOptions = [
 							</li>
 						))}
 					</ul>
+					<p class="trial-status-note">{t('pages.getStarted.trialStatusNote')}</p>
 					<div class="trial-flow">
 						<h4>{t('pages.getStarted.trialFlowTitle')}</h4>
 						<ol>
@@ -242,4 +247,8 @@ const enterpriseOptions = [
 		.enterprise-grid { grid-template-columns: 1fr; }
 	}
 	@media (max-width: 768px) { .page-hero { padding: 6rem 0 3rem; } }
+	.free-tier-box { border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1.5rem; background: var(--card-bg); }
+	.free-tier-box h3 { margin: 0 0 0.5rem; }
+	.free-tier-box p { margin: 0; color: var(--text-secondary); }
+	.trial-status-note { margin: 0.75rem 0 1.25rem; padding: 0.75rem 1rem; border-radius: 8px; background: var(--bg-highlight); color: var(--text-secondary); font-size: 0.95rem; }
 </style>

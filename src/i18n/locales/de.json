@@ -414,7 +414,9 @@
       "frameworksNote": "* ForgeHelm mappt Ihre Codebasis in einem Scan auf alle 24 integrierten Frameworks – in jedem Plan.",
       "exportFormatsTitle": "Exportformate",
       "exportLangs": "EN / Traditionelles Chinesisch / Japanisch / Deutsch / Vereinfachtes Chinesisch / Koreanisch (sechs Berichtssprachen)",
-      "fwTwPdpa": "Taiwan PDPA (TW-PDPA)"
+      "fwTwPdpa": "Taiwan PDPA (TW-PDPA)",
+      "boundaryTitle": "Was ForgeHelm abdeckt – und was nicht",
+      "boundaryText": "Standards wie ISO 27001 prüfen Ihr Informationssicherheits-Managementsystem, nicht Ihren Code. ForgeHelm liefert Nachweise auf Code-Ebene für die technischen Kontrollen – sichere Entwicklung, Änderungsmanagement, Schwachstellen und Abhängigkeiten, Einsatz von Kryptografie, Zugriffskontrolle. Richtlinien, Risikobewertung und organisatorische Kontrollen bleiben bei Ihnen und Ihren Beratern. Ob ein Audit bestanden wird, hängt davon ab, ob die Befunde behoben werden; wir ersetzen nicht die Prüfstelle."
     },
     "useCases": {
       "title": "Anwendungsfälle | ForgeHelm nach Branche",
@@ -621,7 +623,16 @@
       "compareSupport": "Support",
       "compareSupportCore": "E-Mail",
       "compareSupportPro": "E-Mail",
-      "compareSupportEnt": "E-Mail"
+      "compareSupportEnt": "E-Mail",
+      "taxNote": "Alle Preise verstehen sich ohne Steuern. Für Kunden in Taiwan kommen 5 % Umsatzsteuer hinzu (mit amtlicher Rechnung); andere Regionen richten sich nach dem lokalen Steuerrecht.",
+      "faqQ8": "Gibt es einen kostenlosen Plan?",
+      "faqA8": "Ja. Die Selbstregistrierung ist dauerhaft kostenlos, ohne Kreditkarte: 1 Platz, 3 Analysen und 20 KI-Fragen pro Monat; Sie können Code hochladen, Analysen ausführen und vollständige Berichte und Scores online einsehen. Upgraden Sie, wenn Sie Exporte, mehr Volumen oder die Analyse-Engine in Ihrem eigenen Netz brauchen.",
+      "faqQ9": "Testpaket, Demo oder PoC – was soll ich wählen?",
+      "faqA9": "Sie wollen es selbst ausprobieren und Ihr Code darf in der Cloud gescannt werden: Starten Sie mit dem kostenlosen Plan oder dem Testpaket. Sie wollen das Produkt in 30 Minuten verstehen: Buchen Sie eine Demo. Ihr Quellcode darf das Netz nicht verlassen, Sie müssen in Ihrer eigenen Umgebung validieren oder durchlaufen einen Beschaffungsprozess: Beantragen Sie einen zweiwöchigen Proof of Concept (PoC).",
+      "compareScans": "Analysen pro Monat",
+      "compareScansCore": "50",
+      "compareScansPro": "Unbegrenzt",
+      "compareScansEnt": "Unbegrenzt"
     },
     "contact": {
       "title": "Kontakt | Smart Sequence Tech — Demo oder PoC",
@@ -663,7 +674,12 @@
       "linkPricing": "Preise & Pläne",
       "linkFaq": "Beschaffungs-FAQ",
       "sentTitle": "Ihre Nachricht ist eingegangen",
-      "sentText": "Vielen Dank für Ihre Anfrage — wir antworten innerhalb von 1–2 Werktagen. Bei dringenden Anliegen schreiben Sie uns gern direkt an service@smartsequence.tech."
+      "sentText": "Vielen Dank für Ihre Anfrage — wir antworten innerhalb von 1–2 Werktagen. Bei dringenden Anliegen schreiben Sie uns gern direkt an service@smartsequence.tech.",
+      "namePlaceholder": "Max Mustermann",
+      "emailPlaceholder": "max@firma.de",
+      "companyPlaceholder": "Muster GmbH",
+      "titlePlaceholder": "CTO / CISO / IT-Leitung",
+      "subjectCompliance": "Compliance-Beratung (noch unklar, wo anfangen)"
     },
     "getStarted": {
       "title": "Loslegen | ForgeHelm",
@@ -710,7 +726,10 @@
       "trialFlow5": "Ergebnisse prüfen — Upgrade innerhalb von 30 Tagen mit voller Gutschrift",
       "trialCredit": "Volle Gutschrift auf Core/Professional-Jahresabo innerhalb von 30 Tagen",
       "trialCta": "Test starten",
-      "trialNote": "Zahlung und Scan auf der ForgeHelm-SaaS-Plattform — diese Seite ist Ihr Leitfaden."
+      "trialNote": "Zahlung und Scan auf der ForgeHelm-SaaS-Plattform — diese Seite ist Ihr Leitfaden.",
+      "freeTierTitle": "Kostenlos starten",
+      "freeTierText": "Die Selbstregistrierung ist dauerhaft kostenlos, ohne Kreditkarte: 1 Platz, 3 Analysen und 20 KI-Fragen pro Monat, vollständige Berichte und Scores online einsehbar. Exporte und On-Premises-Betrieb erfordern einen bezahlten Plan.",
+      "trialStatusNote": "Der automatische Scan für das Testpaket ist noch nicht angebunden; bis dahin liefert das Testpaket keine Scan-Ergebnisse. Die Testseite im Produkt weist ebenfalls darauf hin."
     },
     "payment": {
       "title": "Zahlung & E-Rechnung | Smart Sequence Tech",
@@ -758,9 +777,9 @@
       "seatsLabel": "Lizenzen",
       "seatsValue": "5 Lizenzen",
       "unitPriceLabel": "Einzelpreis",
-      "unitPriceValue": "NT$14.900 / Lizenz / Jahr",
+      "unitPriceValue": "NT$15.750 / Platz / Jahr (NT$15.000 + 5 % USt.)",
       "totalLabel": "Gesamtbetrag",
-      "totalValue": "NT$74.500",
+      "totalValue": "NT$78.750",
       "taxIncludedNote": "Alle Preise in Neuen Taiwan-Dollar, inklusive Steuer.",
       "sellerLabel": "Rechnungsaussteller",
       "helpTitle": "Brauchen Sie Hilfe?",
@@ -838,6 +857,10 @@
       "byolStep5Text": "Skripte und Konfiguration bleiben in Ihrem Repository. Modellwechsel, zusätzliche Maschinen oder ein Neuaufbau sind ein weiterer Durchlauf, kein neues Projekt.",
       "byolNote": "Entscheidend ist hier nicht, wie neu das Modell ist, sondern dass Grenzen, Kosten und Prüfbarkeit vorab geklärt sind – daran hängt, ob das System im Unternehmen dauerhaft bestehen bleibt.",
       "caseBridge": "Wir bauen auch einen KI-Workflow, der auf Sie zugeschnitten ist. Das Projekt unten ist eine Untertitel-Pipeline, die wir für einen Kunden mit Online-Kursen geplant und gebaut haben."
+    },
+    "home": {
+      "title": "ForgeHelm | Code-Governance- und Compliance-Plattform – Quellcode bleibt im eigenen Netz",
+      "description": "Für regulierte Branchen: Ein Scan ordnet Ihren Code 24 Frameworks zu – ISO 27001, SOC 2, GDPR, PCI-DSS und mehr – mit einer Analyse-Engine, die in Ihrem Netz läuft. Air-Gap-fähig; KI optional und offline nutzbar."
     }
   }
 }

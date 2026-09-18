@@ -9,11 +9,11 @@
         "blocks": [
           {
             "type": "intro",
-            "text": "智序資訊工作室（{studioNameEn}，{studioName}）營運 ForgeHelm 企業級程式碼治理與合規平台。本政策說明您使用 <strong>smartsequence.tech</strong> 官網或 ForgeHelm SaaS 服務時，我們如何蒐集、使用與保護個人資料，並涵蓋 <strong>GDPR</strong>、<strong>CCPA</strong> 與臺灣 <strong>個人資料保護法</strong> 相關義務。"
+            "text": "{studioName}（{studioNameEn}）營運 ForgeHelm 程式碼治理與合規平台。本政策說明您使用 <strong>smartsequence.tech</strong> 官網或 ForgeHelm SaaS 服務時，我們如何蒐集、使用與保護個人資料，並涵蓋 <strong>GDPR</strong>、<strong>CCPA</strong> 與臺灣<strong>個人資料保護法</strong>相關義務。就官網訪客與帳單資料，本工作室為資料控制者；就 SaaS 客戶上傳或由分析引擎傳送之資料，本工作室為處理者，客戶為控制者。"
           },
           {
             "type": "table",
-            "h2": "1. 資料控制者",
+            "h2": "1. 資料控制者／處理者",
             "headers": ["項目", "內容"],
             "rows": [
               ["營業主體", "智序資訊工作室（Smart Sequence Tech）"],
@@ -29,25 +29,26 @@
               {
                 "h3": "2.1 官網訪客",
                 "bullets": [
-                  "<strong>聯絡表單</strong>：姓名、工作信箱、公司、職稱、人數、詢問類型",
-                  "<strong>分析資料</strong>：匿名化頁面瀏覽（IP 已匿名化）",
-                  "<strong>Cookie</strong>：工作階段與語言偏好；選用分析 Cookie（需同意）"
+                  "<strong>聯絡表單</strong>：姓名、工作信箱、公司、職稱、人數、感興趣的方案、詢問類型、訊息內容（由表單服務 Web3Forms 代收後轉寄）",
+                  "<strong>分析資料</strong>：官網目前不使用任何分析或追蹤腳本",
+                  "<strong>Cookie</strong>：官網不設置 Cookie；語言與深淺色偏好只存在您瀏覽器的本機儲存中"
                 ]
               },
               {
                 "h3": "2.2 SaaS 客戶",
                 "bullets": [
                   "<strong>帳號資料</strong>：工作信箱、姓名、公司、角色、訂閱方案",
-                  "<strong>使用資料</strong>：功能日誌、登入時間、API 紀錄（SaaS 不儲存原始碼）",
+                  "<strong>使用資料</strong>：功能日誌、登入時間、API 紀錄",
                   "<strong>帳單資料</strong>：由金流服務商處理；我們不儲存完整卡號",
                   "<strong>支援資料</strong>：工單與往來紀錄"
                 ]
               },
               {
-                "h3": "2.3 我們不蒐集",
+                "h3": "2.3 原始碼的處理",
                 "bullets": [
-                  "原始碼——Agent 於客戶環境分析，僅傳送脫敏指標至 SaaS",
-                  "GDPR 第 9 條特殊類別個人資料"
+                  "混合、內網與實體隔離部署：分析引擎（Agent）在您的環境分析，只有遮蔽後的檔名、行號與統計數字傳至 SaaS，我們不取得原始碼",
+                  "全雲端 Core 與體驗方案：您上傳或指定的儲存庫由我們託管的分析引擎於分析期間取用；保留期限依您與我們的書面約定，未另行約定者可來信要求刪除",
+                  "我們不蒐集 GDPR 第 9 條特殊類別個人資料"
                 ]
               }
             ]
@@ -60,7 +61,6 @@
               ["詢價與 Demo", "合法利益（第 6(1)(f) 條）"],
               ["合約 SaaS 服務", "履行契約（第 6(1)(b) 條）"],
               ["帳單與稅務", "法律義務（第 6(1)(c) 條）"],
-              ["選用分析 Cookie", "同意（第 6(1)(a) 條）"],
               ["服務改善通知", "合法利益（第 6(1)(f) 條）"]
             ]
           },
@@ -85,7 +85,7 @@
               ["有效 SaaS 帳號", "訂閱期間 + 終止後 90 日"],
               ["帳單紀錄", "7 年（法定義務）"],
               ["支援工單", "結案後 3 年"],
-              ["分析（匿名）", "滾動 13 個月"]
+              ["Core／體驗方案上傳之原始碼", "分析期間；保留期限依書面約定，可來信要求刪除"]
             ],
             "note": "非帳單資料可申請提前刪除（見第 7 節）。"
           },
@@ -95,10 +95,10 @@
             "bullets": [
               "<strong>Vercel</strong>：官網託管（EU/US，已簽 DPA）",
               "<strong>Stripe</strong>：訂閱金流（PCI-DSS Level 1）",
-              "<strong>分析</strong>：彙總匿名流量，無跨站追蹤",
-              "<strong>郵件</strong>：僅交易型郵件"
+              "<strong>Web3Forms</strong>：聯絡表單遞送（美國）",
+              "<strong>Google Gemini API</strong>：雲端 AI 模式（Core，以及未自備模型的 Professional）之向量索引與推論"
             ],
-            "paragraphs": ["與處理個資之子處理者簽署 DPA。Enterprise 客戶可索取子處理者清單。"]
+            "paragraphs": ["與處理個資之子處理者簽署資料處理協議。任何評估中或現有客戶皆可來信索取子處理者清單；ForgeHelm SaaS 管理平台之託管地點資訊亦可來信索取。"]
           },
           {
             "type": "rights",
@@ -114,8 +114,8 @@
             ],
             "paragraphs": [
               "加州居民可依 CCPA 選擇退出出售/分享——我們不出售個人資料。",
-              "臺灣個資法亦保障查閱、更正、刪除與可攜權利。",
-              "請聯絡 <strong>{email}</strong>，我們於 <strong>30 日</strong> 內回覆。"
+              "依臺灣個資法，您得請求查詢閱覽、製給複製本、補充更正、停止蒐集處理利用及刪除；資料可攜為我們依 GDPR 提供之權利，臺灣客戶亦可同樣行使。",
+              "請聯絡 <strong>{email}</strong>。查閱與複製請求我們於 15 日內處理，更正、刪除與停止處理請求於 30 日內處理；GDPR 適用者依其一個月期限。"
             ]
           },
           {
@@ -123,16 +123,16 @@
             "h2": "8. Cookie",
             "headers": ["類型", "用途", "退出"],
             "rows": [
-              ["必要", "登入工作階段、語言偏好", "無法關閉"],
-              ["分析（選用）", "彙總瀏覽；IP 匿名", "橫幅或瀏覽器設定"]
+              ["必要（SaaS 平台）", "登入工作階段", "無法關閉"],
+              ["官網", "不設置 Cookie；語言與主題偏好存在瀏覽器本機", "清除瀏覽器資料即可"]
             ],
-            "note": "不使用廣告或跨站追蹤 Cookie。"
+            "note": "不使用分析、廣告或跨站追蹤 Cookie。"
           },
           {
             "type": "section",
             "h2": "9. 跨境傳輸",
             "paragraphs": [
-              "ForgeHelm 以資料主權為設計：原始碼與敏感分析留在客戶環境，僅脫敏合規指標進入 SaaS。",
+              "採混合、內網或實體隔離部署時，原始碼與分析留在客戶環境，只有遮蔽後的合規指標進入 SaaS；全雲端 Core 與體驗方案之原始碼於我們託管的環境分析。",
               "帳號/帳單資料離開 EEA 或臺灣時，我們依賴歐盟 SCC、適足決定或個資法契約保障。"
             ]
           },
@@ -141,12 +141,12 @@
             "h2": "10. 安全措施",
             "bullets": [
               "<strong>傳輸加密</strong>：TLS 1.2+",
-              "<strong>靜態加密</strong>：敏感欄位加密儲存",
+              "<strong>儲存加密</strong>：雲端資料庫採託管商儲存層加密；驗證權杖等機密欄位另行欄位加密",
               "<strong>存取控制</strong>：人員 RBAC",
-              "<strong>稽核日誌</strong>：管理操作不可竄改紀錄",
+              "<strong>稽核日誌</strong>：管理操作寫入雜湊鏈稽核日誌，可驗證完整性",
               "<strong>漏洞管理</strong>：定期掃描與相依更新"
             ],
-            "paragraphs": ["若發生影響您權益之資料外洩，將依 GDPR 第 33 條於 <strong>72 小時</strong> 內通知。"]
+            "paragraphs": ["發生個資事故時，作為控制者依 GDPR 第 33 條於 <strong>72 小時</strong>內通報監管機關，並依第 34 條及臺灣個資法第 12 條即時通知受影響當事人；作為處理者依第 33 條第 2 項即時通知客戶。企業與機關客戶得於契約另訂通知時限。"]
           },
           {
             "type": "section",
@@ -162,7 +162,7 @@
             "paragraphs": [
               "隱私詢問：<strong>{email}</strong>",
               "營業主體：{studioName}（統一編號 {taxId}）",
-              "GDPR 可向當地監管機關提出申訴。"
+              "依 GDPR，您可向所在地的監管機關提出申訴。"
             ]
           }
         ]

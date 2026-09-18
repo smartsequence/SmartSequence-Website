@@ -91,7 +91,7 @@ const competitors = [
 	{ product: 'compCheckmarx', price: 'compCheckmarxPrice', adv: 'compCheckmarxAdv' },
 ];
 
-const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => ({
+const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7','faqQ8','faqQ9'].map(q => ({
 	q: t(`pages.pricing.${q}`),
 	a: t(`pages.pricing.${q.replace('Q','A')}`),
 }));
@@ -181,7 +181,8 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 			<div class="formula-box">
 				<h2>{t('pages.pricing.annualFormulaTitle')}</h2>
 				<p class="formula-expr">{t('pages.pricing.annualFormula')}</p>
-				<p class="formula-example"><strong>{t('pages.pricing.annualExampleTitle')}:</strong> {t('pages.pricing.annualExample')}</p>
+				<p class="formula-example"><strong>{t('pages.pricing.annualExampleTitle')}：</strong>{t('pages.pricing.annualExample')}</p>
+				<p class="formula-example">{t('pages.pricing.taxNote')}</p>
 			</div>
 		</div>
 	</section>
@@ -217,6 +218,7 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 				</table>
 			</div>
 			<p class="tier-note">{t('pages.pricing.tierBasisNote')}</p>
+			<p class="tier-note">{t('pages.pricing.taxNote')}</p>
 		</div>
 	</section>
 
@@ -288,6 +290,7 @@ const faqs = ['faqQ1','faqQ2','faqQ3','faqQ4','faqQ5','faqQ6','faqQ7'].map(q => 
 						{[
 							{ feature: 'compareDeploy', core: 'compareDeployCore', pro: 'compareDeployPro', ent: 'compareDeployEnt' },
 							{ feature: 'compareFrameworks', core: 'compareFrameworksCore', pro: 'compareFrameworksPro', ent: 'compareFrameworksEnt' },
+							{ feature: 'compareScans', core: 'compareScansCore', pro: 'compareScansPro', ent: 'compareScansEnt' },
 							{ feature: 'compareSbom', core: 'compareSbomCore', pro: 'compareSbomPro', ent: 'compareSbomEnt' },
 							{ feature: 'compareAi', core: 'compareAiCore', pro: 'compareAiPro', ent: 'compareAiEnt' },
 							{ feature: 'compareLangs', core: 'compareLangsCore', pro: 'compareLangsPro', ent: 'compareLangsEnt' },

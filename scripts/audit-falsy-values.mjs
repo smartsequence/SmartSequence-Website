@@ -4,7 +4,7 @@
  */
 import fs from 'fs';
 
-const locales = ['en', 'zh-TW', 'ja', 'de'];
+const locales = fs.readdirSync(new URL('../src/i18n/locales/', import.meta.url)).filter(f => f.endsWith('.json')).map(f => f.slice(0, -5));
 const issues = [];
 
 function walk(obj, prefix, locale) {

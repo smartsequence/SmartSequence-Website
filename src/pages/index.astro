@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, STUDIO_TAX_ID } from '../consts';
+import { STUDIO_TAX_ID } from '../consts';
 import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -41,7 +41,7 @@ const industries = [
 ];
 ---
 
-<Layout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Layout title={t('pages.home.title')} description={t('pages.home.description')}>
 	<!-- Hero Section -->
 	<section class="hero">
 		<div class="hero-bg"></div>
@@ -71,7 +71,7 @@ const industries = [
 					{['ISO 27001', 'SOC 2', 'GDPR', 'PCI-DSS', 'HIPAA', 'NIST CSF', 'OWASP Top 10'].map(f => (
 						<span class="framework-badge">{f}</span>
 					))}
-					<a href={getLocalizedPath('/compliance', lang)} class="framework-more">+13 {t('sections.home.frameworkMore')} →</a>
+					<a href={getLocalizedPath('/compliance', lang)} class="framework-more">+17 {t('sections.home.frameworkMore')} →</a>
 				</div>
 			</div>
 		</div>
@@ -212,9 +212,7 @@ const industries = [
 				<p>{t('sections.cta.subtitle')}</p>
 				<div class="cta-buttons">
 					<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">{t('sections.cta.primary')}</a>
-					<a href={getLocalizedPath('/pricing', lang)} class="btn btn-secondary">{t('sections.cta.secondary')}</a>
-					<a href={getLocalizedPath('/get-started', lang)} class="btn btn-ghost">{t('sections.cta.trial')}</a>
-					<a href={getLocalizedPath('/product', lang)} class="btn btn-ghost">{t('sections.cta.tertiary')}</a>
+					<a href={getLocalizedPath('/contact', lang)} class="btn btn-secondary">{t('sections.cta.secondary')}</a>
 				</div>
 			</div>
 		</div>

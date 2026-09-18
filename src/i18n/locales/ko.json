@@ -414,7 +414,9 @@
       "frameworksNote": "* ForgeHelm은 모든 플랜에서 단 한 번의 스캔으로 고객 코드베이스를 24개 내장 프레임워크 전체에 매핑합니다.",
       "exportFormatsTitle": "내보내기 형식",
       "exportLangs": "EN / 繁體中文 / 日本語 / Deutsch / 简体中文 / 한국어（보고서 6개 언어 출력）",
-      "fwTwPdpa": "대만 개인정보보호법(TW-PDPA)"
+      "fwTwPdpa": "대만 개인정보보호법(TW-PDPA)",
+      "boundaryTitle": "ForgeHelm이 담당하는 범위",
+      "boundaryText": "ISO 27001과 같은 표준이 심사하는 것은 정보보호 관리체계이며 코드 자체가 아닙니다. ForgeHelm은 안전한 개발, 변경 관리, 취약점과 의존성, 암호 사용, 접근 제어 같은 기술적 통제의 코드 수준 증적을 제공합니다. 정책, 위험 평가, 조직적 통제는 고객과 컨설턴트가 담당합니다. 심사 통과 여부는 발견 사항을 수정했는지에 달려 있으며, 당사가 인증기관의 판정을 대신하지 않습니다."
     },
     "useCases": {
       "title": "활용 사례 | ForgeHelm 산업별 적용",
@@ -621,7 +623,16 @@
       "compareSupport": "지원 방식",
       "compareSupportCore": "이메일",
       "compareSupportPro": "이메일",
-      "compareSupportEnt": "이메일"
+      "compareSupportEnt": "이메일",
+      "taxNote": "표시된 가격은 모두 세금 미포함입니다. 대만 고객은 5% 영업세가 추가되며 통일발표(세금계산서)가 발행됩니다. 기타 지역은 현지 세법에 따릅니다.",
+      "faqQ8": "무료 플랜이 있나요?",
+      "faqA8": "있습니다. 셀프 가입은 영구 무료이며 신용카드가 필요 없습니다: 1 좌석, 월 3회 분석과 20건의 AI 질문이 포함되고, 코드 업로드·분석 실행·전체 보고서와 점수 온라인 확인이 가능합니다. 내보내기, 사용량 확대, 내부망 분석 엔진 설치가 필요할 때 유료 플랜으로 업그레이드하세요.",
+      "faqQ9": "체험 플랜, 데모, PoC 중 무엇을 선택해야 하나요?",
+      "faqA9": "직접 먼저 돌려보고 싶고 코드를 클라우드에서 스캔해도 된다면 무료 플랜이나 체험 플랜부터. 30분 안에 제품을 이해하고 싶다면 데모를 예약하세요. 소스 코드가 내부망을 벗어날 수 없거나, 자체 환경에서 검증해야 하거나, 조달 절차를 거쳐야 한다면 2주 개념 검증(PoC)을 신청하세요.",
+      "compareScans": "월 분석 횟수",
+      "compareScansCore": "50회",
+      "compareScansPro": "무제한",
+      "compareScansEnt": "무제한"
     },
     "contact": {
       "title": "문의하기 | Smart Sequence Tech — 데모·PoC 신청",
@@ -663,7 +674,12 @@
       "linkPricing": "요금제",
       "linkFaq": "구매 담당자 FAQ",
       "sentTitle": "메시지를 받았습니다",
-      "sentText": "연락 주셔서 감사합니다. 영업일 기준 1~2일 이내에 회신하겠습니다. 급하신 경우 service@smartsequence.tech 로 직접 메일 주셔도 됩니다."
+      "sentText": "연락 주셔서 감사합니다. 영업일 기준 1~2일 이내에 회신하겠습니다. 급하신 경우 service@smartsequence.tech 로 직접 메일 주셔도 됩니다.",
+      "namePlaceholder": "김민준",
+      "emailPlaceholder": "kim@company.co.kr",
+      "companyPlaceholder": "○○주식회사",
+      "titlePlaceholder": "CTO / CISO / IT 책임자",
+      "subjectCompliance": "컴플라이언스 상담(어디서 시작할지 모름)"
     },
     "getStarted": {
       "title": "시작하기 | ForgeHelm",
@@ -710,7 +726,10 @@
       "trialFlow5": "결과를 확인합니다 — 30일 이내 업그레이드 시 전액 차감",
       "trialCredit": "30일 이내 Core／Professional 첫해 연간 구독으로 전환 시 전액 차감",
       "trialCta": "체험 시작하기",
-      "trialNote": "결제와 스캔은 ForgeHelm SaaS 플랫폼에서 진행됩니다 — 이 페이지는 안내용입니다."
+      "trialNote": "결제와 스캔은 ForgeHelm SaaS 플랫폼에서 진행됩니다 — 이 페이지는 안내용입니다.",
+      "freeTierTitle": "먼저 무료로",
+      "freeTierText": "셀프 가입은 영구 무료이며 신용카드가 필요 없습니다: 1 좌석, 월 3회 분석과 20건의 AI 질문, 전체 보고서와 점수를 온라인으로 확인할 수 있습니다. 내보내기와 내부망 배포는 유료 플랜이 필요합니다.",
+      "trialStatusNote": "체험 플랜의 자동 스캔 실행은 아직 연결되지 않았으며, 연결 전까지는 스캔 결과가 생성되지 않습니다. 제품 내 체험 페이지에도 같은 안내가 있습니다."
     },
     "payment": {
       "title": "결제와 전자 인보이스 | Smart Sequence Tech",
@@ -758,9 +777,9 @@
       "seatsLabel": "라이선스 좌석",
       "seatsValue": "5 좌석",
       "unitPriceLabel": "단가",
-      "unitPriceValue": "NT$14,900 / 좌석 / 년",
+      "unitPriceValue": "NT$15,750 / 좌석 / 년 (세전 NT$15,000 + 부가세 5%)",
       "totalLabel": "결제 금액",
-      "totalValue": "NT$74,500",
+      "totalValue": "NT$78,750",
       "taxIncludedNote": "표시 가격은 모두 대만 달러 세금 포함 가격입니다(부가가치세 포함).",
       "sellerLabel": "인보이스 발행 사업자",
       "helpTitle": "도움이 필요하신가요?",
@@ -838,6 +857,10 @@
       "byolStep5Text": "배포 스크립트와 설정은 고객 저장소에 남습니다. 모델을 바꾸거나 장비를 늘리거나 환경을 다시 만들 때는 한 번 더 돌리면 됩니다.",
       "byolNote": "이 분야에서 중요한 것은 모델이 얼마나 최신인지가 아니라, 경계와 비용과 감사 가능성을 처음에 분명히 해 두는 일입니다. 이 세 가지가 시스템이 회사 안에서 오래 살아남을지를 결정합니다.",
       "caseBridge": "고객사 전용 AI 업무 흐름도 만들어 드릴 수 있습니다. 아래 사례는 온라인 강의 고객을 위해 기획하고 구축한 자막 처리 공장입니다."
+    },
+    "home": {
+      "title": "ForgeHelm | 코드 거버넌스 및 컴플라이언스 플랫폼 — 소스 코드는 내부망에",
+      "description": "금융·공공·의료 등 규제 산업을 위해 설계: 한 번의 스캔으로 ISO 27001, SOC 2, GDPR, PCI-DSS 등 24개 프레임워크에 대응하며, 분석 엔진은 고객 내부망에서 실행됩니다. 에어갭 환경 지원, AI는 선택 사항이며 오프라인 가능."
     }
   }
 }

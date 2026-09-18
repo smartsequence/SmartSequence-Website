@@ -414,7 +414,9 @@
       "frameworksNote": "* ForgeHelm maps your codebase against all 24 built-in frameworks in a single scan—on every plan.",
       "exportFormatsTitle": "Export Formats",
       "exportLangs": "EN / Traditional Chinese / Japanese / German / Simplified Chinese / Korean (six report output languages)",
-      "fwTwPdpa": "TW-PDPA"
+      "fwTwPdpa": "TW-PDPA",
+      "boundaryTitle": "What ForgeHelm covers — and what it doesn't",
+      "boundaryText": "Standards like ISO 27001 audit your information security management system, not your code. ForgeHelm provides code-level evidence for the technical controls — secure development, change management, vulnerabilities and dependencies, use of cryptography, access control. Policies, risk assessment and organisational controls remain with you and your consultants. Passing an audit depends on fixing what's found; we don't stand in for the auditor."
     },
     "useCases": {
       "title": "Use Cases | ForgeHelm by Industry",
@@ -621,7 +623,16 @@
       "compareSupport": "Support",
       "compareSupportCore": "Email",
       "compareSupportPro": "Email",
-      "compareSupportEnt": "Email"
+      "compareSupportEnt": "Email",
+      "taxNote": "All prices exclude tax. Taiwan customers add 5% VAT and receive a government uniform invoice; other regions follow local tax rules.",
+      "faqQ8": "Is there a free plan?",
+      "faqA8": "Yes. Self-service signup is free forever, no credit card: 1 seat, 3 analyses and 20 AI questions per month, and you can upload code, run analyses and view full reports and scores online. Upgrade when you need exports, higher usage, or the analysis engine inside your own network.",
+      "faqQ9": "Trial, demo or PoC — which should I choose?",
+      "faqA9": "Want to run it yourself and your code can be scanned in the cloud: start with the free tier or the trial. Want to understand the product in 30 minutes: book a demo and we'll walk you through. Source code can't leave your network, you need to validate in your own environment, or you're going through procurement: request a two-week proof of concept (PoC).",
+      "compareScans": "Analyses per month",
+      "compareScansCore": "50",
+      "compareScansPro": "Unlimited",
+      "compareScansEnt": "Unlimited"
     },
     "contact": {
       "title": "Contact | Smart Sequence Tech — Request Demo or PoC",
@@ -663,7 +674,12 @@
       "linkPricing": "Pricing & Plans",
       "linkFaq": "Procurement FAQ",
       "sentTitle": "Your message has been received",
-      "sentText": "Thank you for getting in touch — we reply within 1–2 business days. If it is urgent, you can also email service@smartsequence.tech directly."
+      "sentText": "Thank you for getting in touch — we reply within 1–2 business days. If it is urgent, you can also email service@smartsequence.tech directly.",
+      "namePlaceholder": "Jane Smith",
+      "emailPlaceholder": "jane@company.com",
+      "companyPlaceholder": "Acme Corp",
+      "titlePlaceholder": "CTO / CISO / IT Director",
+      "subjectCompliance": "Compliance advice (not sure where to start)"
     },
     "getStarted": {
       "title": "Get Started | ForgeHelm",
@@ -710,7 +726,10 @@
       "trialFlow5": "Review results — upgrade within 30 days for full credit",
       "trialCredit": "30-day full credit toward first annual Core or Professional subscription",
       "trialCta": "Start Trial Experience",
-      "trialNote": "Payment and scanning run on the ForgeHelm SaaS platform — this page is your guide."
+      "trialNote": "Payment and scanning run on the ForgeHelm SaaS platform — this page is your guide.",
+      "freeTierTitle": "Start free",
+      "freeTierText": "Self-service signup is free forever, no credit card: 1 seat, 3 analyses and 20 AI questions per month, full reports and scores viewable online. Exports and on-premises deployment require a paid plan.",
+      "trialStatusNote": "Automated scanning for the trial is not yet connected; until it is, the trial does not produce scan results. The trial page inside the product says the same."
     },
     "payment": {
       "title": "Payment & e-Invoice | Smart Sequence Tech",
@@ -758,9 +777,9 @@
       "seatsLabel": "Seats",
       "seatsValue": "5 seats",
       "unitPriceLabel": "Unit price",
-      "unitPriceValue": "NT$14,900 / seat / year",
+      "unitPriceValue": "NT$15,750 / seat / year (NT$15,000 + 5% VAT)",
       "totalLabel": "Total due",
-      "totalValue": "NT$74,500",
+      "totalValue": "NT$78,750",
       "taxIncludedNote": "All prices are in New Taiwan dollars, tax included.",
       "sellerLabel": "Invoice issued by",
       "helpTitle": "Need help?",
@@ -838,6 +857,10 @@
       "byolStep5Text": "Deployment scripts and configuration stay in your repository. Changing models, adding machines or rebuilding the environment is another run, not another project.",
       "byolNote": "What matters on this track is not how new the model is, but settling boundaries, cost and auditability up front — those three decide whether the system survives inside your company.",
       "caseBridge": "We can also build an AI workflow made for you. The project below is a subtitle-processing pipeline we planned and built for a client running online courses."
+    },
+    "home": {
+      "title": "ForgeHelm | Code Governance & Compliance Platform — Source Code Stays On-Premises",
+      "description": "Built for regulated industries: one scan maps your code to 24 frameworks — ISO 27001, SOC 2, GDPR, PCI-DSS and more — with the analysis engine running inside your network. Air-gapped ready; AI optional and offline-capable."
     }
   }
 }
