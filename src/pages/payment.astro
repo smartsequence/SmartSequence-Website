@@ -141,13 +141,6 @@ function t(key: string): string {
 							<p class="field-hint">{t('pages.payment.donateHint')}</p>
 						</div>
 
-						<!-- 自然人憑證載具（個人發票專用） -->
-						<div class="form-group full-width" data-invoice-group="personal">
-							<label for="naturalId">{t('pages.payment.naturalIdLabel')}</label>
-							<input type="text" id="naturalId" name="naturalId" placeholder={t('pages.payment.naturalIdPlaceholder')} maxlength="16" />
-							<p class="field-hint">{t('pages.payment.naturalIdHint')}</p>
-						</div>
-
 						<div class="form-row two" data-invoice-group="company">
 							<div class="form-group">
 								<label for="buyerTaxId">{t('pages.payment.taxIdLabel')}</label>
