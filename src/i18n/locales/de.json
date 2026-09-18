@@ -11,7 +11,9 @@
     "features": "Produkt",
     "getStarted": "Loslegen",
     "architectureSub": "Dreischichtiges Hybrid-Design",
-    "complianceSub": "ISO 27001, SOC 2, GDPR und 20+ weitere"
+    "complianceSub": "ISO 27001, SOC 2, GDPR und 20+ weitere",
+    "menuLabel": "Menü",
+    "themeToggleLabel": "Design umschalten"
   },
   "hero": {
     "badge": "Unternehmensweite Code-Governance & Compliance",

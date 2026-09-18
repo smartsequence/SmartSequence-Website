@@ -11,7 +11,9 @@
     "features": "產品介紹",
     "getStarted": "預約 Demo",
     "architectureSub": "三層混合式架構",
-    "complianceSub": "ISO 27001、SOC 2、GDPR 等 20+ 框架"
+    "complianceSub": "ISO 27001、SOC 2、GDPR 等 20+ 框架",
+    "menuLabel": "選單",
+    "themeToggleLabel": "切換深淺色模式"
   },
   "hero": {
     "badge": "企業級程式碼治理與合規平台",

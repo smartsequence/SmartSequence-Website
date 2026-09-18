@@ -11,7 +11,9 @@
     "features": "Product",
     "getStarted": "Request Demo",
     "architectureSub": "Three-layer hybrid design",
-    "complianceSub": "ISO 27001, SOC 2, GDPR and 20+ more"
+    "complianceSub": "ISO 27001, SOC 2, GDPR and 20+ more",
+    "menuLabel": "Menu",
+    "themeToggleLabel": "Toggle colour theme"
   },
   "hero": {
     "badge": "Enterprise Code Governance & Compliance",

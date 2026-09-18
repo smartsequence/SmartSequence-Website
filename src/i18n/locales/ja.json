@@ -11,7 +11,9 @@
     "features": "製品",
     "getStarted": "はじめる",
     "architectureSub": "三層ハイブリッド設計",
-    "complianceSub": "ISO 27001、SOC 2、GDPR など 20+"
+    "complianceSub": "ISO 27001、SOC 2、GDPR など 20+",
+    "menuLabel": "メニュー",
+    "themeToggleLabel": "テーマを切り替える"
   },
   "hero": {
     "badge": "エンタープライズ向けコードガバナンス・コンプライアンス",
