@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { CONTACT_EMAIL } from '../consts';
 import { getLangFromUrl, getTranslations, getLocalizedPath } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
@@ -105,7 +104,7 @@ const howKeys = ['h1', 'h2', 'h3'];
 				<h2>{t('pages.services.billingTitle')}</h2>
 				<p class="billing-text">{t('pages.services.billingText')}</p>
 				<p class="cta-lead">{t('pages.services.ctaTitle')}</p>
-				<a href={`mailto:${CONTACT_EMAIL}`} class="btn btn-primary">{t('pages.services.ctaButton')}</a>
+				<a href={getLocalizedPath('/contact', lang)} class="btn btn-primary">{t('pages.services.ctaButton')}</a>
 			</div>
 		</div>
 	</section>

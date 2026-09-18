@@ -798,7 +798,7 @@
       "billingTitle": "How it is billed",
       "billingText": "Billed by the hour or by project. Scope, hours and deliverables are agreed before we start, and are billed separately from ForgeHelm licence fees.",
       "ctaTitle": "Tell us about your project",
-      "ctaButton": "Email us",
+      "ctaButton": "Contact us",
       "caseLabel": "Case",
       "caseTitle": "Subtitles for a 30-hour course at an education organisation",
       "caseIntro": "Seven sessions, 22 video segments. Machine transcription arrives full of misheard terms, wrong punctuation and verbal filler. We built a re-runnable AI pipeline for this project that corrects the text sentence by sentence against the vocabulary of the field and the speaker’s own way of talking, then breaks long stretches of speech into lines that read naturally — turning a recording into text people can actually read.",
